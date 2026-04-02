@@ -33,6 +33,7 @@ namespace TacticalCards
         private GUIStyle cardBodyStyle;
 
         public CardData SelectedCard { get; private set; }
+        private bool IsBattleOver => turnManager != null && turnManager.BattleEnded;
 
         public void Initialize(
             TurnManager targetTurnManager,
@@ -64,6 +65,11 @@ namespace TacticalCards
 
             gridManager.ClearHighlights();
 
+            if (IsBattleOver)
+            {
+                return;
+            }
+
             if (selectedUnit == null || !selectedUnit.IsAlive)
             {
                 return;
@@ -88,6 +94,13 @@ namespace TacticalCards
 
         public void SelectCard(CardData card)
         {
+            if (IsBattleOver)
+            {
+                ApplyBattleOutcomeStatus(logOutcome: false);
+                Refresh();
+                return;
+            }
+
             SelectedCard = card;
 
             if (selectedUnit == null)
@@ -117,14 +130,14 @@ namespace TacticalCards
         public void ClearSelectedCard()
         {
             SelectedCard = null;
-            statusMessage = selectedUnit == null ? "Select a player unit." : $"Selected {selectedUnit.DisplayName}.";
+            statusMessage = GetIdleStatusMessage();
             AddLog(statusMessage);
             Refresh();
         }
 
         public bool TryPlayCardOnTile(UnitController caster, TileView targetTile)
         {
-            if (SelectedCard == null || turnManager == null || deckManager == null || cardResolver == null || caster == null || targetTile == null)
+            if (IsBattleOver || SelectedCard == null || turnManager == null || deckManager == null || cardResolver == null || caster == null || targetTile == null)
             {
                 return false;
             }
@@ -157,16 +170,22 @@ namespace TacticalCards
 
             deckManager.DiscardFromHand(playedCard);
             SelectedCard = null;
-            turnManager.CheckBattleState();
-            statusMessage = $"{caster.DisplayName} used {playedCard.CardName}.";
-            AddLog(statusMessage);
+            var actionSummary = $"{caster.DisplayName} used {playedCard.CardName}.";
+            var battleEnded = turnManager.CheckBattleState();
+            statusMessage = actionSummary;
+            AddLog(actionSummary);
+            if (battleEnded)
+            {
+                ApplyBattleOutcomeStatus(logOutcome: true);
+            }
+
             Refresh();
             return true;
         }
 
         public bool TryPlayCardOnUnit(UnitController caster, UnitController targetUnit)
         {
-            if (SelectedCard == null || turnManager == null || deckManager == null || cardResolver == null || caster == null || targetUnit == null)
+            if (IsBattleOver || SelectedCard == null || turnManager == null || deckManager == null || cardResolver == null || caster == null || targetUnit == null)
             {
                 return false;
             }
@@ -199,9 +218,15 @@ namespace TacticalCards
 
             deckManager.DiscardFromHand(playedCard);
             SelectedCard = null;
-            turnManager.CheckBattleState();
-            statusMessage = $"{caster.DisplayName} used {playedCard.CardName} on {targetUnit.DisplayName}. HP: {targetUnit.CurrentHp}/{targetUnit.MaxHp}.";
-            AddLog(statusMessage);
+            var actionSummary = $"{caster.DisplayName} used {playedCard.CardName} on {targetUnit.DisplayName}. HP: {targetUnit.CurrentHp}/{targetUnit.MaxHp}.";
+            var battleEnded = turnManager.CheckBattleState();
+            statusMessage = actionSummary;
+            AddLog(actionSummary);
+            if (battleEnded)
+            {
+                ApplyBattleOutcomeStatus(logOutcome: true);
+            }
+
             Refresh();
             return true;
         }
@@ -264,7 +289,7 @@ namespace TacticalCards
 
         private void HandleWorldClick()
         {
-            if (Camera.main == null || turnManager == null || !turnManager.IsPlayerTurn)
+            if (Camera.main == null || turnManager == null || !turnManager.IsPlayerTurn || turnManager.BattleEnded)
             {
                 return;
             }
@@ -351,7 +376,7 @@ namespace TacticalCards
             var rect = GetTopBarRect();
             GUI.Box(rect, GUIContent.none);
 
-            var turnLabel = turnManager != null && turnManager.IsPlayerTurn ? "Player Turn" : "Enemy Turn";
+            var turnLabel = GetTurnLabel();
             var selectedUnitLabel = selectedUnit == null
                 ? "Unit: None"
                 : $"Unit: {selectedUnit.DisplayName} ({selectedUnit.CurrentHp}/{selectedUnit.MaxHp})";
@@ -363,6 +388,8 @@ namespace TacticalCards
             GUI.Label(new Rect(rect.x + 12f, rect.y + 26f, 360f, 18f), $"{selectedUnitLabel}  |  {selectedCardLabel}", bodyStyle);
 
             var clearRect = new Rect(rect.xMax - 220f, rect.y + 10f, 100f, 28f);
+            var previousEnabled = GUI.enabled;
+            GUI.enabled = !IsBattleOver;
             if (GUI.Button(clearRect, "Clear", smallButtonStyle))
             {
                 selectedUnit = null;
@@ -370,15 +397,20 @@ namespace TacticalCards
             }
 
             var endTurnRect = new Rect(rect.xMax - 110f, rect.y + 10f, 98f, 28f);
+            GUI.enabled = turnManager != null && turnManager.IsPlayerTurn && !turnManager.BattleEnded;
             if (GUI.Button(endTurnRect, "End Turn", smallButtonStyle))
             {
                 turnManager?.EndPlayerTurn();
                 SelectedCard = null;
                 selectedUnit = null;
-                statusMessage = turnManager?.LastEnemyActionSummary ?? "Enemy turn resolved. New player turn started.";
+                statusMessage = turnManager != null && turnManager.BattleEnded
+                    ? turnManager.BattleOutcomeSummary
+                    : turnManager?.LastEnemyActionSummary ?? "Enemy turn resolved. New player turn started.";
                 AddLog(statusMessage);
                 Refresh();
             }
+
+            GUI.enabled = previousEnabled;
         }
 
         private void DrawLogPanel()
@@ -445,11 +477,14 @@ namespace TacticalCards
         {
             var style = SelectedCard == card ? selectedCardStyle : cardStyle;
             var previousColor = GUI.color;
+            var previousEnabled = GUI.enabled;
             GUI.color = GetCardTint(card, SelectedCard == card);
+            GUI.enabled = turnManager != null && turnManager.IsPlayerTurn && !turnManager.BattleEnded;
             if (GUI.Button(rect, GUIContent.none, style))
             {
                 SelectCard(card);
             }
+            GUI.enabled = previousEnabled;
             GUI.color = previousColor;
 
             var titleRect = new Rect(rect.x + 8f, rect.y + 7f, rect.width - 16f, 18f);
@@ -533,6 +568,47 @@ namespace TacticalCards
             if (actionLog.Count > 12)
             {
                 actionLog.RemoveAt(0);
+            }
+        }
+
+        private string GetTurnLabel()
+        {
+            if (turnManager == null)
+            {
+                return "No Battle";
+            }
+
+            if (turnManager.BattleEnded)
+            {
+                return turnManager.WinningTeam == TeamType.Player ? "Victory" : "Defeat";
+            }
+
+            return turnManager.IsPlayerTurn ? "Player Turn" : "Enemy Turn";
+        }
+
+        private string GetIdleStatusMessage()
+        {
+            if (IsBattleOver)
+            {
+                return turnManager.BattleOutcomeSummary;
+            }
+
+            return selectedUnit == null ? "Select a player unit." : $"Selected {selectedUnit.DisplayName}.";
+        }
+
+        private void ApplyBattleOutcomeStatus(bool logOutcome)
+        {
+            if (!IsBattleOver)
+            {
+                return;
+            }
+
+            SelectedCard = null;
+            selectedUnit = null;
+            statusMessage = turnManager.BattleOutcomeSummary;
+            if (logOutcome)
+            {
+                AddLog(statusMessage);
             }
         }
 
