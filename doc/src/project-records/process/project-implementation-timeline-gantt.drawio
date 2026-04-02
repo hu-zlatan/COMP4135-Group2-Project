@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-03T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="project-implementation-gantt" name="Project Timeline">
+    <mxGraphModel dx="1800" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1000" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Project Implementation Timeline (Gantt Chart)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="900" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Aligned to the current WR2 snapshot, milestone dates, and closeout records" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="56" width="900" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="header-left" value="Workstream" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#B3B3B3;fillColor=#E8EEF7;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="header-right" value="Timeline (Mar 10, 2026 - Apr 27, 2026)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#B3B3B3;fillColor=#E8EEF7;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="100" width="1260" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tick0" value="Mar 10" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick1" value="Mar 17" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick2" value="Mar 24" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick3" value="Mar 31" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="850" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick4" value="Apr 7" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick5" value="Apr 14" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick6" value="Apr 21" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tick7" value="Apr 27" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grid0" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid1" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid2" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid3" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid4" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid5" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid6" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="grid7" value="" style="shape=line;strokeColor=#E6E6E6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="100" width="1" height="520" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="row1" value="WR1 requirements, personas, scenarios, and initial team role setup" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row2" value="Unity prototype implementation and first-pass gameplay modules" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="236" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row3" value="Architecture/UML alignment and prototype evidence capture" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="292" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row4" value="GitHub cleanup, PR migration, and WR2 closeout records" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="348" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row5" value="Prototype accuracy fix and EditMode smoke test" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="404" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row6" value="WR2 report integration and appendix truth pass" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="460" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row7" value="WR3 validation expansion and retest cycle" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="516" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="row8" value="Final packaging, presentation slides, and submission assets" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0D0D0;fillColor=#F7F7F7;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="572" width="330" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bar1" value="Completed" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6C8EBF;fillColor=#DAE8FC;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="186" width="240" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar2" value="Completed" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#82B366;fillColor=#D5E8D4;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="242" width="420" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar3" value="Completed" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#D6B656;fillColor=#FFF2CC;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="298" width="300" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar4" value="Completed by WR2 closeout" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#9673A6;fillColor=#E1D5E7;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="354" width="220" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar5" value="Completed" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="410" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar6" value="Current WR2 finish" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B46504;fillColor=#FAD7AC;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="466" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar7" value="Planned next" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#82B366;fillColor=#EAF4E7;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="522" width="240" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar8" value="Planned later" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6C8EBF;fillColor=#EEF5FC;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="578" width="240" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wr1line" value="" style="shape=line;strokeColor=#B85450;dashed=1;dashPattern=8 8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="84" width="1" height="540" as="geometry"/>
+        </mxCell>
+        <mxCell id="wr1label" value="WR1&#10;Mar 20, 17:00" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="556" y="82" width="88" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wr2line" value="" style="shape=line;strokeColor=#B85450;dashed=1;dashPattern=8 8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="84" width="1" height="540" as="geometry"/>
+        </mxCell>
+        <mxCell id="wr2label" value="WR2&#10;Apr 3, 17:00" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1036" y="82" width="88" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wr3line" value="" style="shape=line;strokeColor=#B85450;dashed=1;dashPattern=8 8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="84" width="1" height="540" as="geometry"/>
+        </mxCell>
+        <mxCell id="wr3label" value="WR3&#10;Apr 17, 17:00" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1256" y="82" width="88" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="finalline" value="" style="shape=line;strokeColor=#B85450;dashed=1;dashPattern=8 8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="84" width="1" height="540" as="geometry"/>
+        </mxCell>
+        <mxCell id="finallabel" value="Final&#10;Apr 27, 12:00" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1526" y="82" width="88" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend1" value="Completed / evidenced by WR2" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6C8EBF;fillColor=#DAE8FC;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="380" y="650" width="210" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="Current WR2 closeout work" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#B46504;fillColor=#FAD7AC;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="610" y="650" width="190" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3" value="Planned after WR2" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#82B366;fillColor=#EAF4E7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="820" y="650" width="150" height="28" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
