@@ -25,6 +25,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `wr2-asset-register.md`: evidence register, missing items, suggested owners, and due times
 - `team-assignment-pr-plan-2026-04-02.md`: current member allocation, per-person TODOs, and recommended PR sequence
 - `phase-collaboration-dependency-map-2026-04-02.md`: phase-by-phase parallelization, dependency, and blocking map for team coordination
+- `prototype-snapshot-verification-2026-04-02.md`: runtime-to-document alignment check for the current playable prototype snapshot
 - `wr2-snapshot-freeze-2026-04-02.md`: the named WR2 snapshot and freeze-scope contract
 - `archive-review-2026-04-01.md`: archive recommendation for old working docs and LaTeX build outputs
 

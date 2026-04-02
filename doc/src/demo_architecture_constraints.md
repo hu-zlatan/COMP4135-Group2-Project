@@ -45,7 +45,7 @@ This document is not a long-term production architecture. It is the minimum fram
   - `Push`
 - draw 3 cards per player turn
 - play at most 2 cards per player turn
-- player turn, enemy turn, win/lose check
+- player turn, enemy turn, and defeated-unit cleanup
 - movement highlight
 - attack range highlight
 - movement animation
@@ -155,7 +155,7 @@ Responsibilities:
 - track remaining playable cards
 - end player turn
 - run enemy turn
-- trigger win/lose checks
+- prune defeated units and expose the current battle state
 
 Should not know card-specific logic beyond “a card was consumed”.
 
@@ -385,5 +385,8 @@ The architecture is good enough if:
 - one battle can be played from start to finish
 - adding one new card does not require redesigning core systems
 - debugging a broken turn or card can be done from a small number of scripts
+
+For the current snapshot, "start to finish" should be read as "complete the playable turn loop and resolve card/enemy interactions".
+Explicit victory or defeat presentation can be layered on top later.
 
 If those conditions are met, stop architecting and keep building.
