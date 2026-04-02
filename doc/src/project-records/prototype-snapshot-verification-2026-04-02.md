@@ -93,7 +93,7 @@ These diagrams are still usable for WR2, but later report wording should reflect
 - explicit `CardResolver`
 - deterministic `EnemyAI`
 - lightweight `BattleUI`
-- no dedicated final end-state presentation yet
+- dedicated battle-end feedback now exists in `BattleUI`, but only as top-bar/log text rather than a separate result screen
 
 ## Outcome
 
