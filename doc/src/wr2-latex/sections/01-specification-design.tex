@@ -1,6 +1,6 @@
 \chapter{Specification and Design Decisions}
 
-This report focuses on how the \projectname{} concept moved from the WR1 proposal into a constrained, demonstrable Unity prototype. The emphasis of WR2 is not to restate the full WR1 requirements, but to validate which requirements survived contact with implementation, which ones were simplified, and which ones were deliberately deferred to later stages. The report is intentionally anchored to one frozen prototype snapshot, recorded in the project record \path{wr2-snapshot-freeze-2026-04-02.md}. This means the chapter describes the current demo as it exists in the frozen WR2 evidence set, and separates target-state ambitions from implemented behaviour.
+This report focuses on how the \projectname{} concept moved from the WR1 proposal into a constrained, demonstrable Unity prototype. The emphasis of WR2 is not to restate the full WR1 requirements, but to validate which requirements survived contact with implementation, which ones were simplified, and which ones were deliberately deferred to later stages. The report follows the course specification and the recovered WR2 template structure rather than the incorrect WR1-flavoured Moodle \texttt{main.tex} skeleton \cite{moduleSpecification,wr2Template}. It is intentionally anchored to one frozen prototype snapshot, recorded in the project record \path{wr2-snapshot-freeze-2026-04-02.md}. This means the chapter describes the current demo as it exists in the frozen WR2 evidence set, and separates target-state ambitions from implemented behaviour.
 
 \section{Requirements Validation}
 
@@ -18,15 +18,25 @@ The current prototype validates the core loop of selecting a unit, drawing cards
 \item \textbf{Structured repository workflow and traceable progress records.} Status: partially implemented and now evidenced through the cleaned GitHub workflow. Evidence: merged pull requests on the canonical repository, the collaboration-history note, and the process evidence package under \path{doc/src/project-records/process/}. Reason: the repository workflow is now visible in GitHub history, but task-board captures and stronger attendance evidence are still weaker than the repository trail itself.
 \end{itemize}
 
-The validated WR2 scope is therefore narrower than the original concept sketched in WR1 and the one-pager \cite{onePager}. The frozen prototype snapshot commits to a single battle scene, two player units, one enemy response loop, four starter cards, clear board-state feedback, and truthful battle-end termination with text-based outcome reporting. Features such as a larger card pool, multi-scene structure, deckbuilding, progression, and a more expressive tutorial flow remain outside the current implementation window \cite{architectureConstraints}. They are discussed as deferred work rather than being blended into the current-state description.
+\subsection{Updated Functional and Nonfunctional Priorities}
+
+Implementation narrowed the functional priority to one starter deck and one readable combat loop. The retained starter card set is therefore \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push}. The team explicitly did \emph{not} expand WR2 into a larger card pool or more experimental mechanics such as persistent status effects, directional bonuses, or health-for-power exchanges, because those would require extra balancing and testing effort that the current report cannot honestly evidence.
+
+The most visible remaining nonfunctional issue is readability. The current build exposes health, guarding, prompts, and turn outcome information well enough for demonstration, but the combat HUD is still lighter than a finished interface. Clearer presentation of unit state, stronger explanation of board highlights, and more polished result feedback remain follow-up quality targets rather than completed WR2 claims.
+
+\subsection{Key Design Trade-offs}
+
+The main trade-off in WR2 was breadth versus stability. A broader deck and more specialised combat roles might improve longer-term gameplay depth, but they would also multiply balancing effort and make the prototype harder to validate in a short coursework cycle. The implemented choice was therefore conservative: keep the card set small, keep enemy behaviour deterministic, and make the runtime responsibilities easy to trace. This trade-off supports the real goal of WR2, which is to present a truthful playable slice rather than a larger but weakly evidenced design.
+
+The validated WR2 scope is therefore narrower than the original concept sketched in WR1 and the internal one-pager stored at \path{doc/src/onepager_en.md}. The frozen prototype snapshot commits to a single battle scene, two player units, one enemy response loop, four starter cards, clear board-state feedback, and truthful battle-end termination with text-based outcome reporting. Features such as a larger card pool, multi-scene structure, deckbuilding, progression, and a more expressive tutorial flow remain outside the current implementation window described in the internal architecture note \path{doc/src/demo_architecture_constraints.md}. They are discussed as deferred work rather than being blended into the current-state description.
 
 \section{Architectural/System Diagram}
 
-The current system architecture follows the ``single battle, shallow object model'' direction set out in the architecture constraints and first-pass script notes \cite{architectureConstraints,firstPassScripts}. Figure~\ref{fig:architecture} reflects the current code modules rather than the more speculative abstraction layer implied by some earlier planning material.
+The current system architecture follows the ``single battle, shallow object model'' direction set out in the internal architecture constraints and first-pass script notes stored at \path{doc/src/demo_architecture_constraints.md} and \path{doc/src/demo_first_pass_scripts.md}. Figure~\ref{fig:architecture} reflects the current code modules rather than the more speculative abstraction layer implied by some earlier planning material.
 
 \begin{figure}[H]
 \centering
-\input{figures/architecture-diagram}
+\includegraphics[width=0.93\textwidth]{media/architecture-diagram-wr1-style.png}
 \caption{Current WR2 runtime architecture for the \projectname{} prototype}
 \label{fig:architecture}
 \end{figure}
