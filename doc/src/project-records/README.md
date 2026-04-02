@@ -30,6 +30,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `pr-submit-cli-workflow.md`: one-command team PR submission workflow using `gh` with profile checks and review-policy gates
 - `collaboration-history-2026-04-02.md`: concise note explaining the move from early WeChat/Overleaf coordination to the clean GitHub PR workflow
 - `wr2-snapshot-freeze-2026-04-02.md`: the named WR2 snapshot and freeze-scope contract
+- `process/project-implementation-timeline-gantt.drawio`: source for the WR2 implementation timeline Gantt chart
 - `process/task-board/retrospective-wr2-closeout-board.png`: explanatory reconstruction of the WR2 closeout board from recorded TODO lists and merged PR history
 - `validation/wr2-heuristic-walkthrough-2026-04-01.md`: the current WR2 design-validation walkthrough
 - `testing/prototype-accuracy-editmode-run-2026-04-02.md`: the initial automated verification note for the battle-end accuracy fix
