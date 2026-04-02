@@ -4,7 +4,19 @@ The implementation strategy is based on one principle: keep the prototype readab
 
 \section{Code Structure}
 
-The current gameplay scripts are organised into a small set of folders under \texttt{coursework/Assets/Scripts}. The directory tree below reflects the current runtime structure used by the prototype.
+At repository level, the project is intentionally split so that the Unity implementation, report sources, and evidence records do not collapse into one mixed file tree. The top-level layout used during WR2 closeout is:
+
+\begin{Verbatim}[fontsize=\small]
+Unity-Project
+|-- coursework
+|-- artifacts/uml
+`-- doc/src
+    |-- project-records
+    |-- wr1-latex
+    `-- wr2-latex
+\end{Verbatim}
+
+This repository layout keeps the playable Unity project inside \texttt{coursework}, stores diagrams and report evidence separately, and makes it easier to package the repository for different audiences later. Within that structure, the current gameplay scripts are organised into a small set of folders under \texttt{coursework/Assets/Scripts}. The directory tree below reflects the current runtime structure used by the prototype.
 
 \begin{Verbatim}[fontsize=\small]
 Assets/Scripts
