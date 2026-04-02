@@ -25,6 +25,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `wr2-asset-register.md`: evidence register, missing items, suggested owners, and due times
 - `team-assignment-pr-plan-2026-04-02.md`: current member allocation, per-person TODOs, and recommended PR sequence
 - `phase-collaboration-dependency-map-2026-04-02.md`: phase-by-phase parallelization, dependency, and blocking map for team coordination
+- `git-pr-collaboration-policy-2026-04-02.md`: the current clean-worktree, PR-only merge flow, and review thresholds for docs vs code
 - `prototype-snapshot-verification-2026-04-02.md`: runtime-to-document alignment check for the current playable prototype snapshot
 - `pr-submit-cli-workflow.md`: one-command team PR submission workflow using `gh` with profile checks and review-policy gates
 - `wr2-snapshot-freeze-2026-04-02.md`: the named WR2 snapshot and freeze-scope contract
