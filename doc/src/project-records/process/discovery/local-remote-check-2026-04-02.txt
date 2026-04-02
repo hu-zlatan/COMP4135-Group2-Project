@@ -1,0 +1,7 @@
+Command: git remote -v
+Date: 2026-04-02
+Workspace: F:\unity\Unity-Project
+
+Result:
+
+No configured git remotes were present in this local workspace.
