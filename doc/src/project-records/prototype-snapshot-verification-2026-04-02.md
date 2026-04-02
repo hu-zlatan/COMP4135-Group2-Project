@@ -1,9 +1,10 @@
 # Prototype Snapshot Verification
 
 **Date:** `2026-04-02`  
+**Last updated:** `2026-04-03`  
 **Owner:** `Hongshuo HU`  
 **Suggested branch:** `docs/prototype-snapshot-verification`  
-**Baseline checked against:** clean `develop` snapshot seeded from commit `b045777`
+**Baseline checked against:** clean GitHub `develop` line after the prototype-accuracy fix and WR2 closeout sync
 
 ## Purpose
 
@@ -52,7 +53,7 @@ This note records which WR2 prototype claims are directly supported by the curre
 | player/enemy turn loop exists | confirmed | `TurnManager.StartPlayerTurn`, `EndPlayerTurn`, `RunEnemyTurn` |
 | enemy response exists | confirmed | `EnemyAI.FindNearestPlayer`, adjacent hit or one-step move |
 | lightweight UI feedback exists | confirmed | `BattleUI` hand panel, top bar, log panel, highlight refresh |
-| explicit victory/defeat end-state flow exists | not confirmed | defeated units are removed, but there is no dedicated end-state gate or presentation layer yet |
+| explicit victory/defeat end-state flow exists | confirmed in minimal form | `TurnManager` now stops the battle loop when one side is eliminated, and `BattleUI` surfaces top-bar/log outcome feedback |
 
 ## Wording guardrails for later WR2 closeout
 
@@ -61,6 +62,8 @@ This note records which WR2 prototype claims are directly supported by the curre
   - a card-driven action loop with `Move / Strike / Guard / Push`
   - deterministic enemy response
   - lightweight runtime UI feedback for selection, hand state, and action logging
+  - truthful battle-end termination with textual victory/defeat feedback
+  - initial automated verification around the corrected battle-end flow
 - Do not overclaim:
   - a polished victory screen
   - a full defeat/restart flow
@@ -98,5 +101,5 @@ These diagrams are still usable for WR2, but later report wording should reflect
 ## Outcome
 
 - `docs/prototype-snapshot-verification` should stay a docs-only PR.
-- A later runtime review identified one concrete accuracy gap worth fixing in code: the battle loop removed defeated units but did not stop the turn cycle or surface a dedicated win/lose outcome once one side was eliminated.
-- A narrow `feat/prototype-accuracy-fixes` branch is therefore justified if it stays limited to end-state gating and truthful runtime feedback, without expanding the prototype scope.
+- The earlier battle-end accuracy gap was fixed in the merged `feat/prototype-accuracy-fixes` work, and WR2 wording should now describe that behaviour as implemented in minimal form rather than deferred.
+- The remaining reporting guardrail is about scope and polish, not correctness: WR2 should describe battle-end handling as functional but lightweight, and should keep stronger claims for richer presentation, onboarding, and broader testing out of the current snapshot.

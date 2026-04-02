@@ -28,8 +28,10 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `git-pr-collaboration-policy-2026-04-02.md`: the current clean-worktree, PR-only merge flow, and review thresholds for docs vs code
 - `prototype-snapshot-verification-2026-04-02.md`: runtime-to-document alignment check for the current playable prototype snapshot
 - `pr-submit-cli-workflow.md`: one-command team PR submission workflow using `gh` with profile checks and review-policy gates
+- `collaboration-history-2026-04-02.md`: concise note explaining the move from early WeChat/Overleaf coordination to the clean GitHub PR workflow
 - `wr2-snapshot-freeze-2026-04-02.md`: the named WR2 snapshot and freeze-scope contract
-- `archive-review-2026-04-01.md`: archive recommendation for old working docs and LaTeX build outputs
+- `validation/wr2-heuristic-walkthrough-2026-04-01.md`: the current WR2 design-validation walkthrough
+- `testing/prototype-accuracy-editmode-run-2026-04-02.md`: the initial automated verification note for the battle-end accuracy fix
 
 ## Status labels
 
@@ -44,8 +46,9 @@ This directory keeps the minimum record structure needed to support WR2 now and 
   - `coursework/Assets/Screenshots/`
   - `artifacts/uml/`
   - `doc/src/project-records/`
-- External repo and board evidence remain outside this local workspace until explicitly captured.
-- Discovery artifacts about those missing sources are now stored under `doc/src/project-records/process/discovery/`.
+- Current GitHub repository and PR history are now visible from this workspace.
+- Stronger task-board captures and confirmed attendance evidence may still live outside this workspace until explicitly captured.
+- Discovery artifacts about the earlier blocked state are stored under `doc/src/project-records/process/discovery/`.
 
 ## Usage
 
