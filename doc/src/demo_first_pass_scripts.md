@@ -21,7 +21,7 @@ Owns cross-system references and wires the battle scene together.
 
 ### `Assets/Scripts/Core/TurnManager.cs`
 
-Owns turn state, remaining card plays, player/enemy turn transitions, and win/lose checks.
+Owns turn state, remaining card plays, player/enemy turn transitions, and defeated-unit cleanup.
 
 ### `Assets/Scripts/Grid/GridManager.cs`
 
@@ -89,8 +89,8 @@ Stores `TeamType`, `CardType`, and `TargetType`.
 1. `TurnManager` enters enemy phase
 2. For each enemy unit, `EnemyAI` chooses move/attack
 3. `CardResolver` or direct `UnitController` actions apply the result
-4. `TurnManager` checks win/lose
-5. Control returns to player phase
+4. `TurnManager` removes defeated units from the active lists
+5. Control returns to player phase unless a later layer adds explicit end-state gating
 
 ## Intentional Omissions
 
@@ -112,3 +112,5 @@ The first pass is done when:
 - a scene can host the required managers and unit prefabs
 - the data model is stable enough to start wiring scene objects
 - no major architecture redesign is needed to implement the starter cards
+
+The current first pass does not yet require a polished victory or defeat screen.
