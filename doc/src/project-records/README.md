@@ -13,7 +13,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `meetings/`: formal minutes templates and any recovered implementation notes
 - `decisions/`: major scope, architecture, UI, and process decisions
 - `process/`: canonical repo / board evidence packages or explicit blockers
-- `process/canonical-repo/` and `process/task-board/`: deterministic import slots for teacher-visible screenshots or exports
+- `process/canonical-repo/` and `process/task-board/`: deterministic import slots for teacher-visible screenshots or exports, plus explicitly labelled retrospective explanatory artifacts when needed
 - `process/discovery/`: command outputs that explain why stronger external evidence is still blocked from this workspace
 - `validation/`: walkthroughs, playtest notes, and requirement validation findings
 - `testing/`: test prep, bug tracking, retest notes, and WR3 test-plan groundwork
@@ -30,6 +30,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 - `pr-submit-cli-workflow.md`: one-command team PR submission workflow using `gh` with profile checks and review-policy gates
 - `collaboration-history-2026-04-02.md`: concise note explaining the move from early WeChat/Overleaf coordination to the clean GitHub PR workflow
 - `wr2-snapshot-freeze-2026-04-02.md`: the named WR2 snapshot and freeze-scope contract
+- `process/task-board/retrospective-wr2-closeout-board.png`: explanatory reconstruction of the WR2 closeout board from recorded TODO lists and merged PR history
 - `validation/wr2-heuristic-walkthrough-2026-04-01.md`: the current WR2 design-validation walkthrough
 - `testing/prototype-accuracy-editmode-run-2026-04-02.md`: the initial automated verification note for the battle-end accuracy fix
 
@@ -41,7 +42,7 @@ This directory keeps the minimum record structure needed to support WR2 now and 
 
 ## Local evidence path audit
 
-- Last local path audit: `2026-04-02`
+- Last local path audit: `2026-04-03`
 - Verified local evidence roots:
   - `coursework/Assets/Screenshots/`
   - `artifacts/uml/`
