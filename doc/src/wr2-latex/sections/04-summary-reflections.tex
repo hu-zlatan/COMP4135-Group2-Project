@@ -13,20 +13,20 @@ The implementation-phase allocation used in WR2 preparation is summarised below.
 
 \section{Completed Process}
 
-By the end of this WR2 cycle, the project has moved from a proposal-level concept to a working prototype snapshot. The team produced a constrained architecture definition, implemented the first-pass gameplay modules, captured prototype screenshots, updated the runtime architecture to match the current code, and assembled a document pack that no longer depends on the incorrect WR1 skeleton originally stored in the Moodle WR2 folder. During closeout, the team also corrected a concrete prototype-accuracy gap by adding battle-end termination and textual outcome feedback, then backed that fix with a small EditMode test suite around the turn manager.
+By the end of this WR2 cycle, the project has moved from a proposal-level concept to a working prototype snapshot. The team produced a constrained architecture definition, implemented the first-pass gameplay modules, captured prototype screenshots, updated the runtime architecture to match the current code, and assembled a document pack that no longer depends on the incorrect WR1 skeleton originally stored in the Moodle WR2 folder.
 
-This reporting cycle also exposed an important process issue: several implementation records were not yet archived in a reusable structure. To correct that, WR2 now introduces a small project-record foundation covering meeting notes, process evidence notes, decision logs, validation notes, and testing/bug records. The cleaned GitHub repository now also shows the current closeout workflow directly through merged document and code pull requests. These records are intentionally lightweight so that the team can continue using them in WR3 and the final report instead of rebuilding evidence from memory later.
+This reporting cycle also exposed an important process issue: several implementation records were not yet archived in a reusable structure. To correct that, WR2 now introduces a small project-record foundation covering meeting notes, process evidence notes, decision logs, validation notes, and testing/bug records. These records are intentionally lightweight so that the team can continue using them in WR3 and the final report instead of rebuilding evidence from memory later.
 
 \section{Future Plan}
 
 The next stage connects directly to WR3 and the final report:
 
 \begin{itemize}
-\item strengthen battle-end presentation beyond the current top-bar/log feedback and tighten enemy-turn emphasis;
+\item complete the missing battle-end presentation and tighten enemy-turn feedback;
 \item improve onboarding cues for first-time interaction with the board and card selection flow;
-\item supplement the now-active GitHub PR history with any stronger task-board captures or confirmed attendance evidence the team can still recover;
+\item collect canonical evidence from the team repository and task board to replace the explicit blockers now recorded in the process evidence package;
 \item convert the current validation notes into a fuller WR3 testing pack with test cases, bug tracking, and retest records;
-\item expand the current automated coverage beyond battle-end behaviour into stable rule-heavy systems such as grid range checks and card resolution rules.
+\item add at least a small automated or semi-automated test layer around the most stable rule-heavy systems, such as grid range checks and card resolution rules.
 \end{itemize}
 
 In short, WR2 has produced a stable prototype foundation, but it has also clarified what must be tightened before the software can be presented as a fully validated coursework submission.
