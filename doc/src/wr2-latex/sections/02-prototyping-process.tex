@@ -51,6 +51,15 @@ Several implementation constraints shaped the prototype:
 
 WR2 design validation was carried out as an internal heuristic walkthrough of the frozen prototype snapshot on 01/04/2026. Because the local workspace does not preserve a separate user-test archive yet, this stage focused on structured scenario review rather than formal external playtesting. The walkthrough checked three scenarios aligned with the current demo goals: selecting a player unit, playing a card against a valid target, and ending the turn to observe enemy behaviour. The record is stored as \path{validation/wr2-heuristic-walkthrough-2026-04-01.md}, and it remains labelled as a heuristic walkthrough rather than being upgraded into a stronger playtest claim. After that walkthrough, one narrow runtime fix and an EditMode test pass were added to correct the battle-end accuracy gap without widening the prototype scope.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\textwidth]{media/end-smoketest.png}
+\caption{EditMode smoke test result recorded after the battle-end accuracy fix}
+\label{fig:end-smoketest}
+\end{figure}
+
+Figure~\ref{fig:end-smoketest} supplements the walkthrough evidence with a committed automated check. It does not replace broader WR3 testing, but it strengthens WR2 by showing that the corrected battle-end behaviour was not only described in prose but also executed successfully in the Unity Test Framework.
+
 The key validation findings are:
 
 \begin{enumerate}

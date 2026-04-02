@@ -28,5 +28,5 @@ This folder stores teacher-facing process evidence for WR2 and the final submiss
 ## Subdirectories
 
 - `canonical-repo/`: imported screenshots or exports from the real team remote
-- `task-board/`: imported screenshots or exports from the real team board
+- `task-board/`: imported screenshots or exports from the real team board, plus clearly labelled retrospective explanatory artifacts when no historical board capture survives
 - `discovery/`: command outputs and source checks that explain why a stronger import is still blocked

@@ -2,41 +2,40 @@
 
 - Record ID: PROCESS-REPO-2026-04-02
 - Date: 2026-04-02
-- Status: blocked externally after discovery
+- Last updated: 2026-04-03
+- Status: partially resolved on the clean GitHub workflow
 - Expected owner: repo maintainer
 - Expected source system: canonical team GitHub or GitLab repository
 - Import folder: `process/canonical-repo/`
 
 ## What this workspace can confirm
 
-- Current local repository branch: `dev`
-- Local review branch exists: `review/coursework`
-- Local release branch exists: `release/game`
-- Local backup branch exists: `backup/raw-pre-cleanup-2026-04-01`
-- `git remote -v` returned no configured remotes in this workspace on 2026-04-02
-- `gh repo list` for the authenticated GitHub account returned accessible repositories, but none matched the Unity coursework repo name from this workspace
+- The canonical remote is now visible as `hu-zlatan/COMP4135-Group2-Project`.
+- The clean GitHub workflow is visible through merged pull requests on `develop`.
+- Current WR2 closeout evidence now includes document PRs, a code PR, and the collaboration policy note.
+- The repository therefore already proves the active branch-and-PR workflow better than the earlier local-only blocker note could.
 
 ## Discovery artifacts captured in-repo
 
 - `process/discovery/local-remote-check-2026-04-02.txt`
 - `process/discovery/github-visible-repos-2026-04-02.json`
 
-These files strengthen the blocker note by proving what was checked from this workspace before escalation to the team.
+These files remain useful as historical discovery artifacts because they explain why the first closeout workspace could not prove the remote workflow at that time.
 
-## Missing teacher-facing artifacts
+## Strong evidence now available without extra screenshots
 
-- Screenshot or export showing the canonical remote repository identity
-- Screenshot or export showing branch usage on the canonical remote
-- PR / review / merge history if the report or final package claims that workflow
-- Canonical remote commit history that can be inspected outside this local workspace
+- The GitHub repository identity
+- Branch-based WR2 closeout work
+- PR / review / merge history on the canonical remote
+- A distinction between documentation PR rules and code PR review thresholds
 
-## Why this is blocked here
+## Still optional to strengthen later
 
-This workspace contains the cleaned local repo state and branch model, but it does not currently contain a configured remote or imported screenshots from the actual team remote. Because of that, local evidence can only prove the intended branch structure, not the full remote collaboration history.
+- Screenshots or exports of the repository home page, branch list, or PR list can still be imported into `process/canonical-repo/`.
+- These captures would improve appendix presentation, but they are no longer a hard blocker for truthful WR2 repo-workflow claims.
 
-## Next collection action
+## Current recommendation
 
-1. Identify the real team remote URL or hosting system.
-2. Capture the repository identity, branch list, and any real PR / review history the team wants to claim.
-3. Save those captures into `process/canonical-repo/` using dated filenames.
-4. Update this note and `wr2-asset-register.md` from blocked to ready if the evidence is imported.
+1. Use the merged GitHub history as the primary repo-workflow evidence in WR2.
+2. If time permits, add one or two dated screenshots to `process/canonical-repo/` as appendix-facing support.
+3. Keep task-board and confirmed attendance evidence separate, because those remain weaker than the repository trail.

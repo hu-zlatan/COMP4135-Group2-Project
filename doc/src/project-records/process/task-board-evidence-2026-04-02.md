@@ -30,6 +30,19 @@ This file records the current GitHub Projects access limitation from this worksp
 
 The local workspace preserves planning outputs, but it does not include direct captures from the board the team actually used. That means WR2 can describe the intended task structure, but cannot claim stronger board evidence until the real captures are imported.
 
+## Important guardrail
+
+The team should not create a brand-new GitHub Project now and present it as if it were the historical WR2 task board. That would only prove that a board exists after closeout. If a retrospective visual is needed for explanation, it should be labelled clearly as reconstructed from the recorded TODO list and merged PR history, not as original teacher-facing board evidence.
+
+## Current explanatory artifact
+
+A retrospective coordination board has now been reconstructed and stored as:
+
+- `process/task-board/retrospective-wr2-closeout-board.drawio`
+- `process/task-board/retrospective-wr2-closeout-board.png`
+
+This artifact is suitable for explaining how the closeout work was grouped after the move to GitHub PR workflow, but it must remain labelled as a retrospective reconstruction rather than historical task-board evidence.
+
 ## Next collection action
 
 1. Identify the actual board or kanban system the team used.
