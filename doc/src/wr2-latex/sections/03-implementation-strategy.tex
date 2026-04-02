@@ -1,0 +1,55 @@
+\chapter{Implementation Strategy}
+
+The implementation strategy is based on one principle: keep the prototype readable enough that every major gameplay responsibility can be traced to a small number of Unity scripts. This section therefore focuses on code structure and the concrete trade-offs that shaped the current prototype.
+
+\section{Code Structure}
+
+The current gameplay scripts are organised into a small set of folders under \texttt{coursework/Assets/Scripts}. The directory tree below reflects the current runtime structure used by the prototype.
+
+\begin{Verbatim}[fontsize=\small]
+Assets/Scripts
+|-- Cards
+|   |-- CardData.cs
+|   |-- CardResolver.cs
+|   `-- DeckManager.cs
+|-- Common
+|   `-- GameEnums.cs
+|-- Core
+|   |-- GameRoot.cs
+|   `-- TurnManager.cs
+|-- Grid
+|   |-- GridManager.cs
+|   `-- TileView.cs
+|-- UI
+|   |-- BattleUI.cs
+|   `-- CardButtonView.cs
+`-- Units
+    |-- EnemyAI.cs
+    `-- UnitController.cs
+\end{Verbatim}
+
+This structure intentionally mirrors responsibilities rather than future-proof architecture. The \texttt{Core} folder owns scene bootstrapping and turn flow. \texttt{Grid} owns tile generation, occupancy, and range queries. \texttt{Cards} owns card data, deck state, and explicit card resolution. \texttt{Units} owns health, team, and enemy decision logic. \texttt{UI} acts as the glue between player input and runtime state.
+
+\begin{figure}[H]
+\centering
+\input{figures/class-relationship-diagram}
+\caption{Simplified module dependency and responsibility map}
+\label{fig:module-map}
+\end{figure}
+
+Figure~\ref{fig:module-map} shows that dependencies flow inward toward a small number of managers instead of outward into a large inheritance tree. This is consistent with the project goal of a reportable, traceable prototype rather than a content-heavy tactics framework.
+
+\section{Critical Implementation Choices}
+
+The most important implementation choices in the current prototype are:
+
+\begin{itemize}
+\item \textbf{Single self-contained battle.} Options considered: one battle scene versus multi-scene campaign flow. Chosen option: one battle scene, because it provides a complete vertical slice for WR2 without spending time on navigation and persistence. Trade-off: broader progression is postponed.
+\item \textbf{Shared unit runtime model.} Options considered: one shared controller versus separate player/enemy hierarchies. Chosen option: one shared \texttt{UnitController} so that health, guarding, movement, and grid state remain easy to trace. Trade-off: the model is less specialised than a longer-term production structure.
+\item \textbf{Explicit card resolver.} Options considered: \texttt{enum}-driven explicit logic versus a generic card-effect hierarchy. Chosen option: one resolver that interprets \texttt{CardType}, because the starter set is small and benefits from readable switch-based logic. Trade-off: a larger future card set would eventually need refactoring.
+\item \textbf{Deterministic enemy AI.} Options considered: nearest-target movement versus broader tactical AI. Chosen option: deterministic nearest-target behaviour, because it is predictable, testable, and easy to explain in WR2. Trade-off: the enemy behaviour remains strategically shallow.
+\item \textbf{Prototype-first UI and input path.} Options considered: a full Unity UI pipeline versus the current hybrid prototype UI with Input System and board raycasts. Chosen option: the hybrid path, because it was faster to wire into the existing scene and sufficient for WR2 reporting. Trade-off: UI consistency and polish remain limited.
+\item \textbf{External process evidence required.} Options considered: rely only on this local clone versus collect evidence from the canonical team repository and task board. Chosen option: document the intended branch workflow in WR2, but route stronger teamwork claims through the process evidence package under \path{doc/src/project-records/process/}. Trade-off: the report stays honest about what this workspace can prove, but one more evidence-collection step remains open because the current local repository has no configured remote, the authenticated GitHub account does not expose a matching coursework repo from this workspace, and no board captures have yet been imported into the deterministic \path{process/canonical-repo/} and \path{process/task-board/} intake folders.
+\end{itemize}
+
+The most important strategic choice was to treat the prototype as implementation evidence rather than as the start of a fully general tactics engine. That choice explains why the runtime modules are explicit, why the card system is intentionally narrow, and why some features were marked as deferred instead of hidden behind partial abstractions. For WR2, this is a strength: the implementation remains aligned with the report, the frozen snapshot, and the current demonstration scope.

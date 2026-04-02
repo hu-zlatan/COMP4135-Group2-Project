@@ -1,0 +1,45 @@
+\begin{tikzpicture}[
+    font=\scriptsize,
+    >=Latex,
+    node distance=1.5cm and 1.0cm,
+    module/.style={draw, rounded corners=2pt, align=center, minimum width=2.35cm, minimum height=1.0cm, fill=blue!8},
+    service/.style={draw, rounded corners=2pt, align=center, minimum width=2.35cm, minimum height=1.0cm, fill=green!8},
+    entity/.style={draw, rounded corners=2pt, align=center, minimum width=2.35cm, minimum height=1.0cm, fill=orange!10},
+    edge/.style={->, thick}
+]
+\node[module] (root) at (0,0) {GameRoot\\Scene bootstrap};
+\node[module] (ui) at (-4.6,-2.0) {BattleUI\\Input, hand, log};
+\node[module] (turn) at (-1.6,-2.0) {TurnManager\\Turn flow};
+\node[module] (deck) at (1.4,-2.0) {DeckManager\\Draw, hand, discard};
+\node[module] (resolver) at (4.5,-2.0) {CardResolver\\Validate and resolve};
+
+\node[service] (grid) at (-1.6,-4.2) {GridManager\\Grid and occupancy};
+\node[service] (enemy) at (1.5,-4.2) {EnemyAI\\Enemy step logic};
+\node[entity] (tile) at (-4.3,-6.3) {TileView\\Tile visuals};
+\node[entity] (unit) at (0.0,-6.3) {UnitController\\Unit state};
+\node[entity] (card) at (4.3,-6.3) {CardData\\Starter card data};
+
+\draw[edge] (root) -- (ui);
+\draw[edge] (root) -- (turn);
+\draw[edge] (root) -- (deck);
+\draw[edge] (root) -- (resolver);
+\draw[edge] (root) -- (grid);
+
+\draw[edge] (ui) -- (turn);
+\draw[edge] (ui) -- (deck);
+\draw[edge] (ui) -- (resolver);
+\draw[edge] (ui) -- (grid);
+
+\draw[edge] (turn) -- (deck);
+\draw[edge] (turn) -- (enemy);
+\draw[edge] (turn) -- (grid);
+
+\draw[edge] (resolver) -- (grid);
+\draw[edge] (resolver) -- (unit);
+\draw[edge] (resolver) -- (card);
+
+\draw[edge] (grid) -- (tile);
+\draw[edge] (grid) -- (unit);
+\draw[edge] (enemy) -- (unit);
+\draw[edge] (enemy) -- (grid);
+\end{tikzpicture}
