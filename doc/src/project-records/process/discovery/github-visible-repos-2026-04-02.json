@@ -1,0 +1,63 @@
+{
+  "captured": "2026-04-02",
+  "source": "gh repo list --limit 200 --json nameWithOwner,isPrivate,owner,url",
+  "owner": "aqure5418ly",
+  "repositories": [
+    {
+      "nameWithOwner": "aqure5418ly/Barotrauma-Database-IO-Test",
+      "isPrivate": true,
+      "url": "https://github.com/aqure5418ly/Barotrauma-Database-IO-Test"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/Barotrauma-LuaRadioPlayerDev",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/Barotrauma-LuaRadioPlayerDev"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/Applied-Energistics-2",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/Applied-Energistics-2"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/Booking_System",
+      "isPrivate": true,
+      "url": "https://github.com/aqure5418ly/Booking_System"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/ERC",
+      "isPrivate": true,
+      "url": "https://github.com/aqure5418ly/ERC"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/TrainMurderMystery",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/TrainMurderMystery"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/LuaCsForBarotrauma",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/LuaCsForBarotrauma"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/Smidgeon-o-Bliss",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/Smidgeon-o-Bliss"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/mcef",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/mcef"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/GPT-SoVITS-roleapi",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/GPT-SoVITS-roleapi"
+    },
+    {
+      "nameWithOwner": "aqure5418ly/webdisplays",
+      "isPrivate": false,
+      "url": "https://github.com/aqure5418ly/webdisplays"
+    }
+  ],
+  "note": "No visible repository name in this capture matched the Unity coursework repository."
+}
