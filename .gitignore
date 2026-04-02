@@ -1,0 +1,87 @@
+# Unity generated folders
+coursework/[Ll]ibrary/
+coursework/[Tt]emp/
+coursework/[Oo]bj/
+coursework/[Ll]ogs/
+coursework/[Uu]ser[Ss]ettings/
+coursework/[Mm]emoryCaptures/
+coursework/[Bb]uild/
+coursework/[Bb]uilds/
+coursework/bin/
+
+# Unity / IDE generated files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+.vscode/
+.idea/
+.gradle/
+.consulo/
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Unity Version Control / Plastic SCM local metadata
+coursework/.plastic/
+coursework/plastic.workspace
+coursework/plastic.wktree
+coursework/plastic.selector
+coursework/plastic.changes
+
+# Local reference repos and local tooling
+CLI-Anything/
+drawio-desktop/
+references/
+local-skills/
+.tmp/
+
+# Course source-of-truth materials kept locally but not versioned
+doc/Group-Shared/
+doc/local-role-task-archive/
+
+# Local extracted / generated helper files
+COMP4135-CW1-Specification.txt
+coursework/ignore.conf
+coursework/bin.rar
+
+# Unity template / recovery noise not needed in repo
+coursework/Assets/Readme.asset
+coursework/Assets/Readme.asset.meta
+coursework/Assets/_Recovery/
+coursework/Assets/_Recovery.meta
+coursework/Assets/TutorialInfo/
+coursework/Assets/TutorialInfo.meta
+
+# WR2 LaTeX build artifacts
+doc/src/wr2-latex/*.aux
+doc/src/wr2-latex/*.bbl
+doc/src/wr2-latex/*.blg
+doc/src/wr2-latex/*.log
+doc/src/wr2-latex/*.out
+doc/src/wr2-latex/*.toc
+
+# Keep only UML artifacts tracked under artifacts/
+artifacts/*
+!artifacts/uml/
+!artifacts/uml/**
+
+# Build outputs
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.exe
