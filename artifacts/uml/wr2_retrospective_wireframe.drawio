@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-03T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="wr2-retrospective-wireframe" name="Retrospective Wireframe">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Retrospective Prototype Wireframe" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="480" y="20" width="520" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="canvas" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1320" height="720" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="statusPanel" value="Turn / Status Panel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eef7;strokeColor=#6c8ebf;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="360" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="status1" value="Player turn / card plays / selected unit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="130" y="180" width="300" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="status2" value="Hand cards as buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="130" y="260" width="300" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="status3" value="Clear selection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="130" y="340" width="300" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="status4" value="End turn" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="130" y="406" width="300" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="status5" value="Status messages and action log" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="130" y="486" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="boardPanel" value="6x6 Battle Grid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="560" height="560" as="geometry"/>
+        </mxCell>
+        <mxCell id="gridFrame" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="180" width="420" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="v1" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="680" y="180" width="1" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="750" y="180" width="1" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="820" y="180" width="1" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="v4" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="890" y="180" width="1" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="v5" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="960" y="180" width="1" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h1" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="250" width="420" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="h2" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="320" width="420" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="h3" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="390" width="420" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="h4" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="460" width="420" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="h5" value="" style="shape=line;strokeColor=#bbbbbb;" vertex="1" parent="1">
+          <mxGeometry x="610" y="530" width="420" height="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="player1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#6fa8dc;strokeColor=#3d85c6;" vertex="1" parent="1">
+          <mxGeometry x="648" y="540" width="44" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="player2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#93c47d;strokeColor=#6aa84f;" vertex="1" parent="1">
+          <mxGeometry x="720" y="500" width="44" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="enemy" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e06666;strokeColor=#cc0000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="210" width="44" height="44" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="boardNote" value="Two player units and one enemy in the first playable scene" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="590" y="620" width="460" height="24" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
