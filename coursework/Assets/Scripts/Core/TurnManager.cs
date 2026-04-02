@@ -17,12 +17,21 @@ namespace TacticalCards
         public bool IsPlayerTurn { get; private set; }
         public int RemainingCardPlays { get; private set; }
         public string LastEnemyActionSummary { get; private set; } = "Battle started.";
+        public bool BattleEnded { get; private set; }
+        public TeamType? WinningTeam { get; private set; }
+        public string BattleOutcomeSummary { get; private set; } = string.Empty;
 
         public void Initialize(DeckManager targetDeckManager, EnemyAI targetEnemyAI, GridManager targetGridManager)
         {
             deckManager = targetDeckManager;
             enemyAI = targetEnemyAI;
             gridManager = targetGridManager;
+            IsPlayerTurn = false;
+            RemainingCardPlays = 0;
+            BattleEnded = false;
+            WinningTeam = null;
+            BattleOutcomeSummary = string.Empty;
+            LastEnemyActionSummary = "Battle started.";
         }
 
         public void RegisterUnit(UnitController unit)
@@ -50,11 +59,26 @@ namespace TacticalCards
 
         public void StartBattle()
         {
-            StartPlayerTurn();
+            BattleEnded = false;
+            WinningTeam = null;
+            BattleOutcomeSummary = string.Empty;
+            LastEnemyActionSummary = "Battle started.";
+
+            if (!CheckBattleState())
+            {
+                StartPlayerTurn();
+            }
         }
 
         public void StartPlayerTurn()
         {
+            if (BattleEnded)
+            {
+                IsPlayerTurn = false;
+                RemainingCardPlays = 0;
+                return;
+            }
+
             IsPlayerTurn = true;
             RemainingCardPlays = maxCardPlaysPerTurn;
             deckManager?.DiscardHand();
@@ -63,7 +87,7 @@ namespace TacticalCards
 
         public bool TryConsumeCardPlay()
         {
-            if (!IsPlayerTurn || RemainingCardPlays <= 0)
+            if (BattleEnded || !IsPlayerTurn || RemainingCardPlays <= 0)
             {
                 return false;
             }
@@ -74,25 +98,51 @@ namespace TacticalCards
 
         public void EndPlayerTurn()
         {
-            if (!IsPlayerTurn)
+            if (!IsPlayerTurn || BattleEnded)
             {
                 return;
             }
 
             IsPlayerTurn = false;
             RunEnemyTurn();
-            CheckBattleState();
-            StartPlayerTurn();
+            if (!CheckBattleState())
+            {
+                StartPlayerTurn();
+            }
         }
 
-        public void CheckBattleState()
+        public bool CheckBattleState()
         {
             playerUnits.RemoveAll(unit => unit == null || !unit.IsAlive);
             enemyUnits.RemoveAll(unit => unit == null || !unit.IsAlive);
+
+            if (BattleEnded)
+            {
+                return true;
+            }
+
+            if (enemyUnits.Count == 0)
+            {
+                EndBattle(TeamType.Player, "Victory! All enemy units defeated.");
+                return true;
+            }
+
+            if (playerUnits.Count == 0)
+            {
+                EndBattle(TeamType.Enemy, "Defeat! All player units were defeated.");
+                return true;
+            }
+
+            return false;
         }
 
         private void RunEnemyTurn()
         {
+            if (BattleEnded)
+            {
+                return;
+            }
+
             if (enemyAI == null || gridManager == null)
             {
                 LastEnemyActionSummary = "Enemy turn skipped.";
@@ -121,6 +171,11 @@ namespace TacticalCards
                     target.TakeDamage(enemy.AttackPower);
                     var damageDealt = previousHp - target.CurrentHp;
                     summary.Add($"{enemy.DisplayName} hit {target.DisplayName} for {damageDealt}. {target.DisplayName} HP: {target.CurrentHp}/{target.MaxHp}.");
+                    if (CheckBattleState())
+                    {
+                        break;
+                    }
+
                     continue;
                 }
 
@@ -131,7 +186,22 @@ namespace TacticalCards
                 }
             }
 
+            if (BattleEnded)
+            {
+                return;
+            }
+
             LastEnemyActionSummary = summary.Count > 0 ? string.Join(" ", summary) : "Enemy turn ended with no action.";
+        }
+
+        private void EndBattle(TeamType winningTeam, string outcomeSummary)
+        {
+            BattleEnded = true;
+            WinningTeam = winningTeam;
+            BattleOutcomeSummary = outcomeSummary;
+            LastEnemyActionSummary = outcomeSummary;
+            IsPlayerTurn = false;
+            RemainingCardPlays = 0;
         }
     }
 }

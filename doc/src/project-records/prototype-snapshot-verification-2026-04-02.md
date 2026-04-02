@@ -93,9 +93,10 @@ These diagrams are still usable for WR2, but later report wording should reflect
 - explicit `CardResolver`
 - deterministic `EnemyAI`
 - lightweight `BattleUI`
-- no dedicated final end-state presentation yet
+- dedicated battle-end feedback now exists in `BattleUI`, but only as top-bar/log text rather than a separate result screen
 
 ## Outcome
 
 - `docs/prototype-snapshot-verification` should stay a docs-only PR.
-- No separate `feat/prototype-accuracy-fixes` PR is required from this verification pass unless later playtesting uncovers a real mismatch between the selected snapshot and the statements used in WR2 closeout.
+- A later runtime review identified one concrete accuracy gap worth fixing in code: the battle loop removed defeated units but did not stop the turn cycle or surface a dedicated win/lose outcome once one side was eliminated.
+- A narrow `feat/prototype-accuracy-fixes` branch is therefore justified if it stays limited to end-state gating and truthful runtime feedback, without expanding the prototype scope.

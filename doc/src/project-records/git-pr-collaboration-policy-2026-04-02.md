@@ -61,6 +61,16 @@
 - 还必须再有任意另一位成员 review
 - 也就是至少 `2` 人 review，其中一个必须是你
 
+提交与验证规则：
+
+- 课程要求没有规定“每次本地 commit 前必须先通过 test/validation”。
+- 代码类 PR 可以先进行本地小步提交，再整理成可 review 的变更集。
+- 但代码类 PR 在 merge 前，必须至少补齐一类可追溯证据：
+- 运行过的 automated test 结果
+- 手动 validation / walkthrough 记录
+- 如果当前阶段确实还没有自动化测试，也必须写明本次手动验证了什么、未验证什么、剩余风险是什么
+- 凡是会影响运行行为、演示行为、测试结果或 WR2/WR3/final report 叙述的改动，不允许在没有任何 test/validation evidence 的情况下直接合并
+
 ## 特殊情况
 
 ### 混合型 PR
