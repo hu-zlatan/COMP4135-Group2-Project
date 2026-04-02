@@ -85,3 +85,6 @@ artifacts/*
 *.app
 *.unitypackage
 *.exe
+
+# Local PR submit profile (contains user mapping for local gh/git identity)
+scripts/pr-profiles.json

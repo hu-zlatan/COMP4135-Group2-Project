@@ -1,0 +1,22 @@
+{
+  "hongshuo": {
+    "gh_user": "aqure5418ly",
+    "git_name": "HongShuo Hu",
+    "git_email": "2215927983@qq.com"
+  },
+  "guangjun": {
+    "gh_user": "hu-zlatan",
+    "git_name": "Guangjun HU",
+    "git_email": "replace-with-guangjun-email@example.com"
+  },
+  "cheng": {
+    "gh_user": "replace-with-cheng-github-login",
+    "git_name": "Cheng YE",
+    "git_email": "replace-with-cheng-email@example.com"
+  },
+  "zehan": {
+    "gh_user": "replace-with-zehan-github-login",
+    "git_name": "Zehan CHEN",
+    "git_email": "replace-with-zehan-email@example.com"
+  }
+}
