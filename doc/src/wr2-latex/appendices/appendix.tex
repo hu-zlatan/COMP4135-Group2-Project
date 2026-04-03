@@ -10,7 +10,7 @@ No formal implementation meeting minutes were archived in the local workspace fo
 \item \textbf{Record type:} recovered implementation checkpoint compiled from local artifacts after an unrecorded classroom discussion, rather than from formal minutes.
 \item \textbf{Date:} 15/03/2026.
 \item \textbf{Attendance:} exact attendance was not archived in the local workspace and should be replaced with confirmed team attendance if chat or calendar records are available.
-\item \textbf{Sources used:} \path{demo_architecture_constraints.md}, \path{demo_first_pass_scripts.md}, and prototype screenshots timestamped on 15/03/2026.
+\item \textbf{Sources used:} the architecture note and first-pass script plan listed later in the Supporting Record Index, plus prototype screenshots timestamped on 15/03/2026.
 \item \textbf{Main focus:} reduce the original game concept to one battle scene, four starter cards, a readable control loop, and a minimum set of scripts that can compile and run inside the existing Unity project.
 \item \textbf{Confirmed decisions:} single-battle scope, shared unit controller, deterministic enemy response, explicit card types, button-driven card interaction, and no campaign or deckbuilding systems in WR2.
 \item \textbf{Follow-up actions:} finish the first gameplay skeleton, refresh UML diagrams to match implementation, and gather prototype evidence for WR2.
@@ -92,10 +92,16 @@ These outcomes were reflected in WR1 requirements, UML diagrams, and the documen
 The WR2 documentation pack uses an evidence freeze line of \textbf{02/04/2026 12:00}. This freeze is recorded in \path{wr2-snapshot-freeze-2026-04-02.md}. After that point, only changes that materially improve submission quality should be described in WR2. New features developed later should be documented in WR3 or the final report instead of being backfilled into this report.
 
 \section{Supporting Record Index}
+\label{sec:supporting-index}
 
-The local record structure created during WR2 is summarised below and stored under \texttt{doc/src/project-records}.
+The file set referenced across WR2 is summarised below. It combines upstream design files under \texttt{doc/src} with later supporting records under \texttt{doc/src/project-records}. Internal file mentions in the main report point back to this index so the referenced materials can still be located clearly from the repository layout.
 
 \begin{itemize}
+\item \path{doc/src/wr1-latex/main.tex}: WR1 report source containing the original requirement, scenario, and system-model baseline inherited by WR2.
+\item \path{doc/src/onepager_en.md}: early internal concept note used before the prototype scope was narrowed.
+\item \path{doc/src/demo_architecture_constraints.md}: internal architecture-constraint note used to cut the concept down to one battle scene.
+\item \path{doc/src/demo_first_pass_scripts.md}: first-pass gameplay script plan for turning the narrowed design into a playable Unity slice.
+\item \path{doc/src/project-records/wr2-snapshot-freeze-2026-04-02.md}: freeze note defining the prototype and evidence snapshot used for WR2.
 \item \path{wr2-asset-register.md}: reusable evidence list, missing items, suggested owners, and due times.
 \item \path{process/canonical-repo-evidence-2026-04-02.md}: canonical repository evidence note, historical discovery summary, and the current recommendation for using merged GitHub history as repo-workflow evidence.
 \item \path{process/task-board-evidence-2026-04-02.md}: task-board evidence note, discovery summary, and import checklist.

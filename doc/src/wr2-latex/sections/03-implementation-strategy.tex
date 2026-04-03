@@ -42,6 +42,8 @@ Assets/Scripts
 
 This structure intentionally mirrors responsibilities rather than future-proof architecture. The \texttt{Core} folder owns scene bootstrapping and turn flow. \texttt{Grid} owns tile generation, occupancy, and range queries. \texttt{Cards} owns card data, deck state, and explicit card resolution. \texttt{Units} owns health, team, and enemy decision logic. \texttt{UI} acts as the glue between player input and runtime state.
 
+A file-tree view is used here deliberately. This prototype is built around a small set of scene-bound Unity \texttt{MonoBehaviour} scripts, so the clearest way to communicate structure is to show where gameplay responsibilities live under \texttt{Assets/Scripts}. A more traditional inheritance-heavy class diagram would suggest an architectural depth that the current prototype does not actually have.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.93\textwidth]{media/module-map-wr1-style.png}
@@ -50,6 +52,21 @@ This structure intentionally mirrors responsibilities rather than future-proof a
 \end{figure}
 
 Figure~\ref{fig:module-map} is included to explain code responsibility split rather than runtime event order. It shows that dependencies flow inward toward a small number of managers instead of outward into a large inheritance tree. This is consistent with the project goal of a reportable, traceable prototype rather than a content-heavy tactics framework.
+
+\subsection{Runtime Responsibilities Beyond the Diagram}
+
+The responsibility map is intentionally simplified, so the feature-level role of each main script is summarised below:
+
+\begin{itemize}
+\item \textbf{\texttt{GameRoot}.} Registers the pre-placed units in the scene, links the managers together, and provides the starting point for the playable battle slice.
+\item \textbf{\texttt{TurnManager}.} Controls player and enemy phase transitions, remaining card plays, start-of-turn draw behaviour, and the battle-end gate introduced by the prototype-accuracy fix.
+\item \textbf{\texttt{GridManager}.} Builds the 6x6 board, tracks tile occupancy, and answers movement or target-range queries used by cards and AI.
+\item \textbf{\texttt{DeckManager}.} Owns the starter deck, draw pile, discard pile, and current hand shown in the battle UI.
+\item \textbf{\texttt{CardResolver}.} Converts \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push} into explicit runtime effects so card behaviour stays easy to trace and test.
+\item \textbf{\texttt{UnitController}.} Stores team, hit points, guarding state, and grid position, and exposes the small set of combat operations needed by the current prototype.
+\item \textbf{\texttt{EnemyAI}.} Produces the deterministic enemy response used in WR2, keeping target choice and movement logic simple enough to observe clearly during demonstration.
+\item \textbf{\texttt{BattleUI} and \texttt{CardButtonView}.} Handle card selection, click routing, prompts, and log updates so the player can see the state changes caused by the core systems above.
+\end{itemize}
 
 \section{Critical Implementation Choices}
 
