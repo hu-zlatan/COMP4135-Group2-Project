@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+    font=\scriptsize,
+    >=Latex,
+    node distance=1.0cm and 1.0cm,
+    box/.style={draw, rounded corners=2pt, align=left, minimum width=3.0cm, minimum height=1.0cm, fill=gray!8},
+    link/.style={->, thick}
+]
+\node[box] (core) at (0,0) {\textbf{Core}\\GameRoot\\TurnManager};
+\node[box] (cards) at (-4.2,-2.6) {\textbf{Cards}\\DeckManager\\CardResolver\\CardData};
+\node[box] (grid) at (0,-2.6) {\textbf{Grid}\\GridManager\\TileView};
+\node[box] (units) at (4.2,-2.6) {\textbf{Units}\\UnitController\\EnemyAI};
+\node[box] (ui) at (0,-5.2) {\textbf{UI}\\BattleUI\\CardButtonView};
+\node[box] (common) at (4.2,-5.2) {\textbf{Common}\\TeamType\\CardType\\TargetType};
+
+\draw[link] (core) -- node[midway, above left] {starts battle} (cards);
+\draw[link] (core) -- node[midway, left] {owns turn state} (grid);
+\draw[link] (core) -- node[midway, above right] {registers units} (units);
+\draw[link] (ui) -- node[midway, left] {reads state / sends input} (core);
+\draw[link] (ui) -- (cards);
+\draw[link] (ui) -- (grid);
+\draw[link] (cards) -- node[midway, above] {targets and effects} (units);
+\draw[link] (cards) -- node[midway, above] {range checks} (grid);
+\draw[link] (units) -- node[midway, right] {occupancy and movement} (grid);
+\draw[link] (common) -- (cards);
+\draw[link] (common) -- (units);
+\end{tikzpicture}

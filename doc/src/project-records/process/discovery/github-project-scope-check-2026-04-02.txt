@@ -1,0 +1,7 @@
+Command: gh project list --owner aqure5418ly
+Date: 2026-04-02
+
+Result:
+
+error: your authentication token is missing required scopes [read:project]
+To request it, run:  gh auth refresh -s read:project

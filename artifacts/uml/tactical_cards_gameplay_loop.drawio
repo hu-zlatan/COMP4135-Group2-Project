@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1773748933408878" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v_1773748933642788" value="Start Battle" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="120.0" width="120.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748933944936" value="Start Player Turn" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220.0" y="120.0" width="150.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748934246704" value="Draw 3 Cards" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410.0" y="120.0" width="130.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748934488083" value="Select Unit" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580.0" y="120.0" width="120.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748934709450" value="Select Card" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="740.0" y="120.0" width="120.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748934927975" value="Highlight Legal Targets" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900.0" y="120.0" width="180.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748935154405" value="Click Tile or Enemy&#10;Resolve Card" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1120.0" y="120.0" width="170.0" height="70.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748935376736" value="Card Plays Left?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1145.0" y="250.0" width="130.0" height="90.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748935596033" value="End Player Turn" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="950.0" y="320.0" width="150.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748935829576" value="Enemy AI Moves / Attacks" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760.0" y="320.0" width="170.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748936045333" value="Victory or Defeat?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540.0" y="320.0" width="150.0" height="90.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748936253555" value="Next Player Turn" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320.0" y="335.0" width="140.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="v_1773748936476429" value="Battle Ends" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540.0" y="470.0" width="140.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748936702713" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748933642788" target="v_1773748933944936">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748936918935" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748933944936" target="v_1773748934246704">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748937198746" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748934246704" target="v_1773748934488083">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748937417332" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748934488083" target="v_1773748934709450">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748937629121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748934709450" target="v_1773748934927975">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748937843804" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748934927975" target="v_1773748935154405">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748938072985" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748935154405" target="v_1773748935376736">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748938284422" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748935376736" target="v_1773748934709450">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748938504376" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748935376736" target="v_1773748935596033">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748938726223" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748935596033" target="v_1773748935829576">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748938947168" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748935829576" target="v_1773748936045333">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748939174504" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748936045333" target="v_1773748936253555">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748939389670" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748936253555" target="v_1773748933944936">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1773748939598082" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="v_1773748936045333" target="v_1773748936476429">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
