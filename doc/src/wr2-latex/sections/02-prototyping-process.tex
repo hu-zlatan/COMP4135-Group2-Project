@@ -1,10 +1,10 @@
 \chapter{Prototyping Process}
 
-The prototype did not begin as a polished scene. It moved through three practical layers: an early internal game concept (\texttt{onepager\_en.md}), a narrowed architecture-constraint note (\texttt{demo\_architecture\_constraints.md}), and a first-pass script list (\texttt{demo\_first\_pass\_scripts.md}), all of which are indexed in Appendix~\ref{sec:supporting-index}. This progression also follows the prototype-first framing emphasised in the WR2 teaching material on fidelity and implementation-oriented prototyping \cite{week5Seminar}. WR2 records the point where these design decisions became a playable vertical slice. The narrative in this chapter follows the frozen WR2 snapshot rather than the team's longer-term target state, so partial and deferred items are kept explicit.
+The prototype moved through three stages: an early concept note (\texttt{onepager\_en.md}), an architecture-constraint note (\texttt{demo\_architecture\_constraints.md}), and a first-pass script list (\texttt{demo\_first\_pass\_scripts.md}), all indexed in Appendix~\ref{sec:supporting-index}. This matches the prototype-first approach described in the WR2 teaching material \cite{week5Seminar}. WR2 records the point where those design decisions became a playable vertical slice. This chapter describes the frozen WR2 snapshot, so deferred items stay labelled as deferred.
 
 \section{Prototype}
 
-Figure~\ref{fig:retrospective-wireframe} shows a retrospective low-fidelity wireframe rebuilt from the WR1 scope and the current scene layout. It is explicitly marked as retrospective because no separate low-fidelity mockup was archived in the local workspace before prototype implementation began. The wireframe is still useful in WR2 because it clarifies the intended information zones: turn state, hand controls, status feedback, and the board itself.
+Figure~\ref{fig:retrospective-wireframe} shows a retrospective low-fidelity wireframe rebuilt from the WR1 scope and the current scene layout. It is marked as retrospective because no separate low-fidelity mockup was archived before prototype implementation began. The wireframe is still useful because it clarifies the intended information zones: turn state, hand controls, status feedback, and the board.
 
 \begin{figure}[H]
 \centering
@@ -40,23 +40,23 @@ The current frozen prototype feature state can be summarised as follows:
 
 \begin{itemize}
 \item \textbf{Implemented.} 6x6 battle grid, unit selection, starter hand and card draw, Move/Strike/Guard/Push resolution, enemy response in simplified form, board highlight feedback, and battle-end gating with textual victory/defeat reporting.
-\item \textbf{Partial.} Onboarding cues and feedback emphasis. The UI prompts the player, but it does not yet teach the full interaction sequence or explain all board highlight meanings. The battle-end result is currently truthful and visible, but still lightweight rather than polished.
-\item \textbf{Initial automated verification now exists.} A committed EditMode test suite checks three battle-end scenarios in the turn manager, which gives WR2 at least a minimal automated validation layer instead of a purely informal claim set.
+\item \textbf{Partial.} Onboarding cues and feedback emphasis. The UI prompts the player. It does not yet teach the full interaction sequence or explain all board highlight meanings. The battle-end result is visible, but still lightweight.
+\item \textbf{Initial automated verification.} A committed EditMode test suite checks three battle-end scenarios in the turn manager, giving WR2 a minimal automated validation layer.
 \item \textbf{Deferred.} Broader automated coverage, stronger external playtesting, and richer audiovisual result presentation remain for the next reporting cycle.
 \end{itemize}
 
 Several implementation constraints shaped the prototype:
 
 \begin{itemize}
-\item The UI is a hybrid prototype solution rather than a finished production interface. It prioritises immediate readability and low implementation cost over long-term extensibility.
-\item Input is routed through the current Input System plus physics raycasts, which made it possible to connect button-driven card choice to in-world tile and unit selection quickly.
-\item Enemy behaviour is intentionally deterministic. This made debugging, validation, and reporting easier than a more expressive AI would have.
-\item The prototype proves the battle loop and feedback model first. Follow-up work now extends the quality of battle-end presentation, onboarding flow, and automated coverage rather than inventing new core systems.
+\item The UI is a hybrid prototype solution. It favours quick wiring and readable reporting over long-term extensibility.
+\item Input uses the current Input System plus physics raycasts. This links button-based card choice to tile and unit selection with little extra infrastructure.
+\item Enemy behaviour is deterministic. This keeps debugging, validation, and reporting manageable.
+\item The prototype focuses first on the battle loop and feedback model. Later work can improve battle-end presentation, onboarding, and automated coverage.
 \end{itemize}
 
 \section{Design Validation}
 
-WR2 design validation was carried out as an internal heuristic walkthrough of the frozen prototype snapshot on 01/04/2026. Because the local workspace does not preserve a separate user-test archive yet, this stage focused on structured scenario review rather than formal external playtesting. That choice is consistent with the seminar distinction between validation at prototype stage and the fuller software-testing structure expected later in WR3 \cite{week6Seminar}. The walkthrough checked three scenarios aligned with the current demo goals: selecting a player unit, playing a card against a valid target, and ending the turn to observe enemy behaviour. The walkthrough note is listed in Appendix~\ref{sec:supporting-index} as \texttt{validation/wr2-heuristic-walkthrough-2026-04-01.md}, and it remains labelled as a heuristic walkthrough rather than being upgraded into a stronger playtest claim. After that walkthrough, one narrow runtime fix and an EditMode test pass were added to correct the battle-end accuracy gap without widening the prototype scope.
+WR2 validation used an internal heuristic walkthrough of the frozen prototype snapshot on 01/04/2026. The local workspace does not yet preserve a separate user-test archive, so this stage uses structured scenario review. That matches the seminar distinction between early validation and the fuller testing structure expected in WR3 \cite{week6Seminar}. The walkthrough checked three scenarios aligned with the current demo goals: selecting a player unit, playing a card against a valid target, and ending the turn to observe enemy behaviour. The note is listed in Appendix~\ref{sec:supporting-index} as \texttt{validation/wr2-heuristic-walkthrough-2026-04-01.md}. After that walkthrough, one narrow runtime fix and an EditMode test pass were added to correct the battle-end accuracy gap without widening the prototype scope.
 
 \begin{figure}[H]
 \centering
@@ -65,7 +65,7 @@ WR2 design validation was carried out as an internal heuristic walkthrough of th
 \label{fig:end-smoketest}
 \end{figure}
 
-Figure~\ref{fig:end-smoketest} supplements the walkthrough evidence with a committed automated check. It does not replace broader WR3 testing, but it strengthens WR2 by showing that the corrected battle-end behaviour was not only described in prose but also executed successfully in the Unity Test Framework.
+Figure~\ref{fig:end-smoketest} adds an automated check alongside the walkthrough evidence. It does not replace broader WR3 testing. It does show that the corrected battle-end behaviour was executed successfully in the Unity Test Framework.
 
 The key validation findings are:
 
@@ -75,4 +75,4 @@ The key validation findings are:
 \item \textbf{Scenario: end turn and observe enemy response.} Finding: enemy actions were readable through summary text, but the battle loop initially lacked a clear end-state gate and outcome cue. Severity: high. Proposed action: add explicit battle-end termination and visible victory/defeat feedback before final WR2 closeout. Status: applied in narrow form through the prototype-accuracy fix; stronger post-action emphasis remains planned.
 \end{enumerate}
 
-These findings directly influenced the wording of WR2. The report does not claim a finished tutorial flow, a polished result screen, or full audiovisual combat feedback. Instead, it presents the prototype as a validated vertical slice with a working end-state gate, textual outcome feedback, and an initial automated check around the corrected battle-end behaviour. This keeps the report aligned with actual evidence rather than idealised design intent.
+These findings shaped the final wording of WR2. The report claims a working vertical slice with battle-end gating, text outcome feedback, and an initial automated check. It does not claim a finished tutorial flow, a polished result screen, or full audiovisual combat feedback.
