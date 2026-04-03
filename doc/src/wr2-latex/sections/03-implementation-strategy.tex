@@ -4,7 +4,7 @@ The implementation strategy is based on one principle: keep the prototype readab
 
 \section{Code Structure}
 
-At repository level, the project is intentionally split so that the Unity implementation, report sources, and evidence records do not collapse into one mixed file tree. The top-level layout used during WR2 closeout is:
+At repository level, the project is intentionally split so that the Unity implementation, report sources, and evidence records do not collapse into one mixed file tree. The simplified WR2-relevant top-level layout used during report closeout is:
 
 \begin{Verbatim}[fontsize=\small]
 Unity-Project
@@ -49,7 +49,7 @@ This structure intentionally mirrors responsibilities rather than future-proof a
 \label{fig:module-map}
 \end{figure}
 
-Figure~\ref{fig:module-map} shows that dependencies flow inward toward a small number of managers instead of outward into a large inheritance tree. This is consistent with the project goal of a reportable, traceable prototype rather than a content-heavy tactics framework.
+Figure~\ref{fig:module-map} is included to explain code responsibility split rather than runtime event order. It shows that dependencies flow inward toward a small number of managers instead of outward into a large inheritance tree. This is consistent with the project goal of a reportable, traceable prototype rather than a content-heavy tactics framework.
 
 \section{Critical Implementation Choices}
 

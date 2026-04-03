@@ -22,7 +22,7 @@ The current prototype validates the core loop of selecting a unit, drawing cards
 
 Implementation narrowed the functional priority to one starter deck and one readable combat loop. The retained starter card set is therefore \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push}. The team explicitly did \emph{not} expand WR2 into a larger card pool or more experimental mechanics such as persistent status effects, directional bonuses, or health-for-power exchanges, because those would require extra balancing and testing effort that the current report cannot honestly evidence.
 
-The most visible remaining nonfunctional issue is readability. The current build exposes health, guarding, prompts, and turn outcome information well enough for demonstration, but the combat HUD is still lighter than a finished interface. Clearer presentation of unit state, stronger explanation of board highlights, and more polished result feedback remain follow-up quality targets rather than completed WR2 claims.
+The most visible remaining nonfunctional issue is readability. The current build already exposes the most important prototype state in observable places: unit hit points and guard state can be checked during play, the status prompt tells the player when to select a unit or target, and battle end-state text is shown in both the top bar and the combat log. However, the combat HUD is still lighter than a finished interface. What remains incomplete is not basic visibility but presentation depth: board highlights are still explained mainly by convention, and result feedback is still text-led rather than fully staged with richer visual treatment.
 
 \subsection{Key Design Trade-offs}
 
@@ -32,7 +32,7 @@ The validated WR2 scope is therefore narrower than the original concept sketched
 
 \section{Architectural/System Diagram}
 
-The current system architecture follows the ``single battle, shallow object model'' direction set out in the internal architecture constraints and first-pass script notes stored at \path{doc/src/demo_architecture_constraints.md} and \path{doc/src/demo_first_pass_scripts.md}. Figure~\ref{fig:architecture} reflects the current code modules rather than the more speculative abstraction layer implied by some earlier planning material.
+The current system architecture follows the ``single battle, shallow object model'' direction set out in the internal architecture constraints and first-pass script notes stored at \path{doc/src/demo_architecture_constraints.md} and \path{doc/src/demo_first_pass_scripts.md}. Figure~\ref{fig:architecture} reflects the current code modules rather than the more speculative abstraction layer implied by some earlier planning material. An architecture-style diagram is used here specifically to explain runtime component interaction, because the WR1 feedback showed that UML-like figures need an explicit link back to the implemented responsibilities they are supposed to describe.
 
 \begin{figure}[H]
 \centering
