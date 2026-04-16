@@ -13,9 +13,9 @@ The implementation-phase allocation used in WR2 preparation is summarised below.
 
 \section{Completed Process}
 
-By the end of this WR2 cycle, the project has moved from a proposal-level concept to a working prototype snapshot. Building on the WR1 requirement baseline, the team produced a constrained architecture definition, implemented the first-pass gameplay modules, captured prototype screenshots, updated the runtime architecture to match the current code, and aligned the report with the current prototype evidence. During closeout, the team also corrected a battle-end accuracy gap by adding battle-end termination and textual outcome feedback, then backed that fix with a small EditMode test suite around the turn manager.
+By the end of WR2, the project had moved from proposal-level design to a stable prototype snapshot. The team narrowed the scope to one evidencable battle slice, aligned the report with the live runtime state, and corrected the battle-end accuracy gap with a small EditMode test suite around the turn manager.
 
-This reporting cycle also exposed a process gap: several implementation records were not yet archived in a reusable structure. WR2 therefore introduces a small project-record set covering meeting notes, process evidence notes, decision logs, validation notes, and testing records. The cleaned GitHub repository now also shows the current closeout workflow through merged document and code pull requests. These records are lightweight so the team can continue using them in WR3 and the final report.
+WR2 also closed a documentation gap. Meeting notes, process evidence notes, decision logs, validation notes, testing records, and merged GitHub PR history now form the minimum reusable record set for WR3 and the final report.
 
 \begin{figure}[H]
 \centering
@@ -25,6 +25,184 @@ This reporting cycle also exposed a process gap: several implementation records 
 \end{figure}
 
 Figure~\ref{fig:implementation-gantt} summarises the timeline from the WR1 foundation through the current WR2 closeout and the planned WR3/final-report stages. The chart separates work already completed in WR2 from work scheduled after the WR2 deadline.
+
+\section{Prioritised Tasks}
+
+The priorities below combine the local WR2 todo list, supporting records, and merged GitHub PR history so the report has one explicit task view instead of scattering it across appendix notes only. Short source names are used here for readability; Appendix~\ref{sec:supporting-index} lists the exact paths.
+
+\providecommand{\taskcell}[2]{\parbox[t]{#1}{\RaggedRight #2}}
+
+\subsection{P0 Submission-Critical Tasks}
+
+P0 work fell into two concrete groups: prototype and scope accuracy, then report-package closeout on the clean GitHub workflow.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Task} & \textbf{Priority} & \textbf{Status} & \textbf{Evidence source} & \textbf{Related PR / record} \\
+\midrule
+\taskcell{0.23\textwidth}{Lock the prototype to a single-battle vertical slice.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{WR2 freeze note; architecture constraints; current scene snapshot.} &
+\taskcell{0.18\textwidth}{Freeze note; decision D-01.} \\
+\taskcell{0.23\textwidth}{Implement and evidence the four starter cards.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Snapshot verification; runtime card resolution; prototype screenshots.} &
+\taskcell{0.18\textwidth}{Snapshot verification; architecture constraints note.} \\
+\taskcell{0.23\textwidth}{Implement the player turn loop, draw/discard flow, and enemy response.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Current runtime; screenshot evidence; walkthrough.} &
+\taskcell{0.18\textwidth}{Snapshot verification; walkthrough note.} \\
+\taskcell{0.23\textwidth}{Fix battle-end accuracy so the loop stops cleanly and reports an outcome.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{EditMode verification note; current battle-end behaviour.} &
+\taskcell{0.18\textwidth}{PR \#5; prototype accuracy note.} \\
+\taskcell{0.23\textwidth}{Align WR2 baseline and scope-control records with the clean repository line.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Baseline records imported into the current source tree.} &
+\taskcell{0.18\textwidth}{PR \#6; WR2 todo; asset register.} \\
+\taskcell{0.23\textwidth}{Import the WR2 LaTeX report package into the clean GitHub workflow.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Tracked WR2 source tree and compiled report package.} &
+\taskcell{0.18\textwidth}{PR \#7; WR2 LaTeX source tree.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Task} & \textbf{Priority} & \textbf{Status} & \textbf{Evidence source} & \textbf{Related PR / record} \\
+\midrule
+\taskcell{0.23\textwidth}{Add collaboration history and support evidence notes for the closeout workflow.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Process notes and recovered collaboration-history package.} &
+\taskcell{0.18\textwidth}{PR \#8; collaboration history note.} \\
+\taskcell{0.23\textwidth}{Import the missing WR2 supporting records used by the report body.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Validation, testing, decision, and process record files now present in the repo.} &
+\taskcell{0.18\textwidth}{PR \#9; project-records import.} \\
+\taskcell{0.23\textwidth}{Refresh WR2 wording so the body matches the merged prototype state.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Updated report sections and rebuilt PDF.} &
+\taskcell{0.18\textwidth}{PR \#12; current WR2 section files.} \\
+\taskcell{0.23\textwidth}{Run a truth pass on records, appendix wording, and supporting claims.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Updated appendix, refreshed supporting notes, and snapshot verification wording.} &
+\taskcell{0.18\textwidth}{PR \#13; appendix and records truth pass.} \\
+\taskcell{0.23\textwidth}{Close out figures and references so the final report package is internally consistent.} &
+\taskcell{0.08\textwidth}{P0} &
+\taskcell{0.13\textwidth}{Completed} &
+\taskcell{0.18\textwidth}{Current tracked media, figure sources, and rebuilt PDF.} &
+\taskcell{0.18\textwidth}{PR \#15; figure/reference closeout pack.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\subsection{P1 Strongly Recommended Tasks}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Task} & \textbf{Priority} & \textbf{Status} & \textbf{Evidence source} & \textbf{Related PR / record} \\
+\midrule
+\taskcell{0.23\textwidth}{Run one final diagram-to-code cross-check before submission packaging.} &
+\taskcell{0.08\textwidth}{P1} &
+\taskcell{0.13\textwidth}{Open} &
+\taskcell{0.18\textwidth}{Snapshot verification already covers the main runtime modules, but a final pass remains useful.} &
+\taskcell{0.18\textwidth}{Background PR \#1; snapshot verification; WR2 todo.} \\
+\taskcell{0.23\textwidth}{Do a final proofread by someone who did not draft the section.} &
+\taskcell{0.08\textwidth}{P1} &
+\taskcell{0.13\textwidth}{Pending} &
+\taskcell{0.18\textwidth}{WR2 todo list and review checklist both keep this open.} &
+\taskcell{0.18\textwidth}{WR2 todo; review sync checklist.} \\
+\taskcell{0.23\textwidth}{Review evidence consistency one more time before export.} &
+\taskcell{0.08\textwidth}{P1} &
+\taskcell{0.13\textwidth}{Pending} &
+\taskcell{0.18\textwidth}{Current records make the check possible, but the sign-off task is still open.} &
+\taskcell{0.18\textwidth}{WR2 todo; asset register.} \\
+\taskcell{0.23\textwidth}{Import optional stronger repository screenshots for appendix support.} &
+\taskcell{0.08\textwidth}{P1} &
+\taskcell{0.13\textwidth}{Optional strengthening} &
+\taskcell{0.18\textwidth}{GitHub history is already visible, but screenshots would improve presentation quality.} &
+\taskcell{0.18\textwidth}{Canonical repo evidence note.} \\
+\taskcell{0.23\textwidth}{Improve highlight explanation and first-turn onboarding cues.} &
+\taskcell{0.08\textwidth}{P1} &
+\taskcell{0.13\textwidth}{Planned, not yet applied} &
+\taskcell{0.18\textwidth}{Walkthrough findings identify this as a medium-severity usability gap.} &
+\taskcell{0.18\textwidth}{Walkthrough note.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\subsection{P2 Deferred or Externally Blocked Tasks}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Task} & \textbf{Priority} & \textbf{Status} & \textbf{Evidence source} & \textbf{Related PR / record} \\
+\midrule
+\taskcell{0.23\textwidth}{Import historical task-board captures from the real board tool.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Blocked externally} &
+\taskcell{0.18\textwidth}{The current repository only preserves a retrospective reconstruction, not original board evidence.} &
+\taskcell{0.18\textwidth}{Task-board evidence note; Figure~\ref{fig:wr2-retrospective-board}.} \\
+\taskcell{0.23\textwidth}{Replace recovered attendance notes with stronger confirmed meeting evidence.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Blocked externally} &
+\taskcell{0.18\textwidth}{Attendance evidence remains weaker than the repository trail.} &
+\taskcell{0.18\textwidth}{Collaboration history; recovered checkpoint note.} \\
+\taskcell{0.23\textwidth}{Run stronger team playtesting beyond the internal heuristic walkthrough.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Deferred to WR3 / final report} &
+\taskcell{0.18\textwidth}{WR2 currently uses an internal walkthrough only.} &
+\taskcell{0.18\textwidth}{Walkthrough note; WR3 prep log.} \\
+\taskcell{0.23\textwidth}{Expand automated coverage beyond the battle-end fix.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Deferred to WR3 / final report} &
+\taskcell{0.18\textwidth}{Only the narrow battle-end EditMode suite is currently evidenced.} &
+\taskcell{0.18\textwidth}{PR \#5; prototype accuracy note.} \\
+\taskcell{0.23\textwidth}{Add a richer result screen and stronger end-state presentation.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Deferred} &
+\taskcell{0.18\textwidth}{WR2 only claims lightweight text outcome feedback.} &
+\taskcell{0.18\textwidth}{Walkthrough note; PR \#5.} \\
+\taskcell{0.23\textwidth}{Add richer audiovisual combat feedback and stronger enemy expressiveness.} &
+\taskcell{0.08\textwidth}{P2} &
+\taskcell{0.13\textwidth}{Deferred} &
+\taskcell{0.18\textwidth}{Current WR2 snapshot intentionally keeps feedback and AI behaviour lightweight.} &
+\taskcell{0.18\textwidth}{Architecture constraints; implementation decisions.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
 
 \section{Future Plan}
 

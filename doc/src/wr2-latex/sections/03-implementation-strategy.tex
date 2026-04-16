@@ -4,7 +4,7 @@ The implementation strategy follows one principle: keep the prototype readable e
 
 \section{Code Structure}
 
-At repository level, the project is split so that the Unity implementation, report sources, and evidence records do not collapse into one mixed file tree. The simplified WR2-relevant top-level layout used during report closeout is:
+At repository level, the project is split so that the Unity implementation, report sources, and evidence records stay in clearly separated areas. The simplified WR2-relevant top-level layout used during report closeout is:
 
 \begin{Verbatim}[fontsize=\small]
 Unity-Project
@@ -42,7 +42,7 @@ Assets/Scripts
 
 This structure mirrors current responsibilities. The \texttt{Core} folder owns scene bootstrapping and turn flow. \texttt{Grid} owns tile generation, occupancy, and range queries. \texttt{Cards} owns card data, deck state, and explicit card resolution. \texttt{Units} owns health, team, and enemy decision logic. \texttt{UI} connects player input to runtime state.
 
-A file-tree view is used here because this prototype is built around a small set of scene-bound Unity \texttt{MonoBehaviour} scripts. The clearest way to communicate structure is to show where gameplay responsibilities live under \texttt{Assets/Scripts}. A more traditional inheritance-heavy class diagram would suggest architectural depth that the current prototype does not actually have.
+A file-tree view is used here because this prototype is built around a small set of scene-bound Unity \texttt{MonoBehaviour} scripts. The clearest way to communicate structure is to show where gameplay responsibilities live under \texttt{Assets/Scripts}. A traditional inheritance-heavy class diagram would suggest more architectural depth than the current prototype actually uses.
 
 \begin{figure}[H]
 \centering
@@ -51,7 +51,7 @@ A file-tree view is used here because this prototype is built around a small set
 \label{fig:module-map}
 \end{figure}
 
-Figure~\ref{fig:module-map} explains code responsibility split instead of runtime event order. Dependencies flow inward toward a small number of managers instead of outward into a large inheritance tree. This matches the goal of a small, traceable prototype.
+Figure~\ref{fig:module-map} focuses on code responsibility split. Dependencies flow inward toward a small number of managers, and the surrounding text explains runtime event order. This matches the goal of a small, traceable prototype.
 
 \subsection{Runtime Responsibilities Beyond the Diagram}
 
