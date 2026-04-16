@@ -1,38 +1,95 @@
 \chapter{Specification and Design Decisions}
 
-This report focuses on how the \projectname{} concept moved from the WR1 proposal into a constrained, demonstrable Unity prototype. The emphasis of WR2 is not to restate the full WR1 requirements, but to validate which requirements survived contact with implementation, which ones were simplified, and which ones were deliberately deferred to later stages. The report follows the course specification and the recovered WR2 template structure rather than the incorrect WR1-flavoured Moodle \texttt{main.tex} skeleton \cite{moduleSpecification,wr2Template}. It is intentionally anchored to one frozen prototype snapshot, recorded in the project record \path{wr2-snapshot-freeze-2026-04-02.md}. This means the chapter describes the current demo as it exists in the frozen WR2 evidence set, and separates target-state ambitions from implemented behaviour.
+This chapter explains how \projectname{} moved from the WR1 requirements baseline into a narrower Unity prototype. The focus is traceability rather than redesign: what WR2 inherits, what it simplifies, and what it defers so the prototype remains demonstrable.
 
 \section{Requirements Validation}
 
-The current prototype validates the core loop of selecting a unit, drawing cards, playing a limited number of command cards, ending the turn, and observing an enemy response. However, several presentation and completion-oriented requirements remain partial rather than finished. The key WR1 to WR2 validation outcomes are:
+Table~\ref{tab:wr1-wr2-traceability} makes the WR1 to WR2 relationship explicit. It distinguishes direct inheritance, implementation-driven narrowing, and visible deferred work.
+
+\providecommand{\tracecell}[2]{\parbox[t]{#1}{\RaggedRight #2}}
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}lllll@{}}
+\caption{WR1 to WR2 requirements traceability}
+\label{tab:wr1-wr2-traceability}\\
+\toprule
+\textbf{WR1 baseline} & \textbf{WR2 status} & \textbf{Reason for change} & \textbf{Evidence source} & \textbf{RE conformance} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{WR1 baseline} & \textbf{WR2 status} & \textbf{Reason for change} & \textbf{Evidence source} & \textbf{RE conformance} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\tracecell{0.17\textwidth}{WR1 personas and first-battle scenarios for casual strategy players.} &
+\tracecell{0.14\textwidth}{\textbf{Inherited}} &
+\tracecell{0.16\textwidth}{WR2 still validates the same audience and first-use situations instead of redefining them.} &
+\tracecell{0.18\textwidth}{WR1 report; walkthrough note; prototype screenshots.} &
+\tracecell{0.15\textwidth}{Yes. Validation still follows the user-facing concerns elicited in WR1.} \\
+\tracecell{0.17\textwidth}{Core battle loop: turn start, draw, unit/card/target selection, enemy turn, and battle check.} &
+\tracecell{0.14\textwidth}{\textbf{Inherited}} &
+\tracecell{0.16\textwidth}{This is the minimum playable slice needed to demonstrate the WR1 concept without widening scope.} &
+\tracecell{0.18\textwidth}{Snapshot verification; first-pass script note; runtime scene.} &
+\tracecell{0.15\textwidth}{Yes. WR2 implements the same central interaction flow and checks it against runtime evidence.} \\
+\tracecell{0.17\textwidth}{6x6 board, battle UI, hand zone, turn controls, and starter cards \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push}.} &
+\tracecell{0.14\textwidth}{\textbf{Inherited}} &
+\tracecell{0.16\textwidth}{The starter content stayed narrow so the tactics loop remained readable and testable within coursework time.} &
+\tracecell{0.18\textwidth}{Snapshot verification; architecture constraints note; Figures~\ref{fig:prototype-evidence}--\ref{fig:prototype-board}.} &
+\tracecell{0.15\textwidth}{Yes. WR2 preserves the functional baseline promised for the demo combat scenario.} \\
+\tracecell{0.17\textwidth}{Readable feedback, onboarding cues, and understandable turn results as non-functional usability goals.} &
+\tracecell{0.14\textwidth}{\textbf{Modified}} &
+\tracecell{0.16\textwidth}{WR2 keeps prompts, highlights, HP visibility, guard state, logs, and text outcomes, but tutorial depth and presentation polish were reduced for stability.} &
+\tracecell{0.18\textwidth}{Walkthrough note; EditMode test note; merged PR \#5.} &
+\tracecell{0.15\textwidth}{Yes, in partial form. The simplification is explicit rather than hidden.} \\
+\tracecell{0.17\textwidth}{WR1 system model and architecture expectations around turn flow, grid logic, units, cards, and UI.} &
+\tracecell{0.14\textwidth}{\textbf{Modified}} &
+\tracecell{0.16\textwidth}{The responsibility split stayed, but implementation was narrowed to one battle scene, one shared \texttt{UnitController}, one explicit \texttt{CardResolver}, deterministic \texttt{EnemyAI}, and a prototype-first UI path.} &
+\tracecell{0.18\textwidth}{Architecture constraints note; first-pass scripts; implementation decisions; Figures~\ref{fig:architecture} and \ref{fig:module-map}.} &
+\tracecell{0.15\textwidth}{Yes. The architecture remains traceable to WR1 and the scope-control decisions are named explicitly.} \\
+\tracecell{0.17\textwidth}{Organisational requirement for repository-based teamwork, traceable records, and demonstrable project management.} &
+\tracecell{0.14\textwidth}{\textbf{Modified}} &
+\tracecell{0.16\textwidth}{Earlier collaboration used mixed tools, so WR2 closes out on a cleaned GitHub PR workflow while still labelling weaker board evidence as blocked or retrospective.} &
+\tracecell{0.18\textwidth}{Collaboration history; WR2 todo; task-board evidence note; PRs \#6, \#7, \#8, \#9, \#12, \#13, \#15.} &
+\tracecell{0.15\textwidth}{Partially. WR2 now evidences the repository workflow honestly while separating it from weaker board evidence.} \\
+\tracecell{0.17\textwidth}{Broader concept growth beyond the frozen demo, including larger card pools, multi-scene flow, stronger playtesting, and richer battle presentation.} &
+\tracecell{0.14\textwidth}{\textbf{Deferred}} &
+\tracecell{0.16\textwidth}{These items would widen the prototype beyond the evidencable WR2 vertical slice and weaken the report's claims.} &
+\tracecell{0.18\textwidth}{WR2 todo; architecture constraints note; WR3 prep log; walkthrough findings.} &
+\tracecell{0.15\textwidth}{Yes. Deferred items remain visible backlog work rather than silent omissions.} \\
+\end{longtable}
+\endgroup
+
+\subsection{Why WR2 Still Follows Requirements Engineering}
+
+WR2 still follows the WR1 requirements engineering process for three reasons:
 
 \begin{itemize}
-\item \textbf{6x6 tactical battle board.} Status: retained and implemented. Evidence: the current Unity scene and prototype screenshots. Reason: a single 6x6 scene is large enough to demonstrate positioning without expanding into campaign-scale scope.
-\item \textbf{Hand zone, turn controls, and combat information in one interface.} Status: retained and implemented. Evidence: the current \texttt{BattleUI} panel and screenshots. Reason: a left-side control panel plus in-world board keeps the prototype readable for reporting and demonstration.
-\item \textbf{Move, Strike, Guard, and Push as the starter card set.} Status: retained and narrowed. Evidence: the fallback deck and explicit card resolution logic. Reason: these four cards cover movement, damage, defense, and displacement with minimal rules overhead.
-\item \textbf{Card draw, discard, and fixed plays per turn.} Status: retained and implemented. Evidence: current turn flow and deck management logic. Reason: three cards drawn per turn and two playable actions proved easier to demonstrate than a wider energy or deckbuilding model.
-\item \textbf{Enemy units perform visible actions during the enemy phase.} Status: retained but simplified. Evidence: deterministic enemy movement and attack summary output. Reason: the prototype validates enemy response without requiring a broader AI system.
-\item \textbf{Clear visual and animation feedback for all actions.} Status: modified and partial. Evidence: tile highlights, card tinting, selection state, and status log. Reason: bespoke combat animation was reduced to lightweight prototype cues to keep WR2 scope under control.
-\item \textbf{Win/lose handling ends the combat session cleanly.} Status: retained and implemented in minimal form. Evidence: the current turn manager now stops the battle loop when one side is eliminated, and the battle UI surfaces a textual victory/defeat outcome. Reason: the team fixed the earlier accuracy gap with a narrow runtime change, while leaving richer result presentation for later polish.
-\item \textbf{Minimal onboarding cues for first interactions.} Status: partial. Evidence: the current UI gives a status prompt such as ``Select a player unit,'' but not a fuller guided onboarding flow. This gap was confirmed during WR2 validation.
-\item \textbf{Structured repository workflow and traceable progress records.} Status: partially implemented and now evidenced through the cleaned GitHub workflow. Evidence: merged pull requests on the canonical repository, the collaboration-history note, and the process evidence package under \path{doc/src/project-records/process/}. Reason: the repository workflow is now visible in GitHub history, but task-board captures and stronger attendance evidence are still weaker than the repository trail itself.
+\item It keeps the same audience, stakeholder concerns, and validation scenarios as the baseline for implementation review.
+\item Every implementation-driven change is justified through a named scope-control source, especially the architecture constraints note and the WR2 implementation decision log.
+\item Any incomplete item stays labelled as \textbf{partial} or \textbf{deferred} and is carried into the prioritised task list in Chapter~4 instead of being silently dropped.
 \end{itemize}
+
+WR2 is therefore not a second independent requirements exercise. It is a traceable reduction of WR1 into a playable vertical slice whose compromises remain explicit and evidence-backed.
 
 \subsection{Updated Functional and Nonfunctional Priorities}
 
-Implementation narrowed the functional priority to one starter deck and one readable combat loop. The retained starter card set is therefore \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push}. The team explicitly did \emph{not} expand WR2 into a larger card pool or more experimental mechanics such as persistent status effects, directional bonuses, or health-for-power exchanges, because those would require extra balancing and testing effort that the current report cannot honestly evidence.
-
-The most visible remaining nonfunctional issue is readability. The current build exposes health, guarding, prompts, and turn outcome information well enough for demonstration, but the combat HUD is still lighter than a finished interface. Clearer presentation of unit state, stronger explanation of board highlights, and more polished result feedback remain follow-up quality targets rather than completed WR2 claims.
+\begin{itemize}
+\item \textbf{Functional priority.} Keep one readable starter set: draw three cards, allow up to two plays per turn, and resolve only \texttt{Move}, \texttt{Strike}, \texttt{Guard}, and \texttt{Push}.
+\item \textbf{Non-functional priority.} Keep hit points, guard state, prompts, and battle-end text visible, while treating stronger onboarding and richer presentation as later work.
+\end{itemize}
 
 \subsection{Key Design Trade-offs}
 
-The main trade-off in WR2 was breadth versus stability. A broader deck and more specialised combat roles might improve longer-term gameplay depth, but they would also multiply balancing effort and make the prototype harder to validate in a short coursework cycle. The implemented choice was therefore conservative: keep the card set small, keep enemy behaviour deterministic, and make the runtime responsibilities easy to trace. This trade-off supports the real goal of WR2, which is to present a truthful playable slice rather than a larger but weakly evidenced design.
-
-The validated WR2 scope is therefore narrower than the original concept sketched in WR1 and the internal one-pager stored at \path{doc/src/onepager_en.md}. The frozen prototype snapshot commits to a single battle scene, two player units, one enemy response loop, four starter cards, clear board-state feedback, and truthful battle-end termination with text-based outcome reporting. Features such as a larger card pool, multi-scene structure, deckbuilding, progression, and a more expressive tutorial flow remain outside the current implementation window described in the internal architecture note \path{doc/src/demo_architecture_constraints.md}. They are discussed as deferred work rather than being blended into the current-state description.
+The main design trade-off in WR2 was scope versus stability. A larger deck, more combat roles, and more complex effects would increase variety, but they would also increase balancing work and testing risk. The implemented choice was to keep the starter deck small, keep enemy behaviour simple, and keep script responsibilities easy to trace. This makes the prototype easier to demonstrate and easier to connect back to the WR1 requirements. The resulting WR2 scope is smaller than the broader direction proposed in WR1, but it is clearer and more defensible as a playable prototype.
 
 \section{Architectural/System Diagram}
 
-The current system architecture follows the ``single battle, shallow object model'' direction set out in the internal architecture constraints and first-pass script notes stored at \path{doc/src/demo_architecture_constraints.md} and \path{doc/src/demo_first_pass_scripts.md}. Figure~\ref{fig:architecture} reflects the current code modules rather than the more speculative abstraction layer implied by some earlier planning material.
+The current architecture follows a single-battle structure. Figure~\ref{fig:architecture} shows the runtime modules used by the demo and how scene managers, UI, cards, grid, and units interact during play.
 
 \begin{figure}[H]
 \centering
@@ -41,6 +98,15 @@ The current system architecture follows the ``single battle, shallow object mode
 \label{fig:architecture}
 \end{figure}
 
-The control flow begins at \texttt{GameRoot}, which wires together the scene managers and registers the units already placed in the scene. \texttt{TurnManager} owns turn state, remaining card plays, and the switch between player and enemy phases. \texttt{BattleUI} is intentionally thin: it handles card selection, world clicks, and status output, but it delegates gameplay decisions to the deck, grid, and card systems.
+At runtime, \texttt{GameRoot} wires the battle scene, \texttt{TurnManager} owns phase changes and card-play limits, and \texttt{BattleUI} collects player input. \texttt{DeckManager} controls draw, hand, and discard state, \texttt{CardResolver} resolves the four card types, \texttt{GridManager} owns tiles and reachability, and \texttt{UnitController} stores shared unit state. This is the full module set needed by the narrowed WR2 slice.
 
-The data flow is intentionally conservative. \texttt{DeckManager} owns draw, hand, and discard state. \texttt{CardResolver} is the only module allowed to interpret \texttt{CardType}, which keeps card behaviour explicit and easy to trace. \texttt{GridManager} owns tile generation, occupancy, and reachability, while \texttt{UnitController} stores runtime unit state such as hit points, team, guarding, and grid position. This arrangement matches the current prototype goal: one readable vertical slice rather than a general-purpose tactics engine.
+The WR1 to WR2 architecture carry-over can be summarised more explicitly as follows:
+
+\begin{itemize}
+\item \textbf{Inherited.} Separate responsibilities for turn flow, grid logic, cards, units, and UI still provide the clearest high-level structure for the demo.
+\item \textbf{Modified for scope control.} The architecture now assumes one self-contained battle scene instead of a wider scene or campaign structure.
+\item \textbf{Modified for traceability.} Player and enemy runtime state were collapsed into one shared \texttt{UnitController} with \texttt{TeamType}, which keeps health, guarding, and occupancy rules easier to explain.
+\item \textbf{Modified for implementation speed.} Card behaviour is resolved in one explicit \texttt{CardResolver} rather than a generic effect hierarchy, matching the four-card WR2 scope.
+\item \textbf{Modified for validation clarity.} \texttt{EnemyAI} stays deterministic and shallow so enemy turns are readable in demonstration and easier to verify against screenshots and logs.
+\item \textbf{Modified for prototype practicality.} \texttt{BattleUI} uses a lightweight panel plus raycast input path, prioritising clarity and integration speed over a more polished UI stack.
+\end{itemize}

@@ -4,15 +4,15 @@
 
 \section{Recovered Checkpoint (15/03/2026)}
 
-No formal implementation meeting minutes were archived in the local workspace for the first prototype checkpoint. To avoid inventing details, the following recovered checkpoint summary was compiled from dated artifacts that are present in the repository: the architecture constraints note, the first-pass script plan, and the prototype screenshots created on 15/03/2026.
+No formal implementation meeting minutes were archived in the local workspace for the first prototype checkpoint. This recovered note summarises the result of an early classroom discussion and follow-up implementation alignment that informed the first prototype slice. The in-class discussion itself has no formal record, so the checkpoint summary was compiled from dated artifacts that are present in the repository: the architecture constraints note, the first-pass script plan, and the prototype screenshots created on 15/03/2026.
 
 \begin{itemize}
-\item \textbf{Record type:} recovered implementation checkpoint compiled from local artifacts rather than formal minutes.
+\item \textbf{Record type:} recovered implementation checkpoint compiled from local artifacts after an unrecorded classroom discussion.
 \item \textbf{Date:} 15/03/2026.
 \item \textbf{Attendance:} exact attendance was not archived in the local workspace and should be replaced with confirmed team attendance if chat or calendar records are available.
-\item \textbf{Sources used:} \path{demo_architecture_constraints.md}, \path{demo_first_pass_scripts.md}, and prototype screenshots timestamped on 15/03/2026.
+\item \textbf{Sources used:} the architecture note and first-pass script plan listed later in the Supporting Record Index, plus prototype screenshots timestamped on 15/03/2026.
 \item \textbf{Main focus:} reduce the original game concept to one battle scene, four starter cards, a readable control loop, and a minimum set of scripts that can compile and run inside the existing Unity project.
-\item \textbf{Confirmed decisions:} single-battle scope, shared unit controller, deterministic enemy response, explicit card types, button-driven card interaction, and no campaign or deckbuilding systems in WR2.
+\item \textbf{Confirmed decisions:} single-battle scope, shared unit controller, deterministic enemy response, explicit card types, button-driven card interaction, and a WR2 scope without campaign or deckbuilding systems.
 \item \textbf{Follow-up actions:} finish the first gameplay skeleton, refresh UML diagrams to match implementation, and gather prototype evidence for WR2.
 \end{itemize}
 
@@ -92,10 +92,21 @@ These outcomes were reflected in WR1 requirements, UML diagrams, and the documen
 The WR2 documentation pack uses an evidence freeze line of \textbf{02/04/2026 12:00}. This freeze is recorded in \path{wr2-snapshot-freeze-2026-04-02.md}. After that point, only changes that materially improve submission quality should be described in WR2. New features developed later should be documented in WR3 or the final report instead of being backfilled into this report.
 
 \section{Supporting Record Index}
+\label{sec:supporting-index}
 
-The local record structure created during WR2 is summarised below and stored under \texttt{doc/src/project-records}.
+The file set referenced across WR2 is summarised below. It combines upstream design files with later supporting records so the cited materials can still be located clearly from the repository layout.
 
+\begingroup
+\small
+\sloppy
 \begin{itemize}
+\item \path{doc/src/wr1-latex/main.tex}: WR1 report source containing the original requirement, scenario, and system-model baseline inherited by WR2.
+\item \path{doc/src/onepager_en.md}: early internal concept note used before the prototype scope was narrowed.
+\item \path{doc/src/demo_architecture_constraints.md}: internal architecture-constraint note used to cut the concept down to one battle scene.
+\item \path{doc/src/demo_first_pass_scripts.md}: first-pass gameplay script plan for turning the narrowed design into a playable Unity slice.
+\item \path{doc/src/project-records/wr2-snapshot-freeze-2026-04-02.md}: freeze note defining the prototype and evidence snapshot used for WR2.
+\item \path{prototype-snapshot-verification-2026-04-02.md}: runtime-to-document alignment record used by the Chapter~1 traceability table and the Chapter~4 task priorities.
+\item \path{wr2-todo.md}: explicit priority list used as the baseline for the Chapter~4 P0/P1/P2 task summary.
 \item \path{wr2-asset-register.md}: reusable evidence list, missing items, suggested owners, and due times.
 \item \path{process/canonical-repo-evidence-2026-04-02.md}: canonical repository evidence note, historical discovery summary, and the current recommendation for using merged GitHub history as repo-workflow evidence.
 \item \path{process/task-board-evidence-2026-04-02.md}: task-board evidence note, discovery summary, and import checklist.
@@ -111,9 +122,15 @@ The local record structure created during WR2 is summarised below and stored und
 \item \path{validation/wr2-heuristic-walkthrough-2026-04-01.md}: internal WR2 walkthrough and findings.
 \item \path{testing/prototype-accuracy-editmode-run-2026-04-02.md}: EditMode verification note for the battle-end accuracy fix.
 \item \path{testing/wr3-prep-log-2026-04-01.md}: initial test and bug tracking preparation note for the next report cycle.
+\item Merged GitHub PRs \#5, \#6, \#7, \#8, \#9, \#12, \#13, and \#15 in the project repository: remote evidence used by the Chapter~4 task table and the workflow traceability discussion.
 \end{itemize}
+\endgroup
 
-These records are intentionally lightweight. Their purpose is to stop evidence loss between WR2 and WR3, not to pretend that the record-keeping process was already complete earlier in the prototype cycle.
+These records are intentionally lightweight. Their purpose is to stop evidence loss between WR2 and WR3 and to preserve the material that already exists from the prototype cycle.
+
+\section{Traceability and Priority Sources}
+
+The new WR1 to WR2 traceability table in Chapter~1 is derived mainly from the WR1 source, the internal architecture and first-pass script notes, the prototype snapshot verification record, the walkthrough findings, and the WR2 implementation decision log. The prioritised task tables in Chapter~4 combine the WR2 todo list, the evidence register, workflow/process notes, and the merged GitHub PR history listed above. This appendix keeps those source pointers explicit so the new tables do not rely on unspoken evidence.
 
 \section{Retrospective Coordination Board}
 
@@ -124,4 +141,4 @@ These records are intentionally lightweight. Their purpose is to stop evidence l
 \label{fig:wr2-retrospective-board}
 \end{figure}
 
-Figure~\ref{fig:wr2-retrospective-board} is included as an explanatory reconstruction because no historical task-board capture survives in the repository. It helps summarise how the closeout work was grouped after the move to GitHub PR workflow, but it is not claimed as original planning-board evidence from the active implementation period.
+Figure~\ref{fig:wr2-retrospective-board} is included as an explanatory reconstruction because no historical task-board capture survives in the repository. It helps summarise how the closeout work was grouped after the move to GitHub PR workflow. The figure is presented as a retrospective explanation of the closeout stage.
