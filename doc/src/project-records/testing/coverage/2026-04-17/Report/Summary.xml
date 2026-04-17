@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>2026/4/17 - 12:54:46</Generatedon>
+    <Parser>MultiReportParser (60x OpenCoverParser)</Parser>
+    <Assemblies>1</Assemblies>
+    <Classes>11</Classes>
+    <Files>11</Files>
+    <Coveredlines>868</Coveredlines>
+    <Uncoveredlines>301</Uncoveredlines>
+    <Coverablelines>1169</Coverablelines>
+    <Totallines>1863</Totallines>
+    <Linecoverage>74.2</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>146</Coveredmethods>
+    <Totalmethods>158</Totalmethods>
+    <Methodcoverage>92.4</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="Assembly-CSharp" classes="11" coverage="74.2" coveredlines="868" coverablelines="1169" totallines="1863" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="146" totalmethods="158" methodcoverage="92.4">
+      <Class name="TacticalCards.BattleUI" coverage="56.2" coveredlines="291" coverablelines="517" totallines="811" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="31" totalmethods="40" methodcoverage="77.5" />
+      <Class name="TacticalCards.CardButtonView" coverage="100" coveredlines="13" coverablelines="13" totallines="31" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+      <Class name="TacticalCards.CardData" coverage="95.6" coveredlines="22" coverablelines="23" totallines="49" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="10" methodcoverage="90" />
+      <Class name="TacticalCards.CardResolver" coverage="77.7" coveredlines="49" coverablelines="63" totallines="108" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="8" methodcoverage="100" />
+      <Class name="TacticalCards.DeckManager" coverage="100" coveredlines="73" coverablelines="73" totallines="118" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="12" methodcoverage="100" />
+      <Class name="TacticalCards.EnemyAI" coverage="100" coveredlines="27" coverablelines="27" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+      <Class name="TacticalCards.GameRoot" coverage="93.1" coveredlines="27" coverablelines="29" totallines="53" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+      <Class name="TacticalCards.GridManager" coverage="85.9" coveredlines="147" coverablelines="171" totallines="253" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="19" totalmethods="20" methodcoverage="95" />
+      <Class name="TacticalCards.TileView" coverage="93.3" coveredlines="70" coverablelines="75" totallines="127" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="19" totalmethods="19" methodcoverage="100" />
+      <Class name="TacticalCards.TurnManager" coverage="80.1" coveredlines="113" coverablelines="141" totallines="207" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="24" totalmethods="24" methodcoverage="100" />
+      <Class name="TacticalCards.UnitController" coverage="97.2" coveredlines="36" coverablelines="37" totallines="58" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="17" totalmethods="18" methodcoverage="94.4" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

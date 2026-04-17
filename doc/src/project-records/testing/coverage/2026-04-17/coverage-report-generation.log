@@ -1,0 +1,540 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.11f1 (3000ef702840) revision 3145967'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-5418ly" at "2026-04-17T04:54:33.5132115Z"
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'zh' Physical Memory: 32095 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-04-17T04:54:33Z
+
+COMMAND LINE ARGUMENTS:
+F:\unity\unity\6000.3.11f1\Editor\Unity.exe
+-projectPath
+F:\unity\Unity-Project-clean-init-wr3-coverage\coursework
+-batchmode
+-quit
+-debugCodeOptimization
+--burst-disable-compilation
+-enableCodeCoverage
+-coverageResultsPath
+F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17
+-coverageHistoryPath
+F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17
+-coverageOptions
+generateHtmlReport;generateHtmlReportHistory;generateBadgeReport;generateAdditionalReports;generateAdditionalMetrics;generateTestReferences;assemblyFilters:+Assembly-CSharp;pathFilters:-**/Assets/Tests/**
+-logFile
+F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coverage-report-generation.log
+Successfully changed project path to: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework
+F:/unity/Unity-Project-clean-init-wr3-coverage/coursework
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [47916]  Target information:
+
+Player connection [47916]  * "[IP] 26.173.39.66 [Port] 55505 [Flags] 2 [Guid] 290059341 [EditorId] 290059341 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-JF2J0TDM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [47916]  * "[IP] 172.27.160.1 [Port] 55505 [Flags] 2 [Guid] 290059341 [EditorId] 290059341 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-JF2J0TDM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [47916]  * "[IP] 198.18.0.1 [Port] 55505 [Flags] 2 [Guid] 290059341 [EditorId] 290059341 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-JF2J0TDM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [47916]  * "[IP] 172.19.250.33 [Port] 55505 [Flags] 2 [Guid] 290059341 [EditorId] 290059341 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-JF2J0TDM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [47916] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [47916] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-45028" after 0.5 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.0'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-5418ly"
+[Licensing::IpcConnector] LicenseClient-5418ly channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-5418ly-6000.3.11" at "2026-04-17T04:54:35.6164029Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.0+23225a6
+  Session Id:              bd84a2673cb849479e42a72c94780969
+  Correlation Id:          00db3670538f7b200d6d727f594edefb
+  External correlation Id: 3113012176472199175
+  Machine Id:              5cSjZ4ssKwQAow6RZ077SbUOr5E=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-5418ly-6000.3.11" (connect: 0.00s, validation: 0.00s, handshake: 0.12s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-5418ly-6000.3.11-notifications" at "2026-04-17T04:54:35.7355668Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 2.23s
+[Licensing::Module] Licensing is initialized (took 1.22s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.22 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.11f1 (3000ef702840)
+[Subsystems] Discovering subsystems at path F:/unity/unity/6000.3.11f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/unity/Unity-Project-clean-init-wr3-coverage/coursework/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:   NVIDIA
+    VRAM:     5996 MB
+    Driver:   32.0.15.7703
+Initialize mono
+Mono path[0] = 'F:/unity/unity/6000.3.11f1/Editor/Data/Managed'
+Mono path[1] = 'F:/unity/unity/6000.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'F:/unity/unity/6000.3.11f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56028
+Code Coverage is enabled. Note that Code Coverage can affect the performance.
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: F:/unity/unity/6000.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001917 seconds.
+- Loaded All Assemblies, in  0.474 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.519 seconds
+Domain Reload Profiling: 991ms
+	BeginReloadAssembly (159ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (10ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (58ms)
+	LoadAllAssembliesAndSetupDomain (202ms)
+		LoadAssemblies (147ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (198ms)
+			TypeCache.Refresh (196ms)
+				TypeCache.ScanAssembly (180ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (519ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (465ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (53ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (110ms)
+			ProcessInitializeOnLoadAttributes (162ms)
+			ProcessInitializeOnLoadMethodAttributes (134ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 61 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.11 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.ai.navigation@78534c21b27d)
+    com.unity.collab-proxy@2.11.4 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.collab-proxy@a5329f833fa8)
+    com.unity.ide.rider@3.0.39 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
+    com.unity.ide.visualstudio@2.0.26 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.testtools.codecoverage@1.3.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.testtools.codecoverage@19a841221620)
+    com.unity.timeline@1.8.11 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.timeline@bfd27f8016ff)
+    com.unity.visualscripting@1.9.10 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.visualscripting@eb6004dcc707)
+    com.unity.settings-manager@2.1.1 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.settings-manager@0b8638c5ce86)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.4 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.collections@2.6.2 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.collections@aea9d3bd5e19)
+    com.unity.nuget.mono-cecil@1.11.6 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.2.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.3.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.render-pipelines.universal@e9f15c489688)
+    com.unity.test-framework@1.6.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.ugui@f17df9b1ab21)
+    com.unity.modules.accessibility@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.3.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.render-pipelines.core@84bf82d10e47)
+    com.unity.shadergraph@17.3.0 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.shadergraph@4eb612570652)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: F:\unity\Unity-Project-clean-init-wr3-coverage\coursework\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+  Local packages:
+    com.coplaydev.unity-mcp@file:F:\unity\unity-mcp\MCPForUnity (location: F:\unity\unity-mcp\MCPForUnity)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.04 seconds
+Starting: F:\unity\unity\6000.3.11f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aEDbg.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/unity/Unity-Project-clean-init-wr3-coverage/coursework
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s391ms
+[722/921    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.34 seconds), 1 items updated, 921 evaluated
+AssetDatabase: script compilation time: 1.017170s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.171 seconds
+Refreshing native plugins compatible for Editor in 1.79 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[ScriptCompilation] Requested script compilation because: Requested through public api
+[WR3] Coverage bootstrap applied. Requested one extra script compilation so Code Coverage can initialize with the new settings.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TacticalCards.Editor.Wr3CoverageBootstrap:.cctor () (at Assets/Editor/Wr3CoverageTools.cs:22)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Wr3CoverageTools.cs Line: 22)
+
+[com.unity.burst] Burst is disabled entirely from the command line or environment variable
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Unity.Burst.Editor.BurstLoader:.cctor () (at ./Library/PackageCache/com.unity.burst@07790c2d06d9/Runtime/Editor/BurstLoader.cs:108)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: ./Library/PackageCache/com.unity.burst@07790c2d06d9/Runtime/Editor/BurstLoader.cs Line: 108)
+
+[Code Coverage] Initializing report generation..
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0000.xml' 1/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0001.xml' 2/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0002.xml' 3/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0003.xml' 4/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0004.xml' 5/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0005.xml' 6/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0006.xml' 7/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0007.xml' 8/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0008.xml' 9/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0009.xml' 10/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0010.xml' 11/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0011.xml' 12/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0012.xml' 13/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0013.xml' 14/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0014.xml' 15/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0015.xml' 16/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0016.xml' 17/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0017.xml' 18/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0018.xml' 19/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0019.xml' 20/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0020.xml' 21/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0021.xml' 22/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0022.xml' 23/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0023.xml' 24/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0024.xml' 25/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0025.xml' 26/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0026.xml' 27/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0027.xml' 28/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0028.xml' 29/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0029.xml' 30/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0030.xml' 31/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0031.xml' 32/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0032.xml' 33/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0033.xml' 34/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0034.xml' 35/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0035.xml' 36/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0036.xml' 37/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0037.xml' 38/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0038.xml' 39/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0039.xml' 40/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0040.xml' 41/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0041.xml' 42/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0042.xml' 43/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0043.xml' 44/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0044.xml' 45/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0045.xml' 46/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0046.xml' 47/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0047.xml' 48/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0048.xml' 49/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0049.xml' 50/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0050.xml' 51/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0051.xml' 52/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0052.xml' 53/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0053.xml' 54/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0054.xml' 55/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0055.xml' 56/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0056.xml' 57/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\EditMode\TestCoverageResults_0057.xml' 58/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\PlayMode\TestCoverageResults_0000.xml' 59/60
+[Code Coverage] Finished parsing 'F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\coursework-opencov\PlayMode\TestCoverageResults_0001.xml' 60/60
+[Code Coverage] Parsing of 60 files completed
+[Code Coverage] Coverage report parsing took 1.6 seconds
+[Code Coverage] Reading historic reports
+[Code Coverage] Initializing report builders for report types: xmlSummary, MarkdownSummary, JsonSummary, Html, Badges, SonarQube, lcov, Cobertura
+[Code Coverage] Analyzing 11 classes
+[Code Coverage] Creating history report
+[Code Coverage] Report generation took 3.6 seconds
+[Code Coverage] Code Coverage Report was generated in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/Report
+Included Assemblies: Assembly-CSharp
+Excluded Assemblies: <Not specified>
+Included Paths: <Not specified>
+Excluded Paths: **/Assets/Tests/**
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.CodeCoverage.Utils.ResultsLogger:Log (UnityEditor.TestTools.CodeCoverage.Utils.ResultID,string[]) (at ./Library/PackageCache/com.unity.testtools.codecoverage@19a841221620/Editor/Logging/ResultsLogger.cs:133)
+UnityEditor.TestTools.CodeCoverage.CoverageReportGenerator:Generate (UnityEditor.TestTools.CodeCoverage.CoverageSettings) (at ./Library/PackageCache/com.unity.testtools.codecoverage@19a841221620/Editor/ReportGenerator/CoverageReportGenerator.cs:153)
+UnityEditor.TestTools.CodeCoverage.CoverageReporterStarter:.cctor () (at ./Library/PackageCache/com.unity.testtools.codecoverage@19a841221620/Editor/CoverageReporterListener.cs:163)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: ./Library/PackageCache/com.unity.testtools.codecoverage@19a841221620/Editor/ReportGenerator/CoverageReportGenerator.cs Line: 153)
+
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.582 seconds
+Domain Reload Profiling: 7749ms
+	BeginReloadAssembly (324ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (28ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (146ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (750ms)
+		LoadAssemblies (507ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (357ms)
+			TypeCache.Refresh (244ms)
+				TypeCache.ScanAssembly (230ms)
+			BuildScriptInfoCaches (93ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (6583ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (6227ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (24ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (296ms)
+			ProcessInitializeOnLoadAttributes (5791ms)
+			ProcessInitializeOnLoadMethodAttributes (106ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Starting: F:\unity\unity\6000.3.11f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aEDbg.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/unity/Unity-Project-clean-init-wr3-coverage/coursework
+ExitCode: 0 Duration: 0s464ms
+[722/921    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.36 seconds), 1 items updated, 921 evaluated
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.909 seconds
+Refreshing native plugins compatible for Editor in 1.34 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[com.unity.burst] Burst is disabled entirely from the command line or environment variable
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Unity.Burst.Editor.BurstLoader:.cctor () (at ./Library/PackageCache/com.unity.burst@07790c2d06d9/Runtime/Editor/BurstLoader.cs:108)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: ./Library/PackageCache/com.unity.burst@07790c2d06d9/Runtime/Editor/BurstLoader.cs Line: 108)
+
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.671 seconds
+Domain Reload Profiling: 3578ms
+	BeginReloadAssembly (458ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (59ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (231ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (41ms)
+	LoadAllAssembliesAndSetupDomain (344ms)
+		LoadAssemblies (188ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (280ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (253ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (2672ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2358ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (286ms)
+			ProcessInitializeOnLoadAttributes (1928ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (29ms)
+Asset Pipeline Refresh (id=a9b5a5db7616a52468f083790325b432): Total: 14.174 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=9952 ms
+		Asset DB Callback time: managed=31 ms, native=40 ms
+		Scripting: domain reloads=2, domain reload time=2099 ms, compile time=1905 ms, other=145 ms
+		Project Asset Count: scripts=1331, non-scripts=2343
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 43.150ms
+	ApplyChangesToAssetFolders: 1.159ms
+	Scan: 180.346ms
+	OnSourceAssetsModified: 0.003ms
+	CategorizeAssetsWithTransientArtifact: 59.084ms
+	ProcessAssetsWithTransientArtifactChanges: 124.326ms
+	CategorizeAssets: 57.740ms
+	ImportOutOfDateAssets: 9272.603ms (7360.421ms without children)
+		CompileScripts: 1904.910ms
+		CollectScriptTypesHashes: 3.276ms
+		ReloadNativeAssets: 0.880ms
+		UnloadImportedAssets: 1.324ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.212ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.580ms
+	PostProcessAllAssets: 31.447ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.003ms
+	UnloadStreamsBegin: 2.820ms
+	PersistCurrentRevisions: 0.138ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 5.235ms
+	Untracked: 4401.131ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Scanning for USB devices : 11.712ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-coursework
+Unloading 19 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6539 unused Assets / (5.7 MB). Loaded Objects now: 7362.
+Memory consumption went from 202.6 MB to 196.9 MB.
+Total: 14.260300 ms (FindLiveObjects: 1.297800 ms CreateObjectMapping: 1.113100 ms MarkObjects: 8.367200 ms  DeleteObjects: 3.480600 ms)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: No process found listening on port 8080
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at F:/unity/unity-mcp/MCPForUnity/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.ServerManagementService:StopLocalHttpServerInternal (bool,System.Nullable`1<int>,bool) (at F:/unity/unity-mcp/MCPForUnity/Editor/Services/ServerManagementService.cs:712)
+MCPForUnity.Editor.Services.ServerManagementService:StopLocalHttpServer () (at F:/unity/unity-mcp/MCPForUnity/Editor/Services/ServerManagementService.cs:349)
+MCPForUnity.Editor.Services.McpEditorShutdownCleanup:OnEditorQuitting () (at F:/unity/unity-mcp/MCPForUnity/Editor/Services/McpEditorShutdownCleanup.cs:60)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+
+(Filename: F:/unity/unity-mcp/MCPForUnity/Editor/Helpers/McpLog.cs Line: 40)
+
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-5418ly-6000.3.11-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-5418ly-6000.3.11 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

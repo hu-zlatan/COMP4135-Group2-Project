@@ -14,6 +14,7 @@ namespace TacticalCards
         {
             boundCard = card;
             battleUI = owner;
+            button ??= GetComponent<Button>();
 
             if (button != null)
             {

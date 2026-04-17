@@ -94,7 +94,7 @@ namespace TacticalCards
                 name = $"TileRuntime_{GetInstanceID()}"
             };
 
-            tileRenderer.material = runtimeMaterial;
+            tileRenderer.sharedMaterial = runtimeMaterial;
             ApplyColor(baseColor);
         }
 
@@ -102,7 +102,7 @@ namespace TacticalCards
         {
             if (runtimeMaterial == null)
             {
-                runtimeMaterial = tileRenderer.material;
+                runtimeMaterial = tileRenderer.sharedMaterial;
             }
 
             if (runtimeMaterial.HasProperty("_BaseColor"))
@@ -125,4 +125,3 @@ namespace TacticalCards
         }
     }
 }
-

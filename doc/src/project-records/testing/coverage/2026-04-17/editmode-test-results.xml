@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="57" result="Passed" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.1081197">
+  <test-suite type="TestSuite" id="1000" name="coursework" fullname="coursework" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.108120" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1068" name="Assembly-CSharp-Editor.dll" fullname="F:/unity/Unity-Project-clean-init-wr3-coverage/coursework/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.099270" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48520" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1069" name="TacticalCards" fullname="TacticalCards" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.098640" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1070" name="Tests" fullname="TacticalCards.Tests" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.098401" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1071" name="Editor" fullname="TacticalCards.Tests.Editor" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:26Z" duration="3.097882" total="57" passed="57" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="BattleUITests" fullname="TacticalCards.Tests.Editor.BattleUITests" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:24Z" duration="1.358617" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="AddLog_TrimsHistoryToLatestTwelveEntries" fullname="TacticalCards.Tests.Editor.BattleUITests.AddLog_TrimsHistoryToLatestTwelveEntries" methodname="AddLog_TrimsHistoryToLatestTwelveEntries" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1803289023" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.042501" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0001.xml
+]]></output>
+              </test-case>
+              <test-case id="1019" name="CardPresentationHelpers_ReturnDescriptionsStatsAndTint" fullname="TacticalCards.Tests.Editor.BattleUITests.CardPresentationHelpers_ReturnDescriptionsStatsAndTint" methodname="CardPresentationHelpers_ReturnDescriptionsStatsAndTint" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1397062505" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.013642" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0002.xml
+]]></output>
+              </test-case>
+              <test-case id="1005" name="ClearSelectedCard_WithSelectedUnit_ReturnsChooseCardPrompt" fullname="TacticalCards.Tests.Editor.BattleUITests.ClearSelectedCard_WithSelectedUnit_ReturnsChooseCardPrompt" methodname="ClearSelectedCard_WithSelectedUnit_ReturnsChooseCardPrompt" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="922380149" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.013781" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0003.xml
+]]></output>
+              </test-case>
+              <test-case id="1016" name="GetEndTurnStatusMessage_PrefixesEnemyPhaseSummaryAndFallsBackToOutcome" fullname="TacticalCards.Tests.Editor.BattleUITests.GetEndTurnStatusMessage_PrefixesEnemyPhaseSummaryAndFallsBackToOutcome" methodname="GetEndTurnStatusMessage_PrefixesEnemyPhaseSummaryAndFallsBackToOutcome" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="858901951" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.008920" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0004.xml
+]]></output>
+              </test-case>
+              <test-case id="1013" name="GetInvalidUnitTargetMessage_HandlesMissingCardFriendlyDeadAndRangeCases" fullname="TacticalCards.Tests.Editor.BattleUITests.GetInvalidUnitTargetMessage_HandlesMissingCardFriendlyDeadAndRangeCases" methodname="GetInvalidUnitTargetMessage_HandlesMissingCardFriendlyDeadAndRangeCases" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="353502087" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.012192" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0005.xml
+]]></output>
+              </test-case>
+              <test-case id="1017" name="GetSelectionStatusMessage_CoversIdleAndTileTargetPrompts" fullname="TacticalCards.Tests.Editor.BattleUITests.GetSelectionStatusMessage_CoversIdleAndTileTargetPrompts" methodname="GetSelectionStatusMessage_CoversIdleAndTileTargetPrompts" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1122529391" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.008260" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0006.xml
+]]></output>
+              </test-case>
+              <test-case id="1015" name="GetTurnLabel_ReportsNoBattleEnemyTurnAndBattleOutcomeStates" fullname="TacticalCards.Tests.Editor.BattleUITests.GetTurnLabel_ReportsNoBattleEnemyTurnAndBattleOutcomeStates" methodname="GetTurnLabel_ReportsNoBattleEnemyTurnAndBattleOutcomeStates" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="114444682" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.010593" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0007.xml
+]]></output>
+              </test-case>
+              <test-case id="1004" name="HandlePlayerUnitSelected_WithSelectedCard_PromptsTargetSelectionAndLogsNextStep" fullname="TacticalCards.Tests.Editor.BattleUITests.HandlePlayerUnitSelected_WithSelectedCard_PromptsTargetSelectionAndLogsNextStep" methodname="HandlePlayerUnitSelected_WithSelectedCard_PromptsTargetSelectionAndLogsNextStep" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="999485062" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.008354" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0008.xml
+]]></output>
+              </test-case>
+              <test-case id="1014" name="HelperBranches_ReturnExpectedFallbackValues" fullname="TacticalCards.Tests.Editor.BattleUITests.HelperBranches_ReturnExpectedFallbackValues" methodname="HelperBranches_ReturnExpectedFallbackValues" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1444328433" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.010622" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0009.xml
+]]></output>
+              </test-case>
+              <test-case id="1020" name="LayoutHelpers_ReturnUsableValues" fullname="TacticalCards.Tests.Editor.BattleUITests.LayoutHelpers_ReturnUsableValues" methodname="LayoutHelpers_ReturnUsableValues" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="2032210149" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.009013" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0010.xml
+]]></output>
+              </test-case>
+              <test-case id="1012" name="SelectCard_AfterBattleEnded_ShowsBattleOutcome" fullname="TacticalCards.Tests.Editor.BattleUITests.SelectCard_AfterBattleEnded_ShowsBattleOutcome" methodname="SelectCard_AfterBattleEnded_ShowsBattleOutcome" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="571862978" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.008614" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0011.xml
+]]></output>
+              </test-case>
+              <test-case id="1002" name="SelectCard_WithoutSelectedUnit_PreservesCardAndExplainsNextStep" fullname="TacticalCards.Tests.Editor.BattleUITests.SelectCard_WithoutSelectedUnit_PreservesCardAndExplainsNextStep" methodname="SelectCard_WithoutSelectedUnit_PreservesCardAndExplainsNextStep" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1830473649" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.007818" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0012.xml
+]]></output>
+              </test-case>
+              <test-case id="1006" name="TryPlayCardOnTile_InvalidTarget_ReturnsFalseAndKeepsCardSelected" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnTile_InvalidTarget_ReturnsFalseAndKeepsCardSelected" methodname="TryPlayCardOnTile_InvalidTarget_ReturnsFalseAndKeepsCardSelected" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="960532691" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.009851" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0013.xml
+]]></output>
+              </test-case>
+              <test-case id="1007" name="TryPlayCardOnTile_WithoutRemainingPlays_ShowsQuotaMessage" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnTile_WithoutRemainingPlays_ShowsQuotaMessage" methodname="TryPlayCardOnTile_WithoutRemainingPlays_ShowsQuotaMessage" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1807898293" result="Passed" start-time="2026-04-17 04:53:23Z" end-time="2026-04-17 04:53:23Z" duration="0.008866" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0014.xml
+]]></output>
+              </test-case>
+              <test-case id="1008" name="TryPlayCardOnUnit_FriendlyTarget_ShowsSpecificInstruction" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnUnit_FriendlyTarget_ShowsSpecificInstruction" methodname="TryPlayCardOnUnit_FriendlyTarget_ShowsSpecificInstruction" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="2086250098" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.011752" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0015.xml
+]]></output>
+              </test-case>
+              <test-case id="1010" name="TryPlayCardOnUnit_ValidStrike_ConsumesPlayAndUpdatesActionLog" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnUnit_ValidStrike_ConsumesPlayAndUpdatesActionLog" methodname="TryPlayCardOnUnit_ValidStrike_ConsumesPlayAndUpdatesActionLog" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1691557631" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.009385" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0016.xml
+]]></output>
+              </test-case>
+              <test-case id="1011" name="TryPlayCardOnUnit_WhenFinalEnemyDies_AppliesBattleOutcome" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnUnit_WhenFinalEnemyDies_AppliesBattleOutcome" methodname="TryPlayCardOnUnit_WhenFinalEnemyDies_AppliesBattleOutcome" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1753251789" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.008162" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0017.xml
+]]></output>
+              </test-case>
+              <test-case id="1009" name="TryPlayCardOnUnit_WithoutRemainingPlays_ShowsQuotaMessage" fullname="TacticalCards.Tests.Editor.BattleUITests.TryPlayCardOnUnit_WithoutRemainingPlays_ShowsQuotaMessage" methodname="TryPlayCardOnUnit_WithoutRemainingPlays_ShowsQuotaMessage" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="1525692176" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.010093" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0018.xml
+]]></output>
+              </test-case>
+              <test-case id="1003" name="Update_WithoutCamera_ReturnsEarly" fullname="TacticalCards.Tests.Editor.BattleUITests.Update_WithoutCamera_ReturnsEarly" methodname="Update_WithoutCamera_ReturnsEarly" classname="TacticalCards.Tests.Editor.BattleUITests" runstate="Runnable" seed="827398091" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.009365" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0019.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1021" name="CardButtonViewTests" fullname="TacticalCards.Tests.Editor.CardButtonViewTests" classname="TacticalCards.Tests.Editor.CardButtonViewTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.048911" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1022" name="Bind_ClickInvokesBattleUiSelection" fullname="TacticalCards.Tests.Editor.CardButtonViewTests.Bind_ClickInvokesBattleUiSelection" methodname="Bind_ClickInvokesBattleUiSelection" classname="TacticalCards.Tests.Editor.CardButtonViewTests" runstate="Runnable" seed="856280419" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.008760" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0020.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1023" name="CardResolverTests" fullname="TacticalCards.Tests.Editor.CardResolverTests" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.334856" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1024" name="GetValidTiles_Move_ReturnsUnoccupiedTilesWithinRange" fullname="TacticalCards.Tests.Editor.CardResolverTests.GetValidTiles_Move_ReturnsUnoccupiedTilesWithinRange" methodname="GetValidTiles_Move_ReturnsUnoccupiedTilesWithinRange" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="137435706" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.011141" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0021.xml
+]]></output>
+              </test-case>
+              <test-case id="1026" name="ResolveTileCard_Guard_SetsUnitGuarding" fullname="TacticalCards.Tests.Editor.CardResolverTests.ResolveTileCard_Guard_SetsUnitGuarding" methodname="ResolveTileCard_Guard_SetsUnitGuarding" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="981126562" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.011768" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0022.xml
+]]></output>
+              </test-case>
+              <test-case id="1025" name="ResolveTileCard_Move_MovesUnitToTargetTile" fullname="TacticalCards.Tests.Editor.CardResolverTests.ResolveTileCard_Move_MovesUnitToTargetTile" methodname="ResolveTileCard_Move_MovesUnitToTargetTile" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="592183282" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.011017" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0023.xml
+]]></output>
+              </test-case>
+              <test-case id="1028" name="ResolveUnitCard_Push_DamagesAndMovesEnemyBack" fullname="TacticalCards.Tests.Editor.CardResolverTests.ResolveUnitCard_Push_DamagesAndMovesEnemyBack" methodname="ResolveUnitCard_Push_DamagesAndMovesEnemyBack" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="1872652283" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.007842" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0024.xml
+]]></output>
+              </test-case>
+              <test-case id="1029" name="ResolveUnitCard_RejectsFriendlyTarget" fullname="TacticalCards.Tests.Editor.CardResolverTests.ResolveUnitCard_RejectsFriendlyTarget" methodname="ResolveUnitCard_RejectsFriendlyTarget" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="1441099960" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.007821" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0025.xml
+]]></output>
+              </test-case>
+              <test-case id="1027" name="ResolveUnitCard_Strike_DamagesEnemyAndClearsTileWhenTargetDies" fullname="TacticalCards.Tests.Editor.CardResolverTests.ResolveUnitCard_Strike_DamagesEnemyAndClearsTileWhenTargetDies" methodname="ResolveUnitCard_Strike_DamagesEnemyAndClearsTileWhenTargetDies" classname="TacticalCards.Tests.Editor.CardResolverTests" runstate="Runnable" seed="485057155" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.008592" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0026.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1030" name="DeckManagerTests" fullname="TacticalCards.Tests.Editor.DeckManagerTests" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.230054" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1033" name="DiscardFromHand_MovesCardToDiscardPile" fullname="TacticalCards.Tests.Editor.DeckManagerTests.DiscardFromHand_MovesCardToDiscardPile" methodname="DiscardFromHand_MovesCardToDiscardPile" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="1793624630" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.001908" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0027.xml
+]]></output>
+              </test-case>
+              <test-case id="1034" name="DiscardHand_MovesAllCardsToDiscardPile" fullname="TacticalCards.Tests.Editor.DeckManagerTests.DiscardHand_MovesAllCardsToDiscardPile" methodname="DiscardHand_MovesAllCardsToDiscardPile" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="568199223" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.001003" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0028.xml
+]]></output>
+              </test-case>
+              <test-case id="1035" name="Draw_WhenDrawPileEmpty_ReshufflesDiscardPile" fullname="TacticalCards.Tests.Editor.DeckManagerTests.Draw_WhenDrawPileEmpty_ReshufflesDiscardPile" methodname="Draw_WhenDrawPileEmpty_ReshufflesDiscardPile" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="1481217705" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.001045" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0029.xml
+]]></output>
+              </test-case>
+              <test-case id="1036" name="Draw_WhenNoCardsRemain_LeavesHandUnchanged" fullname="TacticalCards.Tests.Editor.DeckManagerTests.Draw_WhenNoCardsRemain_LeavesHandUnchanged" methodname="Draw_WhenNoCardsRemain_LeavesHandUnchanged" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="1379158435" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.000899" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0030.xml
+]]></output>
+              </test-case>
+              <test-case id="1032" name="DrawForTurn_DrawsConfiguredNumberOfCards" fullname="TacticalCards.Tests.Editor.DeckManagerTests.DrawForTurn_DrawsConfiguredNumberOfCards" methodname="DrawForTurn_DrawsConfiguredNumberOfCards" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="379507400" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.000867" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0031.xml
+]]></output>
+              </test-case>
+              <test-case id="1031" name="ResetDeck_WithoutStartingDeck_UsesFallbackDeck" fullname="TacticalCards.Tests.Editor.DeckManagerTests.ResetDeck_WithoutStartingDeck_UsesFallbackDeck" methodname="ResetDeck_WithoutStartingDeck_UsesFallbackDeck" classname="TacticalCards.Tests.Editor.DeckManagerTests" runstate="Runnable" seed="742459679" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:24Z" duration="0.001123" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0032.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1037" name="EnemyAITests" fullname="TacticalCards.Tests.Editor.EnemyAITests" classname="TacticalCards.Tests.Editor.EnemyAITests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-04-17 04:53:24Z" end-time="2026-04-17 04:53:25Z" duration="0.136875" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1039" name="FindNearestPlayer_SkipsDeadUnitsAndReturnsClosestAliveTarget" fullname="TacticalCards.Tests.Editor.EnemyAITests.FindNearestPlayer_SkipsDeadUnitsAndReturnsClosestAliveTarget" methodname="FindNearestPlayer_SkipsDeadUnitsAndReturnsClosestAliveTarget" classname="TacticalCards.Tests.Editor.EnemyAITests" runstate="Runnable" seed="780123564" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001642" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0033.xml
+]]></output>
+              </test-case>
+              <test-case id="1040" name="GetStepToward_PrefersHorizontalStepWhenAxesTie" fullname="TacticalCards.Tests.Editor.EnemyAITests.GetStepToward_PrefersHorizontalStepWhenAxesTie" methodname="GetStepToward_PrefersHorizontalStepWhenAxesTie" classname="TacticalCards.Tests.Editor.EnemyAITests" runstate="Runnable" seed="337899840" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001055" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0034.xml
+]]></output>
+              </test-case>
+              <test-case id="1041" name="GetStepToward_UsesVerticalStepWhenVerticalDeltaIsLarger" fullname="TacticalCards.Tests.Editor.EnemyAITests.GetStepToward_UsesVerticalStepWhenVerticalDeltaIsLarger" methodname="GetStepToward_UsesVerticalStepWhenVerticalDeltaIsLarger" classname="TacticalCards.Tests.Editor.EnemyAITests" runstate="Runnable" seed="279411653" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.000958" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0035.xml
+]]></output>
+              </test-case>
+              <test-case id="1038" name="ManhattanDistance_ReturnsAbsoluteGridDistance" fullname="TacticalCards.Tests.Editor.EnemyAITests.ManhattanDistance_ReturnsAbsoluteGridDistance" methodname="ManhattanDistance_ReturnsAbsoluteGridDistance" classname="TacticalCards.Tests.Editor.EnemyAITests" runstate="Runnable" seed="1558657041" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.000770" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0036.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1042" name="GameRootTests" fullname="TacticalCards.Tests.Editor.GameRootTests" classname="TacticalCards.Tests.Editor.GameRootTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.120531" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1043" name="Awake_FindsDependenciesWhenSerializedFieldsAreEmpty" fullname="TacticalCards.Tests.Editor.GameRootTests.Awake_FindsDependenciesWhenSerializedFieldsAreEmpty" methodname="Awake_FindsDependenciesWhenSerializedFieldsAreEmpty" classname="TacticalCards.Tests.Editor.GameRootTests" runstate="Runnable" seed="587901612" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.009650" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0037.xml
+]]></output>
+              </test-case>
+              <test-case id="1044" name="Start_InitializesManagersPlacesUnitsAndStartsBattle" fullname="TacticalCards.Tests.Editor.GameRootTests.Start_InitializesManagersPlacesUnitsAndStartsBattle" methodname="Start_InitializesManagersPlacesUnitsAndStartsBattle" classname="TacticalCards.Tests.Editor.GameRootTests" runstate="Runnable" seed="1927745837" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.009062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0038.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1045" name="GridManagerTests" fullname="TacticalCards.Tests.Editor.GridManagerTests" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.343192" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1046" name="GenerateGrid_CreatesExpectedTiles" fullname="TacticalCards.Tests.Editor.GridManagerTests.GenerateGrid_CreatesExpectedTiles" methodname="GenerateGrid_CreatesExpectedTiles" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="1059348977" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.003089" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0039.xml
+]]></output>
+              </test-case>
+              <test-case id="1050" name="GetNeighbors_ReturnsOrthogonalInBoundsCoordinates" fullname="TacticalCards.Tests.Editor.GridManagerTests.GetNeighbors_ReturnsOrthogonalInBoundsCoordinates" methodname="GetNeighbors_ReturnsOrthogonalInBoundsCoordinates" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="1335616457" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.004851" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0040.xml
+]]></output>
+              </test-case>
+              <test-case id="1051" name="GetTilesInRange_ReturnsBreadthFirstManhattanRange" fullname="TacticalCards.Tests.Editor.GridManagerTests.GetTilesInRange_ReturnsBreadthFirstManhattanRange" methodname="GetTilesInRange_ReturnsBreadthFirstManhattanRange" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="1331560445" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.007417" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0041.xml
+]]></output>
+              </test-case>
+              <test-case id="1052" name="HighlightMoveRange_TracksHighlightedTilesAndClearHighlights_ResetsState" fullname="TacticalCards.Tests.Editor.GridManagerTests.HighlightMoveRange_TracksHighlightedTilesAndClearHighlights_ResetsState" methodname="HighlightMoveRange_TracksHighlightedTilesAndClearHighlights_ResetsState" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="43712372" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.006687" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0042.xml
+]]></output>
+              </test-case>
+              <test-case id="1048" name="TryMoveUnit_MovesUnitAndClearsPreviousTile" fullname="TacticalCards.Tests.Editor.GridManagerTests.TryMoveUnit_MovesUnitAndClearsPreviousTile" methodname="TryMoveUnit_MovesUnitAndClearsPreviousTile" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="2001346040" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.008493" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0043.xml
+]]></output>
+              </test-case>
+              <test-case id="1047" name="TryPlaceUnit_PlacesUnitAndUpdatesOccupancy" fullname="TacticalCards.Tests.Editor.GridManagerTests.TryPlaceUnit_PlacesUnitAndUpdatesOccupancy" methodname="TryPlaceUnit_PlacesUnitAndUpdatesOccupancy" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="1814123899" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.008223" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0044.xml
+]]></output>
+              </test-case>
+              <test-case id="1049" name="TryPushUnit_RejectsOutOfBoundsDestination" fullname="TacticalCards.Tests.Editor.GridManagerTests.TryPushUnit_RejectsOutOfBoundsDestination" methodname="TryPushUnit_RejectsOutOfBoundsDestination" classname="TacticalCards.Tests.Editor.GridManagerTests" runstate="Runnable" seed="432960942" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.007894" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0045.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1053" name="TileViewTests" fullname="TacticalCards.Tests.Editor.TileViewTests" classname="TacticalCards.Tests.Editor.TileViewTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.114354" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1056" name="HighlightMethods_CreateRuntimeMaterialAndDoNotThrow" fullname="TacticalCards.Tests.Editor.TileViewTests.HighlightMethods_CreateRuntimeMaterialAndDoNotThrow" methodname="HighlightMethods_CreateRuntimeMaterialAndDoNotThrow" classname="TacticalCards.Tests.Editor.TileViewTests" runstate="Runnable" seed="1469693702" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.003308" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0046.xml
+]]></output>
+              </test-case>
+              <test-case id="1054" name="Initialize_SetsCoordinate" fullname="TacticalCards.Tests.Editor.TileViewTests.Initialize_SetsCoordinate" methodname="Initialize_SetsCoordinate" classname="TacticalCards.Tests.Editor.TileViewTests" runstate="Runnable" seed="1775671878" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001297" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0047.xml
+]]></output>
+              </test-case>
+              <test-case id="1055" name="SetOccupantAndClearOccupant_UpdateOccupancyState" fullname="TacticalCards.Tests.Editor.TileViewTests.SetOccupantAndClearOccupant_UpdateOccupancyState" methodname="SetOccupantAndClearOccupant_UpdateOccupancyState" classname="TacticalCards.Tests.Editor.TileViewTests" runstate="Runnable" seed="2035458805" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001502" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0048.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1057" name="TurnManagerTests" fullname="TacticalCards.Tests.Editor.TurnManagerTests" classname="TacticalCards.Tests.Editor.TurnManagerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.177272" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1060" name="EndPlayerTurn_WhenEnemyDefeatsLastPlayer_DoesNotRestartPlayerTurn" fullname="TacticalCards.Tests.Editor.TurnManagerTests.EndPlayerTurn_WhenEnemyDefeatsLastPlayer_DoesNotRestartPlayerTurn" methodname="EndPlayerTurn_WhenEnemyDefeatsLastPlayer_DoesNotRestartPlayerTurn" classname="TacticalCards.Tests.Editor.TurnManagerTests" runstate="Runnable" seed="2056796224" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.005768" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0049.xml
+]]></output>
+              </test-case>
+              <test-case id="1058" name="StartBattle_WhenNoEnemyUnits_EndsInPlayerVictory" fullname="TacticalCards.Tests.Editor.TurnManagerTests.StartBattle_WhenNoEnemyUnits_EndsInPlayerVictory" methodname="StartBattle_WhenNoEnemyUnits_EndsInPlayerVictory" classname="TacticalCards.Tests.Editor.TurnManagerTests" runstate="Runnable" seed="363223769" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001005" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0050.xml
+]]></output>
+              </test-case>
+              <test-case id="1059" name="StartBattle_WhenNoPlayerUnits_EndsInEnemyVictory" fullname="TacticalCards.Tests.Editor.TurnManagerTests.StartBattle_WhenNoPlayerUnits_EndsInEnemyVictory" methodname="StartBattle_WhenNoPlayerUnits_EndsInEnemyVictory" classname="TacticalCards.Tests.Editor.TurnManagerTests" runstate="Runnable" seed="1508376174" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.001391" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0051.xml
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1061" name="UnitControllerTests" fullname="TacticalCards.Tests.Editor.UnitControllerTests" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:26Z" duration="0.228931" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1062" name="CreateUnit_InitializesCurrentHpFromConfiguredValue" fullname="TacticalCards.Tests.Editor.UnitControllerTests.CreateUnit_InitializesCurrentHpFromConfiguredValue" methodname="CreateUnit_InitializesCurrentHpFromConfiguredValue" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="105141900" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.000953" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0052.xml
+]]></output>
+              </test-case>
+              <test-case id="1064" name="Guarding_ReducesNextHitAndThenClearsGuard" fullname="TacticalCards.Tests.Editor.UnitControllerTests.Guarding_ReducesNextHitAndThenClearsGuard" methodname="Guarding_ReducesNextHitAndThenClearsGuard" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="1305440831" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.000659" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0053.xml
+]]></output>
+              </test-case>
+              <test-case id="1065" name="Heal_DoesNotExceedMaxHp" fullname="TacticalCards.Tests.Editor.UnitControllerTests.Heal_DoesNotExceedMaxHp" methodname="Heal_DoesNotExceedMaxHp" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="1244982160" result="Passed" start-time="2026-04-17 04:53:25Z" end-time="2026-04-17 04:53:25Z" duration="0.000826" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0054.xml
+]]></output>
+              </test-case>
+              <test-case id="1067" name="SetGridPosition_UpdatesGridAndWorldPosition" fullname="TacticalCards.Tests.Editor.UnitControllerTests.SetGridPosition_UpdatesGridAndWorldPosition" methodname="SetGridPosition_UpdatesGridAndWorldPosition" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="1161112200" result="Passed" start-time="2026-04-17 04:53:26Z" end-time="2026-04-17 04:53:26Z" duration="0.001306" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0055.xml
+]]></output>
+              </test-case>
+              <test-case id="1063" name="TakeDamage_ReducesHitPoints" fullname="TacticalCards.Tests.Editor.UnitControllerTests.TakeDamage_ReducesHitPoints" methodname="TakeDamage_ReducesHitPoints" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="971893689" result="Passed" start-time="2026-04-17 04:53:26Z" end-time="2026-04-17 04:53:26Z" duration="0.000656" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0056.xml
+]]></output>
+              </test-case>
+              <test-case id="1066" name="TakeDamage_ToZero_DisablesGameObject" fullname="TacticalCards.Tests.Editor.UnitControllerTests.TakeDamage_ToZero_DisablesGameObject" methodname="TakeDamage_ToZero_DisablesGameObject" classname="TacticalCards.Tests.Editor.UnitControllerTests" runstate="Runnable" seed="315685989" result="Passed" start-time="2026-04-17 04:53:26Z" end-time="2026-04-17 04:53:26Z" duration="0.000672" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/EditMode/TestCoverageResults_0057.xml
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/5418ly/AppData/LocalLow/DefaultCompany/coursework\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

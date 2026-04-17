@@ -1,0 +1,112 @@
+\chapter{Test Strategy}
+
+This report uses a layered strategy because the project combines pure rule logic with scene-bound Unity behaviour. The final 2026-04-17 validation cycle confirms that the layered approach was appropriate: rule-dense managers were closed by consolidated EditMode reruns, while bootstrap and interaction flow were closed by scene-coupled EditMode tests plus one archived PlayMode smoke path \cite{courseSpecification,wr3PrepLog}.
+
+\section{Verification and Validation Roles}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.9cm}{\textbf{Layer}} & \wcell{3.4cm}{\textbf{Question answered}} & \wcell{3.7cm}{\textbf{Main methods}} & \wcell{3.2cm}{\textbf{Expected evidence}} \\
+\midrule
+\wcell{1.9cm}{Verification} & \wcell{3.4cm}{``Does the implemented code behave according to the intended rules?''} & \wcell{3.7cm}{EditMode unit tests, focused component tests, bug-fix reruns} & \wcell{3.2cm}{Pass/fail results, suite inventory, module coverage matrix} \\
+\wcell{1.9cm}{Validation} & \wcell{3.4cm}{``Does the prototype still behave like the intended single-battle slice for a user?''} & \wcell{3.7cm}{PlayMode smoke path, heuristic checks carried over from WR2, battle bootstrap tests} & \wcell{3.2cm}{Smoke result, UI feedback checks, and verified player-facing fixes} \\
+\wcell{1.9cm}{Process validation} & \wcell{3.4cm}{``Can the team show that testing work was planned, tracked, and reported honestly?''} & \wcell{3.7cm}{Milestone tables, defect register, execution summary, appendix evidence index} & \wcell{3.2cm}{Process chapter tables, synced supporting records, appendix source index} \\
+\bottomrule
+\end{tabular}
+\caption{Verification and validation responsibilities in this testing cycle.}
+\label{tab:verification-validation}
+\end{table}
+
+\section{TDD Use}
+
+The project followed a pragmatic TDD strategy rather than treating TDD as a slogan. For stable rule logic, the team used the normal \textit{red-green-refactor} loop: write or extend a failing EditMode test first, make the smallest code change needed to pass it, and then keep the test as part of the permanent rerun set. This was the main pattern for `TurnManager`, `DeckManager`, `CardResolver`, `GridManager`, `EnemyAI`, and `UnitController`.
+
+For bug fixes, the team used \textit{regression-first TDD}. Reported failures were first turned into executable checks, then fixed, and finally preserved as named rerun evidence. Scene-bound Unity classes required a lighter variant because not every behaviour can be isolated before object wiring exists, so `BattleUI`, `GameRoot`, `TileView`, and `CardButtonView` were handled with focused component tests plus a final smoke rerun. This pattern was especially useful when closing the WR2 onboarding and enemy-phase feedback issues, because the fixes depended on small prompt and summary helpers rather than large gameplay rewrites.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{2.8cm}{\textbf{TDD pattern}} & \wcell{4.1cm}{\textbf{Where it was used}} & \wcell{5.0cm}{\textbf{How the team followed it}} \\
+\midrule
+\wcell{2.8cm}{Red-green-refactor} & \wcell{4.1cm}{Rule-dense manager and controller logic} & \wcell{5.0cm}{Add or extend a failing EditMode test first, implement the smallest passing change, then keep the case in the rerun suite.} \\
+\wcell{2.8cm}{Regression-first TDD} & \wcell{4.1cm}{Known bugs and behavioural regressions} & \wcell{5.0cm}{Convert a discovered failure into a named test before fixing it so the same issue cannot quietly return later.} \\
+\wcell{2.8cm}{Test-assisted iteration} & \wcell{4.1cm}{Scene bootstrap, UI wiring, and interaction flow} & \wcell{5.0cm}{Use focused EditMode component tests for deterministic parts, then confirm end-to-end wiring with the PlayMode smoke path.} \\
+\bottomrule
+\end{tabular}
+\caption{How TDD was applied in practice during the testing cycle.}
+\label{tab:tdd-usage}
+\end{table}
+
+\section{Strategy Matrix}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.8cm}{\textbf{Test layer}} & \wcell{2.2cm}{\textbf{Main targets}} & \wcell{4.4cm}{\textbf{Reason for use}} & \wcell{3.5cm}{\textbf{Validation use}} \\
+\midrule
+\wcell{1.8cm}{EditMode unit tests} & \wcell{2.2cm}{`TurnManager`, `DeckManager`, `CardResolver`, `GridManager`, `EnemyAI`, `UnitController`} & \wcell{4.4cm}{These classes are rule-dense and can be created with lightweight runtime objects in editor tests.} & \wcell{3.5cm}{Primary evidence layer for core battle logic} \\
+\wcell{1.8cm}{Scene-coupled EditMode tests} & \wcell{2.2cm}{`BattleUI`, `GameRoot`, `TileView`, `CardButtonView`} & \wcell{4.4cm}{These classes depend on Unity objects and UI/event wiring but do not require a full real-time session.} & \wcell{3.5cm}{Focused evidence for bootstrap, prompt logic, UI wiring, and turn-summary feedback} \\
+\wcell{1.8cm}{PlayMode smoke test} & \wcell{2.2cm}{Main battle start path} & \wcell{4.4cm}{A small end-to-end checkpoint is needed so the report does not rely only on isolated rules.} & \wcell{3.5cm}{One archived smoke suite for scene initialisation and first playable turn} \\
+\wcell{1.8cm}{Manual / heuristic follow-up} & \wcell{2.2cm}{Onboarding clarity, enemy-turn readability} & \wcell{4.4cm}{These are player-facing quality issues that were first identified heuristically before being translated into targeted UI and turn-summary checks.} & \wcell{3.5cm}{Used to identify the two inherited WR2 issues and confirm the direction of the final fixes} \\
+\bottomrule
+\end{tabular}
+\caption{Test strategy matrix.}
+\label{tab:test-strategy-matrix}
+\end{table}
+
+\section{Environment and Tooling}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.1cm}{\textbf{Environment item}} & \wcell{3.1cm}{\textbf{Recorded value}} & \wcell{5.2cm}{\textbf{Why it matters}} \\
+\midrule
+\wcell{3.1cm}{Unity editor version} & \wcell{3.1cm}{`6000.3.11f1`} & \wcell{5.2cm}{All test execution and report claims are scoped to this editor version.} \\
+\wcell{3.1cm}{Project branch} & \wcell{3.1cm}{`test` integration branch} & \wcell{5.2cm}{Keeps the evidence aligned with one integration line rather than scattered local experiments.} \\
+\wcell{3.1cm}{Primary automation framework} & \wcell{3.1cm}{`com.unity.test-framework` `1.6.0`} & \wcell{5.2cm}{Supplies EditMode and PlayMode test execution.} \\
+\wcell{3.1cm}{Coverage tooling} & \wcell{3.1cm}{`com.unity.testtools.codecoverage` `1.3.0`} & \wcell{5.2cm}{Produced the archived quantitative evidence set, including `74.2\%` line coverage and `92.4\%` method coverage.} \\
+\wcell{3.1cm}{UI dependencies under test} & \wcell{3.1cm}{`com.unity.ugui` `2.0.0`, `com.unity.inputsystem` `1.19.0`} & \wcell{5.2cm}{Important because UI and click handling are part of the tested battle slice.} \\
+\wcell{3.1cm}{Execution path recorded} & \wcell{3.1cm}{Consolidated reruns + archived coverage export} & \wcell{5.2cm}{The report cites the final EditMode rerun, the PlayMode smoke rerun, and a batchmode coverage archive rather than discovery-only editor visibility.} \\
+\bottomrule
+\end{tabular}
+\caption{Testing environment and toolchain used by the validation cycle.}
+\label{tab:test-environment}
+\end{table}
+
+\section{Scope and Code-Change Guardrails}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.0cm}{\textbf{Guardrail}} & \wcell{4.4cm}{\textbf{Allowed change}} & \wcell{4.4cm}{\textbf{Disallowed change}} \\
+\midrule
+\wcell{3.0cm}{Gameplay scope} & \wcell{4.4cm}{Keep the single-battle vertical slice and its existing four-card ruleset} & \wcell{4.4cm}{Add unrelated new gameplay systems just to inflate report content} \\
+\wcell{3.0cm}{Testability refactors} & \wcell{4.4cm}{Small non-behavioural changes that clarify setup, state control, or dependency wiring for tests} & \wcell{4.4cm}{Behaviour-changing refactors that rewrite the prototype under the name of testing} \\
+\wcell{3.0cm}{Evidence claims} & \wcell{4.4cm}{Claim `Verified` only when a named rerun or archived export exists; keep implementation status separate from validation status} & \wcell{4.4cm}{Re-use start-of-cycle `Implemented` or `Discovered` labels as if they still describe the final state} \\
+\wcell{3.0cm}{Coverage metrics} & \wcell{4.4cm}{Archive raw OpenCover XML, generated reports, and summary tables before citing quantitative results} & \wcell{4.4cm}{Fabricate or round-trip coverage numbers without a traceable export on disk} \\
+\bottomrule
+\end{tabular}
+\caption{Guardrails that keep the report focused on validation rather than feature drift.}
+\label{tab:wr3-guardrails}
+\end{table}
+
+\section{Coverage Strategy}
+
+\begin{itemize}
+    \item The first quantitative layer is \textbf{suite volume}: the scoped suite contains `58` test methods across `11` suite files.
+    \item The second quantitative layer is \textbf{traceability}: the report includes both a requirements coverage matrix and a module/class coverage matrix, and both now resolve to rerun-backed evidence.
+    \item The third quantitative layer is \textbf{execution confirmation}: all `58` authored test methods are backed by named rerun records in the archived 2026-04-17 execution set.
+    \item The fourth quantitative layer is \textbf{line and method coverage}: the archived report records `868/1169` covered lines (`74.2\%`) and `146/158` covered methods (`92.4\%`).
+    \item The lowest-covered runtime target is still `BattleUI` at `56.2\%` line coverage, but it is now directly exercised by `19` tests and is no longer treated as an unaddressed evidence gap.
+\end{itemize}

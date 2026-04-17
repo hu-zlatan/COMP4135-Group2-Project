@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.146025">
+  <test-suite type="TestSuite" id="1010" name="coursework" fullname="coursework" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.146025" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1003" name="Assembly-CSharp.dll" fullname="F:/unity/Unity-Project-clean-init-wr3-coverage/coursework/Library/ScriptAssemblies/Assembly-CSharp.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.134509" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48424" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1004" name="TacticalCards" fullname="TacticalCards" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.133676" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1005" name="Tests" fullname="TacticalCards.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.133130" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1006" name="PlayMode" fullname="TacticalCards.Tests.PlayMode" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.132653" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="BattleFlowPlayModeTests" fullname="TacticalCards.Tests.PlayMode.BattleFlowPlayModeTests" classname="TacticalCards.Tests.PlayMode.BattleFlowPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.131240" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="GameRoot_Start_InitializesBattleReadyState" fullname="TacticalCards.Tests.PlayMode.BattleFlowPlayModeTests.GameRoot_Start_InitializesBattleReadyState" methodname="GameRoot_Start_InitializesBattleReadyState" classname="TacticalCards.Tests.PlayMode.BattleFlowPlayModeTests" runstate="Runnable" seed="491350058" result="Passed" start-time="2026-04-17 04:54:11Z" end-time="2026-04-17 04:54:11Z" duration="0.050172" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in F:/unity/Unity-Project-clean-init/doc/src/project-records/testing/coverage/2026-04-17/coursework-opencov/PlayMode/TestCoverageResults_0001.xml
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/5418ly/AppData/LocalLow/DefaultCompany/coursework\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

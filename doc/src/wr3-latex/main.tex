@@ -1,0 +1,79 @@
+\documentclass[a4paper,12pt,oneside]{report}
+
+\usepackage[left=1.55in,right=1.15in,top=1in,bottom=1.15in]{geometry}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyvrb}
+
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.misc,fit,calc}
+\pgfplotsset{compat=1.18}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red,
+    citecolor=green
+}
+\urlstyle{tt}
+\graphicspath{{figures/}}
+
+\setlist[itemize]{leftmargin=1.35em,topsep=4pt,itemsep=3pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{leftmargin=1.6em,topsep=4pt,itemsep=4pt,parsep=0pt,partopsep=0pt}
+\renewcommand{\arraystretch}{1.18}
+
+\newcommand{\projectname}{Tactical Cards}
+\newcommand{\groupname}{Group 2 (\projectname)}
+\newcommand{\submissiondate}{17/04/2026}
+\newcommand{\wcell}[2]{\parbox[t]{#1}{\raggedright #2}}
+\newcommand{\code}[1]{\begingroup\small\path{#1}\endgroup}
+\renewcommand{\bibname}{Reference}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\vspace*{20pt}
+\includegraphics[width=0.55\textwidth]{../wr2-latex/nottingham-logo.png}\\[1cm]
+\vspace{28pt}
+{\Large\bfseries COMP4135 SEM Weekly Report 3}\\[18pt]
+{\large\bfseries \groupname}\\[34pt]
+{\large\bfseries Team members}\\[14pt]
+Guangjun HU (20511787)\\
+Hongshuo HU (20808603)\\
+Cheng YE (20513323)\\
+Zehan CHEN (20807750)\\[32pt]
+School of Computer Science\\
+University of Nottingham
+\end{center}
+
+\vfill
+\begin{center}
+\textbf{Submission Date: \submissiondate}
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\input{sections/01-process-management}
+\input{sections/02-test-strategy}
+\input{sections/03-test-plan}
+\input{sections/04-validation-results}
+\input{sections/05-summary-reflections}
+
+\newpage
+\addcontentsline{toc}{chapter}{Reference}
+\bibliographystyle{plain}
+\bibliography{references}
+
+\input{appendices/appendix}
+
+\end{document}

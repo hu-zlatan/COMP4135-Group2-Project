@@ -105,7 +105,7 @@ namespace TacticalCards
 
             if (selectedUnit == null)
             {
-                statusMessage = "Select a unit first.";
+                statusMessage = GetSelectionStatusMessage();
                 AddLog(statusMessage);
                 Refresh();
                 return;
@@ -122,7 +122,7 @@ namespace TacticalCards
                 return;
             }
 
-            statusMessage = card == null ? "Card selection cleared." : $"Selected {card.CardName}.";
+            statusMessage = GetSelectionStatusMessage();
             AddLog(statusMessage);
             Refresh();
         }
@@ -130,7 +130,7 @@ namespace TacticalCards
         public void ClearSelectedCard()
         {
             SelectedCard = null;
-            statusMessage = GetIdleStatusMessage();
+            statusMessage = GetSelectionStatusMessage();
             AddLog(statusMessage);
             Refresh();
         }
@@ -192,7 +192,7 @@ namespace TacticalCards
 
             if (!CanPlayUnitCard(caster, targetUnit))
             {
-                statusMessage = "Invalid unit target.";
+                statusMessage = GetInvalidUnitTargetMessage(targetUnit);
                 AddLog(statusMessage);
                 Refresh();
                 return false;
@@ -272,11 +272,31 @@ namespace TacticalCards
             return false;
         }
 
-        private string GetInvalidUnitTargetMessage()
+        private string GetInvalidUnitTargetMessage(UnitController targetUnit)
         {
             if (SelectedCard == null)
             {
                 return "No card selected.";
+            }
+
+            if (selectedUnit == null)
+            {
+                return "Select a player unit first.";
+            }
+
+            if (targetUnit == null)
+            {
+                return "Invalid unit target.";
+            }
+
+            if (!targetUnit.IsAlive)
+            {
+                return $"{targetUnit.DisplayName} is already defeated.";
+            }
+
+            if (targetUnit.Team == selectedUnit.Team)
+            {
+                return "Select an enemy unit.";
             }
 
             return SelectedCard.CardType switch
@@ -311,10 +331,7 @@ namespace TacticalCards
             {
                 if (clickedUnit.Team == TeamType.Player && clickedUnit.IsAlive)
                 {
-                    selectedUnit = clickedUnit;
-                    statusMessage = $"Selected {clickedUnit.DisplayName}.";
-                    AddLog($"{clickedUnit.DisplayName} selected at {clickedUnit.GridPosition.x},{clickedUnit.GridPosition.y}.");
-                    Refresh();
+                    HandlePlayerUnitSelected(clickedUnit);
                     return;
                 }
 
@@ -322,7 +339,7 @@ namespace TacticalCards
                 {
                     if (!CanPlayUnitCard(selectedUnit, clickedUnit))
                     {
-                        statusMessage = GetInvalidUnitTargetMessage();
+                        statusMessage = GetInvalidUnitTargetMessage(clickedUnit);
                         AddLog($"{statusMessage} Caster {selectedUnit.DisplayName}@{selectedUnit.GridPosition.x},{selectedUnit.GridPosition.y}, Target {clickedUnit.DisplayName}@{clickedUnit.GridPosition.x},{clickedUnit.GridPosition.y}.");
                         Refresh();
                     }
@@ -403,9 +420,7 @@ namespace TacticalCards
                 turnManager?.EndPlayerTurn();
                 SelectedCard = null;
                 selectedUnit = null;
-                statusMessage = turnManager != null && turnManager.BattleEnded
-                    ? turnManager.BattleOutcomeSummary
-                    : turnManager?.LastEnemyActionSummary ?? "Enemy turn resolved. New player turn started.";
+                statusMessage = GetEndTurnStatusMessage();
                 AddLog(statusMessage);
                 Refresh();
             }
@@ -586,14 +601,89 @@ namespace TacticalCards
             return turnManager.IsPlayerTurn ? "Player Turn" : "Enemy Turn";
         }
 
-        private string GetIdleStatusMessage()
+        private void HandlePlayerUnitSelected(UnitController unit)
+        {
+            if (unit == null)
+            {
+                return;
+            }
+
+            selectedUnit = unit;
+            statusMessage = GetSelectionStatusMessage();
+            AddLog(BuildSelectionLogMessage(unit));
+            Refresh();
+        }
+
+        private string BuildSelectionLogMessage(UnitController unit)
+        {
+            var baseMessage = $"{unit.DisplayName} selected at {unit.GridPosition.x},{unit.GridPosition.y}.";
+            if (SelectedCard == null)
+            {
+                return $"{baseMessage} Next: choose a card.";
+            }
+
+            return $"{baseMessage} {GetNextStepMessage()}";
+        }
+
+        private string GetSelectionStatusMessage()
         {
             if (IsBattleOver)
             {
                 return turnManager.BattleOutcomeSummary;
             }
 
-            return selectedUnit == null ? "Select a player unit." : $"Selected {selectedUnit.DisplayName}.";
+            if (selectedUnit == null)
+            {
+                return SelectedCard == null
+                    ? "Select a player unit."
+                    : $"{SelectedCard.CardName} selected. Next: select a player unit.";
+            }
+
+            if (SelectedCard == null)
+            {
+                return $"{selectedUnit.DisplayName} selected. Next: choose a card.";
+            }
+
+            return $"{selectedUnit.DisplayName} selected. {SelectedCard.CardName} ready. {GetNextStepMessage()}";
+        }
+
+        private string GetNextStepMessage()
+        {
+            if (SelectedCard == null)
+            {
+                return "Next: choose a card.";
+            }
+
+            return SelectedCard.TargetType switch
+            {
+                TargetType.Tile => "Next: choose a tile target.",
+                TargetType.EnemyUnit => "Next: choose an enemy target.",
+                TargetType.Self => "Next: choose your unit tile.",
+                _ => "Next: choose a target.",
+            };
+        }
+
+        private string GetIdleStatusMessage()
+        {
+            return GetSelectionStatusMessage();
+        }
+
+        private string GetEndTurnStatusMessage()
+        {
+            if (turnManager == null)
+            {
+                return "Enemy phase: Enemy turn resolved. New player turn started.";
+            }
+
+            if (turnManager.BattleEnded)
+            {
+                return turnManager.BattleOutcomeSummary;
+            }
+
+            var summary = string.IsNullOrWhiteSpace(turnManager.LastEnemyActionSummary)
+                ? "Enemy turn resolved. New player turn started."
+                : turnManager.LastEnemyActionSummary;
+            return $"Enemy phase: {summary}";
         }
 
         private void ApplyBattleOutcomeStatus(bool logOutcome)

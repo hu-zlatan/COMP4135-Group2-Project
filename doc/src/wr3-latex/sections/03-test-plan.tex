@@ -1,0 +1,97 @@
+\chapter{Test Plan}
+
+The test plan was built backward from the codebase rather than from generic test-type labels. In the final 2026-04-17 report state, the plan is no longer prospective: every scoped runtime class has a direct suite, the smoke path has been rerun, and the supporting records now describe a closed validation cycle rather than a future rerun intention.
+
+\section{Requirements Coverage Matrix}
+
+\setlength{\tabcolsep}{3pt}
+\footnotesize
+\begin{longtable}{lll}
+\caption{Requirements coverage matrix for the final single-battle validation set.}
+\label{tab:requirements-coverage}\\
+\toprule
+\wcell{1.00cm}{\textbf{Req. ID}} & \wcell{3.15cm}{\textbf{Requirement / expected behaviour}} & \wcell{8.35cm}{\textbf{Coverage evidence and validation note}} \\
+\midrule
+\endfirsthead
+\toprule
+\wcell{1.00cm}{\textbf{Req. ID}} & \wcell{3.15cm}{\textbf{Requirement / expected behaviour}} & \wcell{8.35cm}{\textbf{Coverage evidence and validation note}} \\
+\midrule
+\endhead
+\wcell{1.00cm}{R-01} & \wcell{3.15cm}{The battle scene must initialise a single playable tactical battle.} & \wcell{8.35cm}{Primary suites: \code{GameRootTests} and \code{BattleFlowPlayModeTests}. Status: Verified. Confirmed by direct bootstrap tests and the PlayMode smoke rerun.} \\
+\wcell{1.00cm}{R-02} & \wcell{3.15cm}{Units must register to the correct team and occupy valid starting tiles.} & \wcell{8.35cm}{Primary suites: \code{GameRootTests} and \code{GridManagerTests}. Status: Verified. Registration, placement, and occupancy checks all passed in the consolidated rerun.} \\
+\wcell{1.00cm}{R-03} & \wcell{3.15cm}{The player turn must reset card plays and draw a fresh hand each round.} & \wcell{8.35cm}{Primary suites: \code{TurnManagerTests} and \code{DeckManagerTests}. Status: Verified. Turn flow and deck-hand lifecycle are both backed by named reruns.} \\
+\wcell{1.00cm}{R-04} & \wcell{3.15cm}{Move cards must allow valid tile movement only.} & \wcell{8.35cm}{Primary suites: \code{CardResolverTests} and \code{GridManagerTests}. Status: Verified. Movement range, placement, and execution branches all passed.} \\
+\wcell{1.00cm}{R-05} & \wcell{3.15cm}{Strike cards must damage adjacent enemies and reject friendly targets.} & \wcell{8.35cm}{Primary suites: \code{CardResolverTests} and \code{BattleUITests}. Status: Verified. Direct resolver and UI-triggered strike behaviour are both rerun-backed.} \\
+\wcell{1.00cm}{R-06} & \wcell{3.15cm}{Guard cards must apply a temporary defensive state.} & \wcell{8.35cm}{Primary suites: \code{CardResolverTests}, \code{UnitControllerTests}, and \code{BattleUITests}. Status: Verified. Guard resolution, guard consumption, and UI guard flow all passed.} \\
+\wcell{1.00cm}{R-07} & \wcell{3.15cm}{Push cards must damage the target and attempt knock-back.} & \wcell{8.35cm}{Primary suites: \code{CardResolverTests} and \code{GridManagerTests}. Status: Verified. Damage plus movement constraints are covered by passing rerun evidence.} \\
+\wcell{1.00cm}{R-08} & \wcell{3.15cm}{Enemy turns must target the nearest alive player and either move or attack.} & \wcell{8.35cm}{Primary suites: \code{EnemyAITests} and \code{TurnManagerTests}. Status: Verified. AI selection logic and turn-loop orchestration both have passing rerun evidence.} \\
+\wcell{1.00cm}{R-09} & \wcell{3.15cm}{Battle end must lock the loop and expose a consistent outcome state.} & \wcell{8.35cm}{Primary suites: \code{TurnManagerTests} and \code{BattleUITests}. Status: Verified. Earlier regression evidence was preserved and the broader rerun passed.} \\
+\wcell{1.00cm}{R-10} & \wcell{3.15cm}{The UI must prompt the player when selection or target conditions are invalid.} & \wcell{8.35cm}{Primary suites: \code{BattleUITests} and \code{CardButtonViewTests}. Status: Verified. Direct UI prompt and button-binding suites both passed in the consolidated rerun.} \\
+\bottomrule
+\end{longtable}
+\normalsize
+\setlength{\tabcolsep}{6pt}
+
+\section{Module and Class Coverage Summary}
+
+\setlength{\tabcolsep}{4pt}
+\footnotesize
+\begin{longtable}{ll}
+\caption{Module/class coverage summary for the final validation set.}
+\label{tab:module-coverage}\\
+\toprule
+\wcell{4.55cm}{\textbf{Runtime target and direct evidence}} & \wcell{7.65cm}{\textbf{Covered behaviours and validation status}} \\
+\midrule
+\endfirsthead
+\toprule
+\wcell{4.55cm}{\textbf{Runtime target and direct evidence}} & \wcell{7.65cm}{\textbf{Covered behaviours and validation status}} \\
+\midrule
+\endhead
+\wcell{4.55cm}{\code{TurnManager}\\\code{TurnManagerTests}\\3 tests} & \wcell{7.65cm}{Battle start without valid sides, card-play quota consumption, end-turn transition, and battle-end lock. Status: Verified.} \\
+\wcell{4.55cm}{\code{DeckManager}\\\code{DeckManagerTests}\\6 tests} & \wcell{7.65cm}{Fallback deck build, draw count, discard handling, reshuffle behaviour, and the empty-deck branch. Status: Verified.} \\
+\wcell{4.55cm}{\code{CardResolver}\\\code{CardResolverTests}\\6 tests} & \wcell{7.65cm}{Valid target ranges plus move, strike, guard, push, and invalid/friendly target rejection. Status: Verified.} \\
+\wcell{4.55cm}{\code{GridManager}\\\code{GridManagerTests}\\7 tests} & \wcell{7.65cm}{Grid generation, bounds, placement, movement, push limits, neighbour lookup, BFS range, and highlight reset. Status: Verified.} \\
+\wcell{4.55cm}{\code{EnemyAI}\\\code{EnemyAITests}\\4 tests} & \wcell{7.65cm}{Manhattan distance, nearest-target selection, step-direction priority, and dead-target skipping. Status: Verified.} \\
+\wcell{4.55cm}{\code{UnitController}\\\code{UnitControllerTests}\\6 tests} & \wcell{7.65cm}{HP init, damage, guard reduction, healing clamp, death deactivate, and position sync. Status: Verified.} \\
+\wcell{4.55cm}{\code{BattleUI}\\\code{BattleUITests}\\19 tests} & \wcell{7.65cm}{Card selection prompts, strengthened next-step messaging, enemy/action summaries, guard auto-resolve, invalid target rejection, action-log updates, and battle-end UI lock. Status: Verified.} \\
+\wcell{4.55cm}{\code{GameRoot}\\\code{GameRootTests}\\2 tests} & \wcell{7.65cm}{Dependency wiring, scene bootstrap, unit registration, and initial battle start. Status: Verified.} \\
+\wcell{4.55cm}{\code{TileView}\\\code{TileViewTests}\\3 tests} & \wcell{7.65cm}{Coordinate init, occupancy changes, and visual highlight method safety. Status: Verified.} \\
+\wcell{4.55cm}{\code{CardButtonView}\\\code{CardButtonViewTests}\\1 test} & \wcell{7.65cm}{UI button-to-card selection binding. Status: Verified.} \\
+\wcell{4.55cm}{Smoke path\\\code{BattleFlow}\\\code{PlayModeTests}\\1 test} & \wcell{7.65cm}{Whole battle bootstrap and first playable state. Status: Verified.} \\
+\bottomrule
+\end{longtable}
+\normalsize
+\setlength{\tabcolsep}{6pt}
+
+\section{Final Suite Inventory}
+
+\setlength{\tabcolsep}{4pt}
+\footnotesize
+\begin{longtable}{ll}
+\caption{Final suite inventory used by the validation results.}
+\label{tab:suite-inventory}\\
+\toprule
+\wcell{4.20cm}{\textbf{Suite file, mode, and method count}} & \wcell{8.10cm}{\textbf{Main role in the validated suite}} \\
+\midrule
+\endfirsthead
+\toprule
+\wcell{4.20cm}{\textbf{Suite file, mode, and method count}} & \wcell{8.10cm}{\textbf{Main role in the validated suite}} \\
+\midrule
+\endhead
+\wcell{4.20cm}{\code{TurnManagerTests}\\EditMode, 3 methods} & \wcell{8.10cm}{Preserve the battle-end regression layer and verify turn-loop correctness.} \\
+\wcell{4.20cm}{\code{DeckManagerTests}\\EditMode, 6 methods} & \wcell{8.10cm}{Stabilise hand, deck, discard, and reshuffle rules.} \\
+\wcell{4.20cm}{\code{EnemyAITests}\\EditMode, 4 methods} & \wcell{8.10cm}{Separate deterministic AI rules from turn-loop orchestration.} \\
+\wcell{4.20cm}{\code{UnitControllerTests}\\EditMode, 6 methods} & \wcell{8.10cm}{Lock state changes around HP, guard, death, and movement.} \\
+\wcell{4.20cm}{\code{GridManagerTests}\\EditMode, 7 methods} & \wcell{8.10cm}{Cover the grid as a shared dependency for move, strike, and push logic.} \\
+\wcell{4.20cm}{\code{CardResolverTests}\\EditMode, 6 methods} & \wcell{8.10cm}{Test card semantics directly without UI indirection.} \\
+\wcell{4.20cm}{\code{BattleUITests}\\EditMode, 19 methods} & \wcell{8.10cm}{Capture UI prompt logic, strengthened onboarding and enemy-phase summaries, auto-resolve behaviour, helper branches, and action-log updates.} \\
+\wcell{4.20cm}{\code{GameRootTests}\\EditMode, 2 methods} & \wcell{8.10cm}{Verify scene bootstrap and dependency discovery without a full play session.} \\
+\wcell{4.20cm}{\code{TileViewTests}\\EditMode, 3 methods} & \wcell{8.10cm}{Verify tile coordinate, occupancy, and highlight behaviour used by grid/UI flows.} \\
+\wcell{4.20cm}{\code{CardButtonViewTests}\\EditMode, 1 method} & \wcell{8.10cm}{Verify the click-binding handoff from button to battle UI.} \\
+\wcell{4.20cm}{\code{BattleFlow}\\\code{PlayModeTests}\\PlayMode, 1 method} & \wcell{8.10cm}{Provide one end-to-end smoke checkpoint for battle bootstrap and first playable turn.} \\
+\bottomrule
+\end{longtable}
+\normalsize
+\setlength{\tabcolsep}{6pt}
+
+The test plan has therefore closed its original gaps: every targeted runtime class is directly tested, the smoke path is rerun-backed, and the supporting records now describe a validated suite rather than a hypothetical one.
