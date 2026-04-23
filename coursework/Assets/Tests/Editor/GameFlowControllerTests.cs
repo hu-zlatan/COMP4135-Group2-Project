@@ -26,6 +26,18 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void Initialize_BuildsThemedTitlePresentation()
+        {
+            using var scope = CreateContext(out var controller, out _, withEnemy: true);
+
+            var titlePanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "titlePanel");
+
+            Assert.That(titlePanel.transform.Find("TitleBanner"), Is.Not.Null);
+            Assert.That(titlePanel.transform.Find("TitleContent/StartButton"), Is.Not.Null);
+            Assert.That(titlePanel.transform.Find("TitleContent/BrandIcon").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+        }
+
+        [Test]
         public void StartGame_WithBattleReadyUnits_TransitionsToBattle()
         {
             using var scope = CreateContext(out var controller, out _, withEnemy: true);

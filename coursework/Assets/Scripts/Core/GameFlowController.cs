@@ -130,9 +130,9 @@ namespace TacticalCards
                 return;
             }
 
-            titlePanel = CreateFullScreenPanel("TitlePanel", new Color(0.06f, 0.10f, 0.15f, 0.96f), blocksRaycasts: true);
+            titlePanel = CreateFullScreenPanel("TitlePanel", new Color(0.10f, 0.08f, 0.06f, 0.98f), blocksRaycasts: true, UiThemeResources.Paths.PanelSecondary);
             battlePanel = CreateFullScreenPanel("BattlePanel", new Color(0f, 0f, 0f, 0f), blocksRaycasts: false);
-            resultPanel = CreateFullScreenPanel("ResultPanel", new Color(0.07f, 0.09f, 0.13f, 0.92f), blocksRaycasts: true);
+            resultPanel = CreateFullScreenPanel("ResultPanel", new Color(0.10f, 0.08f, 0.06f, 0.96f), blocksRaycasts: true, UiThemeResources.Paths.PanelSecondary);
 
             BuildTitlePanel();
             BuildResultPanel();
@@ -140,52 +140,93 @@ namespace TacticalCards
 
         private void BuildTitlePanel()
         {
-            var brand = CreateText("BrandMark", titlePanel.transform, gameTitle, 42, FontStyle.Bold, TextAnchor.UpperCenter);
-            SetRect(brand.rectTransform, new Vector2(0.15f, 0.72f), new Vector2(0.85f, 0.88f), Vector2.zero, Vector2.zero);
+            var banner = CreateDecorativeImage("TitleBanner", titlePanel.transform, UiThemeResources.Paths.TitleBanner, new Color(1f, 1f, 1f, 0.95f));
+            SetRect(banner.rectTransform, new Vector2(0.19f, 0.76f), new Vector2(0.81f, 0.95f), Vector2.zero, Vector2.zero);
 
-            var subtitle = CreateText("Subtitle", titlePanel.transform, gameSubtitle, 22, FontStyle.Italic, TextAnchor.UpperCenter);
-            subtitle.color = new Color(0.83f, 0.88f, 0.92f);
-            SetRect(subtitle.rectTransform, new Vector2(0.18f, 0.60f), new Vector2(0.82f, 0.72f), Vector2.zero, Vector2.zero);
+            var contentPanel = CreatePanel("TitleContent", titlePanel.transform, new Color(0.34f, 0.26f, 0.18f, 0.98f), UiThemeResources.Paths.PanelPrimary);
+            SetRect(contentPanel.GetComponent<RectTransform>(), new Vector2(0.21f, 0.18f), new Vector2(0.79f, 0.72f), Vector2.zero, Vector2.zero);
 
-            titleSummaryText = CreateText("TitleSummary", titlePanel.transform, string.Empty, 18, FontStyle.Normal, TextAnchor.MiddleCenter);
+            var crest = CreateDecorativeImage("BrandIcon", contentPanel.transform, UiThemeResources.Paths.IconCrown, new Color(0.90f, 0.80f, 0.56f, 1f));
+            SetRect(crest.rectTransform, new Vector2(0.43f, 0.72f), new Vector2(0.57f, 0.92f), Vector2.zero, Vector2.zero);
+
+            var brand = CreateText("BrandMark", contentPanel.transform, gameTitle, 40, FontStyle.Bold, TextAnchor.UpperCenter);
+            SetRect(brand.rectTransform, new Vector2(0.10f, 0.54f), new Vector2(0.90f, 0.78f), Vector2.zero, Vector2.zero);
+
+            var subtitle = CreateText("Subtitle", contentPanel.transform, gameSubtitle, 22, FontStyle.Italic, TextAnchor.UpperCenter);
+            UiThemeResources.ApplyTextStyle(subtitle, UiThemeResources.MutedTextColor);
+            SetRect(subtitle.rectTransform, new Vector2(0.12f, 0.42f), new Vector2(0.88f, 0.56f), Vector2.zero, Vector2.zero);
+
+            titleSummaryText = CreateText("TitleSummary", contentPanel.transform, string.Empty, 18, FontStyle.Normal, TextAnchor.MiddleCenter);
             titleSummaryText.horizontalOverflow = HorizontalWrapMode.Wrap;
             titleSummaryText.verticalOverflow = VerticalWrapMode.Overflow;
-            SetRect(titleSummaryText.rectTransform, new Vector2(0.20f, 0.40f), new Vector2(0.80f, 0.58f), Vector2.zero, Vector2.zero);
+            UiThemeResources.ApplyTextStyle(titleSummaryText, UiThemeResources.MutedTextColor);
+            SetRect(titleSummaryText.rectTransform, new Vector2(0.12f, 0.20f), new Vector2(0.88f, 0.42f), Vector2.zero, Vector2.zero);
 
-            var startButton = CreateButton("StartButton", titlePanel.transform, "Start Battle", StartGame);
-            SetRect(startButton.GetComponent<RectTransform>(), new Vector2(0.38f, 0.24f), new Vector2(0.62f, 0.34f), Vector2.zero, Vector2.zero);
+            var startButton = CreateButton("StartButton", contentPanel.transform, "Start Battle", StartGame, false);
+            SetRect(startButton.GetComponent<RectTransform>(), new Vector2(0.32f, 0.06f), new Vector2(0.68f, 0.18f), Vector2.zero, Vector2.zero);
         }
 
         private void BuildResultPanel()
         {
-            var brand = CreateText("ResultBrand", resultPanel.transform, gameTitle, 28, FontStyle.Bold, TextAnchor.UpperCenter);
-            SetRect(brand.rectTransform, new Vector2(0.20f, 0.78f), new Vector2(0.80f, 0.90f), Vector2.zero, Vector2.zero);
+            var banner = CreateDecorativeImage("ResultBanner", resultPanel.transform, UiThemeResources.Paths.ResultBanner, new Color(1f, 1f, 1f, 0.95f));
+            SetRect(banner.rectTransform, new Vector2(0.22f, 0.77f), new Vector2(0.78f, 0.94f), Vector2.zero, Vector2.zero);
 
-            resultTitleText = CreateText("ResultTitle", resultPanel.transform, "Result", 32, FontStyle.Bold, TextAnchor.MiddleCenter);
-            SetRect(resultTitleText.rectTransform, new Vector2(0.24f, 0.60f), new Vector2(0.76f, 0.74f), Vector2.zero, Vector2.zero);
+            var contentPanel = CreatePanel("ResultContent", resultPanel.transform, new Color(0.34f, 0.26f, 0.18f, 0.98f), UiThemeResources.Paths.PanelPrimary);
+            SetRect(contentPanel.GetComponent<RectTransform>(), new Vector2(0.23f, 0.16f), new Vector2(0.77f, 0.70f), Vector2.zero, Vector2.zero);
 
-            resultSummaryText = CreateText("ResultSummary", resultPanel.transform, string.Empty, 18, FontStyle.Normal, TextAnchor.MiddleCenter);
+            var brand = CreateText("ResultBrand", contentPanel.transform, gameTitle, 26, FontStyle.Bold, TextAnchor.UpperCenter);
+            UiThemeResources.ApplyTextStyle(brand, UiThemeResources.MutedTextColor);
+            SetRect(brand.rectTransform, new Vector2(0.14f, 0.78f), new Vector2(0.86f, 0.92f), Vector2.zero, Vector2.zero);
+
+            var crest = CreateDecorativeImage("ResultIcon", contentPanel.transform, UiThemeResources.Paths.IconCardsFan, new Color(0.92f, 0.83f, 0.62f, 1f));
+            SetRect(crest.rectTransform, new Vector2(0.42f, 0.58f), new Vector2(0.58f, 0.76f), Vector2.zero, Vector2.zero);
+
+            resultTitleText = CreateText("ResultTitle", contentPanel.transform, "Result", 32, FontStyle.Bold, TextAnchor.MiddleCenter);
+            SetRect(resultTitleText.rectTransform, new Vector2(0.20f, 0.42f), new Vector2(0.80f, 0.60f), Vector2.zero, Vector2.zero);
+
+            resultSummaryText = CreateText("ResultSummary", contentPanel.transform, string.Empty, 18, FontStyle.Normal, TextAnchor.MiddleCenter);
             resultSummaryText.horizontalOverflow = HorizontalWrapMode.Wrap;
             resultSummaryText.verticalOverflow = VerticalWrapMode.Overflow;
-            SetRect(resultSummaryText.rectTransform, new Vector2(0.22f, 0.36f), new Vector2(0.78f, 0.60f), Vector2.zero, Vector2.zero);
+            UiThemeResources.ApplyTextStyle(resultSummaryText, UiThemeResources.MutedTextColor);
+            SetRect(resultSummaryText.rectTransform, new Vector2(0.14f, 0.16f), new Vector2(0.86f, 0.42f), Vector2.zero, Vector2.zero);
 
-            var replayButton = CreateButton("ReplayButton", resultPanel.transform, "Replay", ReplayBattle);
-            SetRect(replayButton.GetComponent<RectTransform>(), new Vector2(0.28f, 0.18f), new Vector2(0.46f, 0.28f), Vector2.zero, Vector2.zero);
+            var replayButton = CreateButton("ReplayButton", contentPanel.transform, "Replay", ReplayBattle, false);
+            SetRect(replayButton.GetComponent<RectTransform>(), new Vector2(0.16f, 0.04f), new Vector2(0.44f, 0.14f), Vector2.zero, Vector2.zero);
 
-            var menuButton = CreateButton("MenuButton", resultPanel.transform, "Back To Menu", ReturnToMenu);
-            SetRect(menuButton.GetComponent<RectTransform>(), new Vector2(0.54f, 0.18f), new Vector2(0.72f, 0.28f), Vector2.zero, Vector2.zero);
+            var menuButton = CreateButton("MenuButton", contentPanel.transform, "Back To Menu", ReturnToMenu, true);
+            SetRect(menuButton.GetComponent<RectTransform>(), new Vector2(0.56f, 0.04f), new Vector2(0.84f, 0.14f), Vector2.zero, Vector2.zero);
         }
 
-        private GameObject CreateFullScreenPanel(string name, Color background, bool blocksRaycasts)
+        private GameObject CreateFullScreenPanel(string name, Color background, bool blocksRaycasts, string spritePath = null)
         {
             var panel = new GameObject(name);
             panel.transform.SetParent(canvas.transform, false);
             var image = panel.AddComponent<Image>();
-            image.color = background;
+            UiThemeResources.ApplySprite(image, spritePath, background);
             image.raycastTarget = blocksRaycasts;
             var rectTransform = panel.GetComponent<RectTransform>() ?? panel.AddComponent<RectTransform>();
             SetRect(rectTransform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             return panel;
+        }
+
+        private static GameObject CreatePanel(string name, Transform parent, Color background, string spritePath)
+        {
+            var panel = new GameObject(name);
+            panel.transform.SetParent(parent, false);
+            var image = panel.AddComponent<Image>();
+            UiThemeResources.ApplySprite(image, spritePath, background);
+            image.raycastTarget = false;
+            return panel;
+        }
+
+        private static Image CreateDecorativeImage(string name, Transform parent, string spritePath, Color tint)
+        {
+            var imageObject = new GameObject(name);
+            imageObject.transform.SetParent(parent, false);
+            var image = imageObject.AddComponent<Image>();
+            UiThemeResources.ApplySprite(image, spritePath, tint, preserveAspect: true);
+            image.raycastTarget = false;
+            return image;
         }
 
         private static Text CreateText(string name, Transform parent, string content, int fontSize, FontStyle fontStyle, TextAnchor alignment)
@@ -198,23 +239,26 @@ namespace TacticalCards
             text.fontSize = fontSize;
             text.fontStyle = fontStyle;
             text.alignment = alignment;
-            text.color = new Color(0.94f, 0.96f, 0.98f);
             text.raycastTarget = false;
+            UiThemeResources.ApplyTextStyle(text, UiThemeResources.BrightTextColor);
             return text;
         }
 
-        private static Button CreateButton(string name, Transform parent, string label, UnityEngine.Events.UnityAction action)
+        private static Button CreateButton(string name, Transform parent, string label, UnityEngine.Events.UnityAction action, bool useDangerStyle)
         {
             var buttonObject = new GameObject(name);
             buttonObject.transform.SetParent(parent, false);
             var image = buttonObject.AddComponent<Image>();
-            image.color = new Color(0.87f, 0.54f, 0.22f, 0.95f);
+            UiThemeResources.ApplySprite(
+                image,
+                useDangerStyle ? UiThemeResources.Paths.ButtonDanger : UiThemeResources.Paths.ButtonPrimary,
+                Color.white);
             var button = buttonObject.AddComponent<Button>();
             button.targetGraphic = image;
             button.onClick.AddListener(action);
 
             var labelText = CreateText("Label", buttonObject.transform, label, 18, FontStyle.Bold, TextAnchor.MiddleCenter);
-            labelText.color = new Color(0.12f, 0.10f, 0.08f);
+            UiThemeResources.ApplyTextStyle(labelText, UiThemeResources.InkColor);
             SetRect(labelText.rectTransform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             return button;
         }

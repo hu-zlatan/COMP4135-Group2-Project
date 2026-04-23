@@ -7,6 +7,7 @@ namespace TacticalCards
     {
         [SerializeField] private Button button;
         [SerializeField] private Image background;
+        [SerializeField] private Image iconImage;
         [SerializeField] private Text titleText;
         [SerializeField] private Text bodyText;
         [SerializeField] private Text statsText;
@@ -14,10 +15,17 @@ namespace TacticalCards
         private CardData boundCard;
         private BattleUI battleUI;
 
-        public void Configure(Button runtimeButton, Image runtimeBackground, Text runtimeTitleText, Text runtimeBodyText, Text runtimeStatsText)
+        public void Configure(
+            Button runtimeButton,
+            Image runtimeBackground,
+            Image runtimeIconImage,
+            Text runtimeTitleText,
+            Text runtimeBodyText,
+            Text runtimeStatsText)
         {
             button = runtimeButton;
             background = runtimeBackground;
+            iconImage = runtimeIconImage;
             titleText = runtimeTitleText;
             bodyText = runtimeBodyText;
             statsText = runtimeStatsText;
@@ -42,24 +50,34 @@ namespace TacticalCards
 
             if (background != null)
             {
-                background.color = snapshot.Tint;
+                background.color = Color.Lerp(Color.white, snapshot.Tint, 0.35f);
+                background.sprite = UiThemeResources.GetSprite(UiThemeResources.Paths.CardPanel);
+                background.type = background.sprite == null ? Image.Type.Simple : Image.Type.Sliced;
+            }
+
+            if (iconImage != null)
+            {
+                iconImage.sprite = snapshot.Card == null ? null : UiThemeResources.GetCardIcon(snapshot.Card.CardType);
+                iconImage.color = UiThemeResources.IconTint;
+                iconImage.enabled = iconImage.sprite != null;
             }
 
             if (titleText != null)
             {
                 titleText.text = snapshot.Title;
-                titleText.color = new Color(0.13f, 0.13f, 0.13f);
+                UiThemeResources.ApplyTextStyle(titleText, UiThemeResources.InkColor);
             }
 
             if (bodyText != null)
             {
                 bodyText.text = $"{snapshot.Subtitle}\n{snapshot.Description}";
-                bodyText.color = new Color(0.16f, 0.16f, 0.16f);
+                UiThemeResources.ApplyTextStyle(bodyText, UiThemeResources.InkColor);
             }
 
             if (statsText != null)
             {
                 statsText.text = snapshot.Stats;
+                UiThemeResources.ApplyTextStyle(statsText, new Color(0.27f, 0.18f, 0.11f, 1f));
             }
 
             if (button != null)

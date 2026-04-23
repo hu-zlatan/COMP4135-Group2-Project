@@ -48,6 +48,27 @@
 4. Add only a small set of animations: idle, move, attack, hit, and defeat.
 5. Dress the board edges and background with lightweight props, then capture new smoke screenshots.
 
+## Imported first slice
+
+- Status: imported on 2026-04-23 and wired into runtime UI code
+- Runtime evidence:
+  - `Assets/Resources/UITheme/Panels/`
+  - `Assets/Resources/UITheme/Icons/`
+  - `Assets/Scripts/UI/UiThemeResources.cs`
+  - `Assets/Scripts/UI/BattleUI.cs`
+  - `Assets/Scripts/Core/GameFlowController.cs`
+  - `Assets/Scripts/UI/CardButtonView.cs`
+- Scope of this slice:
+  - title screen banner and framed content panel
+  - result screen banner and framed content panel
+  - battle HUD top/left/bottom panel skins
+  - themed button sprites
+  - card icons for `Move`, `Dash`, `Strike`, `Push`, `Guard`, and `Heal`
+- Deferred to later M12 slices:
+  - replacing capsule unit models
+  - animation retargeting
+  - board-edge props and environment dressing
+
 ## Guardrails
 
 - Avoid mixing `pixel art` packs with the current 3D board unless the whole scene direction changes.

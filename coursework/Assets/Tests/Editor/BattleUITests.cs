@@ -148,6 +148,21 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void AttachRuntimeUi_AppliesThemeSpritesToPanelsAndCards()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
+            var parent = scope.Track(new GameObject("HudRoot")).transform;
+
+            battleUi.AttachRuntimeUi(parent);
+            battleUi.SetVisible(true);
+
+            Assert.That(parent.Find("BattleHudPanel/TopBar").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/LeftPanel").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/BottomPanel").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+            Assert.That(UiThemeResources.GetCardIcon(CardType.Strike), Is.Not.Null);
+        }
+
+        [Test]
         public void SelectCard_HealOnSelectedUnit_AutoResolvesAndRestoresHealth()
         {
             using var scope = CreateBattleContext(out var battleUi, out _, out var player, out _, out _);

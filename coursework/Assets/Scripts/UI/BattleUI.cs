@@ -82,22 +82,22 @@ namespace TacticalCards
             rootRect.offsetMin = Vector2.zero;
             rootRect.offsetMax = Vector2.zero;
 
-            CreateBackdrop(panelRoot.transform, new Color(0.03f, 0.05f, 0.08f, 0.12f));
-            var topBar = CreatePanel("TopBar", panelRoot.transform, new Color(0.11f, 0.15f, 0.20f, 0.94f), Vector2.zero, Vector2.one);
+            CreateBackdrop(panelRoot.transform, new Color(0.08f, 0.06f, 0.04f, 0.28f));
+            var topBar = CreatePanel("TopBar", panelRoot.transform, new Color(0.28f, 0.22f, 0.16f, 0.96f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelAccent);
             SetRect(topBar.GetComponent<RectTransform>(), new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -88f), new Vector2(-16f, -16f));
-            var leftPanel = CreatePanel("LeftPanel", panelRoot.transform, new Color(0.08f, 0.11f, 0.15f, 0.90f), Vector2.zero, Vector2.one);
+            var leftPanel = CreatePanel("LeftPanel", panelRoot.transform, new Color(0.23f, 0.24f, 0.27f, 0.95f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelSecondary);
             SetRect(leftPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(0f, 1f), new Vector2(16f, 152f), new Vector2(336f, -104f));
-            var bottomPanel = CreatePanel("BottomPanel", panelRoot.transform, new Color(0.11f, 0.10f, 0.09f, 0.96f), Vector2.zero, Vector2.one);
+            var bottomPanel = CreatePanel("BottomPanel", panelRoot.transform, new Color(0.30f, 0.23f, 0.16f, 0.98f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelPrimary);
             SetRect(bottomPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(180f, 16f), new Vector2(-16f, 144f));
 
             turnLabelText = CreateText("TurnLabel", topBar.transform, 20, FontStyle.Bold, TextAnchor.UpperLeft);
             SetRect(turnLabelText.rectTransform, new Vector2(0f, 0f), new Vector2(0f, 1f), new Vector2(16f, 10f), new Vector2(320f, -10f));
             selectedLabelText = CreateText("SelectionLabel", topBar.transform, 14, FontStyle.Normal, TextAnchor.UpperLeft);
             SetRect(selectedLabelText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(340f, 10f), new Vector2(-248f, -10f));
-            clearButton = CreateButton("ClearButton", topBar.transform, "Clear");
+            clearButton = CreateButton("ClearButton", topBar.transform, "Clear", false);
             SetRect(clearButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-224f, 12f), new Vector2(-120f, -12f));
             clearButton.onClick.AddListener(ClearSelectionState);
-            endTurnButton = CreateButton("EndTurnButton", topBar.transform, "End Turn");
+            endTurnButton = CreateButton("EndTurnButton", topBar.transform, "End Turn", true);
             SetRect(endTurnButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-112f, 12f), new Vector2(-12f, -12f));
             endTurnButton.onClick.AddListener(HandleRuntimeEndTurn);
 
@@ -1026,10 +1026,10 @@ namespace TacticalCards
         {
             if (units == null || units.Count == 0)
             {
-                return "Units\nNo units registered.";
+                return "Warband\nNo units registered.";
             }
 
-            var lines = new List<string> { "Units" };
+            var lines = new List<string> { "Warband" };
             foreach (var unit in units)
             {
                 lines.Add($"{unit.DisplayName} [{unit.Team}]  HP {unit.CurrentHp}/{unit.MaxHp}  Grid {unit.GridPosition.x},{unit.GridPosition.y}");
@@ -1042,10 +1042,10 @@ namespace TacticalCards
         {
             if (entries == null || entries.Count == 0)
             {
-                return "Log\nNo actions yet.";
+                return "Recent Moves\nNo actions yet.";
             }
 
-            var lines = new List<string> { "Log" };
+            var lines = new List<string> { "Recent Moves" };
             for (var i = entries.Count - 1; i >= 0; i--)
             {
                 lines.Add(entries[i]);
@@ -1059,18 +1059,18 @@ namespace TacticalCards
             var backdrop = new GameObject("Backdrop");
             backdrop.transform.SetParent(parent, false);
             var image = backdrop.AddComponent<Image>();
-            image.color = color;
+            UiThemeResources.ApplySprite(image, UiThemeResources.Paths.PanelSecondary, color);
             image.raycastTarget = false;
             var rectTransform = backdrop.GetComponent<RectTransform>() ?? backdrop.AddComponent<RectTransform>();
             SetRect(rectTransform, Vector2.zero, Vector2.one);
         }
 
-        private static GameObject CreatePanel(string name, Transform parent, Color color, Vector2 anchorMin, Vector2 anchorMax)
+        private static GameObject CreatePanel(string name, Transform parent, Color color, Vector2 anchorMin, Vector2 anchorMax, string spritePath = null)
         {
             var panel = new GameObject(name);
             panel.transform.SetParent(parent, false);
             var image = panel.AddComponent<Image>();
-            image.color = color;
+            UiThemeResources.ApplySprite(image, spritePath, color);
             image.raycastTarget = false;
             var rectTransform = panel.GetComponent<RectTransform>() ?? panel.AddComponent<RectTransform>();
             SetRect(rectTransform, anchorMin, anchorMax);
@@ -1089,22 +1089,25 @@ namespace TacticalCards
             text.horizontalOverflow = HorizontalWrapMode.Wrap;
             text.verticalOverflow = VerticalWrapMode.Truncate;
             text.resizeTextForBestFit = false;
-            text.color = new Color(0.94f, 0.96f, 0.98f);
             text.raycastTarget = false;
+            UiThemeResources.ApplyTextStyle(text, UiThemeResources.BrightTextColor);
             return text;
         }
 
-        private static Button CreateButton(string name, Transform parent, string label)
+        private static Button CreateButton(string name, Transform parent, string label, bool useDangerStyle)
         {
             var buttonObject = new GameObject(name);
             buttonObject.transform.SetParent(parent, false);
             var image = buttonObject.AddComponent<Image>();
-            image.color = new Color(0.84f, 0.56f, 0.24f, 0.95f);
+            UiThemeResources.ApplySprite(
+                image,
+                useDangerStyle ? UiThemeResources.Paths.ButtonDanger : UiThemeResources.Paths.ButtonPrimary,
+                Color.white);
             var button = buttonObject.AddComponent<Button>();
             button.targetGraphic = image;
             var labelText = CreateText("Label", buttonObject.transform, 14, FontStyle.Bold, TextAnchor.MiddleCenter);
             labelText.text = label;
-            labelText.color = new Color(0.15f, 0.12f, 0.10f);
+            UiThemeResources.ApplyTextStyle(labelText, UiThemeResources.InkColor);
             SetRect(labelText.rectTransform, Vector2.zero, Vector2.one);
             return button;
         }
@@ -1121,22 +1124,29 @@ namespace TacticalCards
             layoutElement.minWidth = 180f;
             layoutElement.minHeight = 96f;
             var image = buttonObject.AddComponent<Image>();
+            UiThemeResources.ApplySprite(image, UiThemeResources.Paths.CardPanel, Color.white);
             var button = buttonObject.AddComponent<Button>();
             button.targetGraphic = image;
 
+            var icon = new GameObject("Icon");
+            icon.transform.SetParent(buttonObject.transform, false);
+            var iconImage = icon.AddComponent<Image>();
+            iconImage.raycastTarget = false;
+            SetRect(iconImage.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -44f), new Vector2(46f, -10f));
+
             var title = CreateText("Title", buttonObject.transform, 14, FontStyle.Bold, TextAnchor.UpperLeft);
             title.horizontalOverflow = HorizontalWrapMode.Overflow;
-            SetRect(title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(10f, -30f), new Vector2(-10f, -8f));
+            SetRect(title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(52f, -30f), new Vector2(-10f, -8f));
             var body = CreateText("Body", buttonObject.transform, 12, FontStyle.Normal, TextAnchor.UpperLeft);
             body.lineSpacing = 0.9f;
-            SetRect(body.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(10f, 28f), new Vector2(-10f, -32f));
+            SetRect(body.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(52f, 28f), new Vector2(-10f, -32f));
             var stats = CreateText("Stats", buttonObject.transform, 11, FontStyle.Normal, TextAnchor.LowerLeft);
             stats.horizontalOverflow = HorizontalWrapMode.Overflow;
             SetRect(stats.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(10f, 8f), new Vector2(-10f, 24f));
-            stats.color = new Color(0.17f, 0.17f, 0.17f);
+            UiThemeResources.ApplyTextStyle(stats, new Color(0.27f, 0.18f, 0.11f, 1f));
 
             var view = buttonObject.AddComponent<CardButtonView>();
-            view.Configure(button, image, title, body, stats);
+            view.Configure(button, image, iconImage, title, body, stats);
             return view;
         }
 
