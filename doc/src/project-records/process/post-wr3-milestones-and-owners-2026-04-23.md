@@ -11,6 +11,7 @@
 | M10. Finish pass and evidence packaging | Hongshuo HU | Updated tests, smoke checklist, and completion records for the post-WR3 demo | The prototype can be handed to a reviewer as a coherent mini-game slice |
 | M11. Open-licensed art sourcing and style lock | Hongshuo HU | CC0-first asset register, chosen visual direction, import priority, and license notes for UI, icons, characters, and board dressing | One coherent art direction is selected and every visual bucket has at least one approved source |
 | M12. Visual asset integration pass | Hongshuo HU | Imported replacement assets, updated runtime presentation, and before/after smoke evidence | Core prototype placeholders are replaced by a coherent asset pass without regressing readability or interaction clarity |
+| M13. HUD feedback completion | Hongshuo HU | Title overlay layout fix, health bars, card-use prompts, energy state affordances, and smoke evidence | Action availability and battle state are communicated visually instead of relying on the log alone |
 
 ## Sequence Rules
 
@@ -19,3 +20,4 @@
 - M10 is responsible for truthfully separating automated coverage from manual smoke-only UX checks.
 - M11 should prefer `CC0` sources first and only fall back to attribution-bearing sources when a real coverage gap remains.
 - M12 should ship in thin slices: UI and icons first, then characters, then board dressing.
+- M13 should close the remaining `M8` readability gaps that were still surfacing after the art pass, especially player feedback that affects moment-to-moment usability.

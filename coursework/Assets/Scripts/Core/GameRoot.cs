@@ -38,14 +38,14 @@ namespace TacticalCards
 
         private void Start()
         {
-            if (!disableFrontEndFlow)
+            EnsureFlowController();
+            gameFlowController.Initialize(this, battleUI, turnManager);
+
+            if (disableFrontEndFlow)
             {
-                EnsureFlowController();
-                gameFlowController.Initialize(this, battleUI, turnManager);
+                gameFlowController.StartGame();
                 return;
             }
-
-            StartBattleSession();
         }
 
         public void PrepareBattle()

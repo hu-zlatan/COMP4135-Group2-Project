@@ -13,6 +13,11 @@ namespace TacticalCards
         public static readonly Color BoardBase = new(0.20f, 0.15f, 0.10f, 1f);
         public static readonly Color BoardFrame = new(0.28f, 0.20f, 0.13f, 1f);
         public static readonly Color BoardTrim = new(0.49f, 0.38f, 0.23f, 1f);
+        public static readonly Color TableSurface = new(0.36f, 0.30f, 0.22f, 1f);
+        public static readonly Color FeltInset = new(0.30f, 0.24f, 0.17f, 1f);
+        public static readonly Color PropPaper = new(0.92f, 0.88f, 0.76f, 1f);
+        public static readonly Color PropWax = new(0.66f, 0.19f, 0.16f, 1f);
+        public static readonly Color PropBone = new(0.83f, 0.80f, 0.70f, 1f);
         public static readonly Color PlayerMarker = new(0.21f, 0.48f, 0.75f, 1f);
         public static readonly Color PlayerSecondaryMarker = new(0.17f, 0.63f, 0.43f, 1f);
         public static readonly Color EnemyMarker = new(0.69f, 0.24f, 0.24f, 1f);

@@ -63,6 +63,7 @@ namespace TacticalCards
 
         public IReadOnlyList<UnitController> PlayerUnits => playerUnits;
         public IReadOnlyList<UnitController> EnemyUnits => enemyUnits;
+        public int MaxCardPlaysPerTurn => maxCardPlaysPerTurn;
 
         public void StartBattle()
         {

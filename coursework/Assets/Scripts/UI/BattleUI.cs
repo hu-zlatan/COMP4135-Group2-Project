@@ -8,6 +8,15 @@ namespace TacticalCards
 {
     public class BattleUI : MonoBehaviour
     {
+        private const float RuntimeTopBarHeight = 148f;
+        private const float RuntimeLeftPanelBottomInset = 148f;
+        private const float RuntimeBottomPanelTopInset = 136f;
+        private const float RuntimeBottomPanelBottomInset = 8f;
+        private const float RuntimeHudButtonStripWidth = 236f;
+        private const float RuntimeCardCellWidth = 152f;
+        private const float RuntimeCardCellHeight = 78f;
+        private const float RuntimeCardCellSpacing = 10f;
+
         [SerializeField] private Vector2 panelMargin = new(16f, 16f);
         [SerializeField] private float logPanelWidth = 280f;
         [SerializeField] private float logPanelHeight = 250f;
@@ -34,15 +43,22 @@ namespace TacticalCards
         private GUIStyle cardTitleStyle;
         private GUIStyle cardBodyStyle;
         private GameObject panelRoot;
+        private RectTransform panelRootRect;
         private Text turnLabelText;
+        private Text energyLabelText;
         private Text selectedLabelText;
+        private Text promptTitleText;
+        private Text promptDetailText;
         private Text statusText;
         private Text unitListText;
         private Text logText;
         private Transform cardContainer;
+        private RectTransform worldHudRoot;
         private Button clearButton;
         private Button endTurnButton;
         private readonly List<CardButtonView> runtimeCardButtons = new();
+        private readonly List<UnitHealthBarView> runtimeUnitBars = new();
+        private BattleHudSnapshot latestSnapshot;
         private bool isVisible;
 
         public CardData SelectedCard { get; private set; }
@@ -76,49 +92,62 @@ namespace TacticalCards
 
             panelRoot = new GameObject("BattleHudPanel");
             panelRoot.transform.SetParent(parent, false);
-            var rootRect = panelRoot.AddComponent<RectTransform>();
-            rootRect.anchorMin = Vector2.zero;
-            rootRect.anchorMax = Vector2.one;
-            rootRect.offsetMin = Vector2.zero;
-            rootRect.offsetMax = Vector2.zero;
+            panelRootRect = panelRoot.AddComponent<RectTransform>();
+            panelRootRect.anchorMin = Vector2.zero;
+            panelRootRect.anchorMax = Vector2.one;
+            panelRootRect.offsetMin = Vector2.zero;
+            panelRootRect.offsetMax = Vector2.zero;
 
             CreateBackdrop(panelRoot.transform, new Color(0.08f, 0.06f, 0.04f, 0.28f));
+            var worldHudObject = new GameObject("WorldHudLayer");
+            worldHudObject.transform.SetParent(panelRoot.transform, false);
+            worldHudRoot = worldHudObject.AddComponent<RectTransform>();
+            SetRect(worldHudRoot, Vector2.zero, Vector2.one);
             var topBar = CreatePanel("TopBar", panelRoot.transform, new Color(0.28f, 0.22f, 0.16f, 0.96f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelAccent);
-            SetRect(topBar.GetComponent<RectTransform>(), new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -88f), new Vector2(-16f, -16f));
+            SetRect(topBar.GetComponent<RectTransform>(), new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -RuntimeTopBarHeight), new Vector2(-16f, -16f));
             var leftPanel = CreatePanel("LeftPanel", panelRoot.transform, new Color(0.23f, 0.24f, 0.27f, 0.95f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelSecondary);
-            SetRect(leftPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(0f, 1f), new Vector2(16f, 152f), new Vector2(336f, -104f));
+            SetRect(leftPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(0f, 1f), new Vector2(16f, RuntimeLeftPanelBottomInset), new Vector2(360f, -(RuntimeTopBarHeight + 18f)));
             var bottomPanel = CreatePanel("BottomPanel", panelRoot.transform, new Color(0.30f, 0.23f, 0.16f, 0.98f), Vector2.zero, Vector2.one, UiThemeResources.Paths.PanelPrimary);
-            SetRect(bottomPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(180f, 16f), new Vector2(-16f, 144f));
+            SetRect(bottomPanel.GetComponent<RectTransform>(), new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(188f, RuntimeBottomPanelBottomInset), new Vector2(-16f, RuntimeBottomPanelTopInset));
 
             turnLabelText = CreateText("TurnLabel", topBar.transform, 20, FontStyle.Bold, TextAnchor.UpperLeft);
-            SetRect(turnLabelText.rectTransform, new Vector2(0f, 0f), new Vector2(0f, 1f), new Vector2(16f, 10f), new Vector2(320f, -10f));
-            selectedLabelText = CreateText("SelectionLabel", topBar.transform, 14, FontStyle.Normal, TextAnchor.UpperLeft);
-            SetRect(selectedLabelText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(340f, 10f), new Vector2(-248f, -10f));
+            SetRect(turnLabelText.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(16f, -42f), new Vector2(228f, -12f));
+            energyLabelText = CreateText("EnergyLabel", topBar.transform, 15, FontStyle.Bold, TextAnchor.UpperLeft);
+            SetRect(energyLabelText.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(240f, -42f), new Vector2(420f, -12f));
+            selectedLabelText = CreateText("SelectionLabel", topBar.transform, 13, FontStyle.Normal, TextAnchor.UpperLeft);
+            SetRect(selectedLabelText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -74f), new Vector2(-RuntimeHudButtonStripWidth, -48f));
+            promptTitleText = CreateText("PromptTitle", topBar.transform, 13, FontStyle.Bold, TextAnchor.UpperLeft);
+            SetRect(promptTitleText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -104f), new Vector2(-RuntimeHudButtonStripWidth, -80f));
+            promptDetailText = CreateText("PromptDetail", topBar.transform, 12, FontStyle.Normal, TextAnchor.UpperLeft);
+            promptDetailText.verticalOverflow = VerticalWrapMode.Overflow;
+            SetRect(promptDetailText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -138f), new Vector2(-RuntimeHudButtonStripWidth, -108f));
             clearButton = CreateButton("ClearButton", topBar.transform, "Clear", false);
-            SetRect(clearButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-224f, 12f), new Vector2(-120f, -12f));
+            SetRect(clearButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-(RuntimeHudButtonStripWidth - 12f), 16f), new Vector2(-116f, -16f));
             clearButton.onClick.AddListener(ClearSelectionState);
             endTurnButton = CreateButton("EndTurnButton", topBar.transform, "End Turn", true);
-            SetRect(endTurnButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-112f, 12f), new Vector2(-12f, -12f));
+            SetRect(endTurnButton.GetComponent<RectTransform>(), new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(-108f, 16f), new Vector2(-12f, -16f));
             endTurnButton.onClick.AddListener(HandleRuntimeEndTurn);
 
             statusText = CreateText("StatusText", leftPanel.transform, 16, FontStyle.Bold, TextAnchor.UpperLeft);
-            SetRect(statusText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -64f), new Vector2(-16f, -16f));
+            SetRect(statusText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -72f), new Vector2(-16f, -16f));
             unitListText = CreateText("UnitList", leftPanel.transform, 14, FontStyle.Normal, TextAnchor.UpperLeft);
-            SetRect(unitListText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -240f), new Vector2(-16f, -80f));
+            unitListText.verticalOverflow = VerticalWrapMode.Overflow;
+            SetRect(unitListText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(16f, -252f), new Vector2(-16f, -92f));
             logText = CreateText("LogText", leftPanel.transform, 13, FontStyle.Normal, TextAnchor.UpperLeft);
-            SetRect(logText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(16f, 16f), new Vector2(-16f, -256f));
+            logText.verticalOverflow = VerticalWrapMode.Overflow;
+            SetRect(logText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(16f, 16f), new Vector2(-16f, -268f));
 
             var handLabel = CreateText("HandLabel", bottomPanel.transform, 18, FontStyle.Bold, TextAnchor.UpperLeft);
             handLabel.text = "Hand";
-            SetRect(handLabel.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(16f, -52f), new Vector2(120f, -12f));
+            SetRect(handLabel.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(16f, -40f), new Vector2(100f, -10f));
 
             var cardArea = new GameObject("CardArea");
             cardArea.transform.SetParent(bottomPanel.transform, false);
             cardContainer = cardArea.AddComponent<RectTransform>();
-            SetRect((RectTransform)cardContainer, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(136f, 12f), new Vector2(-12f, -12f));
+            SetRect((RectTransform)cardContainer, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(112f, 10f), new Vector2(-14f, -10f));
             var layout = cardArea.AddComponent<GridLayoutGroup>();
-            layout.cellSize = new Vector2(180f, 96f);
-            layout.spacing = new Vector2(12f, 12f);
+            layout.cellSize = new Vector2(RuntimeCardCellWidth, RuntimeCardCellHeight);
+            layout.spacing = new Vector2(RuntimeCardCellSpacing, RuntimeCardCellSpacing);
             layout.childAlignment = TextAnchor.MiddleLeft;
             layout.startCorner = GridLayoutGroup.Corner.UpperLeft;
             layout.startAxis = GridLayoutGroup.Axis.Horizontal;
@@ -146,6 +175,7 @@ namespace TacticalCards
             }
 
             HandleWorldClick();
+            UpdateWorldUnitBarPositions();
         }
 
         public void Refresh()
@@ -687,6 +717,57 @@ namespace TacticalCards
             return tint;
         }
 
+        private bool CanUseCards()
+        {
+            return turnManager != null
+                && turnManager.IsPlayerTurn
+                && !turnManager.BattleEnded
+                && turnManager.RemainingCardPlays > 0;
+        }
+
+        private string GetGlobalCardDisabledReason()
+        {
+            if (turnManager == null)
+            {
+                return "No Battle";
+            }
+
+            if (turnManager.BattleEnded)
+            {
+                return "Battle Over";
+            }
+
+            if (!turnManager.IsPlayerTurn)
+            {
+                return "Enemy Turn";
+            }
+
+            if (turnManager.RemainingCardPlays <= 0)
+            {
+                return "No Energy";
+            }
+
+            return string.Empty;
+        }
+
+        private string GetCardUseHint(CardData card)
+        {
+            if (card == null)
+            {
+                return "Choose a card from the hand.";
+            }
+
+            return card.TargetType switch
+            {
+                TargetType.Tile when card.CardType == CardType.Move => $"Select an empty tile within {card.MoveDistance}.",
+                TargetType.Tile when card.CardType == CardType.Dash => $"Dash to an empty tile within {card.MoveDistance}.",
+                TargetType.Tile => "Select a valid target tile.",
+                TargetType.EnemyUnit => $"Select an enemy in range {card.Range}.",
+                TargetType.Self => "Use this on the selected unit.",
+                _ => "Choose a legal target.",
+            };
+        }
+
         private void AddLog(string message)
         {
             if (string.IsNullOrWhiteSpace(message))
@@ -781,6 +862,86 @@ namespace TacticalCards
         private string GetIdleStatusMessage()
         {
             return GetSelectionStatusMessage();
+        }
+
+        private string GetPromptTitle()
+        {
+            if (turnManager == null)
+            {
+                return "No Active Battle";
+            }
+
+            if (turnManager.BattleEnded)
+            {
+                return turnManager.WinningTeam == TeamType.Player ? "Victory" : "Defeat";
+            }
+
+            if (!turnManager.IsPlayerTurn)
+            {
+                return "Enemy Phase";
+            }
+
+            if (turnManager.RemainingCardPlays <= 0)
+            {
+                return "No Energy Left";
+            }
+
+            if (SelectedCard != null && selectedUnit == null)
+            {
+                return $"{SelectedCard.CardName} Selected";
+            }
+
+            if (SelectedCard != null)
+            {
+                return $"{SelectedCard.CardName} Ready";
+            }
+
+            if (selectedUnit != null)
+            {
+                return $"{selectedUnit.DisplayName} Ready";
+            }
+
+            return "Choose A Unit";
+        }
+
+        private string GetPromptDetail()
+        {
+            if (turnManager == null)
+            {
+                return "Set up the battle managers before using the HUD.";
+            }
+
+            if (turnManager.BattleEnded)
+            {
+                return turnManager.BattleOutcomeSummary;
+            }
+
+            if (!turnManager.IsPlayerTurn)
+            {
+                return "Wait for enemy actions to finish before spending cards again.";
+            }
+
+            if (turnManager.RemainingCardPlays <= 0)
+            {
+                return "End the turn to refresh your hand and restore energy.";
+            }
+
+            if (SelectedCard != null && selectedUnit == null)
+            {
+                return $"Choose a player unit to cast {SelectedCard.CardName} from.";
+            }
+
+            if (SelectedCard != null)
+            {
+                return GetCardUseHint(SelectedCard);
+            }
+
+            if (selectedUnit != null)
+            {
+                return "Pick a card from the hand to continue the turn.";
+            }
+
+            return "Click a player unit on the board to begin your action.";
         }
 
         private string GetEndTurnStatusMessage()
@@ -880,6 +1041,7 @@ namespace TacticalCards
             var handSnapshots = new List<CardHudSnapshot>();
             if (deckManager != null)
             {
+                var disabledReason = GetGlobalCardDisabledReason();
                 foreach (var card in deckManager.Hand)
                 {
                     if (card == null)
@@ -894,9 +1056,11 @@ namespace TacticalCards
                         Subtitle = card.CardType.ToString(),
                         Description = GetCompactCardDescription(card),
                         Stats = GetCardStats(card),
+                        UseHint = GetCardUseHint(card),
+                        DisabledReason = disabledReason,
                         Tint = GetCardTint(card, SelectedCard == card),
                         IsSelected = SelectedCard == card,
-                        IsPlayable = turnManager != null && turnManager.IsPlayerTurn && !turnManager.BattleEnded,
+                        IsPlayable = string.IsNullOrWhiteSpace(disabledReason),
                     });
                 }
             }
@@ -911,9 +1075,11 @@ namespace TacticalCards
                     Subtitle = SelectedCard.CardType.ToString(),
                     Description = GetCompactCardDescription(SelectedCard),
                     Stats = GetCardStats(SelectedCard),
+                    UseHint = GetCardUseHint(SelectedCard),
+                    DisabledReason = GetGlobalCardDisabledReason(),
                     Tint = GetCardTint(SelectedCard, true),
                     IsSelected = true,
-                    IsPlayable = turnManager != null && turnManager.IsPlayerTurn && !turnManager.BattleEnded,
+                    IsPlayable = string.IsNullOrWhiteSpace(GetGlobalCardDisabledReason()),
                 };
             }
 
@@ -922,15 +1088,21 @@ namespace TacticalCards
                 TurnLabel = GetTurnLabel(),
                 StatusMessage = statusMessage,
                 RemainingCardPlays = turnManager?.RemainingCardPlays ?? 0,
+                MaxCardPlays = turnManager?.MaxCardPlaysPerTurn ?? 0,
                 IsBattleOver = IsBattleOver,
                 CanEndTurn = turnManager != null && turnManager.IsPlayerTurn && !turnManager.BattleEnded,
+                CanPlayCards = CanUseCards(),
+                PromptTitle = GetPromptTitle(),
+                PromptDetail = GetPromptDetail(),
                 SelectedUnit = selectedUnit == null ? null : new UnitHudSnapshot
                 {
                     DisplayName = selectedUnit.DisplayName,
                     Team = selectedUnit.Team,
                     CurrentHp = selectedUnit.CurrentHp,
                     MaxHp = selectedUnit.MaxHp,
+                    HealthRatio = selectedUnit.MaxHp <= 0 ? 0f : (float)selectedUnit.CurrentHp / selectedUnit.MaxHp,
                     GridPosition = selectedUnit.GridPosition,
+                    WorldPosition = selectedUnit.transform.position + new Vector3(0f, 0.72f, 0f),
                     IsSelected = true,
                 },
                 SelectedCard = selectedCardSnapshot,
@@ -948,16 +1120,33 @@ namespace TacticalCards
             }
 
             var snapshot = BuildSnapshot();
-            turnLabelText.text = $"{snapshot.TurnLabel}  |  Plays Left: {snapshot.RemainingCardPlays}";
+            latestSnapshot = snapshot;
+            turnLabelText.text = snapshot.TurnLabel;
+            energyLabelText.text = $"Energy {snapshot.RemainingCardPlays}/{Mathf.Max(1, snapshot.MaxCardPlays)}";
+            UiThemeResources.ApplyTextStyle(
+                energyLabelText,
+                snapshot.CanPlayCards || snapshot.IsBattleOver || turnManager == null || !turnManager.IsPlayerTurn
+                    ? UiThemeResources.BrightTextColor
+                    : new Color(0.98f, 0.74f, 0.52f, 1f));
             selectedLabelText.text = snapshot.SelectedUnit == null
                 ? (snapshot.SelectedCard == null ? "Unit: None  |  Card: None" : $"Unit: None  |  Card: {snapshot.SelectedCard.Title}")
                 : $"Unit: {snapshot.SelectedUnit.DisplayName} ({snapshot.SelectedUnit.CurrentHp}/{snapshot.SelectedUnit.MaxHp})  |  Card: {(snapshot.SelectedCard == null ? "None" : snapshot.SelectedCard.Title)}";
+            promptTitleText.text = snapshot.PromptTitle;
+            promptDetailText.text = snapshot.PromptDetail;
+            UiThemeResources.ApplyTextStyle(
+                promptTitleText,
+                snapshot.RemainingCardPlays <= 0 && turnManager != null && turnManager.IsPlayerTurn && !snapshot.IsBattleOver
+                    ? new Color(0.98f, 0.74f, 0.52f, 1f)
+                    : UiThemeResources.BrightTextColor);
+            UiThemeResources.ApplyTextStyle(promptDetailText, UiThemeResources.MutedTextColor, withShadow: false);
             statusText.text = snapshot.StatusMessage;
             unitListText.text = BuildUnitListText(snapshot.Units);
             logText.text = BuildActionLogText(snapshot.ActionLog);
             clearButton.interactable = !snapshot.IsBattleOver;
             endTurnButton.interactable = snapshot.CanEndTurn;
             RenderRuntimeHand(snapshot.Hand);
+            RenderRuntimeUnitBars(snapshot.Units);
+            UpdateWorldUnitBarPositions();
         }
 
         private void RenderRuntimeHand(IReadOnlyList<CardHudSnapshot> hand)
@@ -983,6 +1172,48 @@ namespace TacticalCards
             }
         }
 
+        private void RenderRuntimeUnitBars(IReadOnlyList<UnitHudSnapshot> units)
+        {
+            if (worldHudRoot == null || units == null)
+            {
+                return;
+            }
+
+            while (runtimeUnitBars.Count < units.Count)
+            {
+                runtimeUnitBars.Add(CreateRuntimeUnitBar(worldHudRoot));
+            }
+
+            for (var i = 0; i < runtimeUnitBars.Count; i++)
+            {
+                var isActive = i < units.Count && isVisible;
+                runtimeUnitBars[i].gameObject.SetActive(isActive);
+                if (isActive)
+                {
+                    runtimeUnitBars[i].Bind(units[i]);
+                }
+            }
+        }
+
+        private void UpdateWorldUnitBarPositions()
+        {
+            if (!isVisible || latestSnapshot?.Units == null || worldHudRoot == null || panelRootRect == null)
+            {
+                return;
+            }
+
+            var camera = Camera.main;
+            if (camera == null)
+            {
+                return;
+            }
+
+            for (var i = 0; i < latestSnapshot.Units.Count && i < runtimeUnitBars.Count; i++)
+            {
+                runtimeUnitBars[i].UpdatePosition(panelRootRect, camera);
+            }
+        }
+
         private void HandleRuntimeEndTurn()
         {
             turnManager?.EndPlayerTurn();
@@ -1004,7 +1235,7 @@ namespace TacticalCards
             ClearSelectedCard();
         }
 
-        private static void AddUnitSnapshot(List<UnitHudSnapshot> units, UnitController unit)
+        private void AddUnitSnapshot(List<UnitHudSnapshot> units, UnitController unit)
         {
             if (unit == null)
             {
@@ -1017,8 +1248,10 @@ namespace TacticalCards
                 Team = unit.Team,
                 CurrentHp = unit.CurrentHp,
                 MaxHp = unit.MaxHp,
+                HealthRatio = unit.MaxHp <= 0 ? 0f : (float)unit.CurrentHp / unit.MaxHp,
                 GridPosition = unit.GridPosition,
-                IsSelected = false,
+                WorldPosition = unit.transform.position + new Vector3(0f, 0.72f, 0f),
+                IsSelected = selectedUnit == unit,
             });
         }
 
@@ -1117,12 +1350,12 @@ namespace TacticalCards
             var buttonObject = new GameObject("CardButton");
             buttonObject.transform.SetParent(parent, false);
             var rect = buttonObject.AddComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(180f, 96f);
+            rect.sizeDelta = new Vector2(RuntimeCardCellWidth, RuntimeCardCellHeight);
             var layoutElement = buttonObject.AddComponent<LayoutElement>();
-            layoutElement.preferredWidth = 180f;
-            layoutElement.preferredHeight = 96f;
-            layoutElement.minWidth = 180f;
-            layoutElement.minHeight = 96f;
+            layoutElement.preferredWidth = RuntimeCardCellWidth;
+            layoutElement.preferredHeight = RuntimeCardCellHeight;
+            layoutElement.minWidth = RuntimeCardCellWidth;
+            layoutElement.minHeight = RuntimeCardCellHeight;
             var image = buttonObject.AddComponent<Image>();
             UiThemeResources.ApplySprite(image, UiThemeResources.Paths.CardPanel, Color.white);
             var button = buttonObject.AddComponent<Button>();
@@ -1132,21 +1365,77 @@ namespace TacticalCards
             icon.transform.SetParent(buttonObject.transform, false);
             var iconImage = icon.AddComponent<Image>();
             iconImage.raycastTarget = false;
-            SetRect(iconImage.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -44f), new Vector2(46f, -10f));
+            SetRect(iconImage.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -36f), new Vector2(40f, -10f));
 
-            var title = CreateText("Title", buttonObject.transform, 14, FontStyle.Bold, TextAnchor.UpperLeft);
+            var title = CreateText("Title", buttonObject.transform, 13, FontStyle.Bold, TextAnchor.UpperLeft);
             title.horizontalOverflow = HorizontalWrapMode.Overflow;
-            SetRect(title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(52f, -30f), new Vector2(-10f, -8f));
-            var body = CreateText("Body", buttonObject.transform, 12, FontStyle.Normal, TextAnchor.UpperLeft);
+            SetRect(title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(46f, -28f), new Vector2(-8f, -8f));
+            var body = CreateText("Body", buttonObject.transform, 11, FontStyle.Normal, TextAnchor.UpperLeft);
             body.lineSpacing = 0.9f;
-            SetRect(body.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(52f, 28f), new Vector2(-10f, -32f));
-            var stats = CreateText("Stats", buttonObject.transform, 11, FontStyle.Normal, TextAnchor.LowerLeft);
+            SetRect(body.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(46f, 22f), new Vector2(-8f, -28f));
+            var stats = CreateText("Stats", buttonObject.transform, 10, FontStyle.Normal, TextAnchor.LowerLeft);
             stats.horizontalOverflow = HorizontalWrapMode.Overflow;
-            SetRect(stats.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(10f, 8f), new Vector2(-10f, 24f));
+            SetRect(stats.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(10f, 6f), new Vector2(-8f, 18f));
             UiThemeResources.ApplyTextStyle(stats, new Color(0.27f, 0.18f, 0.11f, 1f));
 
+            var disabledOverlay = new GameObject("DisabledOverlay");
+            disabledOverlay.transform.SetParent(buttonObject.transform, false);
+            var disabledOverlayImage = disabledOverlay.AddComponent<Image>();
+            disabledOverlayImage.color = new Color(0.08f, 0.08f, 0.10f, 0.72f);
+            disabledOverlayImage.raycastTarget = false;
+            SetRect(disabledOverlayImage.rectTransform, Vector2.zero, Vector2.one);
+
+            var disabledText = CreateText("DisabledText", disabledOverlay.transform, 12, FontStyle.Bold, TextAnchor.MiddleCenter);
+            disabledText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            disabledText.verticalOverflow = VerticalWrapMode.Overflow;
+            SetRect(disabledText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(10f, 6f), new Vector2(-10f, -6f));
+            disabledOverlay.SetActive(false);
+
             var view = buttonObject.AddComponent<CardButtonView>();
-            view.Configure(button, image, iconImage, title, body, stats);
+            view.Configure(button, image, iconImage, title, body, stats, disabledOverlay, disabledText);
+            return view;
+        }
+
+        private static UnitHealthBarView CreateRuntimeUnitBar(Transform parent)
+        {
+            var barObject = new GameObject("UnitHealthBar");
+            barObject.transform.SetParent(parent, false);
+            var rect = barObject.AddComponent<RectTransform>();
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.sizeDelta = new Vector2(110f, 34f);
+
+            var frame = barObject.AddComponent<Image>();
+            frame.color = new Color(0.08f, 0.08f, 0.10f, 0.84f);
+            frame.raycastTarget = false;
+
+            var nameText = CreateText("Name", barObject.transform, 11, FontStyle.Bold, TextAnchor.UpperCenter);
+            nameText.horizontalOverflow = HorizontalWrapMode.Overflow;
+            SetRect(nameText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(8f, -16f), new Vector2(-8f, -2f));
+
+            var barBackObject = new GameObject("BarBack");
+            barBackObject.transform.SetParent(barObject.transform, false);
+            var barBack = barBackObject.AddComponent<Image>();
+            barBack.color = new Color(0.15f, 0.16f, 0.18f, 0.92f);
+            barBack.raycastTarget = false;
+            SetRect(barBack.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(8f, 6f), new Vector2(-8f, 18f));
+
+            var fillObject = new GameObject("Fill");
+            fillObject.transform.SetParent(barBackObject.transform, false);
+            var fill = fillObject.AddComponent<Image>();
+            fill.type = Image.Type.Filled;
+            fill.fillMethod = Image.FillMethod.Horizontal;
+            fill.fillOrigin = (int)Image.OriginHorizontal.Left;
+            fill.color = new Color(0.22f, 0.68f, 0.43f, 1f);
+            fill.raycastTarget = false;
+            SetRect(fill.rectTransform, Vector2.zero, Vector2.one, new Vector2(2f, 2f), new Vector2(-2f, -2f));
+
+            var valueText = CreateText("Value", barObject.transform, 11, FontStyle.Bold, TextAnchor.MiddleCenter);
+            SetRect(valueText.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(8f, 2f), new Vector2(-8f, 18f));
+
+            var view = barObject.AddComponent<UnitHealthBarView>();
+            view.Configure(rect, frame, fill, nameText, valueText);
             return view;
         }
 

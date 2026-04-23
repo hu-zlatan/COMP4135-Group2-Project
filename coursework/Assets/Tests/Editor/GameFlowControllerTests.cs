@@ -33,8 +33,11 @@ namespace TacticalCards.Tests.Editor
             var titlePanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "titlePanel");
 
             Assert.That(titlePanel.transform.Find("TitleBanner"), Is.Not.Null);
+            Assert.That(titlePanel.transform.Find("TitleContent"), Is.Not.Null);
             Assert.That(titlePanel.transform.Find("TitleContent/StartButton"), Is.Not.Null);
             Assert.That(titlePanel.transform.Find("TitleContent/BrandIcon").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+            Assert.That(titlePanel.transform.Find("TitleCorners/TopLeft"), Is.Not.Null);
+            Assert.That(EditorTestSupport.GetPrivateField<UnityEngine.UI.Text>(controller, "titleSummaryText"), Is.Not.Null);
         }
 
         [Test]
@@ -70,6 +73,19 @@ namespace TacticalCards.Tests.Editor
 
             Assert.That(controller.CurrentState, Is.EqualTo(GameFlowState.Title));
             Assert.That(controller.LastResult, Is.Null);
+        }
+
+        [Test]
+        public void StartGame_ImmediateResult_BuildsResultBadges()
+        {
+            using var scope = CreateContext(out var controller, out _, withEnemy: false);
+
+            controller.StartGame();
+
+            var resultPanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "resultPanel");
+            Assert.That(resultPanel.transform.Find("ResultCorners/TopLeft"), Is.Not.Null);
+            Assert.That(resultPanel.transform.Find("ResultContent/ReplayBadge"), Is.Not.Null);
+            Assert.That(resultPanel.transform.Find("ResultContent/OutcomeBadge"), Is.Not.Null);
         }
 
         private static TestObjectScope CreateContext(out GameFlowController controller, out GameRoot gameRoot, bool withEnemy)

@@ -35,6 +35,20 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void GenerateGrid_BuildsTabletopPropsAroundBoard()
+        {
+            using var scope = new TestObjectScope();
+            var gridManager = EditorTestSupport.CreateGridManager(scope, width: 4, height: 3);
+
+            var presentationRoot = gridManager.transform.Find("GeneratedTiles/BoardPresentation");
+
+            Assert.That(presentationRoot.Find("TableSurface"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("SouthWestCards_Face"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("NorthEastCards_Seal"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("SouthEastTokens_DiscA"), Is.Not.Null);
+        }
+
+        [Test]
         public void TryPlaceUnit_PlacesUnitAndUpdatesOccupancy()
         {
             using var scope = new TestObjectScope();

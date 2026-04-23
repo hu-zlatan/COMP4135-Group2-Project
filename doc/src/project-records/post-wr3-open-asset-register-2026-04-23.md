@@ -90,6 +90,23 @@
   - retargeted animation clips
   - broader environment dressing beyond the board footprint
 
+## Imported third slice
+
+- Status: implemented on 2026-04-24 as an ambience and stage-dressing pass
+- Runtime evidence:
+  - `Assets/Scripts/Core/GameFlowController.cs`
+  - `Assets/Scripts/Grid/GridManager.cs`
+  - `Assets/Screenshots/m12-slice3-battle-smoke.png`
+  - `doc/src/project-records/testing/post-wr3-ambience-smoke-2026-04-24.md`
+- Scope of this slice:
+  - adds tabletop surface props around the board, including cards and token clusters
+  - adds decorative title and result ornaments plus feature or summary badges
+  - keeps runtime interaction unchanged by treating all ambience elements as non-interactive presentation
+- Deferred after this slice:
+  - external CC0 character imports
+  - animation retargeting
+  - a final menu-background or scene-lighting pass if the coursework demo still feels visually flat during manual smoke
+
 ## Guardrails
 
 - Avoid mixing `pixel art` packs with the current 3D board unless the whole scene direction changes.

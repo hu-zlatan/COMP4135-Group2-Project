@@ -314,6 +314,25 @@ namespace TacticalCards
 
             var boardCenter = new Vector3(((width - 1) * tileSpacing) * 0.5f, 0f, ((height - 1) * tileSpacing) * 0.5f);
             var boardSize = new Vector3(((width - 1) * tileSpacing) + 1f + boardMargin, boardThickness, ((height - 1) * tileSpacing) + 1f + boardMargin);
+            var tableSize = new Vector3(boardSize.x + 4.6f, 0.36f, boardSize.z + 4.1f);
+
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "TableSurface",
+                boardCenter + new Vector3(0f, -0.44f, 0f),
+                tableSize,
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("TableSurface", WorldThemeResources.TableSurface));
+
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "TableInset",
+                boardCenter + new Vector3(0f, -0.30f, 0f),
+                new Vector3(tableSize.x - 0.45f, 0.06f, tableSize.z - 0.45f),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("TableInset", WorldThemeResources.FeltInset));
 
             CreatePresentationPrimitive(
                 PrimitiveType.Cube,
@@ -384,6 +403,11 @@ namespace TacticalCards
                 boardCenter + new Vector3(0.9f, 0f, halfDepth + 0.22f),
                 WorldThemeResources.EnemyMarker,
                 WorldThemeResources.EnemySecondaryMarker);
+
+            CreateCardProp("SouthWestCards", boardCenter + new Vector3(-halfWidth - 1.10f, -0.20f, -halfDepth - 0.55f), -18f);
+            CreateCardProp("NorthEastCards", boardCenter + new Vector3(halfWidth + 1.00f, -0.20f, halfDepth + 0.48f), 22f);
+            CreateTokenCluster("SouthEastTokens", boardCenter + new Vector3(halfWidth + 0.95f, -0.22f, -halfDepth - 0.40f));
+            CreateTokenCluster("NorthWestTokens", boardCenter + new Vector3(-halfWidth - 0.95f, -0.22f, halfDepth + 0.42f));
         }
 
         private void CreateCornerPost(string suffix, Vector3 position)
@@ -424,6 +448,62 @@ namespace TacticalCards
                 new Vector3(0.18f, 0.18f, 0.18f),
                 Vector3.zero,
                 WorldThemeResources.CreateMaterial($"{namePrefix}_OrbMat", primary));
+        }
+
+        private void CreateCardProp(string prefix, Vector3 position, float rotationY)
+        {
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                $"{prefix}_Back",
+                position,
+                new Vector3(0.42f, 0.03f, 0.62f),
+                new Vector3(0f, rotationY, 0f),
+                WorldThemeResources.CreateMaterial($"{prefix}_BackMat", WorldThemeResources.BoardFrame));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                $"{prefix}_Face",
+                position + new Vector3(0.08f, 0.03f, 0.04f),
+                new Vector3(0.42f, 0.02f, 0.62f),
+                new Vector3(0f, rotationY + 9f, 0f),
+                WorldThemeResources.CreateMaterial($"{prefix}_FaceMat", WorldThemeResources.PropPaper));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cylinder,
+                boardPresentationRoot,
+                $"{prefix}_Seal",
+                position + new Vector3(-0.14f, 0.05f, 0.12f),
+                new Vector3(0.08f, 0.02f, 0.08f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{prefix}_SealMat", WorldThemeResources.PropWax));
+        }
+
+        private void CreateTokenCluster(string prefix, Vector3 position)
+        {
+            CreatePresentationPrimitive(
+                PrimitiveType.Cylinder,
+                boardPresentationRoot,
+                $"{prefix}_DiscA",
+                position,
+                new Vector3(0.12f, 0.03f, 0.12f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{prefix}_DiscAMat", WorldThemeResources.PropBone));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cylinder,
+                boardPresentationRoot,
+                $"{prefix}_DiscB",
+                position + new Vector3(0.18f, 0.02f, 0.08f),
+                new Vector3(0.10f, 0.02f, 0.10f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{prefix}_DiscBMat", WorldThemeResources.BoardTrim));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                $"{prefix}_Marker",
+                position + new Vector3(-0.18f, 0.04f, -0.10f),
+                new Vector3(0.14f, 0.08f, 0.14f),
+                new Vector3(0f, 28f, 0f),
+                WorldThemeResources.CreateMaterial($"{prefix}_MarkerMat", WorldThemeResources.PropPaper));
         }
 
         private static void CreatePresentationPrimitive(

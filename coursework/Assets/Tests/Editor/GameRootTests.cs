@@ -64,6 +64,39 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void Start_WithDisableFrontEndFlow_StillBuildsRuntimeHudAndStartsBattle()
+        {
+            using var scope = new TestObjectScope();
+            var gridManager = scope.Track(new GameObject("GridManager")).AddComponent<GridManager>();
+            EditorTestSupport.SetPrivateField(gridManager, "generateOnStart", false);
+            var turnManager = scope.Track(new GameObject("TurnManager")).AddComponent<TurnManager>();
+            var deckManager = EditorTestSupport.CreateDeckManager(scope);
+            var cardResolver = scope.Track(new GameObject("CardResolver")).AddComponent<CardResolver>();
+            var enemyAi = EditorTestSupport.CreateEnemyAI(scope);
+            var battleUi = scope.Track(new GameObject("BattleUI")).AddComponent<BattleUI>();
+            var gameRoot = scope.Track(new GameObject("GameRoot")).AddComponent<GameRoot>();
+            var player = EditorTestSupport.CreateUnit(scope, "Hero", TeamType.Player, new Vector2Int(1, 1));
+            var enemy = EditorTestSupport.CreateUnit(scope, "Enemy", TeamType.Enemy, new Vector2Int(2, 1));
+
+            EditorTestSupport.SetPrivateField(gameRoot, "gridManager", gridManager);
+            EditorTestSupport.SetPrivateField(gameRoot, "turnManager", turnManager);
+            EditorTestSupport.SetPrivateField(gameRoot, "deckManager", deckManager);
+            EditorTestSupport.SetPrivateField(gameRoot, "cardResolver", cardResolver);
+            EditorTestSupport.SetPrivateField(gameRoot, "enemyAI", enemyAi);
+            EditorTestSupport.SetPrivateField(gameRoot, "battleUI", battleUi);
+            EditorTestSupport.SetPrivateField(gameRoot, "disableFrontEndFlow", true);
+            EditorTestSupport.SetPrivateField(gameRoot, "sceneUnits", new[] { player, enemy });
+
+            EditorTestSupport.InvokePrivateMethod(gameRoot, "Awake");
+            EditorTestSupport.InvokePrivateMethod(gameRoot, "Start");
+            scope.Track(EditorTestSupport.GetPrivateField<GameFlowController>(gameRoot, "gameFlowController").gameObject);
+
+            Assert.That(turnManager.IsPlayerTurn, Is.True);
+            Assert.That(deckManager.Hand.Count, Is.EqualTo(3));
+            Assert.That(EditorTestSupport.GetPrivateField<GameFlowController>(gameRoot, "gameFlowController").CurrentState, Is.EqualTo(GameFlowState.Battle));
+        }
+
+        [Test]
         public void StartBattleSession_PreparesManagersPlacesUnitsAndStartsBattle()
         {
             using var scope = new TestObjectScope();

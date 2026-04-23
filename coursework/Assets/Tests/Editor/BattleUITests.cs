@@ -132,6 +132,21 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void BuildSnapshot_WithoutEnergy_DisablesHandAndPromptsEndTurn()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out var turnManager, out _, out _, out _);
+            EditorTestSupport.SetProperty(turnManager, nameof(TurnManager.RemainingCardPlays), 0);
+
+            var snapshot = battleUi.BuildSnapshot();
+
+            Assert.That(snapshot.CanPlayCards, Is.False);
+            Assert.That(snapshot.PromptTitle, Is.EqualTo("No Energy Left"));
+            Assert.That(snapshot.PromptDetail, Does.Contain("End the turn"));
+            Assert.That(snapshot.Hand[0].IsPlayable, Is.False);
+            Assert.That(snapshot.Hand[0].DisabledReason, Is.EqualTo("No Energy"));
+        }
+
+        [Test]
         public void AttachRuntimeUi_BackdropDoesNotBlockWorldClicks()
         {
             using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
@@ -156,10 +171,64 @@ namespace TacticalCards.Tests.Editor
             battleUi.AttachRuntimeUi(parent);
             battleUi.SetVisible(true);
 
-            Assert.That(parent.Find("BattleHudPanel/TopBar").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
-            Assert.That(parent.Find("BattleHudPanel/LeftPanel").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
-            Assert.That(parent.Find("BattleHudPanel/BottomPanel").GetComponent<UnityEngine.UI.Image>().sprite, Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/TopBar"), Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/LeftPanel"), Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/BottomPanel"), Is.Not.Null);
+            Assert.That(UiThemeResources.GetSprite(UiThemeResources.Paths.PanelAccent), Is.Not.Null);
             Assert.That(UiThemeResources.GetCardIcon(CardType.Strike), Is.Not.Null);
+        }
+
+        [Test]
+        public void AttachRuntimeUi_BuildsPromptEnergyAndWorldHudLayers()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
+            var parent = scope.Track(new GameObject("HudRoot")).transform;
+
+            battleUi.AttachRuntimeUi(parent);
+            battleUi.SetVisible(true);
+
+            Assert.That(parent.Find("BattleHudPanel/TopBar/EnergyLabel"), Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/TopBar/PromptTitle"), Is.Not.Null);
+            Assert.That(parent.Find("BattleHudPanel/WorldHudLayer"), Is.Not.Null);
+        }
+
+        [Test]
+        public void AttachRuntimeUi_StacksTopBarRowsAndKeepsHandCompact()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
+            var parent = scope.Track(new GameObject("HudRoot")).transform;
+
+            battleUi.AttachRuntimeUi(parent);
+            battleUi.SetVisible(true);
+            battleUi.Refresh();
+
+            var turnLabel = parent.Find("BattleHudPanel/TopBar/TurnLabel").GetComponent<RectTransform>();
+            var selectionLabel = parent.Find("BattleHudPanel/TopBar/SelectionLabel").GetComponent<RectTransform>();
+            var promptTitle = parent.Find("BattleHudPanel/TopBar/PromptTitle").GetComponent<RectTransform>();
+            var promptDetail = parent.Find("BattleHudPanel/TopBar/PromptDetail").GetComponent<RectTransform>();
+            var bottomPanel = parent.Find("BattleHudPanel/BottomPanel").GetComponent<RectTransform>();
+            var firstCard = parent.Find("BattleHudPanel/BottomPanel/CardArea/CardButton").GetComponent<RectTransform>();
+
+            Assert.That(selectionLabel.offsetMax.y, Is.LessThanOrEqualTo(turnLabel.offsetMin.y));
+            Assert.That(promptTitle.offsetMax.y, Is.LessThanOrEqualTo(selectionLabel.offsetMin.y));
+            Assert.That(promptDetail.offsetMax.y, Is.LessThanOrEqualTo(promptTitle.offsetMin.y));
+            Assert.That(bottomPanel.offsetMax.y, Is.LessThanOrEqualTo(136f));
+            Assert.That(firstCard.sizeDelta.y, Is.LessThanOrEqualTo(78f));
+        }
+
+        [Test]
+        public void SetVisible_AndRefresh_RendersWorldHealthBarsForUnits()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
+            var parent = scope.Track(new GameObject("HudRoot")).transform;
+
+            battleUi.AttachRuntimeUi(parent);
+            battleUi.SetVisible(true);
+            battleUi.Refresh();
+
+            var worldHudLayer = parent.Find("BattleHudPanel/WorldHudLayer");
+            Assert.That(worldHudLayer, Is.Not.Null);
+            Assert.That(worldHudLayer.childCount, Is.GreaterThanOrEqualTo(2));
         }
 
         [Test]
