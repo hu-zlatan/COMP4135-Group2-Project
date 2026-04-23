@@ -117,6 +117,52 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void BuildSnapshot_WithSelectionAndNewCards_ReportsHudState()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out var player, out _, out _);
+            var dashCard = EditorTestSupport.CreateCard(scope, "dash", "Dash", CardType.Dash, TargetType.Tile, moveDistance: 3);
+            EditorTestSupport.SetPrivateField(battleUi, "selectedUnit", player);
+            battleUi.SelectCard(dashCard);
+
+            var snapshot = battleUi.BuildSnapshot();
+
+            Assert.That(snapshot.SelectedUnit.DisplayName, Is.EqualTo("Hero"));
+            Assert.That(snapshot.SelectedCard.Title, Is.EqualTo("Dash"));
+            Assert.That(snapshot.StatusMessage, Does.Contain("Dash ready"));
+        }
+
+        [Test]
+        public void AttachRuntimeUi_BackdropDoesNotBlockWorldClicks()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out _, out _, out _);
+            var parent = scope.Track(new GameObject("HudRoot")).transform;
+
+            battleUi.AttachRuntimeUi(parent);
+
+            var backdrop = parent.Find("BattleHudPanel/Backdrop");
+            Assert.That(backdrop, Is.Not.Null);
+            Assert.That(backdrop.GetComponent<UnityEngine.UI.Image>().raycastTarget, Is.False);
+            Assert.That(parent.Find("BattleHudPanel/TopBar").GetComponent<UnityEngine.UI.Image>().raycastTarget, Is.False);
+            Assert.That(parent.Find("BattleHudPanel/LeftPanel").GetComponent<UnityEngine.UI.Image>().raycastTarget, Is.False);
+            Assert.That(parent.Find("BattleHudPanel/BottomPanel").GetComponent<UnityEngine.UI.Image>().raycastTarget, Is.False);
+        }
+
+        [Test]
+        public void SelectCard_HealOnSelectedUnit_AutoResolvesAndRestoresHealth()
+        {
+            using var scope = CreateBattleContext(out var battleUi, out _, out var player, out _, out _);
+            var healCard = EditorTestSupport.CreateCard(scope, "heal", "Recover", CardType.Heal, TargetType.Self, range: 0, power: 2, moveDistance: 0);
+            EditorTestSupport.SetProperty(player, nameof(UnitController.CurrentHp), 2);
+            EditorTestSupport.SetPrivateField(battleUi, "selectedUnit", player);
+
+            battleUi.SelectCard(healCard);
+
+            Assert.That(player.CurrentHp, Is.EqualTo(4));
+            Assert.That(battleUi.SelectedCard, Is.Null);
+            Assert.That(GetActionLog(battleUi)[^1], Does.Contain("used Recover"));
+        }
+
+        [Test]
         public void TryPlayCardOnUnit_ValidStrike_ConsumesPlayAndUpdatesActionLog()
         {
             using var scope = CreateBattleContext(out var battleUi, out var turnManager, out var player, out var enemy, out _);

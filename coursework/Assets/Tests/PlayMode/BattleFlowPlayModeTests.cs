@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace TacticalCards.Tests.PlayMode
 {
     public class BattleFlowPlayModeTests
     {
-        [Test]
-        public void GameRoot_Start_InitializesBattleReadyState()
+        [UnityTest]
+        public IEnumerator GameRoot_StartBattleSession_InitializesBattleReadyState()
         {
             using var scope = new TestObjectScope();
             var gridManager = scope.Track(new GameObject("GridManager")).AddComponent<GridManager>();
@@ -33,17 +35,20 @@ namespace TacticalCards.Tests.PlayMode
             SetPrivateField(gameRoot, "cardResolver", cardResolver);
             SetPrivateField(gameRoot, "enemyAI", enemyAi);
             SetPrivateField(gameRoot, "battleUI", battleUi);
+            SetPrivateField(gameRoot, "disableFrontEndFlow", true);
             SetPrivateField(gameRoot, "sceneUnits", new[] { player, enemy });
 
             InvokePrivateMethod(gameRoot, "Awake");
             InvokePrivateMethod(gameRoot, "Start");
+            gameRoot.StartBattleSession();
 
             Assert.That(turnManager.PlayerUnits.Count, Is.EqualTo(1));
-            Assert.That(turnManager.EnemyUnits.Count, Is.EqualTo(1));
+            Assert.That(turnManager.EnemyUnits.Count, Is.EqualTo(2));
             Assert.That(turnManager.IsPlayerTurn, Is.True);
             Assert.That(deckManager.Hand.Count, Is.EqualTo(3));
             Assert.That(gridManager.GetTile(new Vector2Int(1, 1)).Occupant, Is.EqualTo(player));
             Assert.That(gridManager.GetTile(new Vector2Int(2, 1)).Occupant, Is.EqualTo(enemy));
+            yield break;
         }
 
         private static DeckManager CreateDeckManager(TestObjectScope scope)

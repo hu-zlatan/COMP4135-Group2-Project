@@ -63,6 +63,33 @@ The test plan was built backward from the codebase rather than from generic test
 \normalsize
 \setlength{\tabcolsep}{6pt}
 
+\section{Representative Test Input and Output Matrix}
+
+\setlength{\tabcolsep}{3pt}
+\footnotesize
+\begin{longtable}{llllll}
+\caption{Representative test-case matrix with explicit inputs and expected outputs.}
+\label{tab:test-io-matrix}\\
+\toprule
+\wcell{0.95cm}{\textbf{ID}} & \wcell{2.20cm}{\textbf{Action / scenario}} & \wcell{2.55cm}{\textbf{Inputs / setup}} & \wcell{2.55cm}{\textbf{Expected output}} & \wcell{2.55cm}{\textbf{Actual output}} & \wcell{2.10cm}{\textbf{Evidence}} \\
+\midrule
+\endfirsthead
+\toprule
+\wcell{0.95cm}{\textbf{ID}} & \wcell{2.20cm}{\textbf{Action / scenario}} & \wcell{2.55cm}{\textbf{Inputs / setup}} & \wcell{2.55cm}{\textbf{Expected output}} & \wcell{2.55cm}{\textbf{Actual output}} & \wcell{2.10cm}{\textbf{Evidence}} \\
+\midrule
+\endhead
+\wcell{0.95cm}{TC-01} & \wcell{2.20cm}{Battle bootstrap and first playable state} & \wcell{2.55cm}{Load the battle scene with valid player and enemy rosters.} & \wcell{2.55cm}{Scene initialises, units spawn onto legal tiles, and the first player turn becomes playable.} & \wcell{2.55cm}{Matched on clean rerun. Bootstrap and first-turn readiness both passed.} & \wcell{2.10cm}{\code{GameRootTests}, \code{BattleFlowPlayModeTests}} \\
+\wcell{0.95cm}{TC-02} & \wcell{2.20cm}{Turn reset and draw cycle} & \wcell{2.55cm}{Advance from one player turn to the next after card use and discard activity.} & \wcell{2.55cm}{Card-play quota resets and a fresh hand is drawn according to deck state.} & \wcell{2.55cm}{Matched on rerun. Turn-loop and deck lifecycle checks passed.} & \wcell{2.10cm}{\code{TurnManagerTests}, \code{DeckManagerTests}} \\
+\wcell{0.95cm}{TC-03} & \wcell{2.20cm}{Move card on a valid target tile} & \wcell{2.55cm}{Select a move card and click a reachable, in-bounds tile.} & \wcell{2.55cm}{The unit moves to the selected tile and occupancy updates correctly.} & \wcell{2.55cm}{Matched on rerun. Resolver and grid assertions both passed.} & \wcell{2.10cm}{\code{CardResolverTests}, \code{GridManagerTests}} \\
+\wcell{0.95cm}{TC-04} & \wcell{2.20cm}{Strike / guard interaction} & \wcell{2.55cm}{Apply strike or guard through card resolution and the UI card-selection flow.} & \wcell{2.55cm}{Strike damages an adjacent enemy; guard applies temporary defence and is consumed correctly.} & \wcell{2.55cm}{Matched on rerun. Direct logic and UI-triggered branches passed.} & \wcell{2.10cm}{\code{CardResolverTests}, \code{UnitControllerTests}, \code{BattleUITests}} \\
+\wcell{0.95cm}{TC-05} & \wcell{2.20cm}{Invalid target prompt} & \wcell{2.55cm}{Select a card and attempt an invalid tile, wrong range, or friendly target.} & \wcell{2.55cm}{The action is rejected and the UI shows a clear corrective prompt.} & \wcell{2.55cm}{Matched on rerun. Prompt and rejection paths both passed.} & \wcell{2.10cm}{\code{BattleUITests}, \code{CardButtonViewTests}} \\
+\wcell{0.95cm}{TC-06} & \wcell{2.20cm}{Enemy AI decision step} & \wcell{2.55cm}{Provide multiple candidate player targets with distance differences and dead/alive combinations.} & \wcell{2.55cm}{AI picks the nearest alive player and then moves or attacks according to state.} & \wcell{2.55cm}{Matched on rerun. Selection and turn orchestration checks passed.} & \wcell{2.10cm}{\code{EnemyAITests}, \code{TurnManagerTests}} \\
+\wcell{0.95cm}{TC-07} & \wcell{2.20cm}{Battle end lock and outcome display} & \wcell{2.55cm}{Drive the battle to a terminal win or loss condition.} & \wcell{2.55cm}{The loop locks, no further actions are accepted, and a stable outcome state is exposed.} & \wcell{2.55cm}{Matched on rerun. Regression checks and UI lock behaviour passed.} & \wcell{2.10cm}{\code{TurnManagerTests}, \code{BattleUITests}} \\
+\bottomrule
+\end{longtable}
+\normalsize
+\setlength{\tabcolsep}{6pt}
+
 \section{Final Suite Inventory}
 
 \setlength{\tabcolsep}{4pt}

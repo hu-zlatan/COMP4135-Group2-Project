@@ -14,10 +14,12 @@ namespace TacticalCards.Tests.Editor
             var drawPile = EditorTestSupport.GetPrivateField<List<CardData>>(deckManager, "drawPile");
             var discardPile = EditorTestSupport.GetPrivateField<List<CardData>>(deckManager, "discardPile");
 
-            Assert.That(drawPile.Count, Is.EqualTo(7));
+            Assert.That(drawPile.Count, Is.EqualTo(9));
             Assert.That(deckManager.Hand.Count, Is.EqualTo(0));
             Assert.That(discardPile.Count, Is.EqualTo(0));
             Assert.That(deckManager.CardsDrawnPerTurn, Is.EqualTo(3));
+            Assert.That(drawPile.Exists(card => card.CardType == CardType.Dash), Is.True);
+            Assert.That(drawPile.Exists(card => card.CardType == CardType.Heal), Is.True);
         }
 
         [Test]

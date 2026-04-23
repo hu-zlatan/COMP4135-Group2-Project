@@ -66,7 +66,7 @@ namespace TacticalCards.Tests.Editor
             SetPrivateField(unit, "attackPower", attackPower);
             SetPrivateField(unit, "moveRange", moveRange);
             SetProperty(unit, nameof(UnitController.CurrentHp), currentHp);
-            unit.SetGridPosition(gridPosition, Vector3.zero);
+            unit.SetGridPosition(gridPosition, new Vector3(gridPosition.x, 0f, gridPosition.y));
             return unit;
         }
 

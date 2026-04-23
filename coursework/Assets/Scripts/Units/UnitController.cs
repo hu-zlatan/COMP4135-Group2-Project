@@ -37,6 +37,24 @@ namespace TacticalCards
             IsGuarding = isGuarding;
         }
 
+        public void ResetForBattle(Vector2Int coord, Vector3 worldPosition)
+        {
+            gameObject.SetActive(true);
+            CurrentHp = maxHp;
+            IsGuarding = false;
+            SetGridPosition(coord, worldPosition);
+        }
+
+        public void ConfigureRuntime(string runtimeDisplayName, TeamType runtimeTeam, int runtimeMaxHp, int runtimeAttackPower, int runtimeMoveRange)
+        {
+            displayName = runtimeDisplayName;
+            team = runtimeTeam;
+            maxHp = runtimeMaxHp;
+            attackPower = runtimeAttackPower;
+            moveRange = runtimeMoveRange;
+            CurrentHp = Mathf.Min(CurrentHp > 0 ? CurrentHp : runtimeMaxHp, runtimeMaxHp);
+        }
+
         public void TakeDamage(int amount)
         {
             var finalDamage = IsGuarding ? Mathf.Max(0, amount - 1) : amount;
@@ -55,4 +73,3 @@ namespace TacticalCards
         }
     }
 }
-

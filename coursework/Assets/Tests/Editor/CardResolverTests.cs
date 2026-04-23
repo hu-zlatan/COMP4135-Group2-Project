@@ -62,6 +62,37 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void ResolveTileCard_Heal_RestoresHpOnCaster()
+        {
+            using var scope = new TestObjectScope();
+            var gridManager = EditorTestSupport.CreateGridManager(scope);
+            var cardResolver = EditorTestSupport.CreateCardResolver(scope, gridManager);
+            var caster = EditorTestSupport.CreateUnit(scope, "Hero", TeamType.Player, new Vector2Int(1, 1), maxHp: 5, currentHp: 2);
+            var healCard = EditorTestSupport.CreateCard(scope, "heal", "Recover", CardType.Heal, TargetType.Self, range: 0, power: 2, moveDistance: 0);
+
+            var resolved = cardResolver.ResolveTileCard(healCard, caster, gridManager.GetTile(new Vector2Int(1, 1)));
+
+            Assert.That(resolved, Is.True);
+            Assert.That(caster.CurrentHp, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void GetValidTiles_Dash_UsesExtendedMoveRange()
+        {
+            using var scope = new TestObjectScope();
+            var gridManager = EditorTestSupport.CreateGridManager(scope);
+            var cardResolver = EditorTestSupport.CreateCardResolver(scope, gridManager);
+            var caster = EditorTestSupport.CreateUnit(scope, "Hero", TeamType.Player, new Vector2Int(1, 1));
+            var turnManager = EditorTestSupport.CreateTurnManager(scope, gridManager: gridManager);
+            EditorTestSupport.RegisterAndPlaceUnits(turnManager, gridManager, caster);
+            var dashCard = EditorTestSupport.CreateCard(scope, "dash", "Dash", CardType.Dash, TargetType.Tile, moveDistance: 3);
+
+            var validTiles = cardResolver.GetValidTiles(dashCard, caster);
+
+            Assert.That(validTiles.Exists(tile => tile.Coord == new Vector2Int(4, 1)), Is.True);
+        }
+
+        [Test]
         public void ResolveUnitCard_Strike_DamagesEnemyAndClearsTileWhenTargetDies()
         {
             using var scope = new TestObjectScope();

@@ -12,6 +12,8 @@ namespace TacticalCards
         Strike = 1,
         Guard = 2,
         Push = 3,
+        Heal = 4,
+        Dash = 5,
     }
 
     public enum TargetType

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace TacticalCards
@@ -20,18 +21,24 @@ namespace TacticalCards
         public bool BattleEnded { get; private set; }
         public TeamType? WinningTeam { get; private set; }
         public string BattleOutcomeSummary { get; private set; } = string.Empty;
+        public int PlayerTurnCount { get; private set; }
+
+        public event Action<GameResultData> BattleEndedEvent;
 
         public void Initialize(DeckManager targetDeckManager, EnemyAI targetEnemyAI, GridManager targetGridManager)
         {
             deckManager = targetDeckManager;
             enemyAI = targetEnemyAI;
             gridManager = targetGridManager;
+            playerUnits.Clear();
+            enemyUnits.Clear();
             IsPlayerTurn = false;
             RemainingCardPlays = 0;
             BattleEnded = false;
             WinningTeam = null;
             BattleOutcomeSummary = string.Empty;
             LastEnemyActionSummary = "Battle started.";
+            PlayerTurnCount = 0;
         }
 
         public void RegisterUnit(UnitController unit)
@@ -81,6 +88,7 @@ namespace TacticalCards
 
             IsPlayerTurn = true;
             RemainingCardPlays = maxCardPlaysPerTurn;
+            PlayerTurnCount++;
             deckManager?.DiscardHand();
             deckManager?.DrawForTurn();
         }
@@ -202,6 +210,13 @@ namespace TacticalCards
             LastEnemyActionSummary = outcomeSummary;
             IsPlayerTurn = false;
             RemainingCardPlays = 0;
+            BattleEndedEvent?.Invoke(BuildResultData());
+        }
+
+        public GameResultData BuildResultData()
+        {
+            var title = WinningTeam == TeamType.Player ? "Victory" : "Defeat";
+            return new GameResultData(title, BattleOutcomeSummary, WinningTeam, PlayerTurnCount);
         }
     }
 }

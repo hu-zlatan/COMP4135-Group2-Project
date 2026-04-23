@@ -50,6 +50,18 @@ namespace TacticalCards
             return new Vector3(coord.x * tileSpacing, 0f, coord.y * tileSpacing);
         }
 
+        public Vector2Int WorldToCoord(Vector3 worldPosition)
+        {
+            if (Mathf.Approximately(tileSpacing, 0f))
+            {
+                return new Vector2Int(Mathf.RoundToInt(worldPosition.x), Mathf.RoundToInt(worldPosition.z));
+            }
+
+            return new Vector2Int(
+                Mathf.RoundToInt(worldPosition.x / tileSpacing),
+                Mathf.RoundToInt(worldPosition.z / tileSpacing));
+        }
+
         public bool IsInBounds(Vector2Int coord)
         {
             return coord.x >= 0 && coord.x < width && coord.y >= 0 && coord.y < height;
@@ -242,7 +254,14 @@ namespace TacticalCards
             {
                 if (tile != null)
                 {
-                    Destroy(tile.gameObject);
+                    if (Application.isPlaying)
+                    {
+                        Destroy(tile.gameObject);
+                    }
+                    else
+                    {
+                        DestroyImmediate(tile.gameObject);
+                    }
                 }
             }
 
