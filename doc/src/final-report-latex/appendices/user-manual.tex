@@ -1,0 +1,119 @@
+\section{Purpose}
+
+This manual explains how to run and play the current \projectname{} demo in the Unity Editor. The delivered coursework build is a compact single-battle prototype rather than a full campaign game, so the manual focuses on the playable battle loop and the runtime HUD.
+
+\section{Opening the Project}
+
+\begin{enumerate}
+    \item Open the Unity project located in \code{coursework/}.
+    \item Load \code{Assets/Scenes/SampleScene.unity}.
+    \item Press the Unity Editor \texttt{Play} button.
+\end{enumerate}
+
+When the scene starts correctly, the player first sees the title screen rather than entering combat immediately.
+
+\section{Starting a Battle}
+
+\begin{enumerate}
+    \item Wait for the title screen to finish loading.
+    \item Press \texttt{Start Battle}.
+    \item The game transitions into the battle state and the battle HUD becomes active.
+\end{enumerate}
+
+If the battle has already finished, the result screen allows the player to replay the battle or return to the title screen.
+
+\section{Core Interaction Flow}
+
+The intended interaction order during the player turn is:
+
+\begin{enumerate}
+    \item select a player unit on the board;
+    \item select a card from the hand;
+    \item select a valid target tile or enemy unit if the card requires one;
+    \item observe the result and continue until the turn ends.
+\end{enumerate}
+
+The player can press \texttt{Clear} to reset the current selection and \texttt{End Turn} to pass control to the enemy phase.
+
+\section{Reading the Battle HUD}
+
+\subsection{Top Bar}
+
+The top bar provides the most important turn-state information:
+
+\begin{itemize}
+    \item current turn state;
+    \item remaining action budget, shown as \texttt{Energy};
+    \item current selection state;
+    \item prompt text describing what the player should do next.
+\end{itemize}
+
+\subsection{Left Panel}
+
+The left panel provides supporting battle information:
+
+\begin{itemize}
+    \item unit summary;
+    \item battle log;
+    \item recent action history.
+\end{itemize}
+
+\subsection{Bottom Hand Panel}
+
+The bottom panel displays the current hand of cards. Each card includes:
+
+\begin{itemize}
+    \item card name;
+    \item action type;
+    \item effect summary such as range, damage, movement, or recovery value.
+\end{itemize}
+
+When a card cannot be used in the current state, the card shows disabled feedback directly instead of relying only on the battle log.
+
+\subsection{World-space Unit Feedback}
+
+Each unit displays a world-space health bar above the model. This allows the player to read board state without scanning the text log after every action.
+
+\section{Card Reference}
+
+The current fallback starter deck supports the following actions:
+
+\begin{itemize}
+    \item \textbf{Move}: move the selected unit up to 2 tiles.
+    \item \textbf{Dash}: move the selected unit up to 3 tiles.
+    \item \textbf{Strike}: deal 2 damage to an adjacent enemy.
+    \item \textbf{Long Strike}: deal 2 damage to an enemy within 2 tiles.
+    \item \textbf{Guard}: reduce the next incoming hit against the selected unit.
+    \item \textbf{Push}: deal 1 damage and push the enemy backward if possible.
+    \item \textbf{Recover}: restore 2 health to the selected unit.
+\end{itemize}
+
+\section{Understanding the Turn Loop}
+
+\begin{enumerate}
+    \item At the start of the player turn, the game refreshes the action budget and hand state.
+    \item The player performs a limited number of card-driven actions.
+    \item The player ends the turn.
+    \item Enemy units execute their actions automatically.
+    \item The game checks whether the battle should continue or end in victory or defeat.
+\end{enumerate}
+
+Some battles may introduce reinforcement pressure during play. This is an intended part of the final tactical slice.
+
+\section{Ending the Battle}
+
+When the battle reaches a win or loss condition, the runtime flow changes to the result screen. The result screen provides:
+
+\begin{itemize}
+    \item a visible battle outcome;
+    \item replay/start-over behaviour;
+    \item a return path to the title screen.
+\end{itemize}
+
+\section{Troubleshooting}
+
+\begin{itemize}
+    \item If the title screen does not appear, verify that \code{SampleScene.unity} is the loaded scene and that the project compiled successfully.
+    \item If a card cannot be played, check the current prompt text, selection state, and the card's disabled feedback.
+    \item If board state becomes hard to follow, use the top-bar prompt plus the world-space health bars before relying on the battle log.
+\end{itemize}

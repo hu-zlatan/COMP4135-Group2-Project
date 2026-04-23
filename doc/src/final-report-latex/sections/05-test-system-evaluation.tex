@@ -1,0 +1,114 @@
+\chapter{Test \& System Evaluation}
+
+Testing became the main backbone of the project during WR3 and remained central during the post-WR3 completion push. The final validation approach did not rely on a single type of evidence. Instead, it combined direct EditMode tests for stable logic, PlayMode smoke for whole-scene readiness, and manual smoke for visual composition and overlay-heavy UI behaviour \cite{cw1Specification,wr3ExecutionSummary,postWr3IssueLog}.
+
+\section{Test Strategy}
+
+The core strategy was \textit{TDD-first where behaviour is deterministic, smoke-first where the result is primarily visual}. This mattered because \projectname{} contains both rule-driven systems and presentation-heavy systems. Turn flow, deck lifecycle, movement constraints, damage handling, and battle-end state all have explicit success conditions and can be tested directly. By contrast, title-panel readability, overlay composition, and the visual relationship between the board and the hand dock cannot be reduced safely to screenshot-perfect automation in the current project setup.
+
+The team therefore treated a result as \textit{verified} only when it was backed by an explicit rerun record on disk. In practice this meant that a test file, smoke note, or issue closure was not treated as complete merely because the code existed. It had to be rerun or re-smoked after the relevant fix. This rule was inherited from WR3 and remained useful during the later UI and UX passes.
+
+Table \ref{tab:validation-layers} summarises the final validation layers.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{2.2cm}{\textbf{Layer}} & \wcell{3.4cm}{\textbf{Main purpose}} & \wcell{4.3cm}{\textbf{Representative evidence}} & \wcell{2.0cm}{\textbf{Used for}} \\
+\midrule
+\wcell{2.2cm}{EditMode tests} & \wcell{3.4cm}{Directly verify deterministic rules and state transitions} & \wcell{4.3cm}{`TurnManagerTests`, `DeckManagerTests`, `CardResolverTests`, `GridManagerTests`, `GameFlowControllerTests`, `BattleUITests`} & \wcell{2.0cm}{Core logic, flow, UI regressions} \\
+\wcell{2.2cm}{PlayMode smoke} & \wcell{3.4cm}{Verify that the scene reaches a playable runtime state} & \wcell{4.3cm}{`BattleFlowPlayModeTests`} & \wcell{2.0cm}{Scene bootstrap and battle readiness} \\
+\wcell{2.2cm}{Manual smoke} & \wcell{3.4cm}{Confirm readability, layout, and aesthetic stability} & \wcell{4.3cm}{Post-WR3 UX, ambience, and HUD smoke records} & \wcell{2.0cm}{Overlay composition and final UX judgement} \\
+\bottomrule
+\end{tabular}
+\caption{Validation layers used by the final project.}
+\label{tab:validation-layers}
+\end{table}
+
+\section{Test Methods}
+
+The automated suite is organised by runtime responsibility. This mirrors the source-tree structure and makes failures easier to interpret. The earlier WR3 validation freeze already covered the main prototype classes directly. Post-WR3 work then expanded that base by adding stronger UI and flow tests, including `GameFlowControllerTests` and additional `BattleUITests` around runtime HUD layout, disabled-card states, and direct-battle start behaviour.
+
+At the latest post-WR3 HUD feedback checkpoint, the project reported:
+
+\begin{itemize}
+    \item `81/81` passing EditMode tests;
+    \item `1/1` passing PlayMode smoke test.
+\end{itemize}
+
+This is materially stronger than the WR3 freeze alone because the later counts include the new title-flow, HUD, and layout-regression work. Table \ref{tab:final-execution-summary} shows the progression from the archived WR3 validation baseline into the later post-WR3 reruns.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+\wcell{2.0cm}{\textbf{Checkpoint}} & \wcell{2.1cm}{\textbf{EditMode}} & \wcell{2.0cm}{\textbf{PlayMode}} & \wcell{3.3cm}{\textbf{Primary focus}} & \wcell{2.4cm}{\textbf{Evidence source}} \\
+\midrule
+\wcell{2.0cm}{WR3 freeze\\(17/04/2026)} & \wcell{2.1cm}{`57/57`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{Battle-loop validation and requirements coverage freeze} & \wcell{2.4cm}{WR3 execution summary} \\
+\wcell{2.0cm}{M12 ambience\\(24/04/2026)} & \wcell{2.1cm}{`75/75`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{World-layer presentation pass and title/result dressing} & \wcell{2.4cm}{Ambience smoke record} \\
+\wcell{2.0cm}{M13 HUD feedback\\(24/04/2026)} & \wcell{2.1cm}{`81/81`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{HUD readability, disabled-card feedback, and layout regression closure} & \wcell{2.4cm}{HUD feedback smoke record} \\
+\bottomrule
+\end{tabular}
+\caption{Progression from the WR3 validation baseline to the final post-WR3 reruns.}
+\label{tab:final-execution-summary}
+\end{table}
+
+The suite now covers the main runtime concerns directly:
+
+\begin{itemize}
+    \item battle start, battle end, and turn-loop correctness;
+    \item draw, discard, reshuffle, and hand lifecycle;
+    \item movement, attack, push, guard, heal, and occupancy rules;
+    \item enemy target selection and movement decisions;
+    \item battle HUD prompts, disabled-card reasoning, and runtime layout guards;
+    \item title-flow and result-flow state transitions.
+\end{itemize}
+
+This is important because the final project was not only judged on whether the game happened to run during a demo. It was also judged on whether the team could show systematic validation around the delivered behaviour.
+
+\section{Code Coverage}
+
+The project does have an archived code-coverage baseline from the WR3 validation freeze. That archive recorded:
+
+\begin{itemize}
+    \item `11` runtime classes in the coverage report;
+    \item `74.2\%` line coverage;
+    \item `92.4\%` method coverage.
+\end{itemize}
+
+Those figures come from the 17/04/2026 archived coverage export and are useful because they quantify the validation position at the point where the prototype battle slice was formally frozen for WR3 \cite{wr3ExecutionSummary}. They also show that the suite was not limited to a few smoke assertions; it already covered most of the core runtime surface directly.
+
+However, the report must stay honest about the current limitation: the coverage archive has not yet been regenerated after the post-WR3 expansion from the WR3 baseline to the later `81/81` EditMode position. In addition, the current worktree shows the archived coverage folder in a dirty state. For that reason, the final report should treat the `74.2\%` line-coverage figure as an archived WR3 baseline rather than claim it as the final post-polish coverage number. The correct next step before final submission is to restore or regenerate the archive and then update the chapter if a final-coursework coverage figure is required.
+
+This distinction matters because coverage is only useful when tied to a known suite state. Reporting a stale number as if it belongs to the latest build would weaken the credibility of the report.
+
+\section{Evaluation}
+
+The delivered build satisfies the main goal of the project: it provides a complete and readable tactical battle loop rather than only a technical prototype. The player can begin from a title screen, enter battle, select units and cards, understand the turn state through the HUD, observe enemy response, and reach a result screen with replay or menu options. The core gameplay, runtime flow, and late-stage usability improvements are all supported by named evidence on disk.
+
+Table \ref{tab:final-evaluation-summary} summarises the main outcome areas.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.8cm}{\textbf{Area}} & \wcell{2.0cm}{\textbf{Outcome}} & \wcell{5.4cm}{\textbf{Reasoning}} \\
+\midrule
+\wcell{3.8cm}{Playable front-end flow} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Title, battle, and result states now exist inside the main scene and are covered by flow and smoke evidence.} \\
+\wcell{3.8cm}{Battle rules and turn loop} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Movement, attack, guard, push, recover, draw/discard, enemy turns, and battle-end handling are directly tested.} \\
+\wcell{3.8cm}{HUD readability and action feedback} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Energy, prompts, disabled-card reasons, and world-space health bars closed earlier readability gaps.} \\
+\wcell{3.8cm}{Visual and thematic cohesion} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Themed UI assets, board ambience, and silhouette-based units now give the slice a coherent visual direction.} \\
+\wcell{3.8cm}{Regression protection} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Late-stage UI and flow fixes were backed by reruns, not only by one-off manual checks.} \\
+\wcell{3.8cm}{Residual limitations} & \wcell{2.0cm}{Open but non-blocking} & \wcell{5.4cm}{The project remains a single-battle demo, overlay-heavy screenshot capture still needs manual smoke, and coverage needs a fresh post-polish export.} \\
+\bottomrule
+\end{tabular}
+\caption{Final evaluation summary for the delivered build.}
+\label{tab:final-evaluation-summary}
+\end{table}
+
+The most valuable aspect of the final testing cycle is not any single number. It is the fact that the major late-stage defects were turned into explicit closure work. Title overlay collision, top-bar overlap, hand-panel occlusion, hidden card-availability feedback, and debug-flow bypass were all identified through smoke, traced to specific runtime causes, fixed in code, and then backed by rerun or hierarchy evidence. This is exactly the kind of test-and-improve loop the coursework expects \cite{postWr3IssueLog}.
+
+The final system still has clear boundaries. It is not a large tactics game; it is a polished single-battle coursework slice. That is acceptable because the evaluation criteria reward rigour, traceability, and professionalism more than raw feature count. On that basis, the delivered build is much stronger than the early prototype: it is now a complete, demonstrable, and substantially validated software artifact rather than only a promising design idea.

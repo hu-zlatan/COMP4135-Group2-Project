@@ -1,0 +1,19 @@
+\chapter{Evolution \& Maintenance}
+
+Although \projectname{} is a compact prototype, the final coursework submission still needed to demonstrate that the delivered system can be maintained and extended without structural rework. The team therefore treated maintainability as part of the product definition rather than as a post-hoc aspiration. This is most visible in the separation of runtime responsibilities, the use of test assemblies, and the way third-party assets are isolated from core gameplay code \cite{cw1Specification,wr2Decisions}.
+
+\section{Delivered Maintainability Measures}
+
+The codebase is structured around functional responsibility rather than scene-specific scripts. Core bootstrap and flow classes are separated from battle rules, card resolution, unit logic, grid state, UI presentation, and purely visual wrappers. This makes it possible to modify one layer without rewriting the others. For example, the post-WR3 UI completion work changed the title flow, HUD layout, disabled-card messaging, and health-bar presentation without replacing the underlying turn model or card resolver. That is a strong indication that the delivered architecture supports incremental maintenance rather than one-off prototype hacks.
+
+Assembly definitions provide a second maintainability guardrail. Runtime code is grouped in the main `TacticalCards` assembly, while EditMode and PlayMode test suites are isolated in separate test assemblies. This separation reduces build pollution, avoids test-only dependencies leaking into player-facing code, and makes the validation boundary easier to explain. The same design also helped resolve earlier build issues where test dependencies were being pulled into non-test contexts.
+
+Third-party assets are also contained deliberately. Imported UI art is recorded under the third-party and theme-resource folders, with a matching notice file and project-record register. This means later maintainers can update or replace the visual theme without having to disentangle it from game rules. Documentation follows the same principle: smoke records, milestone notes, issue logs, and final-report preparation files are kept under `doc/src/project-records/`, so evidence generation does not depend on private memory or external chat history.
+
+\section{Deferred Work and Future Evolution}
+
+The most important deferred work is content expansion, not systems rescue. The delivered game does not include a campaign structure, multiple maps, progression systems, deep deck customisation, or a large enemy catalogue. Those omissions were intentional from the one-pager onward, because each of them would have multiplied test surface, UI complexity, and content production cost without improving the quality of the core coursework slice \cite{onePager,wr2Decisions}. In other words, the remaining work is mostly additive.
+
+If the project were continued after assessment, three extension directions would provide the highest value. First, encounter variety could grow through additional objectives, alternate spawn patterns, and another map or two while preserving the same flow shell. Second, the presentation layer could be improved further by replacing the procedural unit silhouettes with a coherent imported CC0 character set and simple animation retargeting. Third, the validation package could be refreshed to include a new final-stage coverage snapshot once the current UI-polish branch stabilises completely. All three paths build on the current architecture rather than requiring a restart.
+
+The milestone history supports this conclusion. Post-WR3 work already showed that the project can absorb front-end flow, HUD feedback, and theming extensions in thin slices without destabilising the entire battle loop. That is exactly the maintenance story a coursework prototype should aim to prove: not that everything was built, but that what was built can evolve in a controlled way \cite{wr2Decisions}.

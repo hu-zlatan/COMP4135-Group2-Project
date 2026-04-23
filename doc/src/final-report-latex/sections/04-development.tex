@@ -1,0 +1,103 @@
+\chapter{Development}
+
+The final delivered version of \projectname{} is built as a deliberately small but complete vertical slice. The codebase does not attempt to solve campaign progression, procedural generation, or large content management. Instead, it focuses on one battle-ready scene with a clear runtime flow, explicit combat rules, a themed HUD, and enough architectural separation to keep the system understandable and testable \cite{wr2Decisions,postWr3IssueLog}.
+
+\section{System Design}
+
+The runtime architecture is split by responsibility rather than by scene object alone. This keeps the main battle systems readable and makes it easier to test core behaviour directly in EditMode. Table \ref{tab:runtime-components} summarises the main component groups required by the final report brief.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{2.2cm}{\textbf{Area}} & \wcell{3.7cm}{\textbf{Key classes}} & \wcell{4.8cm}{\textbf{Responsibility}} & \wcell{1.8cm}{\textbf{Origin}} \\
+\midrule
+\wcell{2.2cm}{Core flow} & \wcell{3.7cm}{`GameRoot`, `GameFlowController`, `GameFlowState`, `TurnManager`} & \wcell{4.8cm}{Scene bootstrap, title-battle-result flow, battle session start, turn state, and win/loss resolution} & \wcell{1.8cm}{Group-authored} \\
+\wcell{2.2cm}{Cards} & \wcell{3.7cm}{`CardData`, `DeckManager`, `CardResolver`} & \wcell{4.8cm}{Card definitions, deck lifecycle, draw/discard handling, and explicit effect resolution} & \wcell{1.8cm}{Group-authored} \\
+\wcell{2.2cm}{Grid} & \wcell{3.7cm}{`GridManager`, `TileView`} & \wcell{4.8cm}{Board generation, occupancy, movement, range queries, and highlight state} & \wcell{1.8cm}{Group-authored} \\
+\wcell{2.2cm}{Units} & \wcell{3.7cm}{`UnitController`, `EnemyAI`} & \wcell{4.8cm}{Shared unit state, damage/heal/guard behaviour, and deterministic enemy targeting and movement} & \wcell{1.8cm}{Group-authored} \\
+\wcell{2.2cm}{Runtime HUD} & \wcell{3.7cm}{`BattleUI`, `BattleHudSnapshot`, `CardButtonView`, `UnitHealthBarView`} & \wcell{4.8cm}{Battle-state presentation, runtime card views, prompts, disabled-card feedback, and world-space health bars} & \wcell{1.8cm}{Group-authored} \\
+\wcell{2.2cm}{Presentation} & \wcell{3.7cm}{`UnitVisualShell`, `WorldThemeResources`, `UiThemeResources`} & \wcell{4.8cm}{Board dressing, colour palette, unit silhouettes, and themed UI resource binding} & \wcell{1.8cm}{Group-authored wrapper over third-party art} \\
+\wcell{2.2cm}{Assets} & \wcell{3.7cm}{Kenney UI sprites and icons} & \wcell{4.8cm}{Runtime panels, banners, buttons, and icons for the themed HUD and menu flow} & \wcell{1.8cm}{Third-party, recorded in notice file} \\
+\bottomrule
+\end{tabular}
+\caption{Main runtime components used by the delivered system.}
+\label{tab:runtime-components}
+\end{table}
+
+The most important architectural boundary is the separation between battle rules and presentation. `TurnManager` owns turn progression, card-play budget, enemy phase execution, and battle-end state. `DeckManager` owns the draw pile, hand, and discard pile. `CardResolver` resolves card effects explicitly through readable branches instead of a large effect hierarchy. `GridManager` and `TileView` maintain board occupancy and targeting support. Together these classes form the deterministic gameplay core.
+
+Above that core, `GameRoot` and `GameFlowController` coordinate scene setup and UI state. `GameRoot` finds or restores required scene dependencies, caches initial unit spawn snapshots, rebuilds the grid, resets the deck, registers units, and spawns reinforcement pressure when the starting enemy count is too low. `GameFlowController` then exposes the project as a complete front-end flow by building the runtime canvas, title panel, battle shell, and result panel inside the main scene. This avoided introducing unnecessary multi-scene complexity while still delivering a recognisable game loop.
+
+The code hierarchy also reflects maintainability concerns from the coursework brief. All runtime logic lives under `Assets/Scripts/`, test code lives under `Assets/Tests/`, and third-party runtime art is isolated under `Assets/ThirdParty/` and `Assets/Resources/UITheme/`. This gives the final report a clear source-code hierarchy to describe and helps separate team-authored implementation from imported visual assets.
+
+\section{Implementation Strategics}
+
+From WR2 onward, the team treated the project as a single-battle vertical slice. That decision was not only a scope reduction; it was the main implementation strategy. The alternative would have been to broaden the game into more scenes, more content, and more systems before the core loop was stable. Instead, the team kept the battlefield, deck flow, and enemy response intentionally compact so that testing, debugging, and later UI refinement could be completed with evidence rather than guesswork \cite{wr2Decisions}.
+
+This strategy remained visible in the post-WR3 milestones. Rather than pivoting into new subsystems, the team extended the same vertical slice in thin layers: first by adding title and result flow, then by replacing the prototype HUD with a panel-based runtime UI, then by modestly expanding gameplay, and finally by completing the visual and usability pass. Table \ref{tab:postwr3-development-slices} shows how the final phase stayed additive rather than disruptive.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.6cm}{\textbf{Milestone}} & \wcell{3.2cm}{\textbf{Focus}} & \wcell{4.9cm}{\textbf{What it changed}} & \wcell{2.4cm}{\textbf{Effect on final build}} \\
+\midrule
+\wcell{1.6cm}{M7} & \wcell{3.2cm}{Front-end flow shell} & \wcell{4.9cm}{Added title, battle, and result states within the main scene} & \wcell{2.4cm}{Turned the prototype into a complete session flow} \\
+\wcell{1.6cm}{M8} & \wcell{3.2cm}{HUD refactor} & \wcell{4.9cm}{Replaced immediate-mode presentation with a panel-based runtime HUD} & \wcell{2.4cm}{Improved readability and interaction clarity} \\
+\wcell{1.6cm}{M9} & \wcell{3.2cm}{Gameplay expansion} & \wcell{4.9cm}{Added `Dash`, `Long Strike`, `Recover`, and reinforcement pressure} & \wcell{2.4cm}{Increased tactical variety without changing the core loop} \\
+\wcell{1.6cm}{M10} & \wcell{3.2cm}{Finish pass and evidence packaging} & \wcell{4.9cm}{Locked in automated reruns and smoke-backed stability checks} & \wcell{2.4cm}{Made the slice submission-ready rather than prototype-only} \\
+\wcell{1.6cm}{M11-M13} & \wcell{3.2cm}{Visual and UX completion} & \wcell{4.9cm}{Added open-licensed theming, board ambience, health bars, and direct card-availability feedback} & \wcell{2.4cm}{Improved perceived quality and reduced usability gaps} \\
+\bottomrule
+\end{tabular}
+\caption{Post-WR3 development remained incremental and vertical-slice focused.}
+\label{tab:postwr3-development-slices}
+\end{table}
+
+The implementation strategy also relied on iterative refinement rather than one-pass delivery. For example, `BattleUI` was not simply decorated after being built; it was reshaped repeatedly in response to user smoke findings about prompt overlap, oversized hand panels, and missing feedback surfaces. Similarly, direct battle debug mode was rerouted through the shared `GameFlowController` path so the team would not accidentally validate a different runtime tree from the one the player actually sees. This is an example of implementation strategy shaping code structure, not just task order \cite{postWr3IssueLog}.
+
+\section{Simulation Design}
+
+The delivered game simulates one compact tactical encounter on a 6x6 grid. Two player-controlled units occupy the board at battle start and fight one or more enemies under a turn-based loop. The simulation is deliberately deterministic: there are no random enemy tactics, no procedural map changes, and no branching objectives. This makes the battle state easier to understand for players and easier to validate for the development team.
+
+At the start of each player turn, `TurnManager` refreshes the action budget and asks `DeckManager` to discard the previous hand and draw a new one. In the delivered build, the player draws three cards per turn and may spend two actions (`maxCardPlaysPerTurn = 2`). This keeps the turn short enough to remain readable while still allowing combinations such as move plus attack or defend plus reposition.
+
+The fallback starter deck now contains nine runtime cards:
+
+\begin{itemize}
+    \item three `Move` cards;
+    \item one `Dash`;
+    \item one `Strike`;
+    \item one `Long Strike`;
+    \item one `Guard`;
+    \item one `Push`;
+    \item one `Recover`.
+\end{itemize}
+
+This card set reflects the project's final tactical goal: a small number of actions with visibly different roles. `CardResolver` keeps the effect logic explicit. Movement and dash actions resolve against tiles, strike and push actions resolve against enemy units, and guard/recover resolve against the acting unit. This decision preserved readability and helped the tests cover each branch directly.
+
+Enemy behaviour is intentionally simple but sufficient for the final slice. `EnemyAI` uses Manhattan distance to select the nearest alive player unit. During the enemy phase, an enemy attacks if already adjacent; otherwise it steps toward the nearest target. This keeps the battle loop predictable enough for a first-time player while still creating pressure. To prevent the one-enemy starting setup from feeling too empty, `GameRoot` can spawn a reinforcement derived from the enemy template if the starting enemy count is below two. This is a good example of moderate gameplay expansion that increased pressure without destabilising the core rules.
+
+Battle end handling is also part of the simulation design rather than only a UI detail. `TurnManager` owns the battle-end check, sets the winning team, freezes turn interaction, and produces a `GameResultData` payload. `GameFlowController` then turns that payload into the result-screen state. This separation ensures that victory and defeat remain logic-backed conditions first and presentation states second.
+
+\section{UI Design}
+
+The UI changed more dramatically than any other system between the early prototype and the delivered build. WR2 accepted a prototype-first interface because it was enough to prove the battle loop. By the final submission phase, however, this was no longer sufficient. The project needed a visible start screen, a readable battle HUD, a result screen, and stronger direct feedback about what the player could or could not do.
+
+The front-end flow is now assembled at runtime by `GameFlowController`. It creates a `ScreenSpaceOverlay` canvas, builds title, battle, and result panels, and keeps them inside the same main scene. The title panel includes the game brand, a short summary, a feature strip, and a clear call to action. The result panel exposes the battle outcome plus replay and menu actions. Keeping these screens in the same scene simplified implementation and testing while still satisfying the need for a complete start-to-finish session flow.
+
+During battle, `BattleUI` builds a three-zone runtime HUD:
+
+\begin{itemize}
+    \item a top bar for turn state, remaining energy, selection state, prompts, and action buttons;
+    \item a left panel for unit summary, status, and the battle log;
+    \item a bottom panel for the active hand of cards.
+\end{itemize}
+
+The runtime HUD no longer pulls ad hoc strings directly from scattered private state. Instead, it builds a `BattleHudSnapshot` containing turn labels, prompt text, selected-unit information, card states, and unit summaries. `CardButtonView` uses this snapshot to render card title, description, use hints, and disabled reasons directly in the hand. `UnitHealthBarView` projects health state back into world space so HP can be read from the board rather than only from the log.
+
+The final UI was shaped heavily by late smoke findings. Title overlay content had to be separated into summary, feature, and button regions. The top bar had to be restacked into explicit rows because the turn label, energy, selection text, and prompt text were colliding. The hand dock had to be reduced because it obscured lower-board units. These are not superficial polish notes; they show how the UI design moved from thematic styling into functional UX refinement \cite{postWr3IssueLog}.
+
+Visual theming was added without replacing the project's own runtime structure. Kenney UI and icon assets were used for banners, panels, buttons, and symbols, while the board, props, and unit silhouettes remained driven by the team's own presentation code. `WorldThemeResources` standardises board, unit, and prop colours; `UnitVisualShell` converts placeholder primitives into distinct knight-, ranger-, and spider-like silhouettes; and the `GridManager` board-presentation layer adds a tabletop base, frame, corner posts, and decorative props. The result is still a coursework-scale demo, but it now looks intentional rather than merely assembled.

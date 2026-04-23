@@ -1,0 +1,177 @@
+\section{Meeting Record Scope}
+
+This appendix section contains the meeting records currently preserved inside the workspace. Where a record was reconstructed from dated artifacts rather than preserved as a complete formal minute set, it remains labelled as \textit{recovered}. This distinction should be preserved in the final report rather than hidden.
+
+\section{Recovered Implementation Checkpoint}
+
+\textbf{Date:} 15/03/2026 \\
+\textbf{Type:} recovered checkpoint note \\
+\textbf{Attendance:} exact attendance not archived in this workspace
+
+\subsection{Purpose}
+
+Turn the WR1 proposal into a minimum playable prototype that could demonstrate:
+
+\begin{itemize}
+    \item a tactical grid;
+    \item card-driven actions;
+    \item a visible turn loop;
+    \item enemy response.
+\end{itemize}
+
+\subsection{Recovered Decisions}
+
+\begin{itemize}
+    \item Use one battle scene only for the early playable version.
+    \item Keep the board at 6x6 for the first prototype.
+    \item Limit the starter prototype to four cards: Move, Strike, Guard, and Push.
+    \item Use one shared `UnitController` for player and enemy units.
+    \item Keep enemy behaviour deterministic and minimal.
+    \item Prefer simple button-driven card selection over drag-and-drop interaction.
+\end{itemize}
+
+\subsection{Recovered Follow-up Tasks}
+
+\begin{itemize}
+    \item Implement the first-pass script list and get the scene running.
+    \item Refresh the architecture diagrams so they match the actual scripts.
+    \item Capture prototype screenshots for WR2.
+    \item Start recording validation and testing notes separately from design notes.
+\end{itemize}
+
+\section{WR1 Kickoff Meeting}
+
+\textbf{Date:} 17/03/2026 \\
+\textbf{Attendance:} Guangjun HU, Hongshuo HU, Zehan CHEN
+
+\subsection{Context}
+
+This meeting was used to share initial game ideas, narrow the coursework direction, and assign the first WR1 tasks.
+
+\subsection{Decisions}
+
+\begin{itemize}
+    \item Confirm \projectname{} as the project direction.
+    \item Agree the initial role allocation.
+    \item Set the first delivery expectations for WR1 materials.
+\end{itemize}
+
+\subsection{Follow-up}
+
+\begin{itemize}
+    \item Prepare initial WR1 materials between 18/03/2026 and 19/03/2026.
+    \item Carry the outcome into WR1 project direction, division of labour, and requirements sections.
+\end{itemize}
+
+\section{WR1 Alignment Meeting}
+
+\textbf{Date:} 18/03/2026 \\
+\textbf{Attendance:} Guangjun HU, Cheng YE
+
+\subsection{Context}
+
+This meeting aligned the current requirement scope around a tactical card battle demo, assigned UML-related work, and standardised a lightweight minute-taking format.
+
+\subsection{Decisions}
+
+\begin{itemize}
+    \item Confirm the WR1 scope around a tactical card battle demo.
+    \item Assign UML diagram production.
+    \item Define a unified meeting-minutes format for later weeks.
+\end{itemize}
+
+\subsection{Follow-up}
+
+\begin{itemize}
+    \item Finalise WR1 alignment by 19/03/2026.
+    \item Reuse the agreed meeting-minutes format in later weekly cycles.
+\end{itemize}
+
+\section{Testing and Validation Meeting}
+
+\textbf{Date:} 15/04/2026 \\
+\textbf{Format:} Online \\
+\textbf{Chair:} Guangjun HU \\
+\textbf{Secretary:} Zehan CHEN
+
+\subsection{Attendance}
+
+\begin{itemize}
+    \item Guangjun HU -- present
+    \item Hongshuo HU -- present
+    \item Cheng YE -- present
+    \item Zehan CHEN -- present
+\end{itemize}
+
+\subsection{Agenda}
+
+\begin{enumerate}
+    \item Review WR2 heuristic walkthrough findings and defect triage.
+    \item Confirm the test strategy and automated test scope.
+    \item Allocate report drafting tasks.
+    \item Set deadlines for remaining open bugs and final submission preparation.
+\end{enumerate}
+
+\subsection{Progress Since Last Meeting}
+
+\begin{itemize}
+    \item Confirm the WR2 closeout state on 02/04/2026 before starting the validation work.
+    \item Apply the battle-end accuracy fix and verify it with EditMode tests.
+    \item Create the initial test log and defect log under \code{doc/src/project-records/testing/}.
+\end{itemize}
+
+\subsection{Key Discussion Points}
+
+\begin{itemize}
+    \item The high-severity battle-end gap was confirmed fixed by the EditMode smoke test.
+    \item Onboarding clarity and enemy-phase emphasis were carried into the final polish pass and had to be closed with rerun-backed evidence before the evidence freeze.
+    \item The team agreed to keep the report within the course template structure and not to introduce unrelated gameplay work during the validation cycle.
+    \item GitHub pull-request review remained the canonical collaboration path for submission-facing changes.
+\end{itemize}
+
+\subsection{Decisions Made}
+
+\begin{itemize}
+    \item Scope was limited to testing documentation, defect tracking, and report assembly for this cycle.
+    \item All four members would contribute to the final report draft.
+    \item The inherited usability issues had to be closed with named rerun evidence before the evidence freeze.
+\end{itemize}
+
+\subsection{Action Items}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
+\toprule
+\wcell{4.1cm}{\textbf{Task}} & \wcell{2.0cm}{\textbf{Owner}} & \wcell{1.8cm}{\textbf{Due}} & \wcell{2.8cm}{\textbf{Review owner}} \\
+\midrule
+\wcell{4.1cm}{Draft LaTeX sections and tables} & \wcell{2.0cm}{Cheng YE} & \wcell{1.8cm}{16/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.1cm}{Run EditMode tests and capture results} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.8cm}{15/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.1cm}{Update defect register and meeting minutes} & \wcell{2.0cm}{Zehan CHEN} & \wcell{1.8cm}{16/04/2026} & \wcell{2.8cm}{Cheng YE} \\
+\wcell{4.1cm}{Final integration check in Unity editor} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.8cm}{17/04/2026} & \wcell{2.8cm}{Whole team} \\
+\bottomrule
+\end{tabular}
+\caption{Action items agreed in the testing and validation meeting.}
+\label{tab:final-meeting-actions}
+\end{table}
+
+\subsection{Issue Closure Status}
+
+\begin{itemize}
+    \item Onboarding clarity was later closed through the post-WR3 HUD and title-flow improvements.
+    \item Enemy-phase emphasis was later closed through UI and prompt updates.
+    \item Coverage completion remained pending at the time of the meeting and was finished later in the cycle.
+\end{itemize}
+
+\subsection{Next Meeting}
+
+\begin{itemize}
+    \item Tentative date: 24/04/2026.
+    \item Main agenda: final submission checklist, closed-bug retest review, and repository submission-readiness confirmation.
+\end{itemize}
+
+\section{Current Gap Note}
+
+This workspace does not yet contain a stronger formally archived record for any later final sign-off meeting. If another confirmed formal meeting record exists outside the workspace, it should still be imported before submission.

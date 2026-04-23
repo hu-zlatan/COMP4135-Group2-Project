@@ -1,0 +1,30 @@
+\chapter{Introduction}
+
+\projectname{} is the final Unity coursework project developed by Group 2 for the COMP4135 Software Engineering Management module. The project answers the CW1 brief by producing a working game suitable for teenagers while also demonstrating requirements engineering, implementation planning, validation, documentation, and team-based software delivery \cite{cw1Specification,finalReportTemplate}. Rather than attempting a content-heavy RPG or a large collectible card game, the team chose a compact tactical card battle that could be implemented, tested, and refined within the available coursework window.
+
+\section{Motivation}
+
+The team's starting motivation was to build a game that encouraged planning, positioning, and short-horizon tactical decision making without overwhelming the player with large maps, progression systems, or complex rules. This aligned well with the coursework requirement to produce a game for teenagers: the design could stay strategically meaningful while remaining readable, approachable, and demonstrable in a short play session \cite{onePager,cw1Specification}.
+
+The tactical card format was chosen because it combined two strengths. First, a grid-based battle creates visible positional decisions that are easy to explain and verify. Second, a limited hand of command cards introduces turn-by-turn choice without requiring a large content set. This combination allowed the team to aim for a game that felt deliberate rather than random, while still keeping the scope realistic for a small student team.
+
+\section{Aims and Objectives}
+
+The project had four main objectives.
+
+\begin{enumerate}
+    \item Deliver a complete playable battle loop in Unity, including player turn, enemy turn, and battle end state.
+    \item Keep the gameplay small enough to be implemented and validated properly within coursework scope.
+    \item Build the game in a way that leaves clear evidence of engineering practice, including requirements traceability, testing records, and version-control workflow.
+    \item Improve readability and feedback so a first-time player can understand what to do without external explanation.
+\end{enumerate}
+
+Success was therefore defined less by content quantity than by the completeness and quality of one polished vertical slice. A successful outcome meant that the player could enter the game, start a battle, understand the core interaction model, finish the encounter, and see the result in a stable and test-backed system.
+
+\section{Description of the Work}
+
+The final system is a compact tactical battle demo built around one encounter scene. The player begins from a title screen, starts a battle, controls two allied units on a small grid, uses a hand of tactical cards to move, attack, defend, reposition, or recover, and then ends the turn so enemy units can act. The battle finishes in a clear victory or defeat state and can then be replayed or exited back to the menu.
+
+Over time, the project evolved from a prototype-focused slice into a more complete coursework deliverable. WR1 established the concept and initial requirements. WR2 locked down the main implementation decisions, including the single-battle vertical slice and explicit, readable battle logic. WR3 concentrated on test strategy and execution evidence. After WR3, the team extended the front-end flow, HUD feedback, UI theming, and battle readability so the final project would feel complete enough for final submission rather than only technically functional.
+
+The result is intentionally modest in content, but it is coherent in scope: one polished encounter, one maintainable codebase, one testable battle loop, and one reportable development trail.
