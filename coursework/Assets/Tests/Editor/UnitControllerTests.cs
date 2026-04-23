@@ -74,5 +74,28 @@ namespace TacticalCards.Tests.Editor
             Assert.That(unit.GridPosition, Is.EqualTo(new Vector2Int(2, 3)));
             Assert.That(unit.transform.position, Is.EqualTo(new Vector3(2f, 0.6f, 3f)));
         }
+
+        [Test]
+        public void Awake_CreatesPresentationShellAndDisablesRootMeshRenderer()
+        {
+            using var scope = new TestObjectScope();
+            var unitObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            unitObject.name = "Knight";
+            scope.Track(unitObject);
+            var unit = unitObject.AddComponent<UnitController>();
+
+            EditorTestSupport.SetPrivateField(unit, "displayName", "Knight");
+            EditorTestSupport.SetPrivateField(unit, "team", TeamType.Player);
+            EditorTestSupport.SetPrivateField(unit, "maxHp", 5);
+            EditorTestSupport.SetProperty(unit, nameof(UnitController.CurrentHp), 5);
+            EditorTestSupport.InvokePrivateMethod(unit, "Awake");
+
+            var presentationRoot = unit.transform.Find("UnitPresentation");
+
+            Assert.That(unit.GetComponent<UnitVisualShell>(), Is.Not.Null);
+            Assert.That(unit.GetComponent<MeshRenderer>().enabled, Is.False);
+            Assert.That(presentationRoot, Is.Not.Null);
+            Assert.That(presentationRoot.GetComponentsInChildren<Renderer>().Length, Is.GreaterThanOrEqualTo(4));
+        }
     }
 }

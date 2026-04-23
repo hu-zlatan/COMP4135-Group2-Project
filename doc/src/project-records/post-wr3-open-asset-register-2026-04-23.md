@@ -69,6 +69,27 @@
   - animation retargeting
   - board-edge props and environment dressing
 
+## Imported second slice
+
+- Status: implemented on 2026-04-24 as a low-risk fallback for the missing character-pack import
+- Runtime evidence:
+  - `Assets/Scripts/Presentation/UnitVisualShell.cs`
+  - `Assets/Scripts/Presentation/WorldThemeResources.cs`
+  - `Assets/Scripts/Units/UnitController.cs`
+  - `Assets/Scripts/Grid/GridManager.cs`
+  - `Assets/Screenshots/m12-slice2-battle-smoke.png`
+  - `doc/src/project-records/testing/post-wr3-visual-smoke-2026-04-24.md`
+- Scope of this slice:
+  - hides the root capsule mesh while preserving the original collider and selection path
+  - builds procedural silhouettes for `Vanguard`, `Ranger`, and `Spider`-style enemies
+  - adds a raised board base, perimeter frame, corner posts, and ally/enemy beacon props
+- Rationale:
+  - no suitable local CC0 character package was cached in the Unity editor, so the milestone moved forward with a stable visual fallback instead of blocking on a risky import path
+- Deferred after this slice:
+  - swapping the procedural silhouettes for imported CC0 character models if a coherent pack is downloaded later
+  - retargeted animation clips
+  - broader environment dressing beyond the board footprint
+
 ## Guardrails
 
 - Avoid mixing `pixel art` packs with the current 3D board unless the whole scene direction changes.

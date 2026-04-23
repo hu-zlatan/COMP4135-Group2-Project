@@ -11,9 +11,14 @@ namespace TacticalCards
         [SerializeField] private int height = 6;
         [SerializeField] private float tileSpacing = 1f;
         [SerializeField] private bool generateOnStart = true;
+        [SerializeField] private float boardMargin = 0.72f;
+        [SerializeField] private float boardThickness = 0.30f;
+        [SerializeField] private float frameThickness = 0.24f;
+        [SerializeField] private float frameHeight = 0.36f;
 
         private readonly Dictionary<Vector2Int, TileView> tiles = new();
         private readonly List<TileView> highlightedTiles = new();
+        private Transform boardPresentationRoot;
 
         public int Width => width;
         public int Height => height;
@@ -43,6 +48,8 @@ namespace TacticalCards
                     tiles.Add(coord, tile);
                 }
             }
+
+            BuildBoardPresentation();
         }
 
         public Vector3 CoordToWorld(Vector2Int coord)
@@ -243,13 +250,27 @@ namespace TacticalCards
             var tileObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
             tileObject.transform.SetParent(tileRoot, false);
             tileObject.transform.position = worldPosition;
-            tileObject.transform.localScale = new Vector3(0.9f, 0.1f, 0.9f);
+            tileObject.transform.localScale = new Vector3(0.92f, 0.12f, 0.92f);
             var tile = tileObject.AddComponent<TileView>();
             return tile;
         }
 
         private void ClearGrid()
         {
+            if (boardPresentationRoot != null)
+            {
+                if (Application.isPlaying)
+                {
+                    Destroy(boardPresentationRoot.gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(boardPresentationRoot.gameObject);
+                }
+
+                boardPresentationRoot = null;
+            }
+
             foreach (var tile in tiles.Values)
             {
                 if (tile != null)
@@ -267,6 +288,178 @@ namespace TacticalCards
 
             tiles.Clear();
             highlightedTiles.Clear();
+        }
+
+        private void BuildBoardPresentation()
+        {
+            if (tileRoot == null)
+            {
+                return;
+            }
+
+            if (boardPresentationRoot != null)
+            {
+                if (Application.isPlaying)
+                {
+                    Destroy(boardPresentationRoot.gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(boardPresentationRoot.gameObject);
+                }
+            }
+
+            boardPresentationRoot = new GameObject("BoardPresentation").transform;
+            boardPresentationRoot.SetParent(tileRoot, false);
+
+            var boardCenter = new Vector3(((width - 1) * tileSpacing) * 0.5f, 0f, ((height - 1) * tileSpacing) * 0.5f);
+            var boardSize = new Vector3(((width - 1) * tileSpacing) + 1f + boardMargin, boardThickness, ((height - 1) * tileSpacing) + 1f + boardMargin);
+
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "BoardBase",
+                boardCenter + new Vector3(0f, -0.22f, 0f),
+                boardSize,
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("BoardBase", WorldThemeResources.BoardBase));
+
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "BoardInset",
+                boardCenter + new Vector3(0f, -0.06f, 0f),
+                new Vector3(boardSize.x - 0.18f, 0.08f, boardSize.z - 0.18f),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("BoardInset", WorldThemeResources.BoardTrim));
+
+            var halfWidth = boardSize.x * 0.5f;
+            var halfDepth = boardSize.z * 0.5f;
+            var frameY = 0.12f;
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "FrameNorth",
+                boardCenter + new Vector3(0f, frameY, halfDepth - (frameThickness * 0.5f)),
+                new Vector3(boardSize.x, frameHeight, frameThickness),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("Frame", WorldThemeResources.BoardFrame));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "FrameSouth",
+                boardCenter + new Vector3(0f, frameY, -halfDepth + (frameThickness * 0.5f)),
+                new Vector3(boardSize.x, frameHeight, frameThickness),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("Frame", WorldThemeResources.BoardFrame));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "FrameWest",
+                boardCenter + new Vector3(-halfWidth + (frameThickness * 0.5f), frameY, 0f),
+                new Vector3(frameThickness, frameHeight, boardSize.z - (frameThickness * 2f)),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("Frame", WorldThemeResources.BoardFrame));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                "FrameEast",
+                boardCenter + new Vector3(halfWidth - (frameThickness * 0.5f), frameY, 0f),
+                new Vector3(frameThickness, frameHeight, boardSize.z - (frameThickness * 2f)),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("Frame", WorldThemeResources.BoardFrame));
+
+            CreateCornerPost("NorthWest", boardCenter + new Vector3(-halfWidth + 0.18f, 0.18f, halfDepth - 0.18f));
+            CreateCornerPost("NorthEast", boardCenter + new Vector3(halfWidth - 0.18f, 0.18f, halfDepth - 0.18f));
+            CreateCornerPost("SouthWest", boardCenter + new Vector3(-halfWidth + 0.18f, 0.18f, -halfDepth + 0.18f));
+            CreateCornerPost("SouthEast", boardCenter + new Vector3(halfWidth - 0.18f, 0.18f, -halfDepth + 0.18f));
+
+            CreateBeacon(
+                "PlayerBeacon",
+                boardCenter + new Vector3(-0.9f, 0f, -halfDepth - 0.22f),
+                WorldThemeResources.PlayerMarker,
+                WorldThemeResources.PlayerSecondaryMarker);
+            CreateBeacon(
+                "EnemyBeacon",
+                boardCenter + new Vector3(0.9f, 0f, halfDepth + 0.22f),
+                WorldThemeResources.EnemyMarker,
+                WorldThemeResources.EnemySecondaryMarker);
+        }
+
+        private void CreateCornerPost(string suffix, Vector3 position)
+        {
+            CreatePresentationPrimitive(
+                PrimitiveType.Cylinder,
+                boardPresentationRoot,
+                $"CornerPost_{suffix}",
+                position,
+                new Vector3(0.12f, 0.18f, 0.12f),
+                Vector3.zero,
+                WorldThemeResources.GetSharedMaterial("CornerPost", WorldThemeResources.BoardTrim));
+        }
+
+        private void CreateBeacon(string namePrefix, Vector3 position, Color primary, Color accent)
+        {
+            CreatePresentationPrimitive(
+                PrimitiveType.Cylinder,
+                boardPresentationRoot,
+                $"{namePrefix}_Base",
+                position + new Vector3(0f, -0.10f, 0f),
+                new Vector3(0.18f, 0.08f, 0.18f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{namePrefix}_BaseMat", accent));
+            CreatePresentationPrimitive(
+                PrimitiveType.Cube,
+                boardPresentationRoot,
+                $"{namePrefix}_Stem",
+                position + new Vector3(0f, 0.12f, 0f),
+                new Vector3(0.08f, 0.24f, 0.08f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{namePrefix}_StemMat", accent));
+            CreatePresentationPrimitive(
+                PrimitiveType.Sphere,
+                boardPresentationRoot,
+                $"{namePrefix}_Orb",
+                position + new Vector3(0f, 0.34f, 0f),
+                new Vector3(0.18f, 0.18f, 0.18f),
+                Vector3.zero,
+                WorldThemeResources.CreateMaterial($"{namePrefix}_OrbMat", primary));
+        }
+
+        private static void CreatePresentationPrimitive(
+            PrimitiveType primitiveType,
+            Transform parent,
+            string objectName,
+            Vector3 localPosition,
+            Vector3 localScale,
+            Vector3 localEulerAngles,
+            Material material)
+        {
+            var decoration = GameObject.CreatePrimitive(primitiveType);
+            decoration.name = objectName;
+            decoration.transform.SetParent(parent, false);
+            decoration.transform.localPosition = localPosition;
+            decoration.transform.localScale = localScale;
+            decoration.transform.localEulerAngles = localEulerAngles;
+
+            var collider = decoration.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+                if (Application.isPlaying)
+                {
+                    Destroy(collider);
+                }
+                else
+                {
+                    DestroyImmediate(collider);
+                }
+            }
+
+            if (decoration.TryGetComponent<Renderer>(out var renderer))
+            {
+                renderer.sharedMaterial = material;
+            }
         }
     }
 }

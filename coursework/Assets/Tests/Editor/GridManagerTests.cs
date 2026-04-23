@@ -20,6 +20,21 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void GenerateGrid_BuildsBoardPresentationAndMarkers()
+        {
+            using var scope = new TestObjectScope();
+            var gridManager = EditorTestSupport.CreateGridManager(scope, width: 4, height: 3);
+
+            var presentationRoot = gridManager.transform.Find("GeneratedTiles/BoardPresentation");
+
+            Assert.That(presentationRoot, Is.Not.Null);
+            Assert.That(presentationRoot.Find("BoardBase"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("FrameNorth"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("PlayerBeacon_Orb"), Is.Not.Null);
+            Assert.That(presentationRoot.Find("EnemyBeacon_Orb"), Is.Not.Null);
+        }
+
+        [Test]
         public void TryPlaceUnit_PlacesUnitAndUpdatesOccupancy()
         {
             using var scope = new TestObjectScope();
