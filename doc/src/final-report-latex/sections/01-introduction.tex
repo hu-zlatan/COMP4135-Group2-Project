@@ -1,30 +1,42 @@
 \chapter{Introduction}
 
-\projectname{} is the final Unity coursework project developed by Group 2 for the COMP4135 Software Engineering Management module. The project answers the CW1 brief by producing a working game suitable for teenagers while also demonstrating requirements engineering, implementation planning, validation, documentation, and team-based software delivery \cite{cw1Specification,finalReportTemplate}. Rather than attempting a content-heavy RPG or a large collectible card game, the team chose a compact tactical card battle that could be implemented, tested, and refined within the available coursework window.
+\projectname{} is a Unity-based tactical card battle prototype designed for teenagers and casual strategy players. The delivered software provides a complete single-battle session: the player enters through a start screen, controls allied units on a grid, plays tactical cards, observes enemy response, and reaches a clear result state.
 
 \section{Motivation}
 
-The team's starting motivation was to build a game that encouraged planning, positioning, and short-horizon tactical decision making without overwhelming the player with large maps, progression systems, or complex rules. This aligned well with the coursework requirement to produce a game for teenagers: the design could stay strategically meaningful while remaining readable, approachable, and demonstrable in a short play session \cite{onePager,cw1Specification}.
+The project began from one simple design goal: each turn should ask the player to make a small number of visible and meaningful tactical decisions without requiring a large content set or a complicated ruleset. Instead of aiming for a campaign-heavy tactics game, the design focuses on one encounter in which positioning, range, timing, and action order matter.
 
-The tactical card format was chosen because it combined two strengths. First, a grid-based battle creates visible positional decisions that are easy to explain and verify. Second, a limited hand of command cards introduces turn-by-turn choice without requiring a large content set. This combination allowed the team to aim for a game that felt deliberate rather than random, while still keeping the scope realistic for a small student team.
+The tactical card format was chosen because it combines two readable systems. First, a grid-based battle makes spatial decisions visible on screen. Second, a small hand of action cards introduces variety without turning the project into a deckbuilding or collection-heavy game. This makes the game strategically meaningful while still remaining approachable for the intended audience.
+
+\section{Report Scope}
+
+This report is written as a self-contained final software-engineering document rather than as a change log. The main chapters focus on the delivered system itself: background, requirements, development, validation, maintenance, and reflection. Supporting technical artifacts are preserved in the appendices, including the user manual, meeting minutes, representative test evidence, development planning notes, version-control summary, and document register.
+
+That structure is deliberate. It allows the main discussion to stay focused on the product and the engineering decisions behind it, while still showing that the submission satisfies the wider expectations of a software-engineering project report: a concrete software artifact, updated system and UI design, traceable requirement evolution, implementation strategy, validation evidence, and reflective discussion of technical and team-level work \cite{courseSpecification}.
 
 \section{Aims and Objectives}
 
-The project had four main objectives.
+The project has four main objectives.
 
 \begin{enumerate}
-    \item Deliver a complete playable battle loop in Unity, including player turn, enemy turn, and battle end state.
-    \item Keep the gameplay small enough to be implemented and validated properly within coursework scope.
-    \item Build the game in a way that leaves clear evidence of engineering practice, including requirements traceability, testing records, and version-control workflow.
-    \item Improve readability and feedback so a first-time player can understand what to do without external explanation.
+    \item Deliver a complete playable battle loop in Unity, including player turn, enemy turn, and battle-end handling.
+    \item Keep the gameplay narrow enough that the core interactions remain readable, stable, and testable.
+    \item Build the system so that turn flow, card resolution, grid interaction, and runtime UI are understandable at code level.
+    \item Improve interface clarity and feedback so that a first-time player can understand what to do without outside explanation.
 \end{enumerate}
 
-Success was therefore defined less by content quantity than by the completeness and quality of one polished vertical slice. A successful outcome meant that the player could enter the game, start a battle, understand the core interaction model, finish the encounter, and see the result in a stable and test-backed system.
+Success is therefore defined less by feature quantity than by the completeness of one polished vertical slice. A successful outcome means that a player can launch the game, start a battle, understand the interaction order, observe enemy response, finish the encounter, and then replay or return cleanly to the menu.
 
-\section{Description of the Work}
+\section{Delivered Contribution}
 
-The final system is a compact tactical battle demo built around one encounter scene. The player begins from a title screen, starts a battle, controls two allied units on a small grid, uses a hand of tactical cards to move, attack, defend, reposition, or recover, and then ends the turn so enemy units can act. The battle finishes in a clear victory or defeat state and can then be replayed or exited back to the menu.
+The delivered build is intentionally modest in content, but complete in structure. It contains:
 
-Over time, the project evolved from a prototype-focused slice into a more complete coursework deliverable. WR1 established the concept and initial requirements. WR2 locked down the main implementation decisions, including the single-battle vertical slice and explicit, readable battle logic. WR3 concentrated on test strategy and execution evidence. After WR3, the team extended the front-end flow, HUD feedback, UI theming, and battle readability so the final project would feel complete enough for final submission rather than only technically functional.
+\begin{itemize}
+    \item a full start-to-result session flow;
+    \item a 6x6 tactical battle with card-driven actions and deterministic enemy response;
+    \item a panel-based HUD with direct action feedback, prompts, and world-space health bars;
+    \item automated validation for deterministic runtime behaviour, plus manual smoke for presentation-heavy UI;
+    \item a code structure that separates flow, battle rules, UI, and presentation cleanly.
+\end{itemize}
 
-The result is intentionally modest in content, but it is coherent in scope: one polished encounter, one maintainable codebase, one testable battle loop, and one reportable development trail.
+The project did not remain static from concept to completion. Early design assumptions were revised as playable builds exposed onboarding, readability, and session-flow problems. The report therefore does not present the final system as if it had emerged fully formed. Chapter 3 explains how the requirement set evolved from the earliest design baseline into the delivered implementation, and Chapter 4 explains how that evolution was handled through iterative development rather than a once-through sequence.

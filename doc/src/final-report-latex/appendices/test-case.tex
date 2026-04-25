@@ -1,0 +1,83 @@
+\section{Validation Evidence Register}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{3.2cm}{\textbf{Evidence item}} & \wcell{1.8cm}{\textbf{Date}} & \wcell{2.2cm}{\textbf{Type}} & \wcell{4.3cm}{\textbf{Use in the report}} \\
+\midrule
+\wcell{3.2cm}{Prototype accuracy regression run} & \wcell{1.8cm}{02/04/2026} & \wcell{2.2cm}{EditMode run} & \wcell{4.3cm}{Shows the battle-end correctness fix was rerun and closed.} \\
+\wcell{3.2cm}{Archived validation summary} & \wcell{1.8cm}{17/04/2026} & \wcell{2.2cm}{Execution record} & \wcell{4.3cm}{Provides the archived baseline suite counts and coverage export.} \\
+\wcell{3.2cm}{Coverage export snapshot} & \wcell{1.8cm}{17/04/2026} & \wcell{2.2cm}{Coverage record} & \wcell{4.3cm}{Provides the quantitative line and method coverage baseline.} \\
+\wcell{3.2cm}{Defect and retest register} & \wcell{1.8cm}{17/04/2026} & \wcell{2.2cm}{Defect log} & \wcell{4.3cm}{Shows which inherited or current defects were closed through rerun evidence.} \\
+\wcell{3.2cm}{Visual ambience smoke} & \wcell{1.8cm}{24/04/2026} & \wcell{2.2cm}{Manual smoke} & \wcell{4.3cm}{Shows the themed board and scene dressing stayed stable.} \\
+\wcell{3.2cm}{HUD feedback smoke} & \wcell{1.8cm}{24/04/2026} & \wcell{2.2cm}{Manual smoke} & \wcell{4.3cm}{Shows the final HUD layout and interaction feedback remained readable.} \\
+\wcell{3.2cm}{Late-stage UI and HUD issue log} & \wcell{1.8cm}{24/04/2026} & \wcell{2.2cm}{Issue log} & \wcell{4.3cm}{Explains how the final visual defects were found and closed.} \\
+\bottomrule
+\end{tabular}
+\caption{Main validation records preserved for the final report.}
+\label{tab:appendix-validation-register}
+\end{table}
+
+\section{Coverage Snapshot}
+
+The appendix preserves two complementary views of validation:
+
+\begin{itemize}
+    \item an archived quantitative coverage snapshot;
+    \item later rerun counts after the final flow and HUD passes.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.4cm}{\textbf{Metric}} & \wcell{2.4cm}{\textbf{Value}} & \wcell{4.9cm}{\textbf{Interpretation}} \\
+\midrule
+\wcell{3.4cm}{Archived runtime classes} & \wcell{2.4cm}{`11`} & \wcell{4.9cm}{The archived coverage report covers the core runtime slice.} \\
+\wcell{3.4cm}{Archived line coverage} & \wcell{2.4cm}{`74.2\%`} & \wcell{4.9cm}{Useful quantitative baseline before the final polishing passes.} \\
+\wcell{3.4cm}{Archived method coverage} & \wcell{2.4cm}{`92.4\%`} & \wcell{4.9cm}{Shows strong method-level closure for the deterministic battle systems.} \\
+\wcell{3.4cm}{Latest EditMode rerun} & \wcell{2.4cm}{`81/81`} & \wcell{4.9cm}{Shows the suite expanded after later flow and HUD work.} \\
+\wcell{3.4cm}{Latest PlayMode rerun} & \wcell{2.4cm}{`1/1`} & \wcell{4.9cm}{Shows the playable scene still boots and reaches battle readiness.} \\
+\bottomrule
+\end{tabular}
+\caption{Coverage and rerun snapshot preserved in the appendix.}
+\label{tab:appendix-coverage-snapshot}
+\end{table}
+
+\section{Representative Automated Test Inventory}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{2.8cm}{\textbf{Area}} & \wcell{4.7cm}{\textbf{Representative suites}} & \wcell{4.0cm}{\textbf{What they protect}} \\
+\midrule
+\wcell{2.8cm}{Battle bootstrap} & \wcell{4.7cm}{`GameRootTests`, `GameFlowControllerTests`} & \wcell{4.0cm}{Flow transitions, runtime UI creation, replay/menu behaviour} \\
+\wcell{2.8cm}{Turn loop} & \wcell{4.7cm}{`TurnManagerTests`} & \wcell{4.0cm}{Action budget, battle-end rules, enemy-phase handoff} \\
+\wcell{2.8cm}{Cards and deck} & \wcell{4.7cm}{`DeckManagerTests`, `CardResolverTests`} & \wcell{4.0cm}{Draw/discard lifecycle and card-effect branches} \\
+\wcell{2.8cm}{Grid and tiles} & \wcell{4.7cm}{`GridManagerTests`, `TileViewTests`} & \wcell{4.0cm}{Placement, occupancy, range, and highlight behaviour} \\
+\wcell{2.8cm}{Units and AI} & \wcell{4.7cm}{`UnitControllerTests`, `EnemyAITests`} & \wcell{4.0cm}{Damage, healing, guard, target choice, and movement} \\
+\wcell{2.8cm}{HUD and card views} & \wcell{4.7cm}{`BattleUITests`, `CardButtonViewTests`} & \wcell{4.0cm}{Prompt layout, disabled-card states, and layout regression guards} \\
+\wcell{2.8cm}{Playable-scene readiness} & \wcell{4.7cm}{`BattleFlowPlayModeTests`} & \wcell{4.0cm}{Scene bootstrap and battle entry in Play Mode} \\
+\bottomrule
+\end{tabular}
+\caption{Representative automated test coverage in the delivered project.}
+\label{tab:appendix-test-inventory}
+\end{table}
+
+\section{Manual Smoke Checklist}
+
+The following player-visible checks were retained as manual smoke responsibilities:
+
+\begin{itemize}
+    \item title screen loads and the start button is readable;
+    \item battle HUD appears without text overlap;
+    \item opening hand dock does not obscure the lower board excessively;
+    \item victory and defeat both reach the result state cleanly;
+    \item disabled cards explain why they cannot be played;
+    \item world-space health bars remain readable during combat.
+\end{itemize}

@@ -6,9 +6,17 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{float}
+\usepackage{placeins}
 \usepackage{enumitem}
 \usepackage[table]{xcolor}
+\usepackage{ragged2e}
 \usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyvrb}
+
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.misc,fit,calc}
+\pgfplotsset{compat=1.18}
 
 \hypersetup{
     colorlinks=true,
@@ -17,6 +25,7 @@
     citecolor=green
 }
 \urlstyle{tt}
+\graphicspath{{figures/}}
 
 \setlist[itemize]{leftmargin=1.35em,topsep=4pt,itemsep=3pt,parsep=0pt,partopsep=0pt}
 \setlist[enumerate]{leftmargin=1.6em,topsep=4pt,itemsep=4pt,parsep=0pt,partopsep=0pt}
@@ -34,7 +43,7 @@
 \begin{titlepage}
 \begin{center}
 \vspace*{20pt}
-\includegraphics[width=0.55\textwidth]{../wr2-latex/nottingham-logo.png}\\[1cm]
+\includegraphics[width=0.55\textwidth]{nottingham-logo.png}\\[1cm]
 \vspace{28pt}
 {\Large\bfseries COMP4135 SEM Final Group Report}\\[18pt]
 {\large\bfseries \groupname}\\[34pt]
@@ -55,7 +64,7 @@ University of Nottingham
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-Tactical Cards is a Unity-based tactical card combat prototype designed for teenagers and casual strategy players who benefit from readable, small-scope decision making. The final project delivers a complete single-battle loop with a title screen, a playable tactical encounter on a grid board, a result screen, card-driven unit actions, deterministic enemy response, and a themed runtime HUD. Development was deliberately kept within a compact vertical slice so the team could prioritise maintainable code structure, automated validation, and visible teamwork evidence alongside gameplay implementation. The delivered project combines early requirements work from WR1, implementation and scope-control decisions from WR2, and a validation-heavy WR3 plus post-WR3 polish cycle. By the end of the project, the codebase had stable EditMode and PlayMode test coverage, a documented issue-closure trail, and a clearer UI/UX layer that addressed earlier feedback about readability, feedback, and onboarding.
+Tactical Cards is a Unity-based tactical card combat prototype designed for teenagers and casual strategy players who benefit from readable, small-scope decision making. The delivered project provides a complete single-battle loop with a title screen, a playable grid encounter, a result screen, deterministic enemy response, and a themed runtime HUD. The design focuses on one compact tactical scenario rather than a larger campaign structure so that interaction order, board state, card effects, and player feedback remain easy to understand. This report concentrates on the system itself: the requirements that shape the battle loop, the architecture used to implement it, the runtime interaction model, the user interface design, the current validation results, and the main technical limitations and extension paths.
 
 \tableofcontents
 

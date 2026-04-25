@@ -1,19 +1,34 @@
-\chapter{Evolution \& Maintenance}
+\chapter{Extensibility \& Maintenance}
 
-Although \projectname{} is a compact prototype, the final coursework submission still needed to demonstrate that the delivered system can be maintained and extended without structural rework. The team therefore treated maintainability as part of the product definition rather than as a post-hoc aspiration. This is most visible in the separation of runtime responsibilities, the use of test assemblies, and the way third-party assets are isolated from core gameplay code \cite{cw1Specification,wr2Decisions}.
+Although \projectname{} is a compact prototype, the delivered system is structured so that it can be maintained and extended without structural rework.
 
 \section{Delivered Maintainability Measures}
 
-The codebase is structured around functional responsibility rather than scene-specific scripts. Core bootstrap and flow classes are separated from battle rules, card resolution, unit logic, grid state, UI presentation, and purely visual wrappers. This makes it possible to modify one layer without rewriting the others. For example, the post-WR3 UI completion work changed the title flow, HUD layout, disabled-card messaging, and health-bar presentation without replacing the underlying turn model or card resolver. That is a strong indication that the delivered architecture supports incremental maintenance rather than one-off prototype hacks.
+The codebase is structured around functional responsibility rather than scene-specific scripts. Core bootstrap and flow classes are separated from battle rules, card resolution, unit logic, grid state, UI presentation, and purely visual wrappers. This makes it possible to modify one layer without rewriting the others. For example, the title flow, HUD layout, disabled-card messaging, and health-bar presentation can change without replacing the underlying turn model or card resolver.
 
-Assembly definitions provide a second maintainability guardrail. Runtime code is grouped in the main `TacticalCards` assembly, while EditMode and PlayMode test suites are isolated in separate test assemblies. This separation reduces build pollution, avoids test-only dependencies leaking into player-facing code, and makes the validation boundary easier to explain. The same design also helped resolve earlier build issues where test dependencies were being pulled into non-test contexts.
+Assembly definitions provide a second maintainability guardrail. Runtime code is grouped in the main `TacticalCards` assembly, while EditMode and PlayMode test suites are isolated in separate test assemblies. This separation reduces build pollution, avoids test-only dependencies leaking into player-facing code, and makes the validation boundary easier to explain.
 
-Third-party assets are also contained deliberately. Imported UI art is recorded under the third-party and theme-resource folders, with a matching notice file and project-record register. This means later maintainers can update or replace the visual theme without having to disentangle it from game rules. Documentation follows the same principle: smoke records, milestone notes, issue logs, and final-report preparation files are kept under `doc/src/project-records/`, so evidence generation does not depend on private memory or external chat history.
+Third-party assets are also contained deliberately. Imported interface art is kept separate from the battle rules and runtime state logic. This means the visual theme can be updated or replaced without having to disentangle it from gameplay behaviour.
 
 \section{Deferred Work and Future Evolution}
 
-The most important deferred work is content expansion, not systems rescue. The delivered game does not include a campaign structure, multiple maps, progression systems, deep deck customisation, or a large enemy catalogue. Those omissions were intentional from the one-pager onward, because each of them would have multiplied test surface, UI complexity, and content production cost without improving the quality of the core coursework slice \cite{onePager,wr2Decisions}. In other words, the remaining work is mostly additive.
+The most important deferred work is content expansion, not systems rescue. The delivered game does not include a campaign structure, multiple maps, progression systems, deep deck customisation, or a large enemy catalogue. Those omissions are intentional because each of them would multiply test surface, UI complexity, and content production cost without improving the quality of the core tactical slice.
 
-If the project were continued after assessment, three extension directions would provide the highest value. First, encounter variety could grow through additional objectives, alternate spawn patterns, and another map or two while preserving the same flow shell. Second, the presentation layer could be improved further by replacing the procedural unit silhouettes with a coherent imported CC0 character set and simple animation retargeting. Third, the validation package could be refreshed to include a new final-stage coverage snapshot once the current UI-polish branch stabilises completely. All three paths build on the current architecture rather than requiring a restart.
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{3.2cm}{\textbf{Follow-up direction}} & \wcell{4.0cm}{\textbf{What would be added}} & \wcell{2.1cm}{\textbf{Rough effort}} & \wcell{2.2cm}{\textbf{Why it was deferred}} \\
+\midrule
+\wcell{3.2cm}{Encounter variety} & \wcell{4.0cm}{More objectives, alternate spawn patterns, and one or two additional maps.} & \wcell{2.1cm}{1--2 weeks} & \wcell{2.2cm}{Would widen the test surface and increase tuning cost.} \\
+\wcell{3.2cm}{Character presentation} & \wcell{4.0cm}{Replace procedural silhouettes with coherent character assets and simple animation.} & \wcell{2.1cm}{1 week} & \wcell{2.2cm}{HUD readability and battle clarity had higher priority.} \\
+\wcell{3.2cm}{Coverage refresh} & \wcell{4.0cm}{Regenerate the coverage archive after the latest UI and flow additions.} & \wcell{2.1cm}{1--2 days} & \wcell{2.2cm}{The existing archive is still the last stable quantitative baseline.} \\
+\wcell{3.2cm}{Broader PlayMode journeys} & \wcell{4.0cm}{Add more end-to-end PlayMode paths for win, loss, replay, and menu return.} & \wcell{2.1cm}{2--3 days} & \wcell{2.2cm}{EditMode coverage and targeted smoke had more immediate value.} \\
+\bottomrule
+\end{tabular}
+\caption{Concrete extension paths with rough effort estimates.}
+\label{tab:future-work-estimates}
+\end{table}
 
-The milestone history supports this conclusion. Post-WR3 work already showed that the project can absorb front-end flow, HUD feedback, and theming extensions in thin slices without destabilising the entire battle loop. That is exactly the maintenance story a coursework prototype should aim to prove: not that everything was built, but that what was built can evolve in a controlled way \cite{wr2Decisions}.
+The current architecture already shows that the project can absorb flow, HUD, and theming extensions in thin slices without destabilising the entire battle loop.

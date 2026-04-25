@@ -1,54 +1,103 @@
 \chapter{Requirements Engineering}
 
-The requirements for \projectname{} were first established in WR1 and then refined as the team moved from concept definition to a stable vertical slice. The final requirement set preserves the original design intent of a readable tactical card game for teenagers, but it has been updated to reflect the actual delivered system rather than the earlier prototype-only view \cite{cw1Specification,onePager}.
+This chapter defines the final system requirements in terms of user needs, interaction scenarios, and the delivered functional and non-functional targets of the game. It also explains how the requirement set evolved from the earliest concept into the completed build, because the differences between the original design assumptions and the final implementation are important rather than accidental.
 
 \section{Requirements Elicitation}
 
-Three stakeholder perspectives shaped the project requirements.
-
-\begin{itemize}
-    \item \textbf{Teenage end users.} The game needed to be understandable within a short session, readable on screen, and strategically meaningful without deep genre knowledge.
-    \item \textbf{The teaching team and module assessor.} The project needed to show clear software-engineering practice, including requirements work, planning, testing, documentation, and teamwork evidence.
-    \item \textbf{The development and maintenance perspective.} The implementation needed to remain small enough to build, test, debug, and explain within the coursework period.
-\end{itemize}
-
-Early elicitation work, including the one-pager and WR1 reporting, narrowed the project toward a lightweight tactical battle rather than a large campaign game. That decision was reinforced by early meetings, which made it clear that the team needed a scope that could support both gameplay delivery and a strong reportable engineering process. As a result, the team treated the project as a compact battle-simulation product rather than a content-heavy game.
-
-\section{Requirements Specification}
-
-Table \ref{tab:final-requirements} presents the final requirement set used for the completed system. The list combines the original WR1 requirements with the post-WR3 UI/UX completion work so that the specification matches the delivered game.
+Three stakeholder perspectives shaped the requirement set.
 
 \begin{table}[H]
 \centering
 \small
 \begin{tabular}{lll}
 \toprule
-\wcell{1.7cm}{\textbf{ID}} & \wcell{5.1cm}{\textbf{Requirement}} & \wcell{5.0cm}{\textbf{Delivered meaning in the final build}} \\
+\wcell{2.6cm}{\textbf{Stakeholder}} & \wcell{4.5cm}{\textbf{Core concern}} & \wcell{4.6cm}{\textbf{Design implication}} \\
 \midrule
-\wcell{1.7cm}{FR-01} & \wcell{5.1cm}{The game shall provide a complete front-end flow.} & \wcell{5.0cm}{The player can move from title screen to battle and then to a result state with replay or return-to-menu actions.} \\
-\wcell{1.7cm}{FR-02} & \wcell{5.1cm}{The game shall initialise one playable tactical battle on a small grid.} & \wcell{5.0cm}{The battle scene creates a 6x6 board, places player and enemy units, and starts a valid battle loop.} \\
-\wcell{1.7cm}{FR-03} & \wcell{5.1cm}{The player turn shall refresh battle resources and draw a hand of cards.} & \wcell{5.0cm}{Turn start resets the playable-action budget and refreshes the runtime hand.} \\
-\wcell{1.7cm}{FR-04} & \wcell{5.1cm}{The player shall be able to select a unit, choose a card, and act on a valid target only.} & \wcell{5.0cm}{The HUD and board flow enforce valid ordering and surface invalid-target feedback.} \\
-\wcell{1.7cm}{FR-05} & \wcell{5.1cm}{Command cards shall support movement, attack, defence, repositioning, and recovery.} & \wcell{5.0cm}{The final card set includes Move, Dash, Strike, Long Strike, Guard, Push, and Recover.} \\
-\wcell{1.7cm}{FR-06} & \wcell{5.1cm}{Enemy units shall execute visible and deterministic turns.} & \wcell{5.0cm}{Enemy AI targets the nearest valid player and either attacks or advances accordingly.} \\
-\wcell{1.7cm}{FR-07} & \wcell{5.1cm}{The game shall expose clear victory and defeat states.} & \wcell{5.0cm}{Battle outcome transitions into a result panel with replay and menu actions.} \\
-\wcell{1.7cm}{FR-08} & \wcell{5.1cm}{The runtime HUD shall expose the key battle state clearly.} & \wcell{5.0cm}{The final HUD shows prompts, hand, energy, battle log, card availability, and world-space health bars.} \\
-\wcell{1.7cm}{NFR-01} & \wcell{5.1cm}{The game shall remain suitable for teenage users.} & \wcell{5.0cm}{The rules, UI flow, and feedback are intentionally kept compact and readable.} \\
-\wcell{1.7cm}{NFR-02} & \wcell{5.1cm}{The project shall remain feasible within coursework scope.} & \wcell{5.0cm}{The team keeps to a single-battle vertical slice instead of expanding into campaign systems.} \\
-\wcell{1.7cm}{NFR-03} & \wcell{5.1cm}{The implementation shall remain testable and maintainable.} & \wcell{5.0cm}{The codebase is modularised by responsibility and protected by EditMode and PlayMode tests.} \\
-\wcell{1.7cm}{NFR-04} & \wcell{5.1cm}{Third-party assets and components shall be traceable.} & \wcell{5.0cm}{Imported UI art is recorded in asset notices and supporting registers.} \\
-\wcell{1.7cm}{NFR-05} & \wcell{5.1cm}{The project shall remain documentable and traceable as coursework evidence.} & \wcell{5.0cm}{Milestones, tests, issue logs, and process records are archived under the project records tree.} \\
+\wcell{2.6cm}{Teenage end user} & \wcell{4.5cm}{The game should be easy to start, clear to read, and still strategically meaningful.} & \wcell{4.6cm}{The final build keeps the rules, board size, hand size, and feedback surfaces deliberately compact.} \\
+\wcell{2.6cm}{Developer / maintainer} & \wcell{4.5cm}{The system should be implementable, testable, and extensible without destabilising the core loop.} & \wcell{4.6cm}{The final project remains one battle slice with clear script ownership and separate system layers.} \\
+\wcell{2.6cm}{Designer} & \wcell{4.5cm}{Positioning, range, timing, and action order should remain visible and tunable.} & \wcell{4.6cm}{The final build uses a small card set and deterministic enemy behaviour to keep balancing readable.} \\
 \bottomrule
 \end{tabular}
-\caption{Final functional and non-functional requirements for Tactical Cards.}
+\caption{Stakeholder concerns reflected in the delivered design.}
+\label{tab:design-stakeholders}
+\end{table}
+
+These perspectives established the earliest design baseline: one compact tactical session for teenage players, readable enough for a first-time user, and small enough to be implemented and validated properly. That baseline remained stable, but several requirements changed in form as the team moved from concept diagrams to a playable system.
+
+\section{Personas and Scenarios}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{2.6cm}{\textbf{Design item}} & \wcell{4.5cm}{\textbf{Core concern}} & \wcell{4.6cm}{\textbf{Design implication}} \\
+\midrule
+\wcell{2.6cm}{Persona 1\\First-time teenage player} & \wcell{4.5cm}{Learn the battle flow quickly, understand unit/card/target selection, and receive clear feedback after each action.} & \wcell{4.6cm}{Drove the prompt stack, visible energy label, disabled-card reasons, result flow, and world-space health bars.} \\
+\wcell{2.6cm}{Persona 2\\Developer / maintainer} & \wcell{4.5cm}{Keep scope manageable, preserve clarity, and align implementation with system responsibilities.} & \wcell{4.6cm}{Drove the single-battle vertical slice, modular script layout, and explicit manager boundaries.} \\
+\wcell{2.6cm}{Scenario 1\\First battle interaction} & \wcell{4.5cm}{The player selects a friendly unit, selects a card, and then selects a valid target while the system limits invalid interaction.} & \wcell{4.6cm}{Remains the core interaction path for both implementation and HUD feedback work.} \\
+\wcell{2.6cm}{Scenario 2\\Understanding turn results} & \wcell{4.5cm}{The player ends the turn and needs to understand what the enemy just did and why.} & \wcell{4.6cm}{Remains the main reason for keeping the battle log, enemy-phase summary, and visible health feedback.} \\
+\bottomrule
+\end{tabular}
+\caption{Personas and scenarios that shape the current system.}
+\label{tab:design-personas-scenarios}
+\end{table}
+
+\section{Requirement Evolution}
+
+The finished game differs in several important ways from the earliest design assumption, but the changes are coherent rather than contradictory. The original concept emphasised tactical combat on a small board. The delivered build still does that, but the implementation path showed that a battle-only prototype was not enough for a complete submission or for a readable first-time experience. As a result, several requirements evolved from minimal placeholders into explicit user-facing obligations.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+\wcell{2.2cm}{\textbf{Area}} & \wcell{2.5cm}{\textbf{Initial design assumption}} & \wcell{2.6cm}{\textbf{Delivered form}} & \wcell{2.8cm}{\textbf{Reason for change}} & \wcell{2.1cm}{\textbf{Validation evidence}} \\
+\midrule
+\wcell{2.2cm}{Session flow} & \wcell{2.5cm}{The earliest playable target focused on entering battle directly.} & \wcell{2.6cm}{The final build includes title, battle, and result states.} & \wcell{2.8cm}{The battle slice needed clearer entry, completion, replay, and menu return behaviour.} & \wcell{2.1cm}{Flow tests and PlayMode smoke} \\
+\wcell{2.2cm}{HUD feedback} & \wcell{2.5cm}{Status text and log output were considered sufficient for the prototype.} & \wcell{2.6cm}{The final HUD exposes prompts, energy, disabled-card reasons, and world-space health bars.} & \wcell{2.8cm}{Playable smoke showed that hidden state and log-only feedback slowed understanding.} & \wcell{2.1cm}{`BattleUITests`, `CardButtonViewTests`, smoke} \\
+\wcell{2.2cm}{Card variety} & \wcell{2.5cm}{The first card set only needed the minimum actions to prove the turn loop.} & \wcell{2.6cm}{The final build adds `Dash`, `Long Strike`, and `Recover` to the base actions.} & \wcell{2.8cm}{The battle needed slightly deeper tactical choice without broadening into deckbuilding.} & \wcell{2.1cm}{Card and deck tests, manual battle smoke} \\
+\wcell{2.2cm}{Presentation} & \wcell{2.5cm}{Primitive units and minimal UI were acceptable while the core loop was still unstable.} & \wcell{2.6cm}{The final build uses themed UI, dressed boards, and silhouette-based unit presentation.} & \wcell{2.8cm}{A submission-ready slice needed stronger readability and visual cohesion.} & \wcell{2.1cm}{Visual smoke and runtime checks} \\
+\wcell{2.2cm}{Validation} & \wcell{2.5cm}{Early validation focused mainly on proving core battle correctness.} & \wcell{2.6cm}{The final package combines EditMode tests, PlayMode smoke, and issue-driven UX smoke.} & \wcell{2.8cm}{Later UI and flow work introduced player-visible defects that required more than logic-only tests.} & \wcell{2.1cm}{Execution summary, smoke records, issue closure} \\
+\bottomrule
+\end{tabular}
+\caption{How the delivered system differs from the earliest design assumptions.}
+\label{tab:requirements-evolution}
+\end{table}
+
+Two points are important here. First, the core idea did not change: the project remained a compact tactical card battle for teenage users. Second, the implementation requirements became stricter as the playable build exposed real usability problems. The final specification is therefore better read as a refined version of the original intent, not as a different product.
+
+\section{Final Requirements Specification}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.5cm}{\textbf{ID}} & \wcell{3.6cm}{\textbf{Requirement}} & \wcell{3.8cm}{\textbf{Delivered meaning in the final build}} & \wcell{2.2cm}{\textbf{Acceptance check}} \\
+\midrule
+\wcell{1.5cm}{FR-01} & \wcell{3.6cm}{The game shall provide a complete front-end flow.} & \wcell{3.8cm}{The player can move from title screen to battle and then to a result state with replay or return-to-menu actions.} & \wcell{2.2cm}{Visible title, battle, and result states verified in flow tests and smoke.} \\
+\wcell{1.5cm}{FR-02} & \wcell{3.6cm}{The game shall initialise one playable tactical battle on a 6x6 grid.} & \wcell{3.8cm}{The scene creates a 6x6 board, places player and enemy units, and starts a valid battle loop.} & \wcell{2.2cm}{Bootstrap, grid, and PlayMode readiness tests.} \\
+\wcell{1.5cm}{FR-03} & \wcell{3.6cm}{The player turn shall refresh resources and draw a hand of cards.} & \wcell{3.8cm}{Turn start resets the action budget and refreshes the runtime hand.} & \wcell{2.2cm}{`TurnManagerTests`, `DeckManagerTests`.} \\
+\wcell{1.5cm}{FR-04} & \wcell{3.6cm}{The player shall select a unit, choose a card, and act on a valid target only.} & \wcell{3.8cm}{The HUD and board flow enforce valid ordering and surface invalid-target feedback.} & \wcell{2.2cm}{`BattleUITests`, `CardResolverTests`, smoke.} \\
+\wcell{1.5cm}{FR-05} & \wcell{3.6cm}{Command cards shall support movement, attack, defence, repositioning, and recovery.} & \wcell{3.8cm}{The final card set includes Move, Dash, Strike, Long Strike, Guard, Push, and Recover.} & \wcell{2.2cm}{Card and deck suites plus manual battle smoke.} \\
+\wcell{1.5cm}{FR-06} & \wcell{3.6cm}{Enemy units shall execute visible and deterministic turns.} & \wcell{3.8cm}{Enemy AI targets the nearest valid player and either attacks or advances accordingly.} & \wcell{2.2cm}{`EnemyAITests`, turn-loop tests, smoke.} \\
+\wcell{1.5cm}{FR-07} & \wcell{3.6cm}{The game shall expose clear victory and defeat states.} & \wcell{3.8cm}{Battle outcome transitions into a result panel with replay and menu actions.} & \wcell{2.2cm}{Flow tests and result-state smoke.} \\
+\wcell{1.5cm}{FR-08} & \wcell{3.6cm}{The runtime HUD shall expose key battle state clearly.} & \wcell{3.8cm}{The final HUD shows prompts, hand, energy, battle log, card availability, and world-space health bars.} & \wcell{2.2cm}{`BattleUITests`, `CardButtonViewTests`, HUD smoke.} \\
+\wcell{1.5cm}{NFR-01} & \wcell{3.6cm}{Critical combat information shall remain directly visible during battle.} & \wcell{3.8cm}{Turn state, remaining energy, selected-unit context, card availability, and unit HP are visible without opening extra menus.} & \wcell{2.2cm}{HUD smoke and layout regression tests.} \\
+\wcell{1.5cm}{NFR-02} & \wcell{3.6cm}{The demo shall run through one full session without requiring debug-only shortcuts.} & \wcell{3.8cm}{A user can go from title to result through the normal flow path.} & \wcell{2.2cm}{PlayMode smoke and manual smoke.} \\
+\wcell{1.5cm}{NFR-03} & \wcell{3.6cm}{Core runtime systems shall remain understandable and testable.} & \wcell{3.8cm}{Flow, grid, cards, units, and UI are separated by responsibility and checked through automated tests plus targeted smoke.} & \wcell{2.2cm}{System structure and validation results.} \\
+\wcell{1.5cm}{NFR-04} & \wcell{3.6cm}{Third-party assets and components shall remain isolated from battle rules.} & \wcell{3.8cm}{Imported visual assets are used for theming, while the interaction model and gameplay code remain independent.} & \wcell{2.2cm}{Architecture and resource structure.} \\
+\wcell{1.5cm}{NFR-05} & \wcell{3.6cm}{The project shall remain maintainable and extensible.} & \wcell{3.8cm}{Runtime code is separated by responsibility so the UI, battle rules, and presentation layer can evolve independently.} & \wcell{2.2cm}{Architecture and code structure.} \\
+\bottomrule
+\end{tabular}
+\caption{Final functional and non-functional requirements for \projectname{}.}
 \label{tab:final-requirements}
 \end{table}
 
 \section{Requirements Validation}
 
-The requirements were validated through a combination of direct automated tests, PlayMode smoke checks, manual visual smoke, and issue-driven iteration. This layered approach was necessary because the project contains both deterministic game rules and presentation-heavy UI concerns. Core systems such as turn flow, card resolution, grid occupancy, enemy behaviour, and game bootstrap were validated directly with automated tests. By contrast, visual layout questions such as title readability or hand-panel occlusion required manual smoke supported by targeted regression tests.
-
-Table \ref{tab:requirements-validation-map} summarises how the main requirement groups were validated in the delivered project.
+The requirements are validated through a combination of direct automated tests, PlayMode smoke checks, and manual visual smoke. This layered approach is necessary because the project contains both deterministic game rules and presentation-heavy UI concerns.
 
 \begin{table}[H]
 \centering
@@ -61,12 +110,12 @@ Table \ref{tab:requirements-validation-map} summarises how the main requirement 
 \wcell{2.0cm}{Cards and turn loop} & \wcell{4.6cm}{EditMode rule-level tests} & \wcell{5.2cm}{`TurnManagerTests`, `DeckManagerTests`, `CardResolverTests`} \\
 \wcell{2.0cm}{Grid and unit state} & \wcell{4.6cm}{EditMode placement, movement, damage, and occupancy tests} & \wcell{5.2cm}{`GridManagerTests`, `UnitControllerTests`, `TileViewTests`} \\
 \wcell{2.0cm}{Enemy response} & \wcell{4.6cm}{EditMode AI tests plus turn-loop integration checks} & \wcell{5.2cm}{`EnemyAITests`, `TurnManagerTests`} \\
-\wcell{2.0cm}{HUD and interaction feedback} & \wcell{4.6cm}{EditMode UI tests plus manual smoke for final layout} & \wcell{5.2cm}{`BattleUITests`, `CardButtonViewTests`, post-WR3 smoke records} \\
-\wcell{2.0cm}{Usability refinements} & \wcell{4.6cm}{Heuristic walkthrough followed by post-WR3 issue closure and smoke retest} & \wcell{5.2cm}{WR2 walkthrough and post-WR3 issue log} \\
+\wcell{2.0cm}{HUD and interaction feedback} & \wcell{4.6cm}{EditMode UI tests plus manual smoke for final layout} & \wcell{5.2cm}{`BattleUITests`, `CardButtonViewTests`, HUD smoke} \\
+\wcell{2.0cm}{Usability refinements} & \wcell{4.6cm}{Scenario-based walkthrough followed by smoke retest} & \wcell{5.2cm}{Runtime verification and layout regression checks} \\
 \bottomrule
 \end{tabular}
-\caption{How the final requirement groups were validated.}
+\caption{How the final requirement groups are validated.}
 \label{tab:requirements-validation-map}
 \end{table}
 
-This validation path also reflects how the requirements matured. Early heuristic feedback showed that onboarding clarity, enemy-phase readability, and battle-end presentation were still weak in the prototype. Those gaps later became explicit implementation and testing targets during the post-WR3 completion push. As a result, the final requirement set is not only an early design wish list; it is a refined specification backed by implementation and validation evidence.
+The resulting specification is not only a feature list. It records what the player must be able to do, how clearly the game must communicate state, and how the project moved from an early concept into a more complete and better-validated tactical slice.
