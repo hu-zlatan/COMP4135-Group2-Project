@@ -17,6 +17,34 @@
 \label{tab:appendix-version-control}
 \end{table}
 
+\section{Repository Graph Snapshot}
+
+The report does not rely on a hand-drawn branch diagram. Instead, the repository graph below is taken directly from the local Git history using a graph-formatted log command. This makes the version-control evidence traceable to the repository itself rather than to a reconstructed illustration.
+
+\begin{Verbatim}[fontsize=\scriptsize]
+* 8bea5e9 2026-04-26  (HEAD -> test)
+* df9ea5a 2026-04-24  (origin/test)
+* 98753ae 2026-04-24
+* 572acb2 2026-04-24
+* c4fa026 2026-04-23
+* b8c1ab3 2026-04-23
+* c78434f 2026-04-17
+*   bd21bd8 2026-04-17  (origin/main, main)
+|\  
+| * e4f21e5 2026-04-17
+| * 85563ca 2026-04-03
+| * 83bbb1c 2026-04-03
+| * ffff57c 2026-04-03
+| * 10f2816 2026-04-03
+| * 7054891 2026-04-03
+* |   7538945 2026-04-03
+|\ \  
+| * | cddd0fa 2026-04-03  (origin/develop, develop)
+| * | b91b578 2026-04-03
+\end{Verbatim}
+
+This snapshot is sufficient to demonstrate that the project used real branching and merge activity across multiple lines of work. If a cleaner hosting-platform screenshot is desired for presentation polish, it can replace or accompany this generated graph without changing the evidence claim.
+
 \section{Workflow Limits}
 
 The repository trail is stronger than the earliest coordination trail. Early planning relied more on informal coordination than on a fully preserved digital board history. The final report therefore distinguishes between:
