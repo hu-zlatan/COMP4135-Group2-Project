@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2026-04-17_12-54-44" tag="">
+  <assembly name="Assembly-CSharp">
+    <class name="TacticalCards.BattleUI" coveredlines="291" coverablelines="517" totallines="811" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.CardButtonView" coveredlines="13" coverablelines="13" totallines="31" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.CardData" coveredlines="22" coverablelines="23" totallines="49" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.CardResolver" coveredlines="49" coverablelines="63" totallines="108" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.DeckManager" coveredlines="73" coverablelines="73" totallines="118" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.EnemyAI" coveredlines="27" coverablelines="27" totallines="48" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.GameRoot" coveredlines="27" coverablelines="29" totallines="53" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.GridManager" coveredlines="147" coverablelines="171" totallines="253" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.TileView" coveredlines="70" coverablelines="75" totallines="127" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.TurnManager" coveredlines="113" coverablelines="141" totallines="207" coveredbranches="0" totalbranches="0" />
+    <class name="TacticalCards.UnitController" coveredlines="36" coverablelines="37" totallines="58" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>

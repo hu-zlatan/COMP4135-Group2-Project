@@ -107,11 +107,13 @@ namespace TacticalCards
             {
                 CardData.CreateRuntime("move_01", "Move", CardType.Move, TargetType.Tile, 1, 0, 2, "Move up to 2 tiles."),
                 CardData.CreateRuntime("move_02", "Move", CardType.Move, TargetType.Tile, 1, 0, 2, "Move up to 2 tiles."),
-                CardData.CreateRuntime("move_03", "Move", CardType.Move, TargetType.Tile, 1, 0, 2, "Move up to 2 tiles."),
+                CardData.CreateRuntime("dash_01", "Dash", CardType.Dash, TargetType.Tile, 1, 0, 3, "Dash up to 3 tiles."),
                 CardData.CreateRuntime("strike_01", "Strike", CardType.Strike, TargetType.EnemyUnit, 1, 2, 0, "Deal 2 damage to an adjacent enemy."),
-                CardData.CreateRuntime("strike_02", "Strike", CardType.Strike, TargetType.EnemyUnit, 1, 2, 0, "Deal 2 damage to an adjacent enemy."),
+                CardData.CreateRuntime("strike_02", "Long Strike", CardType.Strike, TargetType.EnemyUnit, 2, 2, 0, "Deal 2 damage to an enemy within 2 tiles."),
                 CardData.CreateRuntime("guard_01", "Guard", CardType.Guard, TargetType.Self, 0, 0, 0, "Reduce the next incoming damage by 1."),
                 CardData.CreateRuntime("push_01", "Push", CardType.Push, TargetType.EnemyUnit, 1, 1, 0, "Deal 1 damage and push the target back."),
+                CardData.CreateRuntime("heal_01", "Recover", CardType.Heal, TargetType.Self, 0, 2, 0, "Restore 2 health."),
+                CardData.CreateRuntime("move_03", "Move", CardType.Move, TargetType.Tile, 1, 0, 2, "Move up to 2 tiles."),
             };
         }
     }

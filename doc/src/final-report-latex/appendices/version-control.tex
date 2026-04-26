@@ -1,0 +1,58 @@
+\section{Workflow Summary}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.2cm}{\textbf{Practice}} & \wcell{4.3cm}{\textbf{How it was applied}} & \wcell{4.1cm}{\textbf{Why it mattered}} \\
+\midrule
+\wcell{3.2cm}{Canonical remote repository} & \wcell{4.3cm}{The project was consolidated into one remote repository with visible branch and merge history.} & \wcell{4.1cm}{Provided a dated engineering trail rather than isolated local files.} \\
+\wcell{3.2cm}{Branch-based change integration} & \wcell{4.3cm}{Major report and code changes were grouped into identifiable commits and merge checkpoints.} & \wcell{4.1cm}{Reduced ambiguity about what changed and when.} \\
+\wcell{3.2cm}{Review-first code changes} & \wcell{4.3cm}{Later submission-facing changes were aligned to a branch-and-review workflow.} & \wcell{4.1cm}{Improved accountability for risky integration work.} \\
+\wcell{3.2cm}{Evidence-tree preservation} & \wcell{4.3cm}{Testing records, issue logs, screenshots, and report material were kept in the documentation tree.} & \wcell{4.1cm}{Made the report easier to support with named artifacts.} \\
+\bottomrule
+\end{tabular}
+\caption{Version-control and repository workflow used by the project.}
+\label{tab:appendix-version-control}
+\end{table}
+
+\section{Repository Graph Snapshot}
+
+The report does not rely on a hand-drawn branch diagram. Instead, the repository graph below is taken directly from the local Git history using a graph-formatted log command. This makes the version-control evidence traceable to the repository itself rather than to a reconstructed illustration.
+
+\begin{Verbatim}[fontsize=\scriptsize]
+* 8bea5e9 2026-04-26  (HEAD -> test)
+* df9ea5a 2026-04-24  (origin/test)
+* 98753ae 2026-04-24
+* 572acb2 2026-04-24
+* c4fa026 2026-04-23
+* b8c1ab3 2026-04-23
+* c78434f 2026-04-17
+*   bd21bd8 2026-04-17  (origin/main, main)
+|\  
+| * e4f21e5 2026-04-17
+| * 85563ca 2026-04-03
+| * 83bbb1c 2026-04-03
+| * ffff57c 2026-04-03
+| * 10f2816 2026-04-03
+| * 7054891 2026-04-03
+* |   7538945 2026-04-03
+|\ \  
+| * | cddd0fa 2026-04-03  (origin/develop, develop)
+| * | b91b578 2026-04-03
+\end{Verbatim}
+
+This snapshot is sufficient to demonstrate that the project used real branching and merge activity across multiple lines of work. If a cleaner hosting-platform screenshot is desired for presentation polish, it can replace or accompany this generated graph without changing the evidence claim.
+
+\section{Workflow Limits}
+
+The repository trail is stronger than the earliest coordination trail. Early planning relied more on informal coordination than on a fully preserved digital board history. The final report therefore distinguishes between:
+
+\begin{itemize}
+    \item repository activity that is directly provable from commits and merges;
+    \item planning or meeting context that is preserved only partially;
+    \item recovered notes that remain labelled as recovered.
+\end{itemize}
+
+This appendix keeps that distinction visible instead of implying stronger historical evidence than the workspace can prove.

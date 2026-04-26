@@ -22,8 +22,11 @@ namespace TacticalCards
             return card.CardType switch
             {
                 CardType.Move => gridManager.GetTilesInRange(caster.GridPosition, card.MoveDistance, includeOccupied: false),
+                CardType.Dash => gridManager.GetTilesInRange(caster.GridPosition, card.MoveDistance, includeOccupied: false),
                 CardType.Strike => gridManager.GetTilesInRange(caster.GridPosition, card.Range, includeOccupied: true),
                 CardType.Push => gridManager.GetTilesInRange(caster.GridPosition, card.Range, includeOccupied: true),
+                CardType.Guard => GetSelfTile(caster),
+                CardType.Heal => GetSelfTile(caster),
                 _ => new List<TileView>(),
             };
         }
@@ -38,7 +41,9 @@ namespace TacticalCards
             return card.CardType switch
             {
                 CardType.Move when gridManager != null && targetTile != null => gridManager.TryMoveUnit(caster, targetTile.Coord),
+                CardType.Dash when gridManager != null && targetTile != null => gridManager.TryMoveUnit(caster, targetTile.Coord),
                 CardType.Guard => ResolveGuard(caster),
+                CardType.Heal => ResolveHeal(card, caster),
                 _ => false,
             };
         }
@@ -76,6 +81,18 @@ namespace TacticalCards
             return true;
         }
 
+        private List<TileView> GetSelfTile(UnitController caster)
+        {
+            var tile = gridManager?.GetTile(caster.GridPosition);
+            return tile == null ? new List<TileView>() : new List<TileView> { tile };
+        }
+
+        private bool ResolveHeal(CardData card, UnitController caster)
+        {
+            caster.Heal(card.Power);
+            return true;
+        }
+
         private bool ResolvePush(CardData card, UnitController caster, UnitController targetUnit)
         {
             targetUnit.TakeDamage(card.Power);
@@ -105,4 +122,3 @@ namespace TacticalCards
         }
     }
 }
-

@@ -74,6 +74,14 @@ doc/src/wr2-latex/*.log
 doc/src/wr2-latex/*.out
 doc/src/wr2-latex/*.toc
 
+# WR3 LaTeX build artifacts
+doc/src/wr3-latex/*.aux
+doc/src/wr3-latex/*.bbl
+doc/src/wr3-latex/*.blg
+doc/src/wr3-latex/*.log
+doc/src/wr3-latex/*.out
+doc/src/wr3-latex/*.toc
+
 # Keep only UML artifacts tracked under artifacts/
 artifacts/*
 !artifacts/uml/

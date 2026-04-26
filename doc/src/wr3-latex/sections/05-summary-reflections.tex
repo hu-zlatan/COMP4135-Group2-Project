@@ -1,0 +1,76 @@
+\chapter{Summary and Reflections}
+
+This work changes the report from ``we should test more'' to ``the scoped suite has been rerun, archived, and cross-referenced consistently.'' That is a much stronger position than the project had at the start of the testing cycle, and it means the remaining discussion can focus on regression watchpoints and optional presentation polish rather than missing core evidence.
+
+\section{Outcome}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.4cm}{\textbf{Work item}} & \wcell{1.9cm}{\textbf{Result}} & \wcell{6.1cm}{\textbf{Comment}} \\
+\midrule
+\wcell{3.4cm}{Report scaffold} & \wcell{1.9cm}{Completed} & \wcell{6.1cm}{Formal LaTeX source exists with the chapter structure, appendix, and compiled PDF.} \\
+\wcell{3.4cm}{Milestones and ownership plan} & \wcell{1.9cm}{Completed} & \wcell{6.1cm}{The report and process records now share the same M1--M6 structure and closure language.} \\
+\wcell{3.4cm}{Direct runtime test coverage} & \wcell{1.9cm}{Verified} & \wcell{6.1cm}{Every targeted runtime class now has a direct rerun-backed suite file.} \\
+\wcell{3.4cm}{Coverage tooling and export} & \wcell{1.9cm}{Archived} & \wcell{6.1cm}{Code Coverage package setup, raw XML, HTML report, badges, and summary files are archived.} \\
+\wcell{3.4cm}{Execution confirmation of the expanded suite} & \wcell{1.9cm}{Completed} & \wcell{6.1cm}{The scoped suite is now `58/58` verified by named rerun evidence.} \\
+\wcell{3.4cm}{Final quantitative evidence pack} & \wcell{1.9cm}{Archived} & \wcell{6.1cm}{Execution summary, matrices, defect register, milestone status, and coverage totals are all on disk.} \\
+\bottomrule
+\end{tabular}
+\caption{Outcome summary for the final validation cycle.}
+\label{tab:wr3-outcome-summary}
+\end{table}
+
+\section{Milestone Closure}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{2.9cm}{\textbf{Milestone}} & \wcell{1.9cm}{\textbf{Status}} & \wcell{6.5cm}{\textbf{Closure evidence}} \\
+\midrule
+\wcell{2.9cm}{M1. Scaffold and planning setup} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{The source tree, requirements structure, and suite inventory were prepared before the rerun cycle.} \\
+\wcell{2.9cm}{M2. Core logic unit test expansion} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{The full EditMode rerun passed `57/57`, covering all scoped core logic targets.} \\
+\wcell{2.9cm}{M3. Scene-coupled and integration testing} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{UI/bootstrap suites and the PlayMode smoke path passed and are archived.} \\
+\wcell{2.9cm}{M4. Metrics and evidence pack} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{Coverage export, matrices, defect records, and supporting summaries are archived under `project-records`.} \\
+\wcell{2.9cm}{M5. Report draft} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{The LaTeX draft has been promoted from checkpoint wording to rerun-backed validation wording.} \\
+\wcell{2.9cm}{M6. Final sync and scoring pass} & \wcell{1.9cm}{Completed} & \wcell{6.5cm}{The 2026-04-17 validation pass aligns the report, appendix, supporting records, and compiled PDF.} \\
+\bottomrule
+\end{tabular}
+\caption{Milestone closure view for the 2026-04-17 validation pass.}
+\label{tab:wr3-milestone-closure}
+\end{table}
+
+\section{Optional Follow-up Backlog}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.2cm}{\textbf{Priority}} & \wcell{4.7cm}{\textbf{Task}} & \wcell{1.8cm}{\textbf{Status}} & \wcell{4.2cm}{\textbf{Reason it remains optional}} \\
+\midrule
+\wcell{1.2cm}{P1} & \wcell{4.7cm}{Retest `BattleUI` prompt and summary flows after any later wording, log, or layout change.} & \wcell{1.8cm}{Regression watch} & \wcell{4.2cm}{The class has already crossed the target line at `56.2\%`; future work is mainly about preserving the verified behaviour.} \\
+\wcell{1.2cm}{P1} & \wcell{4.7cm}{Keep the unit-before-card onboarding cues stable during any final text or highlight polish.} & \wcell{1.8cm}{Regression watch} & \wcell{4.2cm}{`WR2-BUG-01` is already fixed and verified, so the remaining work is to avoid reintroducing the issue.} \\
+\wcell{1.2cm}{P1} & \wcell{4.7cm}{Keep enemy-turn summary emphasis stable during any final UI presentation polish.} & \wcell{1.8cm}{Regression watch} & \wcell{4.2cm}{`WR2-BUG-02` is already fixed and verified, so the remaining work is presentation consistency rather than defect closure.} \\
+\wcell{1.2cm}{P2} & \wcell{4.7cm}{Add stronger branch / PR / tag screenshots if a richer appendix is desired.} & \wcell{1.8cm}{Optional} & \wcell{4.2cm}{This would strengthen process presentation, but it does not change the evidence already archived.} \\
+\bottomrule
+\end{tabular}
+\caption{Optional backlog after the validation cycle.}
+\label{tab:wr3-optional-backlog}
+\end{table}
+
+\section{Reflection}
+
+Three points matter most at the end of the validation cycle.
+
+\begin{itemize}
+    \item The project is no longer short of tests in an absolute sense. The current suite inventory is large enough to support a substantial appendix and a data-driven report body.
+    \item The main engineering gain is not just higher test count; it is the conversion of test count into traceable rerun evidence, archived coverage output, and defect-status discipline.
+    \item The remaining risk has moved out of execution evidence and into optional presentation polish plus regression watch on already-fixed UI messaging. That is a better risk profile for submission because it is visible, bounded, and honestly reported.
+\end{itemize}
+
+The practical lesson is therefore simple: once the suite and coverage export exist, the highest-value work is a strict truth pass. Reopening scope would weaken the report more than it would help it unless the new work were rerun and re-documented immediately.

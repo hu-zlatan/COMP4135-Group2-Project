@@ -1,0 +1,206 @@
+\chapter{Test \& System Evaluation}
+
+The validation approach does not rely on a single type of evidence. Instead, it combines direct EditMode tests for stable logic, PlayMode smoke for whole-scene readiness, and manual smoke for visual composition and overlay-heavy UI behaviour.
+
+\section{Test Strategy}
+
+The core strategy is \textit{TDD-first where behaviour is deterministic, smoke-first where the result is primarily visual}. Turn flow, deck lifecycle, movement constraints, damage handling, and battle-end state all have explicit success conditions and can be tested directly. By contrast, title-panel readability, overlay composition, and the visual relationship between the board and the hand dock cannot be reduced safely to screenshot-perfect automation in the current project setup.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{1.9cm}{\textbf{Validation layer}} & \wcell{3.4cm}{\textbf{Question being answered}} & \wcell{3.7cm}{\textbf{Main techniques}} & \wcell{3.2cm}{\textbf{Evidence form}} \\
+\midrule
+\wcell{1.9cm}{Verification} & \wcell{3.4cm}{Does the implemented code behave according to the intended rules?} & \wcell{3.7cm}{EditMode unit tests, focused component tests, reruns after bug fixes} & \wcell{3.2cm}{Pass/fail results, suite inventory, module coverage matrix} \\
+\wcell{1.9cm}{Validation} & \wcell{3.4cm}{Does the delivered battle flow make sense in use?} & \wcell{3.7cm}{PlayMode smoke, scenario walkthrough, manual UX smoke} & \wcell{3.2cm}{Smoke records and runtime confirmation} \\
+\bottomrule
+\end{tabular}
+\caption{Validation framing used by the current system.}
+\label{tab:validation-framing}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{2.2cm}{\textbf{Layer}} & \wcell{3.4cm}{\textbf{Main purpose}} & \wcell{4.3cm}{\textbf{Representative evidence}} & \wcell{2.0cm}{\textbf{Used for}} \\
+\midrule
+\wcell{2.2cm}{EditMode tests} & \wcell{3.4cm}{Directly verify deterministic rules and state transitions} & \wcell{4.3cm}{`TurnManagerTests`, `DeckManagerTests`, `CardResolverTests`, `GridManagerTests`, `GameFlowControllerTests`, `BattleUITests`} & \wcell{2.0cm}{Core logic, flow, and UI regressions} \\
+\wcell{2.2cm}{PlayMode smoke} & \wcell{3.4cm}{Verify that the scene reaches a playable runtime state} & \wcell{4.3cm}{`BattleFlowPlayModeTests`} & \wcell{2.0cm}{Scene bootstrap and battle readiness} \\
+\wcell{2.2cm}{Manual smoke} & \wcell{3.4cm}{Confirm readability, layout, and aesthetic stability} & \wcell{4.3cm}{HUD and ambience smoke records} & \wcell{2.0cm}{Overlay composition and final UX judgement} \\
+\bottomrule
+\end{tabular}
+\caption{Validation layers used by the current build.}
+\label{tab:validation-layers}
+\end{table}
+
+\section{Current Rerun State}
+
+The automated suite is organised by runtime responsibility. This mirrors the source-tree structure and makes failures easier to interpret. The current validation set reports:
+
+\begin{itemize}
+    \item `81/81` passing EditMode tests;
+    \item `1/1` passing PlayMode smoke test.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+\wcell{2.0cm}{\textbf{Checkpoint}} & \wcell{2.1cm}{\textbf{EditMode}} & \wcell{2.0cm}{\textbf{PlayMode}} & \wcell{3.3cm}{\textbf{Primary focus}} & \wcell{2.4cm}{\textbf{Evidence source}} \\
+\midrule
+\wcell{2.0cm}{Archived validation freeze} & \wcell{2.1cm}{`57/57`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{Battle-loop validation and baseline requirements coverage} & \wcell{2.4cm}{Archived validation summary} \\
+\wcell{2.0cm}{Presentation pass} & \wcell{2.1cm}{`75/75`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{World-layer presentation and scene dressing} & \wcell{2.4cm}{Ambience smoke record} \\
+\wcell{2.0cm}{HUD feedback pass} & \wcell{2.1cm}{`81/81`} & \wcell{2.0cm}{`1/1`} & \wcell{3.3cm}{HUD readability, disabled-card feedback, and layout regression closure} & \wcell{2.4cm}{HUD feedback smoke record} \\
+\bottomrule
+\end{tabular}
+\caption{Current rerun state of the validation set.}
+\label{tab:final-execution-summary}
+\end{table}
+
+The suite now covers the main runtime concerns directly:
+
+\begin{itemize}
+    \item battle start, battle end, and turn-loop correctness;
+    \item draw, discard, reshuffle, and hand lifecycle;
+    \item movement, attack, push, guard, heal, and occupancy rules;
+    \item enemy target selection and movement decisions;
+    \item battle HUD prompts, disabled-card reasoning, and runtime layout guards;
+    \item title-flow and result-flow state transitions.
+\end{itemize}
+
+\section{Issue Discovery and Closure Loop}
+
+The most convincing part of the final validation package is not a single score or count. It is the way concrete problems were discovered, translated into engineering work, and then closed with evidence. The project repeatedly followed the same loop:
+
+\begin{enumerate}
+    \item a visible problem was found through playtesting or smoke;
+    \item the deterministic part of that problem was isolated;
+    \item a regression test or structural assertion was added where possible;
+    \item runtime code was fixed;
+    \item the fix was checked again through rerun or smoke.
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+\wcell{2.1cm}{\textbf{Issue}} & \wcell{2.2cm}{\textbf{How it was found}} & \wcell{2.4cm}{\textbf{Root cause}} & \wcell{2.5cm}{\textbf{Fix}} & \wcell{2.1cm}{\textbf{Closure}} \\
+\midrule
+\wcell{2.1cm}{Battle-end continuation} & \wcell{2.2cm}{Targeted prototype regression run} & \wcell{2.4cm}{Battle-end state was not being finalised robustly enough} & \wcell{2.5cm}{Stabilised turn-end resolution and added regression coverage} & \wcell{2.1cm}{Prototype accuracy EditMode run} \\
+\wcell{2.1cm}{Title overlay collision} & \wcell{2.2cm}{Manual smoke} & \wcell{2.4cm}{Summary, feature strip, and start action competed for the same vertical space} & \wcell{2.5cm}{Split the title overlay into separate content regions} & \wcell{2.1cm}{Hierarchy checks plus smoke} \\
+\wcell{2.1cm}{Top-bar text overlap} & \wcell{2.2cm}{Manual smoke} & \wcell{2.4cm}{Prompt and state text were anchored into overlapping rows} & \wcell{2.5cm}{Restacked the top bar and reserved button width explicitly} & \wcell{2.1cm}{`BattleUITests` plus smoke} \\
+\wcell{2.1cm}{Hand dock obscuring units} & \wcell{2.2cm}{Manual smoke} & \wcell{2.4cm}{The themed dock and cards were too large for the camera framing} & \wcell{2.5cm}{Reduced dock and card dimensions and added layout guards} & \wcell{2.1cm}{Layout test plus smoke} \\
+\wcell{2.1cm}{Action availability hidden in log} & \wcell{2.2cm}{Scenario walkthrough and smoke} & \wcell{2.4cm}{The prototype exposed state only indirectly through log text} & \wcell{2.5cm}{Added energy, prompt detail, disabled-card overlays, and health bars} & \wcell{2.1cm}{UI tests plus smoke} \\
+\wcell{2.1cm}{Debug flow bypassing real HUD} & \wcell{2.2cm}{Runtime comparison during direct battle testing} & \wcell{2.4cm}{Debug entry skipped the same UI tree used in normal play} & \wcell{2.5cm}{Routed debug start through the shared flow controller} & \wcell{2.1cm}{Flow tests and runtime check} \\
+\bottomrule
+\end{tabular}
+\caption{Representative issue-discovery and closure loop in the delivered project.}
+\label{tab:issue-closure-loop}
+\end{table}
+
+This loop is important because it shows that visual and UX problems were not treated as vague polish notes. They were turned into traceable engineering tasks with explicit closure criteria.
+
+\section{Code Coverage}
+
+The project has an archived code-coverage baseline for the current battle slice. That archive recorded `11` runtime classes in the report, `74.2\%` line coverage, and `92.4\%` method coverage.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{2.8cm}{\textbf{Coverage metric}} & \wcell{1.8cm}{\textbf{Value}} & \wcell{6.1cm}{\textbf{Evidence meaning}} \\
+\midrule
+\wcell{2.8cm}{Runtime classes in report} & \wcell{1.8cm}{`11`} & \wcell{6.1cm}{The archived coverage report spans the runtime classes cited in this chapter.} \\
+\wcell{2.8cm}{Covered lines} & \wcell{1.8cm}{`868`} & \wcell{6.1cm}{Taken from the archived multi-report coverage summary.} \\
+\wcell{2.8cm}{Coverable lines} & \wcell{1.8cm}{`1169`} & \wcell{6.1cm}{Used as the denominator for the line-coverage claim.} \\
+\wcell{2.8cm}{Line coverage} & \wcell{1.8cm}{`74.2\%`} & \wcell{6.1cm}{The project has archived quantitative evidence rather than package-only tooling claims.} \\
+\wcell{2.8cm}{Covered methods} & \wcell{1.8cm}{`146`} & \wcell{6.1cm}{Shows that the suite closes most method-level behaviour in the battle slice.} \\
+\wcell{2.8cm}{Total methods} & \wcell{1.8cm}{`158`} & \wcell{6.1cm}{Method totals come directly from the archived coverage summary.} \\
+\wcell{2.8cm}{Method coverage} & \wcell{1.8cm}{`92.4\%`} & \wcell{6.1cm}{Method coverage is materially stronger than the line aggregate, which is expected for UI-heavy scripts.} \\
+\bottomrule
+\end{tabular}
+\caption{Archived coverage totals for the current battle slice.}
+\label{tab:coverage-totals}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=7pt,
+    ymin=0,
+    ymax=105,
+    ylabel={Line coverage (\%)},
+    symbolic x coords={BattleUI,CardButtonView,CardData,CardResolver,DeckManager,EnemyAI,GameRoot,GridManager,TileView,TurnManager,UnitController},
+    xtick=data,
+    xticklabel style={rotate=40,anchor=east,font=\scriptsize},
+    nodes near coords,
+    nodes near coords align={vertical},
+    every node near coord/.append style={font=\tiny},
+    width=0.96\textwidth,
+    height=0.38\textheight,
+    enlarge x limits=0.02,
+    legend style={at={(0.5,1.08)},anchor=south,legend columns=2,font=\scriptsize}
+]
+\addplot[fill=orange!60] coordinates {(BattleUI,56.2)};
+\addplot[fill=blue!45] coordinates {
+    (CardButtonView,100)
+    (CardData,95.6)
+    (CardResolver,77.7)
+    (DeckManager,100)
+    (EnemyAI,100)
+    (GameRoot,93.1)
+    (GridManager,85.9)
+    (TileView,93.3)
+    (TurnManager,80.1)
+    (UnitController,97.2)
+};
+\legend{Lowest coverage target,Other runtime classes}
+\end{axis}
+\end{tikzpicture}
+\caption{Class-level line coverage from the archived report. `BattleUI` remains the lowest-covered runtime class and therefore stays a watch point.}
+\label{fig:class-line-coverage}
+\end{figure}
+
+The archived coverage figure has not yet been regenerated after the latest UI and flow additions. For that reason, the `74.2\%` line-coverage figure should be treated as the current archived baseline rather than as a freshly regenerated post-polish number.
+
+\section{Evaluation and Technical Self-Critique}
+
+The delivered build satisfies the main goal of the project: it provides a complete and readable tactical battle loop rather than only a technical prototype. The player can begin from a title screen, enter battle, select units and cards, understand the turn state through the HUD, observe enemy response, and reach a result screen with replay or menu options.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{3.8cm}{\textbf{Area}} & \wcell{2.0cm}{\textbf{Outcome}} & \wcell{5.4cm}{\textbf{Reasoning}} \\
+\midrule
+\wcell{3.8cm}{Playable front-end flow} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Title, battle, and result states exist inside the main scene and are covered by flow and smoke evidence.} \\
+\wcell{3.8cm}{Battle rules and turn loop} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Movement, attack, guard, push, recover, draw/discard, enemy turns, and battle-end handling are directly tested.} \\
+\wcell{3.8cm}{HUD readability and action feedback} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Energy, prompts, disabled-card reasons, and world-space health bars close the main readability gaps.} \\
+\wcell{3.8cm}{Visual and thematic cohesion} & \wcell{2.0cm}{Satisfied} & \wcell{5.4cm}{Themed UI assets, board ambience, and silhouette-based units give the slice a coherent visual direction.} \\
+\wcell{3.8cm}{Residual limitations} & \wcell{2.0cm}{Open but non-blocking} & \wcell{5.4cm}{The project remains a single-battle demo, overlay-heavy screenshot capture still needs manual smoke, and coverage needs a fresh export.} \\
+\bottomrule
+\end{tabular}
+\caption{Evaluation summary for the delivered build.}
+\label{tab:final-evaluation-summary}
+\end{table}
+
+The strongest technical lesson from the final testing cycle is that the suite is substantial, but not perfect. The weaker areas are:
+
+\begin{itemize}
+    \item \textbf{Mock and scene fidelity.} Several tests are scene-coupled component tests rather than isolated pure unit tests.
+    \item \textbf{Assertion depth.} UI-facing tests prove structure and state transitions, but they cannot fully prove visual readability or overlay composition.
+    \item \textbf{Coverage concentration.} `BattleUI` remains the lowest-covered runtime class in the archived report.
+    \item \textbf{PlayMode breadth.} PlayMode coverage is intentionally narrow and proves readiness more than full end-to-end variety.
+\end{itemize}
+
+The project is therefore well validated for a compact vertical slice, but the testing package is stronger on deterministic logic than on fully automated presentation proof.

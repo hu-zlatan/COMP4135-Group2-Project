@@ -1,0 +1,137 @@
+\section{Evidence Status}
+
+This appendix preserves the meeting evidence currently archived in the workspace. One early checkpoint is reconstructed from dated project artifacts rather than preserved as a full formal minute set, so it remains explicitly labelled as \textit{recovered}. That distinction is kept visible instead of being hidden.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{3.0cm}{\textbf{Record}} & \wcell{1.9cm}{\textbf{Date}} & \wcell{2.5cm}{\textbf{Type}} & \wcell{4.2cm}{\textbf{Current use}} \\
+\midrule
+\wcell{3.0cm}{Recovered early implementation checkpoint} & \wcell{1.9cm}{15/03/2026} & \wcell{2.5cm}{Recovered note} & \wcell{4.2cm}{Explains the first playable scope and early implementation decisions.} \\
+\wcell{3.0cm}{Kickoff meeting} & \wcell{1.9cm}{17/03/2026} & \wcell{2.5cm}{Formal note} & \wcell{4.2cm}{Shows initial direction-setting and role alignment.} \\
+\wcell{3.0cm}{Scope alignment meeting} & \wcell{1.9cm}{18/03/2026} & \wcell{2.5cm}{Formal note} & \wcell{4.2cm}{Shows agreement on tactical-battle scope and documentation format.} \\
+\wcell{3.0cm}{Validation planning meeting} & \wcell{1.9cm}{15/04/2026} & \wcell{2.5cm}{Formal note} & \wcell{4.2cm}{Shows testing strategy, defect triage, and final validation planning.} \\
+\bottomrule
+\end{tabular}
+\caption{Meeting evidence preserved in the final-report appendix.}
+\label{tab:appendix-meeting-register}
+\end{table}
+
+\section{Recovered Early Implementation Checkpoint}
+
+\textbf{Date:} 15/03/2026 \\
+\textbf{Type:} recovered from local implementation artifacts \\
+\textbf{Attendance:} exact attendance not preserved in the workspace
+
+\subsection{Purpose}
+
+Define the minimum playable slice that could demonstrate the project idea in software rather than only in prose.
+
+\subsection{Recovered Decisions}
+
+\begin{itemize}
+    \item Keep one battle scene for the first playable version.
+    \item Fix the board at 6x6 so movement, targeting, and occupancy remain readable.
+    \item Limit the first playable card set to Move, Strike, Guard, and Push.
+    \item Use one shared `UnitController` for player and enemy units.
+    \item Keep enemy behaviour deterministic.
+    \item Use button-based card selection instead of drag-and-drop.
+\end{itemize}
+
+\subsection{Recovered Follow-up}
+
+\begin{itemize}
+    \item Implement the first-pass script set and scene bootstrap.
+    \item Refresh diagrams so they match the code actually built.
+    \item Capture early prototype screenshots.
+    \item Start separating validation notes from design notes.
+\end{itemize}
+
+\section{Kickoff Meeting}
+
+\textbf{Date:} 17/03/2026 \\
+\textbf{Attendance:} Guangjun HU, Hongshuo HU, Zehan CHEN
+
+\subsection{Context}
+
+The team compared initial game ideas, narrowed the project direction, and assigned the first requirement and planning tasks.
+
+\subsection{Decisions}
+
+\begin{itemize}
+    \item Confirm \projectname{} as the chosen project direction.
+    \item Agree initial role allocation.
+    \item Set the first delivery expectations for requirements and design material.
+\end{itemize}
+
+\section{Scope Alignment Meeting}
+
+\textbf{Date:} 18/03/2026 \\
+\textbf{Attendance:} Guangjun HU, Cheng YE
+
+\subsection{Context}
+
+This meeting aligned the project around a tactical card battle demo and standardised a lightweight documentation format for later work.
+
+\subsection{Decisions}
+
+\begin{itemize}
+    \item Keep the software scope focused on a tactical card battle rather than a larger campaign game.
+    \item Assign UML and design-diagram production.
+    \item Use a repeatable meeting-note structure for later checkpoints.
+\end{itemize}
+
+\section{Validation Planning Meeting}
+
+\textbf{Date:} 15/04/2026 \\
+\textbf{Format:} Online \\
+\textbf{Chair:} Guangjun HU \\
+\textbf{Secretary:} Zehan CHEN
+
+\subsection{Attendance}
+
+\begin{itemize}
+    \item Guangjun HU -- present
+    \item Hongshuo HU -- present
+    \item Cheng YE -- present
+    \item Zehan CHEN -- present
+\end{itemize}
+
+\subsection{Agenda}
+
+\begin{enumerate}
+    \item Review usability findings from the playable build.
+    \item Confirm automated-test scope and smoke responsibilities.
+    \item Allocate drafting tasks for the final validation material.
+    \item Set deadlines for open defects and reruns.
+\end{enumerate}
+
+\subsection{Key Decisions}
+
+\begin{itemize}
+    \item Treat deterministic behaviour as regression-test candidates and keep manual smoke for overlay-heavy UI concerns.
+    \item Require rerun-backed evidence before a visible issue can be considered closed.
+    \item Keep late work focused on flow, HUD, and readability rather than widening the feature set.
+\end{itemize}
+
+\subsection{Action Items}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
+\toprule
+\wcell{4.1cm}{\textbf{Task}} & \wcell{2.0cm}{\textbf{Owner}} & \wcell{1.8cm}{\textbf{Due}} & \wcell{2.8cm}{\textbf{Review owner}} \\
+\midrule
+\wcell{4.1cm}{Draft report sections and supporting tables} & \wcell{2.0cm}{Cheng YE} & \wcell{1.8cm}{16/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.1cm}{Run EditMode tests and archive results} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.8cm}{15/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.1cm}{Update defect register and meeting notes} & \wcell{2.0cm}{Zehan CHEN} & \wcell{1.8cm}{16/04/2026} & \wcell{2.8cm}{Cheng YE} \\
+\wcell{4.1cm}{Run final integration check in Unity} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.8cm}{17/04/2026} & \wcell{2.8cm}{Whole team} \\
+\bottomrule
+\end{tabular}
+\caption{Action items from the validation planning meeting.}
+\label{tab:appendix-validation-actions}
+\end{table}

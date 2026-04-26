@@ -1,0 +1,36 @@
+\chapter{Introduction}
+
+\projectname{} is a Unity-based tactical card battle prototype designed for teenagers and casual strategy players. The delivered software provides a complete single-battle session: the player enters through a start screen, controls allied units on a grid, plays tactical cards, observes enemy response, and reaches a clear result state.
+
+\section{Motivation}
+
+The project began from one simple design goal: each turn should ask the player to make a small number of visible and meaningful tactical decisions without requiring a large content set or a complicated ruleset. Instead of aiming for a campaign-heavy tactics game, the design focuses on one encounter in which positioning, range, timing, and action order matter.
+
+The tactical card format was chosen because it combines two readable systems. First, a grid-based battle makes spatial decisions visible on screen. Second, a small hand of action cards introduces variety without turning the project into a deckbuilding or collection-heavy game. This makes the game strategically meaningful while still remaining approachable for the intended audience.
+
+\section{Aims and Objectives}
+
+The project has four main objectives.
+
+\begin{enumerate}
+    \item Deliver a complete playable battle loop in Unity, including player turn, enemy turn, and battle-end handling.
+    \item Keep the gameplay narrow enough that the core interactions remain readable, stable, and testable.
+    \item Build the system so that turn flow, card resolution, grid interaction, and runtime UI are understandable at code level.
+    \item Improve interface clarity and feedback so that a first-time player can understand what to do without outside explanation.
+\end{enumerate}
+
+Success is therefore defined less by feature quantity than by the completeness of one polished vertical slice. A successful outcome means that a player can launch the game, start a battle, understand the interaction order, observe enemy response, finish the encounter, and then replay or return cleanly to the menu.
+
+\section{Delivered Contribution}
+
+The delivered build is intentionally modest in content, but complete in structure. It contains:
+
+\begin{itemize}
+    \item a full start-to-result session flow;
+    \item a 6x6 tactical battle with card-driven actions and deterministic enemy response;
+    \item a panel-based HUD with direct action feedback, prompts, and world-space health bars;
+    \item automated validation for deterministic runtime behaviour, plus manual smoke for presentation-heavy UI;
+    \item a code structure that separates flow, battle rules, UI, and presentation cleanly.
+\end{itemize}
+
+The project did not remain static from concept to completion. Early design assumptions were revised as playable builds exposed onboarding, readability, and session-flow problems. The report therefore does not present the final system as if it had emerged fully formed. Chapter 3 explains how the requirement set evolved from the earliest design baseline into the delivered implementation, and Chapter 4 explains how that evolution was handled through iterative development rather than a once-through sequence.

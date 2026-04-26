@@ -1,0 +1,34 @@
+\chapter{Extensibility \& Maintenance}
+
+Although \projectname{} is a compact prototype, the delivered system is structured so that it can be maintained and extended without structural rework.
+
+\section{Delivered Maintainability Measures}
+
+The codebase is structured around functional responsibility rather than scene-specific scripts. Core bootstrap and flow classes are separated from battle rules, card resolution, unit logic, grid state, UI presentation, and purely visual wrappers. This makes it possible to modify one layer without rewriting the others. For example, the title flow, HUD layout, disabled-card messaging, and health-bar presentation can change without replacing the underlying turn model or card resolver.
+
+Assembly definitions provide a second maintainability guardrail. Runtime code is grouped in the main `TacticalCards` assembly, while EditMode and PlayMode test suites are isolated in separate test assemblies. This separation reduces build pollution, avoids test-only dependencies leaking into player-facing code, and makes the validation boundary easier to explain.
+
+Third-party assets are also contained deliberately. Imported interface art is kept separate from the battle rules and runtime state logic. This means the visual theme can be updated or replaced without having to disentangle it from gameplay behaviour.
+
+\section{Deferred Work and Future Evolution}
+
+The most important deferred work is content expansion, not systems rescue. The delivered game does not include a campaign structure, multiple maps, progression systems, deep deck customisation, or a large enemy catalogue. Those omissions are intentional because each of them would multiply test surface, UI complexity, and content production cost without improving the quality of the core tactical slice.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{3.2cm}{\textbf{Follow-up direction}} & \wcell{4.0cm}{\textbf{What would be added}} & \wcell{2.1cm}{\textbf{Rough effort}} & \wcell{2.2cm}{\textbf{Why it was deferred}} \\
+\midrule
+\wcell{3.2cm}{Encounter variety} & \wcell{4.0cm}{More objectives, alternate spawn patterns, and one or two additional maps.} & \wcell{2.1cm}{1--2 weeks} & \wcell{2.2cm}{Would widen the test surface and increase tuning cost.} \\
+\wcell{3.2cm}{Character presentation} & \wcell{4.0cm}{Replace procedural silhouettes with coherent character assets and simple animation.} & \wcell{2.1cm}{1 week} & \wcell{2.2cm}{HUD readability and battle clarity had higher priority.} \\
+\wcell{3.2cm}{Coverage refresh} & \wcell{4.0cm}{Regenerate the coverage archive after the latest UI and flow additions.} & \wcell{2.1cm}{1--2 days} & \wcell{2.2cm}{The existing archive is still the last stable quantitative baseline.} \\
+\wcell{3.2cm}{Broader PlayMode journeys} & \wcell{4.0cm}{Add more end-to-end PlayMode paths for win, loss, replay, and menu return.} & \wcell{2.1cm}{2--3 days} & \wcell{2.2cm}{EditMode coverage and targeted smoke had more immediate value.} \\
+\bottomrule
+\end{tabular}
+\caption{Concrete extension paths with rough effort estimates.}
+\label{tab:future-work-estimates}
+\end{table}
+
+The current architecture already shows that the project can absorb flow, HUD, and theming extensions in thin slices without destabilising the entire battle loop.

@@ -6,6 +6,7 @@ namespace TacticalCards
     {
         [SerializeField] private Renderer tileRenderer;
         [SerializeField] private Color baseColor = Color.white;
+        [SerializeField] private Color alternateBaseColor = new(0.92f, 0.92f, 0.92f);
         [SerializeField] private Color moveHighlightColor = new(0.35f, 0.8f, 0.45f);
         [SerializeField] private Color attackHighlightColor = new(0.9f, 0.35f, 0.35f);
         [SerializeField] private Color selectedColor = new(0.95f, 0.85f, 0.25f);
@@ -24,6 +25,13 @@ namespace TacticalCards
         public void Initialize(Vector2Int coord)
         {
             Coord = coord;
+            baseColor = ((coord.x + coord.y) & 1) == 0
+                ? WorldThemeResources.BoardTileLight
+                : WorldThemeResources.BoardTileDark;
+            alternateBaseColor = baseColor;
+            moveHighlightColor = WorldThemeResources.MoveHighlight;
+            attackHighlightColor = WorldThemeResources.AttackHighlight;
+            selectedColor = WorldThemeResources.SelectedTile;
             SetBaseVisual();
         }
 
@@ -94,7 +102,7 @@ namespace TacticalCards
                 name = $"TileRuntime_{GetInstanceID()}"
             };
 
-            tileRenderer.material = runtimeMaterial;
+            tileRenderer.sharedMaterial = runtimeMaterial;
             ApplyColor(baseColor);
         }
 
@@ -102,7 +110,7 @@ namespace TacticalCards
         {
             if (runtimeMaterial == null)
             {
-                runtimeMaterial = tileRenderer.material;
+                runtimeMaterial = tileRenderer.sharedMaterial;
             }
 
             if (runtimeMaterial.HasProperty("_BaseColor"))
@@ -125,4 +133,3 @@ namespace TacticalCards
         }
     }
 }
-

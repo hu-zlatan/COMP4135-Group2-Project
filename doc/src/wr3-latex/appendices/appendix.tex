@@ -1,0 +1,178 @@
+\appendix
+
+\chapter{Supporting Evidence Index}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\wcell{4.7cm}{\textbf{Source file}} & \wcell{2.4cm}{\textbf{Type}} & \wcell{5.1cm}{\textbf{Use in this report}} \\
+\midrule
+\wcell{4.7cm}{`doc/src/project-records/testing/wr3-test-inventory-2026-04-17.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Source for suite counts, module coverage, and appendix planning} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/wr3-execution-summary-2026-04-17.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Source for the final rerun-backed execution summary and suite totals} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/wr3-requirements-coverage-matrix-2026-04-17.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Source for Table \ref{tab:requirements-coverage}} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/wr3-coverage-export-2026-04-17.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Source for the archived coverage totals, class metrics, and export-path narrative} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/wr3-defect-log-2026-04-17.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Source for the defect tables in Chapter 4} \\
+\wcell{4.7cm}{`doc/src/project-records/process/wr3-milestone-status-2026-04-17.md`} & \wcell{2.4cm}{Process record} & \wcell{5.1cm}{Source for the final milestone closure table in Chapter 5} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/coverage/2026-04-17/Report/`} & \wcell{2.4cm}{Coverage archive} & \wcell{5.1cm}{Contains the HTML coverage report, badges, and summary files cited in Chapter 4} \\
+\wcell{4.7cm}{`doc/src/project-records/testing/prototype-accuracy-editmode-run-2026-04-02.md`} & \wcell{2.4cm}{Testing record} & \wcell{5.1cm}{Earlier regression record for the battle-end fix referenced in Chapter 4} \\
+\wcell{4.7cm}{`doc/src/project-records/process/wr3-execution-plan-2026-04-17.md`} & \wcell{2.4cm}{Process record} & \wcell{5.1cm}{Canonical WR3 scope, milestones, testing targets, and acceptance gates} \\
+\wcell{4.7cm}{`doc/src/project-records/process/wr3-milestones-and-owners-2026-04-17.md`} & \wcell{2.4cm}{Process record} & \wcell{5.1cm}{Source for the milestone, owner, and completion-evidence tables} \\
+\wcell{4.7cm}{`doc/src/project-records/process/README.md`} & \wcell{2.4cm}{Process record} & \wcell{5.1cm}{Explains how repo and board evidence packages are organised} \\
+\wcell{4.7cm}{`doc/src/wr3-latex/wr3-scoring-summary.md`} & \wcell{2.4cm}{Local sample analysis} & \wcell{5.1cm}{Drives the report's table-heavy structure and evidence emphasis} \\
+\bottomrule
+\end{tabular}
+\caption{Supporting records referenced by the final draft.}
+\label{tab:appendix-evidence-index}
+\end{table}
+
+\section{Testing and Validation Meeting}
+
+\textbf{Date:} 15/04/2026 \\
+\textbf{Format:} Online \\
+\textbf{Chair:} Guangjun HU \\
+\textbf{Secretary:} Zehan CHEN
+
+\subsection{Attendance}
+
+\begin{itemize}
+    \item Guangjun HU -- present
+    \item Hongshuo HU -- present
+    \item Cheng YE -- present
+    \item Zehan CHEN -- present
+\end{itemize}
+
+\subsection{Agenda}
+
+\begin{enumerate}
+    \item Review WR2 heuristic walkthrough findings and defect triage.
+    \item Confirm the test strategy and automated test scope.
+    \item Allocate report drafting tasks.
+    \item Set deadlines for remaining open bugs and final submission preparation.
+\end{enumerate}
+
+\subsection{Progress Since Last Meeting}
+
+Since the WR2 closeout meeting, the team has:
+
+\begin{itemize}
+    \item Confirmed the WR2 closeout state on 02/04/2026 before starting the validation work.
+    \item Applied the battle-end accuracy fix and verified it with EditMode tests.
+    \item Created the initial test log and defect log under \code{doc/src/project-records/testing/}.
+\end{itemize}
+
+\subsection{Key Discussion Points}
+
+\begin{itemize}
+    \item The high-severity battle-end gap (\code{WR2-BUG-03}) was confirmed fixed by the EditMode smoke test. No additional runtime changes were required for this issue.
+    \item Onboarding clarity (\code{WR2-BUG-01}) and enemy-phase emphasis (\code{WR2-BUG-02}) were judged medium severity at triage time, then carried into the final polish pass and closed with rerun-backed evidence before the evidence freeze.
+    \item The team agreed to keep the report within the course template structure and not to introduce new gameplay features during the validation cycle.
+    \item GitHub pull-request review remains the canonical collaboration path; final submission changes must pass through reviewed and merged pull requests.
+\end{itemize}
+
+\subsection{Decisions Made}
+
+\begin{itemize}
+    \item Scope is limited to testing documentation, defect tracking, and report assembly.
+    \item All four members will contribute to the final report draft, with Cheng YE leading LaTeX compilation and Hongshuo HU leading runtime verification.
+    \item The two inherited medium-severity usability issues were accepted into the final polish pass and had to be closed with named rerun evidence before the evidence freeze.
+\end{itemize}
+
+\subsection{Action Items}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
+\toprule
+\wcell{4.2cm}{\textbf{Task}} & \wcell{2.0cm}{\textbf{Owner}} & \wcell{1.9cm}{\textbf{Due}} & \wcell{2.8cm}{\textbf{Review owner}} \\
+\midrule
+\wcell{4.2cm}{Draft LaTeX sections and tables} & \wcell{2.0cm}{Cheng YE} & \wcell{1.9cm}{16/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.2cm}{Run EditMode tests and capture results} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.9cm}{15/04/2026} & \wcell{2.8cm}{Guangjun HU} \\
+\wcell{4.2cm}{Update defect register and meeting minutes} & \wcell{2.0cm}{Zehan CHEN} & \wcell{1.9cm}{16/04/2026} & \wcell{2.8cm}{Cheng YE} \\
+\wcell{4.2cm}{Final integration check in Unity editor} & \wcell{2.0cm}{Hongshuo HU} & \wcell{1.9cm}{17/04/2026} & \wcell{2.8cm}{Whole team} \\
+\bottomrule
+\end{tabular}
+\caption{Action items agreed in the testing and validation meeting.}
+\label{tab:appendix-meeting-actions}
+\end{table}
+
+\subsection{Issue Closure Status}
+
+\begin{itemize}
+    \item \code{WR2-BUG-01}: fixed and verified by the final \code{BattleUI} rerun after the prompt and next-step messaging updates.
+    \item \code{WR2-BUG-02}: fixed and verified by the final \code{BattleUI} and \code{TurnManager} reruns after the enemy summary emphasis updates.
+    \item Automated coverage for \code{GridManager} and \code{CardResolver} was pending at the time of the meeting and was later completed during the final coverage pass.
+\end{itemize}
+
+\subsection{Next Meeting}
+
+\begin{itemize}
+    \item Tentative date: 24/04/2026.
+    \item Main agenda: final submission checklist, closed-bug retest review, and repository submission-readiness confirmation.
+\end{itemize}
+
+\chapter{Representative Test Case Inventory}
+
+\small
+\begin{longtable}{llll}
+\caption{Representative test case inventory for the final suite.}
+\label{tab:appendix-test-cases}\\
+\toprule
+\wcell{2.3cm}{\textbf{Module / suite}} & \wcell{5.4cm}{\textbf{Test case}} & \wcell{2.7cm}{\textbf{Purpose}} & \wcell{1.4cm}{\textbf{Label}} \\
+\midrule
+\endfirsthead
+\toprule
+\wcell{2.3cm}{\textbf{Module / suite}} & \wcell{5.4cm}{\textbf{Test case}} & \wcell{2.7cm}{\textbf{Purpose}} & \wcell{1.4cm}{\textbf{Label}} \\
+\midrule
+\endhead
+\wcell{2.3cm}{TurnManager} & \wcell{5.4cm}{\code{StartBattle_WhenNoEnemyUnits_EndsInPlayerVictory}} & \wcell{2.7cm}{Verify immediate victory when the enemy side is empty at battle start.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{TurnManager} & \wcell{5.4cm}{\code{StartBattle_WhenNoPlayerUnits_EndsInEnemyVictory}} & \wcell{2.7cm}{Verify immediate defeat when the player side is empty at battle start.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{TurnManager} & \wcell{5.4cm}{\code{EndPlayerTurn_WhenEnemyDefeatsLastPlayer_DoesNotRestartPlayerTurn}} & \wcell{2.7cm}{Prevent the loop from incorrectly starting a new player turn after defeat.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{ResetDeck_WithoutStartingDeck_UsesFallbackDeck}} & \wcell{2.7cm}{Confirm the fallback deck is created when no starting deck is configured.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{DrawForTurn_DrawsConfiguredNumberOfCards}} & \wcell{2.7cm}{Confirm the turn draw count uses the configured cards-per-turn value.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{DiscardFromHand_MovesCardToDiscardPile}} & \wcell{2.7cm}{Confirm single-card discard behaviour.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{DiscardHand_MovesAllCardsToDiscardPile}} & \wcell{2.7cm}{Confirm whole-hand discard behaviour at turn reset.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{Draw_WhenDrawPileEmpty_ReshufflesDiscardPile}} & \wcell{2.7cm}{Confirm discard-to-draw reshuffle behaviour.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{DeckManager} & \wcell{5.4cm}{\code{Draw_WhenNoCardsRemain_LeavesHandUnchanged}} & \wcell{2.7cm}{Confirm the empty-deck branch exits safely.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{EnemyAI} & \wcell{5.4cm}{\code{ManhattanDistance_ReturnsAbsoluteGridDistance}} & \wcell{2.7cm}{Validate the AI distance metric used for targeting.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{EnemyAI} & \wcell{5.4cm}{\code{FindNearestPlayer_SkipsDeadUnitsAndReturnsClosestAliveTarget}} & \wcell{2.7cm}{Confirm the AI ignores dead targets and chooses the nearest alive player.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{EnemyAI} & \wcell{5.4cm}{\code{GetStepToward_PrefersHorizontalStepWhenAxesTie}} & \wcell{2.7cm}{Confirm deterministic tie-breaking in step selection.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{EnemyAI} & \wcell{5.4cm}{\code{GetStepToward_UsesVerticalStepWhenVerticalDeltaIsLarger}} & \wcell{2.7cm}{Confirm vertical movement preference when vertical distance is larger.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{CreateUnit_InitializesCurrentHpFromConfiguredValue}} & \wcell{2.7cm}{Confirm runtime creation respects the configured max HP.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{TakeDamage_ReducesHitPoints}} & \wcell{2.7cm}{Confirm standard damage application.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{Guarding_ReducesNextHitAndThenClearsGuard}} & \wcell{2.7cm}{Confirm one-hit guard consumption behaviour.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{Heal_DoesNotExceedMaxHp}} & \wcell{2.7cm}{Confirm healing clamps at max HP.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{TakeDamage_ToZero_DisablesGameObject}} & \wcell{2.7cm}{Confirm unit death deactivates the object.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{UnitController} & \wcell{5.4cm}{\code{SetGridPosition_UpdatesGridAndWorldPosition}} & \wcell{2.7cm}{Confirm grid/world position synchronisation.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{GenerateGrid_CreatesExpectedTiles}} & \wcell{2.7cm}{Confirm grid size and bounds setup.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{TryPlaceUnit_PlacesUnitAndUpdatesOccupancy}} & \wcell{2.7cm}{Confirm unit placement and occupancy bookkeeping.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{TryMoveUnit_MovesUnitAndClearsPreviousTile}} & \wcell{2.7cm}{Confirm movement updates both origin and destination tiles.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{TryPushUnit_RejectsOutOfBoundsDestination}} & \wcell{2.7cm}{Confirm push logic rejects invalid destinations.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{GetNeighbors_ReturnsOrthogonalInBoundsCoordinates}} & \wcell{2.7cm}{Confirm neighbour enumeration.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{GetTilesInRange_ReturnsBreadthFirstManhattanRange}} & \wcell{2.7cm}{Confirm BFS range expansion used by move/attack highlighting.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GridManager} & \wcell{5.4cm}{\code{HighlightMoveRange_TracksHighlightedTilesAndClearHighlights_ResetsState}} & \wcell{2.7cm}{Confirm highlight tracking and cleanup.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{GetValidTiles_Move_ReturnsUnoccupiedTilesWithinRange}} & \wcell{2.7cm}{Confirm move-card targeting excludes occupied tiles.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{ResolveTileCard_Move_MovesUnitToTargetTile}} & \wcell{2.7cm}{Confirm move-card execution updates the unit and grid.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{ResolveTileCard_Guard_SetsUnitGuarding}} & \wcell{2.7cm}{Confirm guard-card resolution sets the defensive state.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{ResolveUnitCard_Strike_DamagesEnemyAndClearsTileWhenTargetDies}} & \wcell{2.7cm}{Confirm strike damage and occupancy cleanup on death.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{ResolveUnitCard_Push_DamagesAndMovesEnemyBack}} & \wcell{2.7cm}{Confirm push damage plus displacement.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardResolver} & \wcell{5.4cm}{\code{ResolveUnitCard_RejectsFriendlyTarget}} & \wcell{2.7cm}{Confirm enemy-only targeting rules.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{BattleUI} & \wcell{5.4cm}{\code{SelectCard_WithoutSelectedUnit_RequestsUnitSelection}} & \wcell{2.7cm}{Confirm the UI prompts for unit selection before card use.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{BattleUI} & \wcell{5.4cm}{\code{SelectCard_GuardCardWithSelectedUnit_AutoResolvesAndConsumesCardPlay}} & \wcell{2.7cm}{Confirm self-target guard cards resolve immediately.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{BattleUI} & \wcell{5.4cm}{\code{TryPlayCardOnTile_InvalidTarget_ReturnsFalseAndKeepsCardSelected}} & \wcell{2.7cm}{Confirm invalid tile targets do not resolve and keep state visible.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{BattleUI} & \wcell{5.4cm}{\code{TryPlayCardOnUnit_ValidStrike_ConsumesPlayAndUpdatesActionLog}} & \wcell{2.7cm}{Confirm valid strike actions update both play count and action log.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{BattleUI} & \wcell{5.4cm}{\code{SelectCard_AfterBattleEnded_ShowsBattleOutcome}} & \wcell{2.7cm}{Confirm UI lock and outcome message after battle end.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GameRoot} & \wcell{5.4cm}{\code{Awake_FindsDependenciesWhenSerializedFieldsAreEmpty}} & \wcell{2.7cm}{Confirm dependency discovery in the scene bootstrap object.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{GameRoot} & \wcell{5.4cm}{\code{Start_InitializesManagersPlacesUnitsAndStartsBattle}} & \wcell{2.7cm}{Confirm bootstrap wiring from managers to first battle state.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{TileView} & \wcell{5.4cm}{\code{Initialize_SetsCoordinate}} & \wcell{2.7cm}{Confirm tile coordinate initialisation.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{TileView} & \wcell{5.4cm}{\code{SetOccupantAndClearOccupant_UpdateOccupancyState}} & \wcell{2.7cm}{Confirm tile occupancy bookkeeping.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{TileView} & \wcell{5.4cm}{\code{HighlightMethods_CreateRuntimeMaterialAndDoNotThrow}} & \wcell{2.7cm}{Confirm tile visual highlight methods are safe to call at runtime.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{CardButtonView} & \wcell{5.4cm}{\code{Bind_ClickInvokesBattleUiSelection}} & \wcell{2.7cm}{Confirm button binding forwards the selected card to the battle UI.} & \wcell{1.4cm}{Verified} \\
+\wcell{2.3cm}{PlayMode smoke} & \wcell{5.4cm}{\code{GameRoot_Start_InitializesBattleReadyState}} & \wcell{2.7cm}{Confirm the scene reaches a playable battle-ready state in PlayMode.} & \wcell{1.4cm}{Verified} \\
+\bottomrule
+\end{longtable}
+
+\normalsize

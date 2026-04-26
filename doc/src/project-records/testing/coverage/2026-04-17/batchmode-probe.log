@@ -1,0 +1,20 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.11f1 (3000ef702840) revision 3145967'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-5418ly" at "2026-04-16T22:02:41.6702716Z"
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'zh' Physical Memory: 32095 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-04-16T22:02:41Z
+
+COMMAND LINE ARGUMENTS:
+F:\unity\unity\6000.3.11f1\Editor\Unity.exe
+-projectPath
+F:\unity\Unity-Project-clean-init\coursework
+-batchmode
+-quit
+-logFile
+F:\unity\Unity-Project-clean-init\doc\src\project-records\testing\coverage\2026-04-17\batchmode-probe.log
+Successfully changed project path to: F:\unity\Unity-Project-clean-init\coursework
+F:/unity/Unity-Project-clean-init/coursework
+Exiting without the bug reporter. Application will terminate with return code 1

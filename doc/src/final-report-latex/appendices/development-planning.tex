@@ -1,0 +1,35 @@
+\section{Iterative Delivery Model}
+
+The project was delivered in short increments rather than as a once-through sequential build. The repository history shows repeated cycles of implementation, playable checking, design revision, validation, and interface refinement.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\wcell{2.6cm}{\textbf{Iteration window}} & \wcell{3.6cm}{\textbf{Representative commits}} & \wcell{3.6cm}{\textbf{Primary focus}} & \wcell{2.6cm}{\textbf{Outcome}} \\
+\midrule
+\wcell{2.6cm}{01/04--02/04} & \wcell{3.6cm}{\code{22b36f4}, \code{b045777}, \code{814c972}, \code{f2ac529}} & \wcell{3.6cm}{Repository curation, clean baseline, battle-end correction, initial regression protection} & \wcell{2.6cm}{A stable prototype baseline with an early correctness fix} \\
+\wcell{2.6cm}{02/04--03/04} & \wcell{3.6cm}{\code{968d396}, \code{7438df9}, \code{2d6a444}, \code{e407e63}} & \wcell{3.6cm}{Architecture alignment, screenshots, diagrams, and code/report consistency} & \wcell{2.6cm}{A reportable prototype with aligned visual and structural evidence} \\
+\wcell{2.6cm}{17/04} & \wcell{3.6cm}{\code{c78434f}} & \wcell{3.6cm}{Validation freeze and archived rerun evidence} & \wcell{2.6cm}{A named baseline for execution and coverage evidence} \\
+\wcell{2.6cm}{23/04} & \wcell{3.6cm}{\code{b8c1ab3}} & \wcell{3.6cm}{Title-to-result flow shell, gameplay stability, and stronger test coverage} & \wcell{2.6cm}{A complete session loop rather than battle-only entry} \\
+\wcell{2.6cm}{23/04--24/04} & \wcell{3.6cm}{\code{c4fa026}, \code{572acb2}} & \wcell{3.6cm}{Runtime UI theming, board dressing, and unit presentation} & \wcell{2.6cm}{A stronger visual identity without changing the core rules} \\
+\wcell{2.6cm}{24/04} & \wcell{3.6cm}{\code{98753ae}} & \wcell{3.6cm}{HUD feedback closure, overlay repair, and layout fixes} & \wcell{2.6cm}{The last major usability gaps were closed} \\
+\wcell{2.6cm}{24/04} & \wcell{3.6cm}{\code{df9ea5a}} & \wcell{3.6cm}{Final report package preparation} & \wcell{2.6cm}{The report source tree and final-document scaffolding were assembled} \\
+\bottomrule
+\end{tabular}
+\caption{Representative iterative slices visible in the repository history.}
+\label{tab:appendix-iteration-history}
+\end{table}
+
+\section{Backlog Reprioritisation Logic}
+
+The team did not treat the plan as fixed after the first playable build. The backlog was reprioritised when direct evidence showed a more urgent need. In practice, the reprioritisation rule was:
+
+\begin{enumerate}
+    \item keep the core tactical slice playable at all times;
+    \item promote any defect that blocks understanding, battle completion, or report credibility;
+    \item defer attractive but expensive content work if it does not improve the current slice materially.
+\end{enumerate}
+
+This logic is why session flow, HUD readability, and regression protection were prioritised above wider content expansion.
