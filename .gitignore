@@ -82,6 +82,16 @@ doc/src/wr3-latex/*.log
 doc/src/wr3-latex/*.out
 doc/src/wr3-latex/*.toc
 
+# Final report LaTeX build artifacts
+doc/src/final-report-latex/*.aux
+doc/src/final-report-latex/*.bbl
+doc/src/final-report-latex/*.blg
+doc/src/final-report-latex/*.log
+doc/src/final-report-latex/*.out
+doc/src/final-report-latex/*.toc
+doc/src/final-report-latex/main_verify.pdf
+doc/src/final-report-latex/main_verify.*
+
 # Keep only UML artifacts tracked under artifacts/
 artifacts/*
 !artifacts/uml/
@@ -96,3 +106,7 @@ artifacts/*
 
 # Local PR submit profile (contains user mapping for local gh/git identity)
 scripts/pr-profiles.json
+
+# Local packaging and scratch material
+tmp/
+doc/src/course/video.rar
