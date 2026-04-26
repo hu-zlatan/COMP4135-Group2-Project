@@ -86,6 +86,9 @@ doc/src/wr3-latex/*.toc
 artifacts/*
 !artifacts/uml/
 !artifacts/uml/**
+!artifacts/submission/
+artifacts/submission/*
+!artifacts/submission/SOFTWARE_PACKAGE_README.md
 
 # Build outputs
 *.apk

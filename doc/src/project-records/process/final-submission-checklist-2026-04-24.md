@@ -24,9 +24,9 @@
 | Code and asset origin audit written | Done | `doc/src/project-records/process/code-origin-and-attribution-audit-2026-04-24.md` | Baseline attribution evidence is already recorded. |
 | Final source package scope defined | Done | `coursework/Assets`, `coursework/Packages`, `coursework/ProjectSettings`, `README.md` | Unity cache/generated folders such as `Library`, `Temp`, `Logs`, and `UserSettings` should not be shipped in the software archive. |
 | Final runnable build identified | Done | `F:/unity/build/` | Existing Windows build can be bundled as an optional runnable copy. |
-| Final source package instructions checked | Pending | `README.md`, user manual appendix | Confirm run instructions match the exact submission build state. |
+| Final source package instructions checked | Done | `README.md`, `artifacts/submission/SOFTWARE_PACKAGE_README.md` | Source-tree and runnable-build instructions are now aligned with the packaged submission structure. |
 | Code attribution / third-party compliance audit | Pending | runtime `.cs` files and asset notices | Asset-side licensing is recorded, but a final code-side attribution pass is still needed. |
-| Final software archive packaged | Pending | `.zip` export under `artifacts/submission/` | Include source hierarchy and, where feasible, the runnable build. |
+| Final software archive packaged | Done | `artifacts/submission/TacticalCards-software-2026-04-26.zip` | Includes the Unity source hierarchy plus the packaged Windows build, while excluding Unity cache folders. |
 
 ## Other assessed deliverables
 
@@ -42,5 +42,5 @@
 
 1. Insert the final website URL into the README and report once the deployment link is fixed.
 2. Either restore or regenerate the archived coverage evidence before locking the final testing chapter.
-3. Package the software archive with source folders plus the runnable Windows build, but exclude Unity cache directories.
+3. Finish the remaining compliance pass for code attribution and third-party notices.
 4. Finish the non-report deliverables: website, demo video, presentation, and peer-assessment coordination.
