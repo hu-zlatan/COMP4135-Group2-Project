@@ -41,6 +41,21 @@ namespace TacticalCards.Tests.Editor
         }
 
         [Test]
+        public void Initialize_TitleLayoutKeepsContentBandsSeparated()
+        {
+            using var scope = CreateContext(out var controller, out _, withEnemy: true);
+
+            var titlePanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "titlePanel");
+            var content = titlePanel.transform.Find("TitleContent");
+
+            AssertBandBelow(content.Find("StartButton").GetComponent<RectTransform>(), content.Find("FeatureStrip").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("FeatureStrip").GetComponent<RectTransform>(), content.Find("SummaryPanel").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("SummaryPanel").GetComponent<RectTransform>(), content.Find("Subtitle").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("Subtitle").GetComponent<RectTransform>(), content.Find("BrandMark").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("BrandMark").GetComponent<RectTransform>(), content.Find("BrandIcon").GetComponent<RectTransform>());
+        }
+
+        [Test]
         public void StartGame_WithBattleReadyUnits_TransitionsToBattle()
         {
             using var scope = CreateContext(out var controller, out _, withEnemy: true);
@@ -86,6 +101,41 @@ namespace TacticalCards.Tests.Editor
             Assert.That(resultPanel.transform.Find("ResultCorners/TopLeft"), Is.Not.Null);
             Assert.That(resultPanel.transform.Find("ResultContent/ReplayBadge"), Is.Not.Null);
             Assert.That(resultPanel.transform.Find("ResultContent/OutcomeBadge"), Is.Not.Null);
+        }
+
+        [Test]
+        public void StartGame_ImmediateResult_KeepsResultLayoutBandsSeparated()
+        {
+            using var scope = CreateContext(out var controller, out _, withEnemy: false);
+
+            controller.StartGame();
+
+            var resultPanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "resultPanel");
+            var content = resultPanel.transform.Find("ResultContent");
+
+            AssertBandBelow(content.Find("ReplayButton").GetComponent<RectTransform>(), content.Find("ReplayBadge").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("ReplayBadge").GetComponent<RectTransform>(), content.Find("ResultSummary").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("ResultSummary").GetComponent<RectTransform>(), content.Find("ResultTitle").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("ResultTitle").GetComponent<RectTransform>(), content.Find("ResultIcon").GetComponent<RectTransform>());
+            AssertBandBelow(content.Find("ResultIcon").GetComponent<RectTransform>(), content.Find("ResultBrand").GetComponent<RectTransform>());
+        }
+
+        [Test]
+        public void StartGame_ImmediateResult_UsesReadableResultBadgeText()
+        {
+            using var scope = CreateContext(out var controller, out _, withEnemy: false);
+
+            controller.StartGame();
+
+            var resultPanel = EditorTestSupport.GetPrivateField<GameObject>(controller, "resultPanel");
+            var label = resultPanel.transform.Find("ResultContent/ReplayBadge/Label").GetComponent<UnityEngine.UI.Text>();
+
+            Assert.That(label.color, Is.EqualTo(UiThemeResources.BrightTextColor));
+        }
+
+        private static void AssertBandBelow(RectTransform lower, RectTransform upper)
+        {
+            Assert.That(lower.anchorMax.y, Is.LessThanOrEqualTo(upper.anchorMin.y), $"{lower.name} overlaps {upper.name}");
         }
 
         private static TestObjectScope CreateContext(out GameFlowController controller, out GameRoot gameRoot, bool withEnemy)

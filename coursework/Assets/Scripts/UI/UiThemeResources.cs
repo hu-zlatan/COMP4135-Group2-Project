@@ -45,7 +45,12 @@ namespace TacticalCards
 
             if (SpriteCache.TryGetValue(resourcePath, out var cachedSprite))
             {
-                return cachedSprite;
+                if (cachedSprite != null)
+                {
+                    return cachedSprite;
+                }
+
+                SpriteCache.Remove(resourcePath);
             }
 
             var texture = Resources.Load<Texture2D>(resourcePath);
