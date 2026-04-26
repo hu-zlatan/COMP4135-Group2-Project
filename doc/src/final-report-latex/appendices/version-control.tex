@@ -17,19 +17,27 @@
 \label{tab:appendix-version-control}
 \end{table}
 
+The canonical remote repository referenced by this appendix is \url{https://github.com/hu-zlatan/COMP4135-Group2-Project.git}. It is the public source used to expose the repository homepage, commit trail, report sources, and documentation tree to the teaching team.
+
 \section{Repository Graph Snapshot}
 
 The report does not rely on a hand-drawn branch diagram. Instead, the repository graph below is taken directly from the local Git history using a graph-formatted log command. This makes the version-control evidence traceable to the repository itself rather than to a reconstructed illustration.
 
 \begin{Verbatim}[fontsize=\scriptsize]
-* 8bea5e9 2026-04-26  (HEAD -> test)
-* df9ea5a 2026-04-24  (origin/test)
-* 98753ae 2026-04-24
-* 572acb2 2026-04-24
-* c4fa026 2026-04-23
-* b8c1ab3 2026-04-23
-* c78434f 2026-04-17
-*   bd21bd8 2026-04-17  (origin/main, main)
+* 155163a 2026-04-26  (origin/main, main)
+*   ba5bd41 2026-04-26
+|\  
+| * 4e5ded3 2026-04-26  (HEAD -> test, origin/test)
+| * 2e25a59 2026-04-26
+| * 8bea5e9 2026-04-26
+| * df9ea5a 2026-04-24
+| * 98753ae 2026-04-24
+| * 572acb2 2026-04-24
+| * c4fa026 2026-04-23
+| * b8c1ab3 2026-04-23
+| * c78434f 2026-04-17
+|/  
+*   bd21bd8 2026-04-17
 |\  
 | * e4f21e5 2026-04-17
 | * 85563ca 2026-04-03
@@ -43,7 +51,7 @@ The report does not rely on a hand-drawn branch diagram. Instead, the repository
 | * | b91b578 2026-04-03
 \end{Verbatim}
 
-This snapshot is sufficient to demonstrate that the project used real branching and merge activity across multiple lines of work. If a cleaner hosting-platform screenshot is desired for presentation polish, it can replace or accompany this generated graph without changing the evidence claim.
+This snapshot is sufficient to demonstrate that the project used real branching and merge activity across multiple lines of work. The graph intentionally omits verbose commit messages so that the appendix focuses on dated repository structure rather than on older naming conventions. If a cleaner hosting-platform screenshot is desired for presentation polish, it can replace or accompany this generated graph without changing the evidence claim.
 
 \section{Workflow Limits}
 
